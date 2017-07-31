@@ -154,7 +154,7 @@ class LoginController extends Controller
         \Mail::to($user->email)->queue(new WelcomeToVoten($user->username));
 
         // let us know :D
-        \Mail::to('fischersully@gmail.com')->queue(new NewRegistration($user->username));
+        \Mail::to('hank.wang@inwehub.com')->queue(new NewRegistration($user->username));
 
         // set user's default data into cache to save few queries
         $userData = [

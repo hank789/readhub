@@ -7,15 +7,15 @@
 				<div>
 					<ul class="flat-nav">
 						<router-link tag="li" :to="{ path: '/' }" class="item" :class="{ 'active': sort == 'hot' }">
-							Hot
+							热门
 						</router-link>
 
 						<router-link tag="li" :to="{ path: '/?sort=new' }" class="item" :class="{ 'active': sort == 'new' }">
-							New
+							最新
 						</router-link>
 
 						<router-link tag="li" :to="{ path: '/?sort=rising' }" class="item" :class="{ 'active': sort == 'rising' }">
-							Rising
+							上升中
 						</router-link>
 					</ul>
 				</div>
@@ -26,23 +26,23 @@
 
 						<div class="menu">
 							<div class="header">
-								Filter by
+								筛选
 							</div>
 
 							<button class="item" @click="changeFilter('subscribed-channels')" :class="{ 'active' : filter == 'subscribed-channels' }">
-								Subscribed channels
+								我的订阅
 							</button>
 
 							<button class="item" @click="changeFilter('all-channels')" :class="{ 'active' : filter == 'all-channels' }">
-								All channels
+								所有频道
 							</button>
 
 							<button class="item" @click="changeFilter('moderating-channels')" :class="{ 'active' : filter == 'moderating-channels' }" v-if="isModerating">
-								Moderating channels
+								我审核的
 							</button>
 
 							<button class="item" @click="changeFilter('bookmarked-channels')" :class="{ 'active' : filter == 'bookmarked-channels' }">
-								Bookmarked channels
+								我的收藏
 							</button>
 
 							<button class="item" @click="changeFilter('by-bookmarked-users')" :class="{ 'active' : filter == 'by-bookmarked-users' }">
@@ -52,7 +52,7 @@
 					</div>
 
 					<button class="feed-panel-button btn-nth--h" @click="refresh"
-					data-toggle="tooltip" data-placement="bottom" title="Refresh">
+					data-toggle="tooltip" data-placement="bottom" title="刷新">
 						<i class="v-icon v-refetch"></i>
 					</button>
 				</div>

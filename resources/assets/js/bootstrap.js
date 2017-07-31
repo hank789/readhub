@@ -1,5 +1,5 @@
 window.moment = require('moment-timezone');
-window.moment.tz.setDefault("UTC");
+window.moment.tz.setDefault("Asia/Shanghai");
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -35,7 +35,7 @@ if (Laravel.env == 'local') {
 } else {
 	window.Echo = new Echo({
 	    broadcaster: 'socket.io',
-	    host: 'https://echo.voten.co:6001',
+	    host: window.location.hostname + ':6001',
 	    auth:
 	    {
 	        headers:

@@ -165,7 +165,7 @@ class RegisterController extends Controller
 
         // Email sully every 10 new registers :D
         if (User::count() % 10 == 0) {
-            \Mail::to('fischersully@gmail.com')->queue(new NewRegistration($user->username));
+            \Mail::to('hank.wang@inwehub.com')->queue(new NewRegistration($user->username));
         }
 
         // set user's default data into cache to save few queries

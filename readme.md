@@ -63,3 +63,8 @@ If you discover any security vulnerability within Voten's source code, please se
 ## API
 
 A public API is the next step of Voten's development. In the meanwhile, if you're interested in developing applications on top of our API please contact us at info@voten.co.
+
+## 启动socket.id
+```
+node_modules/laravel-echo-server/bin/server.js start
+```
