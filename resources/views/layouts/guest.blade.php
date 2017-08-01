@@ -20,6 +20,7 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
             'env' => config('app.env'),
+            'is_h5' => session('is_h5'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
         ]); ?>

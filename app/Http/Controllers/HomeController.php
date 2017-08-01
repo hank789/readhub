@@ -6,13 +6,15 @@ use App\Submission;
 use App\Traits\CachableCategory;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
+use App\User;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class HomeController extends Controller
 {
-    use CachableUser, CachableSubmission, CachableCategory;
+    use CachableUser, CachableSubmission, CachableCategory, AuthenticatesUsers;
 
     /**
      * Displays the home page.
@@ -43,7 +45,13 @@ class HomeController extends Controller
     public function h5HomePage(Request $request)
     {
         session(['is_h5'=>true]);
-
+        $uuid = $request->input('uuid');
+        if ($uuid) {
+            $user = User::where('uuid',$uuid)->first();
+            if ($user) {
+                $this->guard()->loginUsingId($user->id,true);
+            }
+        }
         if (!Auth::check()) {
             $submissions = $this->guestHome($request);
 

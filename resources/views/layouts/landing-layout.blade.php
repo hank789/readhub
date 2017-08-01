@@ -23,6 +23,7 @@
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
+            'is_h5' => session('is_h5'),
             'env' => config('app.env')
         ]); ?>
     </script>
