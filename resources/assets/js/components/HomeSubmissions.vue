@@ -131,7 +131,7 @@
 	        	if (this.isSetLS('feed-filter')) {
 	   				Store.feedFilter = this.getLS('feed-filter');
 	   			} else {
-	   				Store.feedFilter = 'subscribed-channels';
+	   				Store.feedFilter = 'all-channels';
 	   			}
 
 	            axios.get(this.authUrl('home'), {

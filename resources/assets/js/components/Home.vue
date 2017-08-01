@@ -30,7 +30,7 @@
 							</div>
 
 							<button class="item" @click="changeFilter('subscribed-channels')" :class="{ 'active' : filter == 'subscribed-channels' }">
-								我的订阅
+								订阅频道
 							</button>
 
 							<button class="item" @click="changeFilter('all-channels')" :class="{ 'active' : filter == 'all-channels' }">
@@ -38,7 +38,7 @@
 							</button>
 
 							<button class="item" @click="changeFilter('moderating-channels')" :class="{ 'active' : filter == 'moderating-channels' }" v-if="isModerating">
-								我审核的
+								审核频道
 							</button>
 
 							<button class="item" @click="changeFilter('bookmarked-channels')" :class="{ 'active' : filter == 'bookmarked-channels' }">
@@ -46,7 +46,7 @@
 							</button>
 
 							<button class="item" @click="changeFilter('by-bookmarked-users')" :class="{ 'active' : filter == 'by-bookmarked-users' }">
-								By bookmarked users
+								订阅用户
 							</button>
 						</div>
 					</div>

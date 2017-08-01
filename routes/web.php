@@ -7,6 +7,7 @@ Route::group(['middleware' => ['maintenance', 'http2']], function () {
     // Public Pages
     Route::get('/tos', 'PagesController@tos');
     Route::get('/', 'HomeController@homePage');
+    Route::get('/h5', 'HomeController@h5HomePage');
     Route::get('/credits', 'PagesController@credits');
     Route::get('/features', 'PagesController@features');
     Route::get('/about', 'PagesController@about');

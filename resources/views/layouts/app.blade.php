@@ -21,6 +21,7 @@
             'csrfToken' => csrf_token(),
             'env' => config('app.env'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),
+            'is_h5' => session('is_h5'),
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
         ]); ?>
     </script>
@@ -33,7 +34,13 @@
 @include('google-analytics')
 
 <div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content' }">
-    @include('app-header')
+    <div v-if="Store.is_h5">
+        @include('h5-header')
+    </div>
+    <div v-else>
+        @include('app-header')
+    </div>
+
 
     <div class="v-content-wrapper">
 		<div class="v-side {{ settings('sidebar_color') }}" v-show="sidebar">

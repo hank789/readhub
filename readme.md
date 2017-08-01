@@ -66,5 +66,7 @@ A public API is the next step of Voten's development. In the meanwhile, if you'r
 
 ## 启动socket.id
 ```
+node_modules/laravel-echo-server/bin/server.js init
+node_modules/laravel-echo-server/bin/server.js client:add APP_ID
 node_modules/laravel-echo-server/bin/server.js start
 ```

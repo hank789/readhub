@@ -40,6 +40,7 @@ window.Store = {
 
     subscribedCategories: [],
 
+    is_h5: Laravel.is_h5,
     loading: true,
 }
 

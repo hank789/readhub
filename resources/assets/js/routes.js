@@ -45,9 +45,16 @@ import UserSettingsEditEmailAndPassword from './components/UserSettingsEditEmail
 import ModeratorPanelReportedSubmissions from './components/ModeratorPanelReportedSubmissions.vue';
 import SubscribedCategories from './components/SubscribedCategories.vue';
 
-
-
 const routes = [
+    // app上的路由begin
+    {
+        name: 'h5',
+        path: '/h5',
+        component: Home
+    },
+    // app上的路由end
+
+
     {
         name: 'home',
         path: '/',

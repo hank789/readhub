@@ -23,12 +23,32 @@ class HomeController extends Controller
      */
     public function homePage(Request $request)
     {
+        session(['is_h5'=>false]);
         if (!Auth::check()) {
             $submissions = $this->guestHome($request);
 
             return view('home', compact('submissions'));
         }
 
+        return view('welcome');
+    }
+
+    /**
+     * Displays the home page.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return view
+     */
+    public function h5HomePage(Request $request)
+    {
+        session(['is_h5'=>true]);
+
+        if (!Auth::check()) {
+            $submissions = $this->guestHome($request);
+
+            return view('home', compact('submissions'));
+        }
         return view('welcome');
     }
 

@@ -18,7 +18,7 @@ class AdminUserSeeder extends Seeder
             'password'  => bcrypt('password'),
             'confirmed' => 1,
             'verified'  => 1,
-            'email'     => 'admin@admin.com',
+            'email'     => 'hank.wang@inwehub.com',
             'settings'  => json_encode([
                 'font'                          => 'Lato',
                 'sidebar_color'                 => 'Gray',

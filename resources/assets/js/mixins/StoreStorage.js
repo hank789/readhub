@@ -22,7 +22,7 @@ export default {
         	if (this.isSetLS('sidebar-filter')) {
    				Store.sidebarFilter = this.getLS('sidebar-filter');
    			} else {
-   				Store.sidebarFilter = 'subscribed-channels';
+   				Store.sidebarFilter = 'all-channels';
    			}
 
    			// preLoad few Store values. This is used to avoid need for loading. Sure it might be fast enough now,
