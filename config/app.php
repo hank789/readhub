@@ -183,6 +183,7 @@ return [
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
+        Jacobcyl\AliOSS\AliOssServiceProvider::class,
 
         // dev only
         VueGenerators\ServiceProvider::class,

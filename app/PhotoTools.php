@@ -38,9 +38,9 @@ trait PhotoTools
         }
 
         $image->encode();
-        Storage::put($folder.'/'.$filename, $image);
+        Storage::put($folder.'/'.$filename, (string)$image);
 
-        return $this->ftpAddress().$folder.'/'.$filename;
+        return Storage::url($folder.'/'.$filename);
     }
 
     /**
@@ -70,9 +70,9 @@ trait PhotoTools
             $image->encode('png', 90);
         }
 
-        Storage::put($folder.'/'.$filename, $image);
+        Storage::put($folder.'/'.$filename, (string)$image);
 
-        return $this->ftpAddress().$folder.'/'.$filename;
+        return Storage::url($folder.'/'.$filename);
     }
 
     /**
@@ -100,9 +100,9 @@ trait PhotoTools
             $image->encode('jpg', 90);
         }
 
-        Storage::put($folder.'/'.$filename, $image);
+        Storage::put($folder.'/'.$filename, (string)$image);
 
-        return $this->ftpAddress().$folder.'/'.$filename;
+        return Storage::url($folder.'/'.$filename);
     }
 
     /**
@@ -120,9 +120,9 @@ trait PhotoTools
 
         $image->encode('png');
 
-        Storage::put($folder.'/'.$filename, $image);
+        $res = Storage::put($folder.'/'.$filename, (string)$image);
 
-        return $this->ftpAddress().$folder.'/'.$filename;
+        return Storage::url($folder.'/'.$filename);
     }
 
     /**
@@ -144,8 +144,8 @@ trait PhotoTools
             $image->encode('jpg', 90);
         }
 
-        Storage::put($folder.'/'.$filename, $image);
+        Storage::put($folder.'/'.$filename, (string)$image);
 
-        return $this->ftpAddress().$folder.'/'.$filename;
+        return Storage::url($folder.'/'.$filename);
     }
 }

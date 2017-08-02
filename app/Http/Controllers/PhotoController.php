@@ -148,8 +148,8 @@ class PhotoController extends Controller
         $image = $image->resize(250, 250);
         $image->encode('png');
 
-        Storage::put($folder.'/'.$filename, $image);
+        Storage::put($folder.'/'.$filename, (string)$image);
 
-        return $this->ftpAddress().$folder.'/'.$filename; // must return the exact url(maybe with the cdn url in it)
+        return Storage::url($folder.'/'.$filename); // must return the exact url(maybe with the cdn url in it)
     }
 }
