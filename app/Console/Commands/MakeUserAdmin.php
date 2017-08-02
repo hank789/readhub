@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\AppointeddUser;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 
 class MakeUserAdmin extends Command
 {
@@ -45,5 +46,6 @@ class MakeUserAdmin extends Command
             'user_id'      => $id,
             'appointed_as' => 'administrator',
         ]);
+        Cache::forget('general.voten-administrators');
     }
 }
