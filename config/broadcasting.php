@@ -47,6 +47,7 @@ return [
 
         'echo' => [
             'app_address'  => env('ECHO_ADDRESS'),
+            'app_origin_address'  => env('ECHO_ORIGIN_ADDRESS'),
             'app_id'       => env('ECHO_APP_ID'),
             'auth_key'     => env('ECHO_AUTH_KEY'),
         ],

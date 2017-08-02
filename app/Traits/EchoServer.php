@@ -6,7 +6,7 @@ trait EchoServer
 {
     protected function echoAddress()
     {
-        return config('broadcasting.connections.echo.app_address');
+        return config('broadcasting.connections.echo.app_origin_address');
     }
 
     protected function echoAppId()
