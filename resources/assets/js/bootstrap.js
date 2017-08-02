@@ -35,7 +35,7 @@ if (Laravel.env == 'local') {
 } else {
 	window.Echo = new Echo({
 	    broadcaster: 'socket.io',
-	    host: window.location.hostname + ':6001',
+	    host: Laravel.echo_address,
 	    auth:
 	    {
 	        headers:

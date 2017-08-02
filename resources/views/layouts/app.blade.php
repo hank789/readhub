@@ -22,6 +22,7 @@
             'env' => config('app.env'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),
             'is_h5' => session('is_h5'),
+            'echo_address' => config('broadcasting.connections.echo.app_address'),
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
         ]); ?>
     </script>

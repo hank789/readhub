@@ -21,6 +21,7 @@
             'csrfToken' => csrf_token(),
             'env' => config('app.env'),
             'is_h5' => session('is_h5'),
+            'echo_address' => config('broadcasting.connections.echo.app_address'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
         ]); ?>

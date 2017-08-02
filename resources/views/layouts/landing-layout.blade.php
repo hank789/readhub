@@ -24,6 +24,7 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
             'is_h5' => session('is_h5'),
+            'echo_address' => config('broadcasting.connections.echo.app_address'),
             'env' => config('app.env')
         ]); ?>
     </script>
