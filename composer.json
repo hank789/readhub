@@ -37,7 +37,7 @@
         "sentry/sentry": "^1.6",
         "sentry/sentry-laravel": "^0.6.1",
         "jacobbennett/laravel-http2serverpush": "^1.3",
-        "laravel/passport": "^2.0",
+        "laravel/passport": "^3.0",
         "tamayo/laravel-scout-elastic": "dev-master",
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "^2.5",
