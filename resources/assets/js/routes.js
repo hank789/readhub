@@ -225,7 +225,7 @@ router.afterEach((to, from) => {
 	       m.parentNode.insertBefore(a, m)
 	   })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-	   ga('create', 'UA-89431807-1', 'auto');
+	   ga('create', 'UA-97476315-1', 'auto');
 
 	   ga('set', 'page', to.path);
 	   ga('send', 'pageview');

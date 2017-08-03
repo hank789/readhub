@@ -13,7 +13,7 @@ export default {
 
     		if (isPlusReady){
                 var embed=plus.webview.create(url,'embed',{popGesture: 'hide',
-                    top:topoffset,
+                    top:'0px',
                     bottom:'0px',
                     position:'dock',
                     dock:'bottom',
