@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-if="showBigThumbnail && submission.data.thumbnail" :class="showEmbed ? 'relative pointer' : ''" @click="embedOrOpen">
-			<a v-bind:href="submission.data.url" target="_blank" rel="nofollow" v-if="submission.data.thumbnail">
+			<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow" v-if="submission.data.thumbnail">
 	            <img v-bind:src="submission.data.thumbnail" v-bind:alt="submission.title" class="big-thumbnail" />
 	        </a>
 
@@ -12,7 +12,7 @@
 
 		<div class="link-list-info flex-space">
 			<span class="submission-img-title">
-				<a v-bind:href="submission.data.url" target="_blank" rel="nofollow" class="submisison-small-thumbnail" v-if="submission.data.thumbnail && !full">
+				<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow" class="submisison-small-thumbnail" v-if="submission.data.thumbnail && !full">
 					<div v-bind:style="thumbnail"
 						v-if="submission.data.thumbnail && showSmallThumbnail" class="small-thumbnail"
 						@click="embedOrOpen" :class="showEmbed ? 'pointer' : ''"
@@ -21,7 +21,7 @@
 				</a>
 
 				<h1 class="submission-title" v-if="full">
-					<a v-bind:href="submission.data.url" target="_blank" rel="nofollow">
+					<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow">
 						<i class="v-icon v-shocked go-red" aria-hidden="true" v-if="submission.nsfw"
 							data-toggle="tooltip" data-placement="bottom" title="NSFW"
 						></i>
@@ -36,7 +36,7 @@
 
 				<span v-else class="full-width">
 					<h3 class="v-ultra-bold no-margin">
-						<a v-bind:href="submission.data.url" target="_blank" rel="nofollow">
+						<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow">
 							{{ submission.title }}
 
 							<small class="go-gray">
@@ -58,9 +58,10 @@
 <script>
 	import EmbedValidator from '../../mixins/EmbedValidator';
 	import SubmissionFooter from '../../components/SubmissionFooter.vue';
+	import Webview from '../../mixins/Webview';
 
     export default {
-		mixins: [EmbedValidator],
+		mixins: [EmbedValidator,Webview],
 
 		components: {
 			SubmissionFooter

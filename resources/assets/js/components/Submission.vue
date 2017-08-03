@@ -74,11 +74,13 @@
 	import EmbedViewer from '../components/Embed.vue';
 	import GifPlayer from '../components/GifPlayer.vue';
 	import Helpers from '../mixins/Helpers';
+    import Webview from '../mixins/Webview';
+
 
     export default {
         props: ['list', 'full'],
 
-        mixins: [Helpers],
+        mixins: [Helpers, Webview],
 
         components: {
             TextSubmission,
