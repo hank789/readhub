@@ -9,9 +9,9 @@ export default {
 
     	openWebviewUrl(url, title='')
     	{
-            var plus = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+            var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
-    		if (plus){
+    		if (isPlusReady){
                 var embed=plus.webview.create(url,'embed',{popGesture: 'hide',
                     top:topoffset,
                     bottom:'0px',
