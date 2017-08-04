@@ -180,7 +180,8 @@ export default {
                 Store.administratorAt = Vue.ls.get('administratorAt');
             }
 
-            if (Store.moderatorAt.length != Vue.ls.get('moderatorAt').length) {
+            var moderatorAt = Vue.ls.get('moderatorAt');
+            if (moderatorAt && Store.moderatorAt.length != moderatorAt.length) {
                 Store.moderatorAt = Vue.ls.get('moderatorAt');
             }
         },

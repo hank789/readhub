@@ -99,7 +99,7 @@
 
 	    methods: {
 			loadMore() {
-				if (Store.contentRouter == 'content' && !this.loading && !this.NoMoreItems && this.$route.name == 'home') {
+				if (Store.contentRouter == 'content' && !this.loading && !this.NoMoreItems && (this.$route.name == 'home' || this.$route.name == 'h5')) {
 					this.getSubmissions()
 				}
 			},
