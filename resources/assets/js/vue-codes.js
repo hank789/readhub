@@ -7,6 +7,7 @@ import Notifications from './components/Notifications.vue';
 import MarkdownGuide from './components/MarkdownGuide.vue';
 import Subscribe from './components/Subscribe-button.vue';
 import VuiMenuButton from './components/Menu-button.vue';
+import VuiBackButton from './components/Back-button.vue';
 import GuestSidebar from './components/GuestSidebar.vue';
 import SearchModal from './components/SearchModal.vue';
 import ScrollButton from './components/ScrollButton.vue';
@@ -71,6 +72,7 @@ const app = new Vue({
         ReportComment,
         Notifications,
         VuiMenuButton,
+        VuiBackButton,
         ScrollButton,
         GuestSidebar,
         SearchModal,

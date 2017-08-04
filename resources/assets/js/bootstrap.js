@@ -1,6 +1,6 @@
 window.moment = require('moment-timezone');
 window.moment.tz.setDefault("Asia/Shanghai");
-window.moment.lang('zh-cn');
+window.moment.locale('zh-cn');
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

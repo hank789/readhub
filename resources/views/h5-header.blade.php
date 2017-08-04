@@ -1,5 +1,6 @@
 <header class="header-voten user-select">
-	<div class="left-header">
+	<div class="left-header" style="margin-left:-0.5rem">
+		<vui-back-button></vui-back-button>
 	</div>
 
     <div class="flex-display">
@@ -105,7 +106,7 @@
 	                    Keyboard Shortcuts
 	                </a>
 
-	                <router-link :to="'/help'" class="item">
+	                <router-link class="desktop-only" :to="'/help'" class="item">
 	                    Help
 	                </router-link>
 
