@@ -34,6 +34,7 @@
     "vue-multiselect": "^2.0.0-beta.13",
     "vue-router": "^2.0.3",
     "vue-template-compiler": "2.1.8",
+    "raven-js": "^3.14.2",
     "vue-ua": "^1.1.2"
   }
 }

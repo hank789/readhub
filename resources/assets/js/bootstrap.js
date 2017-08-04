@@ -57,3 +57,16 @@ require('./libs/Jcrop');
 
 
 window.emojione = require('./libs/emojione.min');
+
+//检查错误信息插件
+import Raven from 'raven-js';
+import RavenVue from 'raven-js/plugins/vue';
+
+var sentry_url = 'https://6cd9e4811e7f4ade86ff3d4a18b28e19@sentry.io/167478';
+if (Laravel.env === 'production') {
+    sentry_url = 'https://0b85668d118943ffa71c7b6c34f0a6bf@sentry.io/175782';
+}
+Raven
+    .config(sentry_url)
+    .addPlugin(RavenVue, Vue)
+    .install();
