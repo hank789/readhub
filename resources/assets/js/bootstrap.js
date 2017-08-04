@@ -62,9 +62,9 @@ window.emojione = require('./libs/emojione.min');
 import Raven from 'raven-js';
 import RavenVue from 'raven-js/plugins/vue';
 
-var sentry_url = 'https://6cd9e4811e7f4ade86ff3d4a18b28e19@sentry.io/167478';
+var sentry_url = 'https://5dc54108e50a44fe83f9607b8b75f74c@sentry.io/199705';
 if (Laravel.env === 'production') {
-    sentry_url = 'https://0b85668d118943ffa71c7b6c34f0a6bf@sentry.io/175782';
+    sentry_url = 'https://9da628f4c63343fda9ac25a8f0a127df@sentry.io/199706';
 }
 Raven
     .config(sentry_url)

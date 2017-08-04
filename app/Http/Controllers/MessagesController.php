@@ -34,7 +34,7 @@ class MessagesController extends Controller
     {
         $this->validate($request, [
             'text'    => 'required',
-            'contact' => 'required|integer',
+            'contact' => 'required|integer|min:1',
         ]);
 
         if ($request->contact == Auth::user()->id) {
