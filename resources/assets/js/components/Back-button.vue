@@ -19,12 +19,19 @@
 	    	 */
             toggleBack() {
                 var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+                console.log(this.$route.path);
                 if (isPlusReady){
-                    var ws = plus.webview.currentWebview();
-                    if (ws) {
-                        var parentWs = ws.parent();
-                        ws.parent().hide();
+                    var currentPath = this.$route.path;
+                    if (currentPath === '/h5') {
+                        var ws = plus.webview.currentWebview();
+                        if (ws) {
+                            var parentWs = ws.parent();
+                            ws.parent().hide();
+                        }
+                    } else {
+                        this.$router.go(-1);
                     }
+
                 } else {
                     this.$router.go(-1);
                 }
