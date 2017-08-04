@@ -3,18 +3,18 @@
         <div class="v-modal-small-box" v-on-clickaway="close">
             <div class="flex1">
                 <h2 class="align-center user-select">
-                    Markdown Guide
+                    Markdown规范
                 </h2>
 
                 <p class="user-select">
-                    Voten uses a slightly-customized and limited version of Markdown for formatting. Here is a quick and simple guide:
+                    请使用Markdown撰写内容：
                 </p>
 
                 <table class="table">
 				  	<thead class="user-select">
 					    <tr>
-							<th>Your Type</th>
-							<th class="half-width">You See</th>
+							<th>内容</th>
+							<th class="half-width">显示</th>
 					    </tr>
 				  	</thead>
 
@@ -41,11 +41,11 @@
 
                         <tr>
 					      	<td>
-					      		[voten.co](https://voten.co)
+					      		[inwehub.com](https://www.inwehub.com)
 					      	</td>
 
 					      	<td>
-					      		<a href="https://voten.co" target="_blank">voten.co</a>
+					      		<a href="https://inwehub.com" target="_blank">inwehub.com</a>
 					      	</td>
 					    </tr>
 
@@ -94,14 +94,14 @@
                         <tr>
 					      	<td>
 					      	<br>
-					      		```if (url == "voten") {<br>
-						        	return "welcome"<br>
+					      		```if (url == "inwehub") {<br>
+						        	return "欢迎"<br>
 						        }```
 					      	</td>
 
 					      	<td>
-<pre>if (url == "voten") {
-    return "welcome"
+<pre>if (url == "inwehub") {
+    return "欢迎"
 }</pre>
 					      	</td>
 					    </tr>
@@ -111,7 +111,7 @@
                 <button type="button" class="v-button v-button--green v-button--block"
                     data-toggle="tooltip" data-placement="bottom" title="Close (esc)"
                     @click="close">
-                    Close
+                    关闭
                 </button>
             </div>
         </div>

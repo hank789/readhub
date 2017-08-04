@@ -34,7 +34,7 @@
 
 		<no-content v-if="noContent" :text="'We are out of new #channels to suggest. Please keep calm and come back later'"></no-content>
 
-		<no-more-items :text="'No more items to load'" v-if="NoMoreItems && !noContent"></no-more-items>
+		<no-more-items :text="'无更多内容'" v-if="NoMoreItems && !noContent"></no-more-items>
 	</div>
 </template>
 

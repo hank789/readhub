@@ -17,11 +17,11 @@
 
 					<div class="menu">
 						<button class="item" @click="$emit('report')" v-if="!owns">
-							Report
+							举报
 						</button>
 
 						<button class="item" @click="$emit('hide')" v-if="!owns">
-							Hide
+							隐藏
 						</button>
 
 						<button class="item" @click="$emit('nsfw')" v-if="showNSFW">
@@ -33,19 +33,19 @@
 						</button>
 
 						<button class="item" @click="$emit('destroy')" v-if="owns">
-							Delete
+							删除
 						</button>
 
 						<button class="item" @click="$emit('approve')" v-if="showApprove">
-							Approve
+							审核通过
 						</button>
 
 						<button class="item" @click="$emit('disapprove')" v-if="showDisapprove">
-							Delete
+							删除
 						</button>
 
 						<button class="item" @click="$emit('removethumbnail')" v-if="showRemoveTumbnail">
-							Remove Thumbnail
+							移除图片
 						</button>
 					</div>
 				</div>
@@ -58,7 +58,7 @@
 				</a>
 
 				<div class="detail">
-					{{ points }} Points
+					{{ points }} 👍
 				</div>
 
 				<a class="fa-stack align-right" @click="$emit('downvote')"
@@ -69,19 +69,19 @@
 		</div>
 
 		<span class="desktop-only">
-			Submitted {{ date }} by
+			 {{ date }} 由
 			<router-link :to="'/' + '@' + submission.owner.username" class="h-underline desktop-only">
 				{{ '@' + submission.owner.username }}
 			</router-link>
-			to <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
+			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
 		</span>
 
 		<div class="mobile-only mobile-submission-item-action">
-			{{ date }} by
+			{{ date }} 由
 			<router-link :to="'/' + '@' + submission.owner.username" class="h-underline">
 				{{ '@' + submission.owner.username }}
 			</router-link>
-			to <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
+			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
 		</div>
 	</div>
 </template>

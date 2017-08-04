@@ -16,13 +16,13 @@
                     <div class="metadata user-select">
                         <router-link class="go-gray h-underline" v-if="!full"
                         :to="'/submission/' + list.submission_id">
-                            <small><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} Points</small>
+                            <small><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} 👍</small>
                         </router-link>
 
-                        <small v-else><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} Points</small>
+                        <small v-else><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} 👍</small>
 
                         <span class="edited" v-if="isEdited">
-                            Edited
+                            已编辑
                         </span>
                     </div>
                 </div>
@@ -67,19 +67,19 @@
 
                         <div class="menu">
                             <button class="item" @click="report" v-if="!owns">
-                                Report
+                                举报
                             </button>
 
                             <button class="item" @click="destroy" v-if="owns">
-                                Delete
+                                删除
                             </button>
 
                             <button class="item" @click="approve" v-if="showApprove">
-                                Approve
+                                审核通过
                             </button>
 
                             <button class="item" @click="disapprove" v-if="showDisapprove">
-                                Delete
+                                删除
                             </button>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
             </div>
 
             <button class="v-button v-button--link" v-if="hasMoreCommentsToLoad" @click="loadMoreComments">
-	        	Load More Comments ({{ list.children.length - childrenLimit }} more replies)
+	        	加载更多回复 ({{ list.children.length - childrenLimit }} 条回复)
 	    	</button>
         </div>
     </transition>

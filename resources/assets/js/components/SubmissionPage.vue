@@ -18,7 +18,7 @@
 		        <header class="box-typical-header-sm bordered user-select flex-space">
 		            <div>
 		            	<span v-show="comments.length">{{ submission.comments_number }}</span>
-		            	Comments: <span class="go-gray go-small" v-if="!isGuest">({{ onlineUsers }} online users)</span>
+		            	条回复: <span class="go-gray go-small" v-if="!isGuest">({{ onlineUsers }} 在线用户)</span>
 		            </div>
 		            <div class="head-sort-icon" v-show="comments.length > 1">
 		                <i class="v-icon v-like pointer" aria-hidden="true"

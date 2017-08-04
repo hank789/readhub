@@ -36,7 +36,7 @@
 								</a>
 
 								<div class="detail">
-									{{ points }} Points
+									{{ points }} 👍
 								</div>
 
 								<a class="fa-stack align-right" @click="voteDown"
@@ -51,11 +51,11 @@
 
 									<div class="menu">
 										<button class="item" @click="report" v-if="!owns">
-											Report
+											举报
 										</button>
 
 										<button class="item" @click="hide" v-if="!owns">
-											Hide
+											隐藏
 										</button>
 
 										<button class="item" @click="markAsNSFW" v-if="showNSFW">
@@ -67,19 +67,19 @@
 										</button>
 
 										<button class="item" @click="destroy" v-if="owns">
-											Delete
+											删除
 										</button>
 
 										<button class="item" @click="approve" v-if="showApprove">
-											Approve
+											审核通过
 										</button>
 
 										<button class="item" @click="disapprove" v-if="showDisapprove">
-											Delete
+											删除
 										</button>
 
 										<button class="item" @click="removeThumbnail" v-if="showRemoveTumbnail">
-											Remove Thumbnail
+											移除图片
 										</button>
 									</div>
 								</div>

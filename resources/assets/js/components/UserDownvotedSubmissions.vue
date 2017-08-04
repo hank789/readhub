@@ -8,7 +8,7 @@
 
 		<loading v-if="loading"></loading>
 
-	    <no-more-items :text="'No more items to load'" v-if="NoMoreItems && !nothingFound"></no-more-items>
+	    <no-more-items :text="'无更多内容'" v-if="NoMoreItems && !nothingFound"></no-more-items>
 	</section>
 </template>
 

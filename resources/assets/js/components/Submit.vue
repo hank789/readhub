@@ -4,7 +4,7 @@
 
         <div :class="loading ? 'opacity-fade' : ''">
             <h1 class="align-center">
-                New Submission
+                提交文章
             </h1>
 
             <div class="v-status v-status--error" v-if="customError">
@@ -14,12 +14,12 @@
             <form action="/submit" method="post">
                 <div class="form-group relative">
                     <input type="text" class="form-control v-input-big" v-bind:class="{ 'btn-input-text': submissionType == 'link'}"
-                    id="title" name="title" placeholder="Title ..." autocomplete="off" v-model="fTitle" :disabled="loading">
+                    id="title" name="title" placeholder="标题 ..." autocomplete="off" v-model="fTitle" :disabled="loading">
 
                     <button type="button" class="v-button v-button--primary btn-input" @click="getTitle(submitURL)"
                     v-if="submissionType == 'link' && submitURL && !loadingTitle"
                             data-toggle="tooltip" data-placement="bottom" title="Fetch title from entered URL" :disabled="loading"
-                    >Suggest</button>
+                    >推荐</button>
 
                     <moon-loader :loading="loadingTitle" :size="'30px'" :color="'#777'" class="btn-input"></moon-loader>
 
@@ -29,12 +29,12 @@
                 <input type="hidden" name="type" v-bind:value="submissionType">
 
                 <div v-show="submissionType == 'text'">
-                    <textarea class="form-control v-input-big" rows="3" id="text" name="text" placeholder="Text(optional)..."
+                    <textarea class="form-control v-input-big" rows="3" id="text" name="text" placeholder="内容(可选)..."
                     v-model="fText" :disabled="loading"></textarea>
 
                     <div class="flex-space">
                         <a class="comment-form-guide text-muted" @click="$eventHub.$emit('markdown-guide')">
-        	            	Formatting Guide
+        	            	格式规范
         	            </a>
 
                         <a class="comment-form-guide text-muted" @click="preview = !preview" v-show="fText">
@@ -51,7 +51,7 @@
               	</div>
 
                 <div class="form-group" v-if="submissionType == 'link'">
-                    <input type="text" class="form-control v-input-big" id="url" name="url" placeholder="URL ..." autocomplete="off" v-model="submitURL" :disabled="loading">
+                    <input type="text" class="form-control v-input-big" id="url" name="url" placeholder="文章地址 ..." autocomplete="off" v-model="submitURL" :disabled="loading">
 
                     <small class="text-muted go-red" v-for="e in errors.url">{{ e }}</small>
                 </div>
@@ -77,7 +77,7 @@
 
                 <div class="form-group">
                     <multiselect :value="selectedCat" :options="suggestedCats" @input="updateSelected"
-                    @search-change="getSuggestedCats" :placeholder="'#channel...'"
+                    @search-change="getSuggestedCats" :placeholder="'#频道...'"
                     ></multiselect>
 
                     <small class="text-muted go-red" v-for="e in errors.name">{{ e }}</small>
@@ -105,15 +105,10 @@
                             ></i>
                         </span>
 
-                        <span class="fa-stack fa-lg fa-pull-left" @click="changeSubmissionType('gif')">
-                            <i class="v-icon v-gif" v-bind:class="{ 'go-primary': submissionType == 'gif'}"
-                            data-toggle="tooltip" data-placement="top" title="Animated GIF"
-                            ></i>
-                        </span>
                     </div>
 
                     <button type="submit" class="v-button v-button--green pull-right" @click="submit" :disabled="!goodToGo">
-                        Submit
+                        提交
                     </button>
                 </div>
             </form>

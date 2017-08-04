@@ -3,7 +3,7 @@
         <div class="content">
         	<div class="ui reply form flex-display">
                 <textarea type="text" v-model="message" :id="'comment-form-' + parent" class="v-comment-form"
-                          placeholder="Type your comment..." autocomplete="off" rows="1"
+                          placeholder="添加回复..." autocomplete="off" rows="1"
                           v-on:keydown.enter="submit($event)" v-focus="focused" @focus="focused = true"
                 ></textarea>
 
@@ -21,7 +21,7 @@
 
             <div class="flex-space user-select" v-if="!isReply">
 	            <a class="comment-form-guide" @click="$eventHub.$emit('markdown-guide')">
-	            	Formatting Guide
+	            	格式规范
 	            </a>
 
                 <a></a>
