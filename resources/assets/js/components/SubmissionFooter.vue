@@ -136,7 +136,7 @@
 			},
 
             date () {
-                return moment(this.submission.created_at).utc(moment().format("Z")).fromNow()
+                return moment(this.submission.created_at).fromNow()
             },
         },
 

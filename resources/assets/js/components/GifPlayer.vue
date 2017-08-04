@@ -68,7 +68,7 @@
 
         computed: {
             date () {
-                return moment(this.list.created_at).utc(moment().format("Z")).fromNow()
+                return moment(this.list.created_at).fromNow()
             },
         },
 

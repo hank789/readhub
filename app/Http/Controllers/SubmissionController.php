@@ -90,7 +90,19 @@ class SubmissionController extends Controller
             }
 
             try {
-                $data = $this->linkSubmission($request);
+                //$data = $this->linkSubmission($request);
+                $data = [
+                    'url'           => $request->url,
+                    'title'         => $request->title,
+                    'description'   => null,
+                    'type'          => 'link',
+                    'embed'         => null,
+                    'img'           => null,
+                    'thumbnail'     => null,
+                    'providerName'  => null,
+                    'publishedTime' => null,
+                    'domain'        => domain($request->url),
+                ];
             } catch (\Exception $e) {
                 $data = [
                     'url'           => $request->url,

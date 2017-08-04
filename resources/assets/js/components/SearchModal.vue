@@ -6,15 +6,11 @@
 
 	    <div class="v-modal-title user-select">
 	        <h1 class="title">
-	            Search
+	            搜索
 	        </h1>
 
-			<a href="https://www.algolia.com/referrals/fb684d54/join" target="_blank" rel="nofollow" class="margin-left-half">
-				<img src="/imgs/algolia-powered-by.svg" alt="search by algolia">
-			</a>
-
 	        <h4 class="sub-title">
-	            Let's find you whatever you're looking for
+	            寻找你感兴趣的内容
 	        </h4>
 	    </div>
 
@@ -23,25 +19,25 @@
 				<ul>
 					<li :class="{ 'is-active--green': type == 'Categories'}">
 						<a class="h-green" @click="changeType('Categories')">
-							<span>Channels</span>
+							<span>频道</span>
 						</a>
 					</li>
 
 					<li :class="{ 'is-active--green': type == 'Users'}">
 						<a class="h-green" @click="changeType('Users')">
-							<span>Users</span>
+							<span>用户</span>
 						</a>
 					</li>
 
 					<li :class="{ 'is-active--green': type == 'Submissions'}">
 						<a class="h-green" @click="changeType('Submissions')">
-							<span>Submissions</span>
+							<span>文章</span>
 						</a>
 					</li>
 
 					<li :class="{ 'is-active--green': type == 'Comments'}">
 						<a class="h-green" @click="changeType('Comments')">
-							<span>Comments</span>
+							<span>回复</span>
 						</a>
 					</li>
 				</ul>
@@ -76,14 +72,14 @@
 	            </ul>
 
 	            <h1 class="align-center" v-if="noUsers && filter">
-	            	No user matched your keywords
+	            	未搜索到用户
 	            </h1>
 
 	            <div v-if="type == 'Submissions'">
 			        <submission v-for="submission in submissions" :list="submission" :key="submission.id"></submission>
 
 			        <h1 class="align-center" v-if="noSubmissions && filter">
-		            	No submission matched your keywords
+		            	未搜索到文章
 		            </h1>
 			    </div>
 
@@ -93,7 +89,7 @@
 				    </div>
 
 				    <h1 class="align-center" v-if="noComments && filter">
-		            	No comment matched your keywords
+						未搜索到回复
 		            </h1>
 		    	</div>
 	        </div>
@@ -164,22 +160,22 @@ export default {
 
 		placeholder() {
 		    if (this.type == 'Categories') {
-		        return 'Search by #name or description...';
+		        return '按"#频道"或"描述"搜索...';
 			}
 
 			if (this.type == 'Users') {
-		        return 'Search by @username or name...';
+		        return '按"@用户名"搜索...';
 			}
 
             if (this.type == 'Submissions') {
-                return 'Search by title...';
+                return '按文章标题搜索...';
             }
 
             if (this.type == 'Comments') {
-                return 'Search by content...';
+                return '按回复内容搜索...';
             }
 
-            return 'Search...';
+            return '搜索...';
 		}
 	},
 

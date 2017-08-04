@@ -43,7 +43,7 @@
 
         computed: {
             date () {
-                return moment(this.list.unban_at).utc(moment().format("Z")).fromNow()
+                return moment(this.list.unban_at).fromNow()
             },
         },
 

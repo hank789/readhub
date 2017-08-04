@@ -9,11 +9,11 @@
 
 			<div class="menu">
 				<button class="item" @click="leaveConversation">
-					Leave Conversation
+					退出会话
 				</button>
 
 				<button class="item" @click="blockUser">
-					{{ isBlocked ? 'Unblock User' : 'Block User' }}
+					{{ isBlocked ? '取消屏蔽' : '屏蔽用户' }}
 				</button>
 			</div>
 		</div>
@@ -32,11 +32,11 @@
 
 	    <div class="v-modal-title user-select" v-show="pageRoute == 'contacts'">
 	        <h1 class="title">
-	            Contacts
+	            联系人
 	        </h1>
 
 	        <h4 class="sub-title">
-	            Send secure direct messages in real-time
+	            私信某用户
 	        </h4>
 	    </div>
 
@@ -59,7 +59,7 @@
 	    <div class="v-modal-search-box" :class="{ 'left-1': !sidebar }" v-show="pageRoute == 'contacts'">
 	        <div class="ui contacts search">
 	            <div class="ui huge icon input">
-	                <input class="v-search" v-model="filter" type="text" placeholder="Search by @username or name..."
+	                <input class="v-search" v-model="filter" type="text" placeholder="按用户名搜索..."
 					v-on:input="searchUsers(filter)">
 	                <i v-show="!loadingContacts" class="v-icon v-search search icon"></i>
 		        	<moon-loader :loading="loadingContacts" :size="'30px'" :color="'#777'"></moon-loader>
@@ -103,7 +103,7 @@
 	        <div class="col-12" id="chat-box">
 		        <div class="flex-center" v-if="moreToLoad && !loadingMessages">
 		        	<button type="button" class="v-button" @click="loadMore">
-		        		Load More
+		        		加载更多
 		        	</button>
 				</div>
 
@@ -112,7 +112,7 @@
 				@last-was-read="markLastMessageAsRead(currentContactId)"></message>
 
 	            <div class="new-message-notify user-select" v-show="newMessagesNotifier" @click="downToNewMessages">
-	            	{{ newMessagesNotifier }} new messages
+	            	{{ newMessagesNotifier }} 新消息
 	            </div>
 	        </div>
 

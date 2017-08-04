@@ -78,7 +78,7 @@
 	    },
 
         created() {
-            this.setPageTitle('Voten - Social Bookmarking For The 21st Century', true);
+            this.setPageTitle('Inwehub - 阅读', true);
             this.askNotificationPermission();
         },
 

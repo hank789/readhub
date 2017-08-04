@@ -21,7 +21,7 @@
 
         computed: {
         	date () {
-                return moment(this.notification.created_at).utc(moment().format("Z")).fromNow()
+                return moment(this.notification.created_at).fromNow()
             },
         },
 

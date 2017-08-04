@@ -7,7 +7,7 @@
 
         <div class="v-modal-title">
             <h1 class="title">
-                Notifications
+                通知
             </h1>
         </div>
 
@@ -18,7 +18,7 @@
                 <div class="user-select v-nth-box" v-if=" !Store.notifications || ! Store.notifications.length">
                     <i class="v-icon v-bell icon-block-big" aria-hidden="true"></i>
                     <h3>
-                    	No unread notifications
+                    	无未读通知
                     </h3>
                 </div>
 
@@ -29,7 +29,7 @@
                 <div class="align-center">
                     <button type="button" class="user-select v-button v-button--green margin-top-bottom-3"
                     @click="loadReadNotifications" v-show="loadMoreButton">
-                        Load previous notifications
+                        显示之前的通知
                     </button>
                 </div>
             </div>

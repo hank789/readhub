@@ -165,7 +165,7 @@
             *  converts time to user-friendly format
             */
             date: function (time) {
-                return moment(time).utc(moment().format("Z")).fromNow()
+                return moment(time).fromNow()
             },
 
         },
