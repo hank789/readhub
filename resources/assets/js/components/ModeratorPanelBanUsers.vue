@@ -2,39 +2,39 @@
     <section>
         <h1 class="dotted-title">
 			<span>
-				Ban Users
+				禁止用户
 			</span>
 		</h1>
 
         <p>
-            This is the last solution for dealing with spammers
+            您可以在这里禁止用户向该频道提交文章和回复。
         </p>
 
         <div class="form-group">
             <multiselect :value="username" :options="users" @input="updateSelected"
-            @search-change="getUsers" :placeholder="'Search by username...'" :loading="loading"
+            @search-change="getUsers" :placeholder="'按用户名查找...'" :loading="loading"
             ></multiselect>
         </div>
 
         <div class="form-group">
-            <label for="description" class="form-label">Reason(optional):</label>
+            <label for="description" class="form-label">理由(可选):</label>
 
-            <textarea class="form-control" rows="3" v-model="description" id="description" placeholder="Why did the user wrong? (markdown syntax is supported)"></textarea>
+            <textarea class="form-control" rows="3" v-model="description" id="description" placeholder="请描述该用户被禁止的理由? (支持markdown语法)"></textarea>
         </div>
 
         <div class="form-group">
-            <label for="duration" class="form-label">For how many days(leave 0 for permanent):</label>
-            <input type="number" class="form-control" placeholder="For how many days(enter 0 for permanent)..." min="0" max="999" name="duration" v-model="duration" id="duration">
+            <label for="duration" class="form-label">禁止的天数(0表示永久禁止):</label>
+            <input type="number" class="form-control" placeholder="禁止的天数(0表示永久禁止)..." min="0" max="999" name="duration" v-model="duration" id="duration">
         </div>
 
         <div class="form-group">
-            <button type="button" class="v-button v-button--red" :disabled="!username" @click="banUser">Ban</button>
+            <button type="button" class="v-button v-button--red" :disabled="!username" @click="banUser">禁止</button>
         </div>
 
 
         <h1 class="dotted-title" v-if="bannedUsers.length">
 			<span>
-				All Banned Users
+				所有被禁止的用户
 			</span>
 		</h1>
 

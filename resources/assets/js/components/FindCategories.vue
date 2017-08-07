@@ -1,26 +1,26 @@
 <template>
 	<div class="container margin-top-1 col-7 user-select">
 		<div class="margin-bottom-1" v-if="!isNewbie">
-			<h1>Suggested #channels for you:</h1>
+			<h1>推荐的频道:</h1>
 		</div>
 
 		<div class="margin-top-bottom-1 align-center" v-if="isNewbie">
 			<h2>
-				Welcome to Voten, {{ auth.username }}
+				欢迎您, {{ auth.username }}
 			</h2>
 
 			<h1 v-if="isNewbie && !reachedMinimum">
-				Please subscribe to <b>{{ 3 - counter }}</b> more channels
+				请订阅 <b>{{ 3 - counter }}</b> 以上的频道
 			</h1>
 
 			<transition name="fade">
 				<div class="text-or-button" v-if="isNewbie && reachedMinimum">
-					<h1>Keep going</h1>
+					<h1>继续订阅</h1>
 
-					or
+					或
 
 					<router-link class="v-button v-button--primary" :to="{name: 'home', query: { sidebar: 1, newbie: 1 }}">
-						Start Voting
+						开启阅读
 					</router-link>
 				</div>
 			</transition>
@@ -32,7 +32,7 @@
 		<bookmarked-category v-for="(value, index) in items" :key="value.id"
 			 :list="value.category" @subscribed="subscribed(index)"></bookmarked-category>
 
-		<no-content v-if="noContent" :text="'We are out of new #channels to suggest. Please keep calm and come back later'"></no-content>
+		<no-content v-if="noContent" :text="'暂无推荐的频道'"></no-content>
 
 		<no-more-items :text="'无更多内容'" v-if="NoMoreItems && !noContent"></no-more-items>
 	</div>

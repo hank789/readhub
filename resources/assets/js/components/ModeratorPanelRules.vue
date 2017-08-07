@@ -2,35 +2,34 @@
     <section id="moderator-panel-rules">
         <h1 class="dotted-title">
 			<span>
-				Rules
+				规则
 			</span>
 		</h1>
 
         <p>
-            If your channel needs more rules than already written in Voten's general <a href="/tos">TOS</a> page, you may specify yours here.
-            Due to keeping Voten simple to use, a maximum of five rules is allowed for each channel.
+             文章内容条款规则详见：<a href="/tos">条款</a>。每个频道最多5条规则。
         </p>
 
         <div class="form-group" v-if="type == 'edit' || (type == 'create' && items.length < 5)">
-            <label for="title" class="form-label">Rule:</label>
+            <label for="title" class="form-label">规则:</label>
 
-            <textarea class="form-control" rows="3" v-model="title" id="title" placeholder="Rule(markdown syntax is supported)..."></textarea>
+            <textarea class="form-control" rows="3" v-model="title" id="title" placeholder="规则(支持markdown语法)..."></textarea>
 
             <small class="text-muted go-red" v-for="e in errors.title">{{ e }}</small>
         </div>
 
         <div class="form-group" v-if="type == 'create' && items.length < 5">
-            <button type="button" class="v-button v-button--green" :disabled="!title" @click="createRule">Create</button>
+            <button type="button" class="v-button v-button--green" :disabled="!title" @click="createRule">创建</button>
         </div>
 
         <div class="form-group" v-if="type == 'edit'">
-            <button type="button" class="v-button v-button--primary" :disabled="!title" @click="patch">Edit</button>
+            <button type="button" class="v-button v-button--primary" :disabled="!title" @click="patch">编辑</button>
         </div>
 
 
         <h1 class="dotted-title" v-if="items.length">
 			<span>
-				All Rules
+				所有规则
 			</span>
 		</h1>
 

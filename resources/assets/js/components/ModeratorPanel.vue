@@ -1,41 +1,40 @@
 <template>
     <div class="col-7 padding-bottom-10 user-select">
         <div class="v-status v-status--success" v-if="justCreated">
-            Congratulations on creating #{{ $route.params.name }}.
-            We're gonna have a party later but for now let's set a few settings to make sure your channel looks as awesome as you are.
+            频道 #{{ $route.params.name }} 创建成功！
         </div>
 
         <div class="left-sidebar-box">
             <div class="side-tabs">
                 <router-link :to="{ name: 'moderator-panel-reported-submissions' }" active-class="is-active">
-					Reported Submissions
+					被举报的文章
 				</router-link>
 
                 <router-link :to="{ name: 'moderator-panel-reported-comments' }" active-class="is-active">
-					Reported Comments
+					被举报的回复
 				</router-link>
 
                 <router-link :to="{ name: 'moderator-panel-ban-users' }" active-class="is-active">
-					Ban Users
+					禁止的用户
 				</router-link>
 
                 <router-link :to="{ name: 'moderator-panel-block-domains' }" active-class="is-active">
-					Block Domains
+					禁止的域名
 				</router-link>
 
                 <router-link :to="{ name: 'moderator-panel-rules' }" active-class="is-active"
                 v-if="isAdministrator">
-					Rules
+					规则
 				</router-link>
 
                 <router-link :to="{ name: 'moderator-panel-manage-moderators' }" active-class="is-active"
                 v-if="isAdministrator">
-					Manage Moderators
+					频道管理员
 				</router-link>
 
                 <router-link :to="{ name: 'category-settings' }" active-class="is-active"
                 v-if="isAdministrator">
-					Settings
+					设置
 				</router-link>
             </div>
 

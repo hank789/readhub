@@ -22,7 +22,7 @@
 
 						<button class="v-button v-button-small margin-left-1"
 							:class="subscribed ? 'v-button--red' : 'v-button--green'" @click="subscribe"
-							v-text="subscribed ? 'Unsubscribe' : 'Subscribe'"></button>
+							v-text="subscribed ? '取消订阅' : '订阅'"></button>
 					</div>
 				</div>
 

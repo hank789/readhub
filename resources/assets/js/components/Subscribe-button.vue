@@ -28,10 +28,10 @@ export default {
 
     	content () {
     		if (!this.subscribed) {
-    			return 'Subscribe';
+    			return '订阅';
     		}
 
-    		return 'Unsubscribe';
+    		return '取消订阅';
     	}
     },
 

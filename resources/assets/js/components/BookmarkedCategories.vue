@@ -2,7 +2,7 @@
 	<section>
 		<bookmarked-category v-for="category in categories" :list="category" :key="category.id"></bookmarked-category>
 
-	    <no-content v-if="nothingFound" :text="'You have not bookmarked any channels yet'"></no-content>
+	    <no-content v-if="nothingFound" :text="'您尚未收藏频道'"></no-content>
 
 		<loading v-show="loading"></loading>
 

@@ -1,7 +1,7 @@
 <template>
     <section class="container margin-top-5 col-7 user-select" id="new-channel">
         <h1 class="align-center">
-            Create your own real-time community
+            创建属于你自己的频道
         </h1>
 
         <div class="v-status v-status--error" v-if="customError">
@@ -9,25 +9,25 @@
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control v-input-big" placeholder="Name..." id="name" v-model="name">
+            <input type="text" class="form-control v-input-big" placeholder="名称..." id="name" v-model="name">
 
             <small class="text-muted" v-if="!name">
-                Names must be alpha-numeric, with no spaces. They're also not editable so make up your mind before continue!
-                Examples: gaming, news, OldSchoolCool, modernWarfare2
+                频道名称必须是字母数字，没有空格。创建完后不可编辑！
+                Examples: 游戏，新闻，阅读2
             </small>
             <small class="text-muted go-red" v-for="e in errors.name">{{ e }}</small>
         </div>
 
         <div class="form-group">
             <textarea name="description" rows="3" id="description" class="form-control v-input-big"
-            v-model="description" placeholder="A few word to describe your channel..."></textarea>
+            v-model="description" placeholder="请简要描述你的频道..."></textarea>
 
-            <small class="text-muted" v-if="!description">The description field helps users find your channel. The first few words matter the most!</small>
+            <small class="text-muted" v-if="!description">描述字段帮助用户找到通道。</small>
             <small class="text-muted go-red" v-for="e in errors.description">{{ e }}</small>
         </div>
 
         <div class="form-group">
-            <button type="submit" class="v-button v-button--green btn-block" @click="submit" :disabled="!validates">Create</button>
+            <button type="submit" class="v-button v-button--green btn-block" @click="submit" :disabled="!validates">创建</button>
         </div>
     </section>
 </template>

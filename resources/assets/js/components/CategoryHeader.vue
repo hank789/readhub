@@ -11,7 +11,7 @@
 
 					            <div class="update">
 					                <i class="v-icon v-photo" aria-hidden="true"></i>
-					                Upload photo
+					                上传图片
 					            </div>
 					        </button>
 
@@ -53,7 +53,7 @@
 
 	                <span>
                         <i class="v-icon v-calendar" aria-hidden="true"></i>
-	                	Created: {{ date }}
+	                	创建于: {{ date }}
 	                </span>
 	            </div>
 
@@ -64,7 +64,7 @@
 						</div>
 
 						<div class="karma-text">
-							Subscribers
+							订阅人数
 						</div>
 					</div>
 				</div>
@@ -76,15 +76,15 @@
 	    <div class="container">
 	        <div class="nav-left">
 	        	<router-link :to="{ path: '/c/' + $route.params.name }" class="nav-item is-tab" :class="{ 'is-active': sort == 'hot' }">
-					Hot
+					热门
 				</router-link>
 
 				<router-link :to="{ path: '/c/' + $route.params.name + '?sort=new' }" class="nav-item is-tab" :class="{ 'is-active': sort == 'new' }">
-					New
+					最新
 				</router-link>
 
 				<router-link :to="{ path: '/c/' + $route.params.name + '?sort=rising'  }" class="nav-item is-tab" :class="{ 'is-active': sort == 'rising' }">
-					Rising
+					上升中
 				</router-link>
 	        </div>
 
@@ -97,22 +97,22 @@
 
 					<div class="menu">
 						<button class="item" @click="emitModerators">
-							Moderators
+							管理者
 						</button>
 
 						<button class="item" @click="emitRules">
-							Rules
+							频道规则
 						</button>
 					</div>
 				</div>
 
             	<router-link :to="{ path: '/c/' + $route.params.name + '/mod' }" class="v-button v-button--primary"
 				v-if="isModerator">
-					Moderation
+					管理
 				</router-link>
 
             	<button class="v-button desktop-only" @click="submitButton">
-            		Submit
+            		提交文章
             	</button>
 
             	<subscribe v-if="!isGuest"></subscribe>

@@ -2,7 +2,7 @@
 	<section>
         <bookmarked-user v-for="user in users" :list="user" :key="user.id"></bookmarked-user>
 
-	    <no-content v-if="nothingFound" :text="'You have not bookmarked any users yet'"></no-content>
+	    <no-content v-if="nothingFound" :text="'您尚未收藏用户'"></no-content>
 
 		<loading v-show="loading"></loading>
 

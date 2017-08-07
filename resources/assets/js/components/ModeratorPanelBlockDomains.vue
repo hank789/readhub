@@ -2,33 +2,33 @@
     <section>
         <h1 class="dotted-title">
 			<span>
-				Block Domains
+				禁止域名
 			</span>
 		</h1>
 
         <p>
-            In case there are domain addresses that you think are not appropriate for your channel you can block them here.
+            如果你认为该域名不适合你的频道，你可以在这里禁止它们。
         </p>
 
         <div class="form-group">
-            <label for="domain" class="form-label">Domain address:</label>
+            <label for="domain" class="form-label">域名:</label>
             <input type="url" class="form-control" placeholder="http://example.com" name="domain" v-model="domain" id="domain">
         </div>
 
         <div class="form-group">
-            <label for="description" class="form-label">Reason(optional):</label>
+            <label for="description" class="form-label">理由(可选):</label>
 
-            <textarea class="form-control" rows="3" v-model="description" id="description" placeholder="What is wrong with this website? (markdown syntax is supported)"></textarea>
+            <textarea class="form-control" rows="3" v-model="description" id="description" placeholder="该域名被禁止的原因? (支持markdown语法)"></textarea>
         </div>
 
         <div class="form-group">
-            <button type="button" class="v-button v-button--red" :disabled="!domain" @click="blockDomain">Block</button>
+            <button type="button" class="v-button v-button--red" :disabled="!domain" @click="blockDomain">禁止</button>
         </div>
 
 
         <h1 class="dotted-title" v-if="blockedDomains.length">
 			<span>
-				All Blocked Domains
+				所有被禁止的域名
 			</span>
 		</h1>
 

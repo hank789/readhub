@@ -2,7 +2,7 @@
     <div class="container margin-top-1 col-7 user-select">
         <div class="margin-bottom-1">
             <h1>
-                Subscribed Channels
+                订阅的频道
                 <span>({{ Store.subscribedCategories.length }})</span>:
             </h1>
         </div>
@@ -10,7 +10,7 @@
         <section>
             <bookmarked-category v-for="category in categories" :list="category" :key="category.id"></bookmarked-category>
 
-            <no-content v-if="nothingFound" :text="'You have not bookmarked any channels yet'"></no-content>
+            <no-content v-if="nothingFound" :text="'您尚未订阅频道'"></no-content>
 
             <loading v-show="loading"></loading>
 

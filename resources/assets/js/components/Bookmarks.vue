@@ -4,25 +4,25 @@
 			<ul>
 				<router-link tag="li" active-class="is-active" :to="{name: 'bookmarked-submissions'}">
 					<a>
-						Submissions
+						文章
 					</a>
 				</router-link>
 
 				<router-link tag="li" active-class="is-active" :to="{name: 'bookmarked-comments'}">
 					<a>
-						Comments
+						回复
 					</a>
 				</router-link>
 
 				<router-link tag="li" active-class="is-active" :to="{name: 'bookmarked-categories'}">
 					<a>
-						Channels
+						频道
 					</a>
 				</router-link>
 
 				<router-link tag="li" active-class="is-active" :to="{name: 'bookmarked-users'}">
 					<a>
-						Users
+						用户
 					</a>
 				</router-link>
 			</ul>

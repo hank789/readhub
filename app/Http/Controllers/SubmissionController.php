@@ -65,16 +65,16 @@ class SubmissionController extends Controller
         $user = Auth::user();
 
         if ($user->isShadowBanned()) {
-            return response('I hate to break it to you but your account has been banned.', 500);
+            return response('很抱歉，您的账户已被锁定，请联系管理员解锁', 500);
         }
 
         // first make sure user is allowed to submit to this category. (not banned from it)
         if ($this->isUserBanned($user->id, $request->name)) {
-            return response('You have been banned from submitting to #'.$request->name.'. If you think there has been some kind of mistake, please contact the moderators of #'.$request->name.'.', 500);
+            return response('您被禁止向频道 #'.$request->name.' 提交文章。 您可以向频道 #'.$request->name.' 的管理员申诉.', 500);
         }
 
         if ($this->tooEarlyToCreate()) {
-            return response("Looks like you're over doing it. You can't submit more than 2 posts per minute.", 500);
+            return response("您提交的频率太快了，请稍后再试", 500);
         }
 
         if ($request->type == 'link') {
@@ -86,7 +86,7 @@ class SubmissionController extends Controller
 
             // check if it's in the blocked domains list
             if ($this->isDomainBlocked($request->url, $request->name)) {
-                return response("The submitted website is in the channel's blacklist. Please find another source.", 500);
+                return response("您提交的网站域名被该频道禁止了，请换个网址.", 500);
             }
 
             try {

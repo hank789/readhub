@@ -2,25 +2,25 @@
 <section id="reported-items">
     <h1 class="dotted-title">
 		<span>
-			Reported Comments
+			被举报的回复
 		</span>
 	</h1>
 
     <p>
-        All reports submitted by users are displayed here for you to moderate. As a moderator you will get a notification when a report is submitted unless you prefer otherwise which you can set in your settings.
+        用户举报的回复都显示在这里。您需要审核这些被举报的回复。
     </p>
 
     <div class="tabs is-fullwidth">
         <ul>
             <router-link tag="li" active-class="is-active" :to="{ path: '' }" exact>
                 <a>
-					Unsolved
+					未处理
 				</a>
             </router-link>
 
             <router-link tag="li" active-class="is-active" :to="{ path: '?type=solved' }" exact>
                 <a>
-					Solved
+					已处理
 				</a>
             </router-link>
         </ul>
@@ -29,7 +29,7 @@
     <loading v-if="loading"></loading>
 
     <div class="no-more-to-load user-select" v-if="nothingFound">
-        <h3 v-text="'No records were found'"></h3>
+        <h3 v-text="'未有被举报的回复'"></h3>
     </div>
 
     <reported-comment v-for="item in items" :list="item" :key="item.id" v-if="item.comment"

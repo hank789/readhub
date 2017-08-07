@@ -2,20 +2,20 @@
 	<section>
 		<h1 class="dotted-title">
 			<span>
-				Settings
+				设置
 			</span>
 		</h1>
 
 		<div class="form-group">
-			<label for="description" class="form-label">Description</label>
+			<label for="description" class="form-label">频道介绍</label>
 
-			<textarea class="form-control" rows="3" name="description" v-model="description" id="description" :placeholder="'How would you describe #' + Store.category.name + '?'"></textarea>
+			<textarea class="form-control" rows="3" name="description" v-model="description" id="description" :placeholder="'如何介绍频道 #' + Store.category.name + '?'"></textarea>
 
 			<small class="text-muted go-red" v-for="e in errors.description">{{ e }}</small>
 		</div>
 
 		<div class="form-group">
-			<label for="color" class="form-label">Cover Color:</label>
+			<label for="color" class="form-label">封面颜色:</label>
 
 			<multiselect :value="color" :options="colors" @input="changeColor"
 				:placeholder="'Cover Color...'"
@@ -26,12 +26,12 @@
 			<div class="inline field">
 				<div class="ui toggle checkbox">
 					<input type="checkbox" tabindex="1" class="hidden" v-model="nsfw">
-					<label>This channel contains mostly NSFW content</label>
+					<label>这个频道主要包含 NSFW 内容</label>
 				</div>
 			</div>
 		</div>
 
-		<button class="v-button v-button--green" @click="save" v-if="changed" :disabled="sending">Save</button>
+		<button class="v-button v-button--green" @click="save" v-if="changed" :disabled="sending">保存</button>
 	</section>
 </template>
 

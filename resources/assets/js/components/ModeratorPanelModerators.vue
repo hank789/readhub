@@ -2,19 +2,19 @@
     <section>
         <h1 class="dotted-title">
 			<span>
-				Add New Moderator
+				添加新管理员
 			</span>
 		</h1>
 
         <div class="form-group">
             <multiselect :value="username" :options="users" @input="updateSelected"
-            @search-change="getUsers" :placeholder="'Search by username...'" :loading="loading"
+            @search-change="getUsers" :placeholder="'按用户名搜索...'" :loading="loading"
             ></multiselect>
         </div>
 
         <div class="form-group">
             <multiselect :value="role" :options="roles" @input="updateRole"
-                :placeholder="'Select Role...'"
+                :placeholder="'选择角色...'"
             ></multiselect>
         </div>
 
@@ -25,7 +25,7 @@
 
         <h1 class="dotted-title">
 			<span>
-				All Moderators
+				管理员列表
 			</span>
 		</h1>
 
