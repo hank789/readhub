@@ -23,7 +23,7 @@
 				</router-link>
 
                 <router-link :to="{ name: 'moderator-panel-rules' }" active-class="is-active"
-                v-if="isAdministrator">
+                v-if="isAdministrator && false">
 					规则
 				</router-link>
 

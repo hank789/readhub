@@ -4,8 +4,8 @@
             <div class="flex1">
 	            <div class="tabs is-fullwidth">
 					<ul>
-						<li :class="{'is-active' : type == 'register'}" @click="switchType('register')"><a>Sign up</a></li>
-						<li :class="{'is-active' : type == 'login'}" @click="switchType('login')"><a>Login</a></li>
+						<li v-if="false" :class="{'is-active' : type == 'register'}" @click="switchType('register')"><a>注册</a></li>
+						<li :class="{'is-active' : type == 'login'}" @click="switchType('login')"><a>登陆</a></li>
 					</ul>
 				</div>
 
@@ -16,15 +16,15 @@
 			        </div>
 
 			        <div class="v-status v-status--success" v-if="successfulLogin">
-			            Welcome back {{ '@' + loginUsername }}
+			            欢迎回来 {{ '@' + loginUsername }}
 			        </div>
 
 					<div class="form-group">
-						<input type="text" class="form-control" id="username" v-model="loginUsername" name="username" placeholder="Username..." required>
+						<input type="text" class="form-control" id="username" v-model="loginUsername" name="username" placeholder="用户名..." required>
 					</div>
 
 					<div class="form-group">
-						<input id="password" type="password" class="form-control" name="password" v-model="loginPassword" placeholder="Password" required>
+						<input id="password" type="password" class="form-control" name="password" v-model="loginPassword" placeholder="密码" required>
 
 						<small class="text-muted go-red" v-for="e in errors.password">{{ e }}</small>
 					</div>
@@ -33,14 +33,14 @@
 		                <div class="inline field">
 		                    <div class="ui toggle checkbox">
 		                        <input type="checkbox" class="hidden" name="remember" v-model="remember">
-		                        <label>Remember Me</label>
+		                        <label>记住我</label>
 		                    </div>
 		                </div>
 		            </div>
 
 					<div class="flex-space">
-						<button class="v-button v-button--green" @click="login" :disabled="!goodToLogin">Login</button>
-						<a class="v-button" href="/password/reset">Forgot my password</a>
+						<button class="v-button v-button--green" @click="login" :disabled="!goodToLogin">登陆</button>
+						<a v-if="false" class="v-button" href="/password/reset">忘记密码</a>
 					</div>
 				</div>
 

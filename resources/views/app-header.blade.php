@@ -26,7 +26,7 @@
 
         	@if (!Auth::check())
         		<button class="v-button v-button--green relative" @click="mustBeLogin">
-	        		Sign up/Log in
+	        		注册/登陆
 	        	</button>
         	@endif
 
@@ -46,34 +46,34 @@
 	            <img src="{{Auth::user()->avatar}}" alt="{{Auth::user()->username}}" class="header-avatar">
 
 	            <div class="menu">
-	                <div class="header">My Voten</div>
+	                <div class="header">我的阅读</div>
 
 					<router-link :to="'/' + '@' + auth.username" class="item">
-	                    Profile
+	                    个人信息
 	                </router-link>
 
 					<router-link :to="'/submit'" class="item">
-	                    Submit
+	                    提交文章
 	                </router-link>
 
 	                <router-link :to="{ path: '/bookmarks' }" class="item">
-	                    Bookmarks
+	                    我的收藏
 	                </router-link>
 
 					<router-link :to="{ path: '/subscribed-channels' }" class="item">
-	                    Subscribed Channels
+						我的订阅
 	                </router-link>
 
 					<router-link :to="'/find-channels'" class="item">
-						Find Channels
+						寻找频道
 					</router-link>
 
 	    			<router-link :to="'{{ '/@' . Auth::user()->username }}/settings'" class="item">
-	                    Settings
+	                    个人设置
 	                </router-link>
 
 					<router-link :to="'/channel'" class="item">
-	                    Create a new Channel
+						新建频道
 	                </router-link>
 
 	                <div class="ui divider"></div>
@@ -101,7 +101,7 @@
 						<div class="ui divider" v-if="Store.moderatingCategories.length && Store.moderatingCategories.length > 6"></div>
 
 						@if( Auth::user()->isVotenAdministrator() )
-							<div class="header">Voten Administrators</div>
+							<div class="header">Administrators</div>
 
 							<router-link :to="'/big-daddy'" class="item">
 								Big Daddy
@@ -123,7 +123,7 @@
 	                    Help
 	                </router-link>
 
-					<div class="item">
+					<div v-if="false" class="item">
 						<span class="text">Voten</span>
 
 						<div class="left menu green">

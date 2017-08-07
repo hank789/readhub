@@ -5,13 +5,13 @@ Route::group(['middleware' => ['maintenance', 'http2']], function () {
     Route::get('/logout', 'Auth\LoginController@logout');
 
     // Public Pages
-    Route::get('/tos', 'PagesController@tos');
+    //Route::get('/tos', 'PagesController@tos');
     Route::get('/', 'HomeController@homePage');
     Route::get('/h5', 'HomeController@h5HomePage');
-    Route::get('/credits', 'PagesController@credits');
-    Route::get('/features', 'PagesController@features');
-    Route::get('/about', 'PagesController@about');
-    Route::get('/privacy-policy', 'PagesController@privacyPolicy');
+    //Route::get('/credits', 'PagesController@credits');
+    //Route::get('/features', 'PagesController@features');
+    //Route::get('/about', 'PagesController@about');
+    //Route::get('/privacy-policy', 'PagesController@privacyPolicy');
 
     // guest browsing routes
     Route::get('/c/{category}', 'CategoryController@show');
@@ -22,10 +22,10 @@ Route::group(['middleware' => ['maintenance', 'http2']], function () {
     Route::get('/@{username}/comments', 'UserController@showComments');
 
     // social logins
-    Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
-    Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook');
-    Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
-    Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
+    //Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
+    //Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook');
+    //Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+    //Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
 });
 
 // backend-admin

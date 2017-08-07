@@ -48,7 +48,7 @@
 	                </router-link>
 
 	                <router-link :to="{ path: '/bookmarks' }" class="item">
-	                    我的书签
+	                    我的收藏
 	                </router-link>
 
 					<router-link :to="{ path: '/subscribed-channels' }" class="item">

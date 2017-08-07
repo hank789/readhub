@@ -2,7 +2,7 @@
     <div class="side-fixed"  id="v-sidebar">
         <div class="sidebar-avatar align-center">
     		<router-link :to="'/' + '@' + auth.username">
-                <img v-bind:src="auth.avatar" alt="My Voten"/>
+                <img v-bind:src="auth.avatar" alt="我的阅读"/>
             </router-link>
         </div>
 

@@ -2,7 +2,7 @@
 	<div class="col-7 padding-bottom-10">
 		<submission :list="submission" v-for="submission in uniqueList" v-bind:key="submission.id"></submission>
 
-		<no-content v-if="nothingFound" :text="'Oooops, I hate to say it but there are no submissions to show you here'"></no-content>
+		<no-content v-if="nothingFound" :text="'很抱歉，暂无文章'"></no-content>
 
 		<loading v-if="loading"></loading>
 

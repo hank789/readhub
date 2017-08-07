@@ -6,7 +6,7 @@
 
         <div class="sidebar-offer-wrapper">
         	<h3>
-        		New to Voten?
+        		新用户?
         	</h3>
 
         	<p>
@@ -14,7 +14,7 @@
         	</p>
 
         	<button class="v-button v-button--block" @click="signUp">
-        		Sign up
+        		注册
         	</button>
         </div>
 
@@ -55,15 +55,7 @@
         <hr>
 
         <ul class="sidebar-copyright">
-        	<li>&copy; 2017 Voten</li>
-        	<li><a href="/about">About</a></li>
-        	<li><a href="/tos">Terms</a></li>
-        	<li><a href="https://medium.com/voten" target="_blank">Blog</a></li>
-        	<li><a href="/privacy-policy">Privacy Policy</a></li>
-        	<li><a href="/credits">Credits</a></li>
-        	<li><a href="mailto:info@voten.co">Contact</a></li>
-        	<li><a href="mailto:press@voten.co">Press</a></li>
-        	<li><a href="https://github.com/voten-co/voten" target="_blank">Source code</a></li>
+        	<li>&copy; 2017</li>
         </ul>
     </div>
 </template>

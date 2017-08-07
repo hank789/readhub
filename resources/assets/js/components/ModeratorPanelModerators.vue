@@ -19,7 +19,7 @@
         </div>
 
         <div class="form-group">
-            <button type="button" class="v-button v-button--green" :disabled="!role || !username" @click="addModerator">Add</button>
+            <button type="button" class="v-button v-button--green" :disabled="!role || !username" @click="addModerator">添加</button>
         </div>
 
 

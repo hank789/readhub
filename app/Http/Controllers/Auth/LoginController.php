@@ -63,6 +63,11 @@ class LoginController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
+    public function showLoginForm()
+    {
+        //return view('auth.login');
+    }
+
     /**
      * Obtain the user information from Facebook.
      *
