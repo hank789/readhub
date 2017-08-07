@@ -23,6 +23,9 @@ trait Submit
     protected function slug($title)
     {
         $slug = str_slug($title);
+        if(empty($slug)) {
+            $slug = app('pinyin')->abbr($title);
+        }
         $submissions = Submission::withTrashed()->where('slug', 'like', $slug.'%')->get();
 
         if (!$submissions->contains('slug', $slug)) {

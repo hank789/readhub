@@ -184,6 +184,7 @@ return [
         Laravel\Scout\ScoutServiceProvider::class,
         ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
+        Overtrue\LaravelPinyin\ServiceProvider::class,
 
         // dev only
         VueGenerators\ServiceProvider::class,
@@ -243,6 +244,7 @@ return [
         'FFMpeg'    => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Sentry'    => Sentry\SentryLaravel\SentryFacade::class,
+        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
 
     ],
 
