@@ -25,8 +25,8 @@
                     if (currentPath === '/h5') {
                         var ws = plus.webview.currentWebview();
                         if (ws) {
-                            var parentWs = ws.parent();
-                            ws.parent().hide();
+                            //var parentWs = ws.parent();
+                            //ws.parent().hide();
                         }
                     } else {
                         this.$router.go(-1);
