@@ -372,6 +372,23 @@ class SubmissionController extends Controller
         return response('Text Submission has been updated. ', 200);
     }
 
+    //推荐文章
+    public function recommendSubmission(Request $request){
+        $this->validate($request, [
+            'submission_id' => 'required|integer',
+        ]);
+        $submission = Submission::findOrFail($request->id);
+        abort_unless($this->mustBeVotenAdministrator(), 403);
+        $msg = '推荐成功';
+        if ($submission->recommend_status == 0){
+            $submission->recommend_status = 1;
+            $msg = '推荐成功';
+            $submission->save();
+        }
+
+        response($msg, 200);
+    }
+
     /**
      * Whether or the user is breaking the time limit for creating another submission.
      *

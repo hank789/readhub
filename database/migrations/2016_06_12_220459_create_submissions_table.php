@@ -19,6 +19,9 @@ class CreateSubmissionsTable extends Migration
             // Used for resubmit feature.
             $table->integer('resubmit_id')->unsigned()->index()->nullable();
 
+            $table->integer('recommend_status')->unsigned()->index()->default(0);
+            $table->integer('recommend_sort')->unsigned()->index()->default(0);
+
             $table->integer('user_id')->unsigned()->index();
             $table->boolean('nsfw')->default(0);
             $table->integer('category_id')->unsigned();
