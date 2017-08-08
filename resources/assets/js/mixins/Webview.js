@@ -18,6 +18,14 @@ export default {
                         ws.close();
                     }
                 }
+                
+                function webviewUpvoteButton() {
+                    
+                }
+
+                function webviewDownvoteButton() {
+
+                }
                 console.log(plus.webview.currentWebview().id);
 
                 var embed=plus.webview.create(url, url,{popGesture: 'hide',
@@ -32,18 +40,35 @@ export default {
                         titleColor: '#000000', //文字颜色
                         type: 'transparent', //透明渐变样式
                         autoBackButton: false, //自动绘制返回箭头
-                        buttons: [{
-                            color: '#5e5e5e',
-                            'float': 'left',
-                            fontSize: '27px',
-                            text: '\u1438',
-                            onclick: webviewBackButton
-                        }],
+                        buttons: [
+                            {
+                                color: '#5e5e5e',
+                                'float': 'left',
+                                fontSize: '27px',
+                                text: '\u1438',
+                                onclick: webviewBackButton
+                            },
+                            {
+                                color: '#5e5e5e',
+                                'float': 'right',
+                                fontSize: '27px',
+                                text: '\u25B2',
+                                onclick: webviewUpvoteButton
+                            },
+                            {
+                                color: '#5e5e5e',
+                                'float': 'right',
+                                fontSize: '27px',
+                                text: '\u25BC',
+                                onclick: webviewDownvoteButton
+                            },
+                            ],
                         splitLine: { //底部分割线
                             color: '#cccccc'
                         }
                     },
                     bounce:'vertical'});
+
                 embed.show();
             } else {
                 window.open(url);
