@@ -26,6 +26,11 @@ export default {
                 function webviewDownvoteButton() {
 
                 }
+
+                function webviewFavButton() {
+
+                }
+
                 console.log(plus.webview.currentWebview().id);
 
                 var embed=plus.webview.create(url, url,{popGesture: 'hide',
@@ -47,6 +52,13 @@ export default {
                                 fontSize: '27px',
                                 text: '\u1438',
                                 onclick: webviewBackButton
+                            },
+                            {
+                                color: '#5e5e5e',
+                                'float': 'left',
+                                fontSize: '27px',
+                                text: '\u2606',
+                                onclick: webviewFavButton
                             },
                             {
                                 color: '#5e5e5e',
