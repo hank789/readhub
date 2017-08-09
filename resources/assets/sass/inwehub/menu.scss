@@ -1,0 +1,91 @@
+.menu-inwehub{
+  height:45px;
+  line-height: 45px;
+  width:100%;
+  background: #f3f4f6;
+  position: relative;
+  padding:0 16px;
+
+  &:after{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #dcdcdc;
+  }
+
+  .left{
+    display: inline-block;
+    color:#444;
+    text-align: left;
+
+    .menu-item{
+      position: relative;
+      margin-right:30px;
+
+      &.active:after{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        content: '';
+        background-color: #03aef9;
+      }
+    }
+  }
+
+  .menu-item{
+    display: inline-block;
+
+
+  }
+
+  .right{
+    float:right;
+    display: inline-block;
+
+    .icon{
+      font-size:22px;
+      color:#b4b4b6;
+      margin-left:16px;
+    }
+
+    .modify{
+      color:#03aef9;
+      font-size:19px;
+      position: relative;
+      bottom:1px;
+    }
+
+    .menu{
+      right:-6px;
+      left:auto;
+      background:#585858;
+      margin-top:-5px !important;
+      padding:7px 0;
+
+      .item{
+        color:#ffffff;
+        font-size:14px;
+        font-weight:normal;
+        padding:0.4rem 1.8rem !important;
+      }
+
+
+
+      &:after{
+        background:#585858 !important;
+        left:90% !important;
+        width:.8em !important;
+        height:.8em !important;
+        top: -0.3em !important;
+        margin:0 0 0 -0.7em !important;
+      }
+    }
+  }
+}

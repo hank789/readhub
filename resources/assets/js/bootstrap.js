@@ -54,6 +54,7 @@ require('./libs/tooltip');
 require('./libs/form');
 require('./libs/checkbox');
 require('./libs/Jcrop');
+require('./libs/iconfont');
 
 
 window.emojione = require('./libs/emojione.min');

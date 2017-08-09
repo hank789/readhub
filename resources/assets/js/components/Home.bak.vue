@@ -2,41 +2,66 @@
 	<div class="home-wrapper">
 		<announcement></announcement>
 
-		<div class="menu-inwehub">
-			<div class="left">
-				<router-link tag="div" :to="{ path: '/' }" class="menu-item" :class="{ 'active': sort == 'hot' }">
-					热门
-                </router-link>
-				<router-link tag="div" :to="{ path: '/?sort=new' }" class="menu-item" :class="{ 'active': sort == 'new' }">
-					最新
-                </router-link>
-			</div>
-			<div class="right">
-				<div class="menu-item ui dropdown top pointing">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-wode1"></use>
-					</svg>
-					<div class="menu">
-						<div class="item">我的收藏</div>
-						<div class="item">我的发布</div>
+
+
+	    <div class="col-7 padding-bottom-10">
+			<div class="flex-space flex-align-center user-select margin-bottom-2 mobile-padding">
+				<div>
+					<ul class="flat-nav">
+						<router-link tag="li" :to="{ path: '/' }" class="item" :class="{ 'active': sort == 'hot' }">
+							热门
+						</router-link>
+
+						<router-link tag="li" :to="{ path: '/?sort=new' }" class="item" :class="{ 'active': sort == 'new' }">
+							最新
+						</router-link>
+
+						<router-link tag="li" :to="{ path: '/?sort=rising' }" class="item" :class="{ 'active': sort == 'rising' }">
+							上升中
+						</router-link>
+					</ul>
+				</div>
+
+				<div>
+					<div class="ui icon top right active-blue pointing dropdown feed-panel-button" @click="mustBeLogin">
+						<i class="v-icon v-config"></i>
+
+						<div class="menu">
+							<div class="header">
+								筛选
+							</div>
+
+							<button class="item" @click="changeFilter('subscribed-channels')" :class="{ 'active' : filter == 'subscribed-channels' }">
+								订阅频道
+							</button>
+
+							<button class="item" @click="changeFilter('all-channels')" :class="{ 'active' : filter == 'all-channels' }">
+								所有频道
+							</button>
+
+							<button class="item" @click="changeFilter('moderating-channels')" :class="{ 'active' : filter == 'moderating-channels' }" v-if="isModerating">
+								审核频道
+							</button>
+
+							<button class="item" @click="changeFilter('bookmarked-channels')" :class="{ 'active' : filter == 'bookmarked-channels' }">
+								我的收藏
+							</button>
+
+							<button class="item" @click="changeFilter('by-bookmarked-users')" :class="{ 'active' : filter == 'by-bookmarked-users' }">
+								订阅用户
+							</button>
+						</div>
 					</div>
-				</div>
-				<div class="menu-item">
-					<svg class="icon" aria-hidden="true" @click="refresh">
-						<use xlink:href="#icon-shuaxin"></use>
-					</svg>
-				</div>
-				<div class="menu-item">
-					<svg class="icon modify" aria-hidden="true">
-						<use xlink:href="#icon-xiugai"></use>
-					</svg>
+
+					<button class="feed-panel-button btn-nth--h" @click="refresh"
+					data-toggle="tooltip" data-placement="bottom" title="刷新">
+						<i class="v-icon v-refetch"></i>
+					</button>
 				</div>
 			</div>
-		</div>
 
-
-		<home-submissions></home-submissions>
-
+			<home-submissions></home-submissions>
+	    </div>
 	</div>
 </template>
 
