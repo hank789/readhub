@@ -379,7 +379,16 @@
 
 @media (max-width: 768px) {
 	.submission-item.submission-wrapper {
-		border-bottom: 1px solid #d6d6d6;
+		position: relative;
+        &:after{
+            position: absolute;
+            bottom:-10px;
+            left:0;
+            right:0;
+            content:'';
+            height:10px;
+            background: #f3f4f6;
+        }
 	}
 
 	.mobile-submission-item-action {
@@ -388,7 +397,18 @@
 	}
 
 	.index-submission-footer {
-		border-top: 2px dashed #d6d6d6;
+		position: relative;
     	padding-top: 0.5em;
+
+
+        &:before{
+            position: absolute;
+            right: 0;
+            top: 0;
+            left: 0;
+            height: 1px;
+            content: '';
+            background-color: #dcdcdc;
+        }
 	}
 }

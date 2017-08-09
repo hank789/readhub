@@ -4,12 +4,20 @@
 			<div :class="auth.isMobileDevice ? '' : 'display-inline'">
 				<router-link :to="url" class="comments-icon h-green"
 				data-toggle="tooltip" data-placement="top" title="Comments">
-					<i class="v-icon v-chat"></i><span v-if="comments" v-text="comments"></span>
+
+					<svg class="icon-inwehub v-icon" aria-hidden="true">
+						<use xlink:href="#icon-pinglun1"></use>
+					</svg>
+
+					<span v-if="comments" v-text="comments"></span>
 				</router-link>
 
 				<a @click="$emit('bookmark')"
 					data-toggle="tooltip" data-placement="top" title="Bookmark">
-					<i class="v-icon h-yellow pointer" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'"></i>
+
+					<svg class="icon-inwehub v-icon shoucang" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
+						<use xlink:href="#icon-shoucang-xianxing1"></use>
+					</svg>
 				</a>
 
 				<div class="ui icon top left pointing dropdown" v-if="!isGuest">
@@ -54,7 +62,10 @@
 			<div class="voting-wrapper display-none mobile-only">
 				<a class="fa-stack align-right" @click="$emit('upvote')"
 					data-toggle="tooltip" data-placement="top" title="Upvote">
-					<i class="v-icon v-up-fat" :class="upvoted ? 'go-primary' : 'go-gray'"></i>
+
+					<svg class="icon-inwehub v-icon" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+					</svg>
 				</a>
 
 				<div class="detail">
@@ -63,7 +74,10 @@
 
 				<a class="fa-stack align-right" @click="$emit('downvote')"
 					data-toggle="tooltip" data-placement="top" title="Downvote">
-					<i class="v-icon v-down-fat" :class="downvoted ? 'go-red' : 'go-gray'"></i>
+
+					<svg class="icon-inwehub v-icon rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+					</svg>
 				</a>
 			</div>
 		</div>

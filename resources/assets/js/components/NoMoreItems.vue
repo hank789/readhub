@@ -22,7 +22,7 @@
     .no-more-to-load {
         text-align: center;
         color: #777;
-        padding-bottom: 1em;
+        padding: .8em;
         opacity: .4;
     }
 </style>

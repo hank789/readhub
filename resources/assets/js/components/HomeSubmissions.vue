@@ -10,7 +10,7 @@
 
 		<loading v-if="loading"></loading>
 
-		<no-more-items :text="'无更多内容'" v-if="NoMoreItems && !nothingFound"></no-more-items>
+		<no-more-items :text="'暂无更多了'" v-if="NoMoreItems && !nothingFound"></no-more-items>
 	</section>
 </template>
 

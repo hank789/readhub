@@ -3,8 +3,10 @@
   line-height: 45px;
   width:100%;
   background: #f3f4f6;
-  position: relative;
+  position: fixed;
   padding:0 16px;
+  z-index: 777;
+  top: 44px;
 
   &:after{
     position: absolute;
