@@ -9,7 +9,7 @@
 						<use xlink:href="#icon-pinglun1"></use>
 					</svg>
 
-					<span v-if="comments" v-text="comments"></span>
+					<span class="commentNum" v-if="comments" v-text="comments"></span>
 				</router-link>
 
 				<a @click="$emit('bookmark')"
