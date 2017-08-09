@@ -49,7 +49,7 @@ export default {
                                 onclick: ()=> {
                                     console.log('bookmark');
                                     this.$emit('bookmark');
-                                    plus.nativeUI.toast('收藏成功！');
+                                    plus.nativeUI.toast('收藏成功');
                                 }
                             },
                             {
@@ -60,7 +60,7 @@ export default {
                                 onclick: ()=>{
                                     console.log('upvote');
                                     this.$emit('upvote');
-                                    plus.nativeUI.toast('已赞！');
+                                    plus.nativeUI.toast('已赞');
                                 }
                             },
                             {
@@ -71,7 +71,7 @@ export default {
                                 onclick: ()=> {
                                     console.log('downvote');
                                     this.$emit('downvote');
-                                    plus.nativeUI.toast('已踩！');
+                                    plus.nativeUI.toast('已踩');
                                 }
                             },
                             ],
