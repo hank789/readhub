@@ -17,8 +17,12 @@
 						<use xlink:href="#icon-wode1"></use>
 					</svg>
 					<div class="menu">
-						<div class="item">我的收藏</div>
-						<div class="item">我的发布</div>
+						<router-link tag="div" :to="{ path: '/bookmarks/submissions' }" class="item">
+							我的收藏
+						</router-link>
+						<router-link tag="div" :to="'/' + '@' + auth.username" class="item">
+							我的发布
+						</router-link>
 					</div>
 				</div>
 				<div class="menu-item">
