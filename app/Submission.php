@@ -17,7 +17,7 @@ class Submission extends Model
      */
     protected $fillable = [
         'data', 'title', 'slug', 'type', 'category_id', 'category_name', 'rate',
-        'upvotes', 'downvotes', 'user_id', 'data', 'nsfw', 'approved_at',
+        'upvotes', 'downvotes', 'user_id','recommend_status','recommend_sort', 'data', 'nsfw', 'approved_at',
         'deleted_at', 'comments_number',
     ];
 

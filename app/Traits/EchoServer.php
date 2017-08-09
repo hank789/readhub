@@ -38,19 +38,19 @@ trait EchoServer
 
         $list = collect($list->channels);
 
-        // filter to submission public channels only
+        // filter with submission public channels only
         $list = $list->filter(function ($item, $key) {
-            return starts_with($key, 'submission.');
+            return $key = starts_with($key, 'submission.');
         });
 
-        // map
-//        $list->transform(function ($item, $key) {
-//            return str_after($key, 'submission.');
-//        });
+        $list = $list->mapWithKeys(function ($item, $key) {
+            return [str_after($key, 'submission.') => $item->subscription_count];
+        });
 
         // sort
-        $list = $list->sortBy('subscription_count', 1, true);
+        $list = $list->toArray();
+        arsort($list);
 
-        return $list;
+        return collect($list);
     }
 }

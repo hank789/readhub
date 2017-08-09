@@ -14,6 +14,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/admin/reported-comments', 'AdminController@reportedComments');
     Route::post('/admin/reported-submissions', 'AdminController@reportedSubmissions');
 
+    // recommend
+    Route::post('/recommend-submission', 'SubmissionController@recommendSubmission');
+
     // feedback
     Route::post('/feedback', 'FeedbacksController@store');
     Route::post('/feedback/delete', 'FeedbacksController@destroy');

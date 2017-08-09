@@ -105,11 +105,48 @@ class BackendController extends Controller
     }
 
     /**
+     * Shwos the spam page. A few tools to fight spammers.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\View\View
+     */
+    public function spam()
+    {
+        abort_unless($this->mustBeVotenAdministrator(), 403);
+
+        $query = <<<'SQL'
+select a1.user_id  from read_activities as a1
+inner join 
+(
+  	select ip_address
+		from read_activities  
+			where name = 'created_user'
+		group by ip_address
+		having count(id) > 1
+) as a2 on a1.ip_address = a2.ip_address 
+group by user_id
+SQL;
+
+        $user_ids = collect(DB::select($query))->pluck('user_id');
+
+        $users = User::whereIn('id', $user_ids)->get();
+
+        foreach ($users as $user) {
+            $user->ip = $user->registeredIpAddress();
+        }
+
+        $groupedByIpUsers = $users->groupBy('ip');
+
+        return view('backend.spam', compact('groupedByIpUsers'));
+    }
+
+    /**
      * shows the dashboard which currently displays site's statistics.
      *
      * @return view
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
         abort_unless($this->mustBeVotenAdministrator(), 403);
 
@@ -139,7 +176,24 @@ class BackendController extends Controller
         $reportsTotal = Report::withTrashed()->get()->count();
         $reportsToday = Report::withTrashed()->where('created_at', '>=', Carbon::now()->subDay())->count();
 
-        $activities = Activity::with('owner')->orderBy('id', 'desc')->simplePaginate(30);
+        // Activities start
+        $activities = (new Activity())->newQuery();
+
+        if ($request->has('name')) {
+            $activities->where('name', $request->name);
+        }
+        if ($request->has('user_id')) {
+            $activities->where('user_id', $request->user_id);
+        }
+        if ($request->has('ip_address')) {
+            $activities->where('ip_address', $request->ip_address);
+        }
+        if ($request->has('country')) {
+            $activities->where('country', $request->country);
+        }
+
+        $activities = $activities->with('owner')->orderBy('id', 'desc')->simplePaginate(30);
+        // Activities end
 
         $echo_server_status = $this->echoStatus();
 
@@ -275,14 +329,14 @@ class BackendController extends Controller
         abort_unless($this->mustBeVotenAdministrator(), 403);
 
         $category->moderators()->attach(Auth::id(), [
-            'role' => "administrator",
+            'role' => 'administrator',
         ]);
 
-        Auth::user()->notify(new BecameModerator($category, "administrator"));
+        Auth::user()->notify(new BecameModerator($category, 'administrator'));
 
         $this->updateCategoryMods($category->id, Auth::id());
 
-        session()->flash('status', "You're not an administrator of #".$category->name.". Go knock yourself out. ");
+        session()->flash('status', "You're not an administrator of #".$category->name.'. Go knock yourself out. ');
 
         return back();
     }
