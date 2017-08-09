@@ -1,0 +1,35 @@
+.header-inwehub {
+  background-color: #3c3e44;
+  box-shadow: none;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  height: 44px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border-bottom: 0;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: block;
+
+  a.back{
+    position: absolute;
+    top:9px;
+
+    .icon{
+      font-size: 24px;
+      color:#fff;
+    }
+  }
+
+  .title{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    padding-top:9px;
+    font-weight: 500;
+  }
+}
+

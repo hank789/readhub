@@ -52,7 +52,7 @@
 		<messages v-show="Store.contentRouter == 'messages'" :sidebar="sidebar"></messages>
 		<search-modal v-if="Store.contentRouter == 'search'" :sidebar="sidebar"></search-modal>
 
-        <div class="v-content" id="v-content" v-show="Store.contentRouter == 'content'" @scroll="scrolled">
+        <div class="v-content v-content-inwehub" id="v-content" v-show="Store.contentRouter == 'content'" @scroll="scrolled">
             <transition name="fade">
                 <report-submission v-if="modalRouter == 'report-submission'" :submission="reportSubmissionId" :category="reportCategory" :sidebar="sidebar"></report-submission>
                 <report-comment v-if="modalRouter == 'report-comment'" :comment="reportCommentId" :category="reportCategory" :sidebar="sidebar"></report-comment>

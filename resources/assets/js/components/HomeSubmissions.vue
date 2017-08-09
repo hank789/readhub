@@ -1,10 +1,10 @@
 <template>
-	<section>
-		<div v-for="(value, index) in uniqueList" v-bind:key="value.id">
-    		<suggested-category v-if="index == 5"></suggested-category>
+	<section class="list-article">
 
+		<article v-for="(value, index) in uniqueList" v-bind:key="value.id">
 			<submission :list="value"></submission>
-		</div>
+		</article>
+
 
 	    <no-content v-if="nothingFound" :text="'很抱歉，暂无文章'"></no-content>
 

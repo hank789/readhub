@@ -1,0 +1,99 @@
+.list-article{
+
+    article{
+      padding:15px  16px;
+
+       .title{
+         font-size:15px;
+         color:#444;
+
+          label{
+            background: #a8dff7;
+            border-radius: 50px;
+            color:#fff;
+            font-size:12px;
+            padding: 2px 8px;
+            margin-right:5px;
+          }
+       }
+
+       .description{
+          font-size:14px;
+          color:#808080;
+          margin-top:10px;
+       }
+
+      .remark{
+        margin:15px 0 10px;
+        padding-bottom:15px;
+        position: relative;
+        font-size:12px;
+
+        .author{
+          display: inline-block;
+          color:#b4b4b6;
+
+          b{
+            font-weight: normal;
+            color:#808080;
+          }
+        }
+
+        .time{
+          display: inline-block;
+          float:right;
+          color:#c8c8c8;
+        }
+
+        &:after{
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          content: '';
+          background-color: #dcdcdc;
+        }
+      }
+
+
+      .actions{
+         .action-item{
+           display: inline-block;
+           color:#b4b4b6;
+           margin-right:10px;
+
+           .icon{
+             font-size:17px;
+             margin-right:5px;
+           }
+
+           &.hot{
+             color:#03aef9;
+           }
+
+           &:last-child{
+             float:right;
+             margin-right:0;
+           }
+         }
+      }
+    }
+
+  .river{
+     height:10px;
+     background:#f3f4f6;
+  }
+
+
+
+}
+
+
+.noMore{
+    color:#c8c8c8;
+    font-size:12px;
+    padding:17px;
+    text-align: center;
+    width:100%;
+}
