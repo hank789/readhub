@@ -48,6 +48,7 @@
 
 	    created: function() {
 	        this.getSubmissions();
+            this.listen();
 			this.$eventHub.$on('scrolled-to-bottom', this.loadMore);
 			this.$eventHub.$on('refresh-home', this.refresh);
 	    },
@@ -103,6 +104,20 @@
 					this.getSubmissions()
 				}
 			},
+
+            /**
+             * listen for broadcasted events
+             *
+             * @return void
+             */
+            listen() {
+                Echo.channel('refresh.store')
+                    .listen('SubmissionWasVoted', event => {
+                        this.$eventHub.$emit('refreshBasicStore')
+                    }).listen('SubmissionWasBookmarked', event => {
+                    this.$eventHub.$emit('refreshBasicStore')
+                });
+            },
 
 	        getSubmissions() {
 				this.page ++;

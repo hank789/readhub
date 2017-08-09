@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SubmissionWasVoted;
 use App\Submission;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
@@ -157,6 +158,10 @@ class SubmissionVotesController extends Controller
 
         $this->putSubmissionInTheCache($submission);
 
+        if ($request->input('need_refresh')){
+            event(new SubmissionWasVoted());
+        }
+
         return response('voted successfully ', 200);
     }
 
@@ -216,6 +221,10 @@ class SubmissionVotesController extends Controller
         ]);
 
         $this->putSubmissionInTheCache($submission);
+
+        if ($request->input('need_refresh')){
+            event(new SubmissionWasVoted());
+        }
 
         return response('voted successfully ', 200);
     }

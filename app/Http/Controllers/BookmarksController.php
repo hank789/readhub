@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Comment;
+use App\Events\SubmissionWasBookmarked;
 use App\Filters;
 use App\Traits\CachableCategory;
 use App\Traits\CachableComment;
@@ -81,6 +82,10 @@ class BookmarksController extends Controller
             $this->updateBookmarkedSubmissions(Auth::user()->id, $submission->id, true);
         } else {
             $this->updateBookmarkedSubmissions(Auth::user()->id, $submission->id, false);
+        }
+
+        if ($request->input('need_refresh')){
+            event(new SubmissionWasBookmarked());
         }
 
         return $type;
