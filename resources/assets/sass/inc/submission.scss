@@ -380,6 +380,8 @@
 @media (max-width: 768px) {
 	.submission-item.submission-wrapper {
 		position: relative;
+        margin-bottom: 10px;
+
         &:after{
             position: absolute;
             bottom:-10px;
@@ -388,6 +390,7 @@
             content:'';
             height:10px;
             background: #f3f4f6;
+            z-index:7;
         }
 	}
 
