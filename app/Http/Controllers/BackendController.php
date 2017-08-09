@@ -116,11 +116,11 @@ class BackendController extends Controller
         abort_unless($this->mustBeVotenAdministrator(), 403);
 
         $query = <<<'SQL'
-select a1.user_id  from activities as a1
+select a1.user_id  from read_activities as a1
 inner join 
 (
   	select ip_address
-		from activities  
+		from read_activities  
 			where name = 'created_user'
 		group by ip_address
 		having count(id) > 1

@@ -18,18 +18,6 @@ export default {
                         ws.close();
                     }
                 }
-                
-                function webviewUpvoteButton() {
-                    
-                }
-
-                function webviewDownvoteButton() {
-
-                }
-
-                function webviewFavButton() {
-
-                }
 
                 console.log(plus.webview.currentWebview().id);
 
@@ -58,21 +46,33 @@ export default {
                                 'float': 'left',
                                 fontSize: '27px',
                                 text: '\u2606',
-                                onclick: webviewFavButton
+                                onclick: ()=> {
+                                    console.log('bookmark');
+                                    this.$emit('bookmark');
+                                    alert('收藏成功！');
+                                }
                             },
                             {
                                 color: '#5e5e5e',
                                 'float': 'right',
                                 fontSize: '27px',
                                 text: '\u25B2',
-                                onclick: webviewUpvoteButton
+                                onclick: ()=>{
+                                    console.log('upvote');
+                                    this.$emit('upvote');
+                                    alert('已赞！');
+                                }
                             },
                             {
                                 color: '#5e5e5e',
                                 'float': 'right',
                                 fontSize: '27px',
                                 text: '\u25BC',
-                                onclick: webviewDownvoteButton
+                                onclick: ()=> {
+                                    console.log('downvote');
+                                    this.$emit('downvote');
+                                    alert('已踩！');
+                                }
                             },
                             ],
                         splitLine: { //底部分割线
