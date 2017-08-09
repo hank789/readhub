@@ -19,6 +19,8 @@ import NotFound from './components/NotFound.vue';
 import Settings from './components/Settings.vue';
 import Help from './components/Help.vue';
 import Home from './components/Home.vue';
+import HomeBak from './components/Home.bak.vue';
+
 import Submit from './components/Submit.vue';
 import Category from './components/Category.vue';
 import UserPage from './components/UserPage.vue';
@@ -58,7 +60,7 @@ const routes = [
     {
         name: 'home',
         path: '/',
-        component: Home
+        component: HomeBak
     },
 
     { path: '/help', component: Help, meta: { title: 'Help Center' } },
