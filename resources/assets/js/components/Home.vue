@@ -4,10 +4,10 @@
 
 		<div class="menu-inwehub">
 			<div class="left">
-				<router-link tag="div" :to="{ path: '/' }" class="menu-item" :class="{ 'active': sort == 'hot' }">
+				<router-link tag="div" :to="{ path: '/h5' }" class="menu-item" :class="{ 'active': sort == 'hot' }">
 					热门
                 </router-link>
-				<router-link tag="div" :to="{ path: '/?sort=new' }" class="menu-item" :class="{ 'active': sort == 'new' }">
+				<router-link tag="div" :to="{ path: '/h5?sort=new' }" class="menu-item" :class="{ 'active': sort == 'new' }">
 					最新
                 </router-link>
 			</div>
