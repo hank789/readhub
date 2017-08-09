@@ -12,7 +12,7 @@
 }
 
 .v-content-inwehub{
-  padding-top: 89px;
+  padding-top: 44px;
 }
 
 .flex-space .icon-inwehub{
@@ -22,7 +22,7 @@
   color:#b4b4b6;
 
   &.shoucang{
-    top: 1px;
+    top: 0px;
     margin-left: 8px;
   }
 }
@@ -34,4 +34,16 @@
 .no-more-to-load h3{
   font-size:12px;
   color:#c8c8c8;
+}
+
+.commentNum{
+  font-size: 12px;
+  margin-left: 3px;
+  color: #808080;
+  position: relative;
+  top: 2px;
+}
+
+.home-wrapper{
+  margin-top:44px;
 }
