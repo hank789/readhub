@@ -1,16 +1,16 @@
 <template>
-	<section class="list-article">
+	<section>
+		<div v-for="(value, index) in uniqueList" v-bind:key="value.id">
+    		<suggested-category v-if="index == 5"></suggested-category>
 
-		<article v-for="(value, index) in uniqueList" v-bind:key="value.id">
 			<submission :list="value"></submission>
-		</article>
-
+		</div>
 
 	    <no-content v-if="nothingFound" :text="'很抱歉，暂无文章'"></no-content>
 
 		<loading v-if="loading"></loading>
 
-		<no-more-items :text="'暂无更多了'" v-if="NoMoreItems && !nothingFound"></no-more-items>
+		<no-more-items :text="'无更多内容'" v-if="NoMoreItems && !nothingFound"></no-more-items>
 	</section>
 </template>
 

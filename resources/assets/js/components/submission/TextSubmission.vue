@@ -1,15 +1,14 @@
 <template>
-	<div class="title">
+	<div class="link-list-info">
 		<!-- submission page -->
 		<div v-if="full">
-			<label>inwehub</label>
-
+			<h1 class="submission-title">
 				<i class="v-icon v-shocked go-red" aria-hidden="true" v-if="submission.nsfw"
 					data-toggle="tooltip" data-placement="bottom" title="NSFW"
 				></i>
 
 				{{ submission.title }}
-
+			</h1>
 
 			<markdown :text="body" v-if="body && !editing"></markdown>
 

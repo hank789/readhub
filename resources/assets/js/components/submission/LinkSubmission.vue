@@ -35,8 +35,7 @@
 				</h1>
 
 				<span v-else class="full-width">
-					<div class="title">
-						<label>inwehub</label>
+					<h3 class="v-ultra-bold no-margin">
 						<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow">
 							{{ submission.title }}
 
@@ -44,7 +43,7 @@
 								 - {{ submission.data.domain }}
 							</small>
 						</a>
-					</div>
+					</h3>
 
 					<submission-footer :url="url" :comments="comments" :bookmarked="bookmarked" :submission="submission"
 					@bookmark="$emit('bookmark')" @report="$emit('report')" @hide="$emit('hide')" @nsfw="$emit('nsfw')" @sfw="$emit('sfw')" @destroy="$emit('destroy')" @approve="$emit('approve')" @disapprove="$emit('disapprove')" @removethumbnail="$emit('removethumbnail')" :upvoted="upvoted" :downvoted="downvoted" :points="points"
