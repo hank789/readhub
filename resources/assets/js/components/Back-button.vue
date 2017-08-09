@@ -1,8 +1,9 @@
 <template>
-    <button type="button" class="btn-nth" aria-haspopup="true"
-            data-toggle="tooltip" data-placement="bottom" aria-expanded="false" @click="toggleBack">
-        <i class="v-icon v-previous" aria-hidden="true"></i>
-    </button>
+    <a class="back" @click="toggleBack">
+        <svg class="icon-inwehub" aria-hidden="true">
+            <use xlink:href="#icon-fanhui"></use>
+        </svg>
+    </a>
 </template>
 
 <script>
