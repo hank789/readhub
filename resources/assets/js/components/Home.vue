@@ -26,11 +26,11 @@
 						<use xlink:href="#icon-shuaxin"></use>
 					</svg>
 				</div>
-				<div class="menu-item">
+				<router-link tag="div" :to="{ path: '/submit' }" class="menu-item">
 					<svg class="icon-inwehub modify" aria-hidden="true">
 						<use xlink:href="#icon-xiugai"></use>
 					</svg>
-				</div>
+				</router-link>
 			</div>
 		</div>
 
