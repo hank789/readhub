@@ -83,6 +83,35 @@
 			</router-link>
 			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
 		</div>
+
+
+		<div class="actions">
+			<div class="action-item">
+				<svg class="icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-pinglun1"></use>
+				</svg>1
+                  </div>
+			<div class="action-item hot">
+				<svg class="icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-dianzan1"></use>
+				</svg>1
+                  </div>
+			<div class="action-item">
+				<svg class="icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-dianzan1"></use>
+				</svg>10
+                  </div>
+			<div class="action-item">
+				<svg class="icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-shoucang-xianxing1"></use>
+				</svg>
+			</div>
+			<div class="action-item hot">
+				<svg class="icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-shanchu"></use>
+				</svg>
+			</div>
+		</div>
 	</div>
 </template>
 

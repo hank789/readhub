@@ -1,6 +1,7 @@
 <template>
 	<transition name="fade">
-		<div class="submission-item submission-wrapper" v-show="!hidden" :id="'submission' + list.id">
+
+		<div class="submission-item submission-wrapper" v-show="!hidden">
 			<!-- side-voting -->
 			<div class="side-voting desktop-only">
 				<a class="fa-stack align-right" @click="voteUp"
@@ -18,7 +19,7 @@
 				</a>
 			</div>
 
-			<article class="flex1" v-bind:class="'box-typical profile-post ' + list.type">
+			<div class="flex1" v-bind:class="'box-typical profile-post ' + list.type">
 				<!-- content -->
 				<div class="profile-post-content">
 					<text-submission v-if="list.type == 'text'" :submission="list" :nsfw="nsfw" :full="full" @bookmark="bookmark"
@@ -60,7 +61,7 @@
 				:list="list"
 					:upvoted="upvoted" :downvoted="downvoted" @bookmark="bookmark" @upvote="voteUp" @downvote="voteDown"
 				></gif-player>
-			</article>
+			</div>
 		</div>
 	</transition>
 </template>

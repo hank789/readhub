@@ -13,7 +13,7 @@
 			</div>
 			<div class="right">
 				<div class="menu-item ui dropdown top pointing">
-					<svg class="icon" aria-hidden="true">
+					<svg class="icon-inwehub" aria-hidden="true">
 						<use xlink:href="#icon-wode1"></use>
 					</svg>
 					<div class="menu">
@@ -22,12 +22,12 @@
 					</div>
 				</div>
 				<div class="menu-item">
-					<svg class="icon" aria-hidden="true" @click="refresh">
+					<svg class="icon-inwehub" aria-hidden="true" @click="refresh">
 						<use xlink:href="#icon-shuaxin"></use>
 					</svg>
 				</div>
 				<div class="menu-item">
-					<svg class="icon modify" aria-hidden="true">
+					<svg class="icon-inwehub modify" aria-hidden="true">
 						<use xlink:href="#icon-xiugai"></use>
 					</svg>
 				</div>
