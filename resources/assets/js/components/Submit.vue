@@ -38,7 +38,7 @@
         	            </a>
 
                         <a class="comment-form-guide text-muted" @click="preview = !preview" v-show="fText">
-        	            	Preview
+        	            	预览
         	            </a>
                     </div>
 
@@ -87,7 +87,7 @@
 
                 <div class="flex-space">
                     <div>
-                        <span class="fa-stack fa-lg fa-pull-left" @click="changeSubmissionType('img')">
+                        <span v-if="false" class="fa-stack fa-lg fa-pull-left" @click="changeSubmissionType('img')">
                             <i class="v-icon v-photo" v-bind:class="{ 'go-primary': submissionType == 'img'}"
                             data-toggle="tooltip" data-placement="top" title="Image"
                             ></i>
