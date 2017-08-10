@@ -563,6 +563,15 @@ const app = new Vue({
             this.$eventHub.$emit('sort-by', sort)
         },
 
+        isWechat(){
+            console.log(navigator.userAgent);
+            var wechat = navigator.userAgent.match(/(MicroMessenger)\/([\d\.]+)/i);
+            if (wechat) {
+                return true;
+            }
+            return false;
+        },
+
         /**
          * Catches the event fired for the pressed key, and runs the neccessary methods.
          *
