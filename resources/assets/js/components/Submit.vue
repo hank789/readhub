@@ -1,5 +1,5 @@
 <template>
-    <section class="container margin-top-5 col-7 user-select" id="new-submission">
+    <section class="container margin-top-3 col-7 user-select" id="new-submission">
         <moon-loader :loading="loading" :size="'40px'" :color="'#38634f'" class="form-loader"></moon-loader>
 
         <div :class="loading ? 'opacity-fade' : ''">
