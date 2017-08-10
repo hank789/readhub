@@ -150,5 +150,14 @@ export default {
         {
             return !this.isGuest ? '/auth/' + route : '/' + route;
         },
+
+        showAppToast(msg) {
+            var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+            if (isPlusReady){
+                plus.nativeUI.toast(msg);
+            } else {
+
+            }
+        }
     }
 };

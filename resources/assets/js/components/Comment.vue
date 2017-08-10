@@ -436,10 +436,10 @@
 					if (Store.commentBookmarks.indexOf(this.list.id) != -1){
 	                	var index = Store.commentBookmarks.indexOf(this.list.id);
 	                	Store.commentBookmarks.splice(index, 1);
-                        this.$toast.bottom('取消收藏');
+                        this.showAppToast('取消收藏');
 	                	return;
 	                }
-                    this.$toast.bottom('收藏成功');
+                    this.showAppToast('收藏成功');
 					Store.commentBookmarks.push(this.list.id);
 				});
         	},
