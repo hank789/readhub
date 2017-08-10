@@ -3,7 +3,7 @@
         <div class="v-modal-small-box" v-on-clickaway="close">
             <div class="flex1">
                 <h2 class="align-center">
-                    Moderators
+                    管理人员
                 </h2>
 
                 <loading v-show="loading"></loading>
@@ -21,7 +21,7 @@
                 <button type="button" class="v-button v-button--green v-button--block"
                     data-toggle="tooltip" data-placement="bottom" title="Close (esc)"
                     @click="close">
-                    Close
+                    关闭
                 </button>
             </div>
         </div>
