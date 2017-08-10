@@ -1,6 +1,6 @@
 .icon-inwehub {
   width: 1em; height: 1em;
-  vertical-align: -0.15em;
+  vertical-align: -0.17em;
   fill: currentColor;
   overflow: hidden;
 }
@@ -64,6 +64,8 @@
 
 
   &:after{
+    box-shadow:none !important;
+    -webkit-box-shadow: none !important;
     background:#585858 !important;
     width:.8em !important;
     height:.8em !important;
