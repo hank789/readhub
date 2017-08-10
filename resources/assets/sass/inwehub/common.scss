@@ -83,3 +83,13 @@
   color:#444;
 }
 
+
+
+.list-hot  article:nth-child(0){
+    .submission-img-title h3{
+
+        &:before{
+          
+        }
+    }
+}
