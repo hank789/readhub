@@ -92,13 +92,6 @@
 			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
 		</span>
 
-		<div class="mobile-only mobile-submission-item-action">
-			{{ date }}
-			<router-link v-if="false" :to="'/' + '@' + submission.owner.username" class="h-underline">
-				{{ '@' + submission.owner.username }}
-			</router-link>
-			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
-		</div>
 	</div>
 </template>
 
@@ -153,7 +146,7 @@
 
             date () {
                 return moment(this.submission.created_at).fromNow()
-            },
+            }
         },
 
         mounted () {
