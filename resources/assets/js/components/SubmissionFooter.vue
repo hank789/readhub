@@ -56,11 +56,11 @@
 							隐藏
 						</button>
 
-						<button class="item" @click="$emit('nsfw')" v-if="showNSFW">
+						<button class="item" @click="$emit('nsfw')" v-if="showNSFW && false">
 							NSFW
 						</button>
 
-						<button class="item" @click="$emit('sfw')" v-if="showSFW">
+						<button class="item" @click="$emit('sfw')" v-if="showSFW && false">
 							Family Safe
 						</button>
 
@@ -76,7 +76,7 @@
 							删除
 						</button>
 
-						<button class="item" @click="$emit('removethumbnail')" v-if="showRemoveTumbnail">
+						<button class="item" @click="$emit('removethumbnail')" v-if="showRemoveTumbnail && false">
 							移除图片
 						</button>
 					</div>

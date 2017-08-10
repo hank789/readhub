@@ -64,11 +64,11 @@
 											隐藏
 										</button>
 
-										<button class="item" @click="markAsNSFW" v-if="showNSFW">
+										<button class="item" @click="markAsNSFW" v-if="showNSFW && false">
 											NSFW
 										</button>
 
-										<button class="item" @click="markAsSFW" v-if="showSFW">
+										<button class="item" @click="markAsSFW" v-if="showSFW && false">
 											Family Safe
 										</button>
 
@@ -84,7 +84,7 @@
 											删除
 										</button>
 
-										<button class="item" @click="removeThumbnail" v-if="showRemoveTumbnail">
+										<button class="item" @click="removeThumbnail" v-if="showRemoveTumbnail && false">
 											移除图片
 										</button>
 									</div>
