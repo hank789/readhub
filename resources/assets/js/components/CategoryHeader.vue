@@ -89,13 +89,18 @@
 	        </div>
 
 	        <div class="channel-admin-btn">
-	        	<i class="v-icon h-yellow pointer" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" @click="bookmark"
-	        	data-toggle="tooltip" data-placement="bottom" title="Bookmark"></i>
+
+				<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" @click="bookmark"
+					 data-toggle="tooltip" data-placement="bottom" title="Bookmark" aria-hidden="true">
+					<use xlink:href="#icon-shoucang-cu"></use>
+				</svg>
 
 				<div class="ui icon top right green pointing dropdown" data-toggle="tooltip" data-placement="bottom" title="More">
+
+
 					<i class="v-icon v-more" aria-hidden="true"></i>
 
-					<div class="menu">
+					<div class="menu menu-inwehub-menu">
 						<button class="item" @click="emitModerators">
 							管理者
 						</button>
