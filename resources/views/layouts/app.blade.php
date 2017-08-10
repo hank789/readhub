@@ -35,13 +35,11 @@
 @include('google-analytics')
 
 <div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content' }">
-    <div v-if="Store.is_h5">
+    @if (session('is_h5'))
         @include('h5-header')
-    </div>
-    <div v-else>
+    @else
         @include('app-header')
-    </div>
-
+    @endif
 
     <div class="v-content-wrapper">
 		<div class="v-side {{ settings('sidebar_color') }}" v-show="sidebar">
