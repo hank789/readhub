@@ -48,7 +48,7 @@
 		                </span>
 
 						<span class="inline-block">
-	                        <i class="v-icon v-calendar" aria-hidden="true"></i>Joined: {{ date }}
+	                        <i class="v-icon v-calendar" aria-hidden="true"></i>加入日期: {{ date }}
 		                </span>
 
 		                <a v-bind:href="userStore.info.website" rel="nofollow" target="_blank" v-if="userStore.info.website" class="inline-block">
@@ -73,7 +73,7 @@
 							</div>
 
 							<div class="karma-text">
-								Post Karma
+								文章影响力
 							</div>
 						</div>
 
@@ -83,7 +83,7 @@
 							</div>
 
 							<div class="karma-text">
-								Comment Karma
+								评论影响力
 							</div>
 						</div>
 					</div>
@@ -95,23 +95,23 @@
 		    <div class="container">
 		        <div class="nav-left">
 					<router-link :to="'/@' + $route.params.username" class="nav-item is-tab" active-class="is-active" exact>
-						Submissions
+						文章
 					</router-link>
 
 					<router-link :to="'/@' + $route.params.username + '/comments'" class="nav-item is-tab" active-class="is-active" exact>
-						Comments
+						回复
 					</router-link>
 
-					<router-link :to="'/@' + $route.params.username + '/settings'" class="nav-item is-tab" active-class="is-active" v-if="isAuth">
-						Settings
+					<router-link :to="'/@' + $route.params.username + '/settings'" class="nav-item is-tab" active-class="is-active" v-if="isAuth && false">
+						设置
 					</router-link>
 
 					<router-link :to="'/@' + $route.params.username + '/upvoted-submissions'" class="nav-item is-tab" active-class="is-active" v-if="isAuth">
-						Upvoted
+						赞
 					</router-link>
 
 					<router-link :to="'/@' + $route.params.username + '/downvoted-submissions'" class="nav-item is-tab" active-class="is-active" v-if="isAuth">
-						Downvoted
+						踩
 					</router-link>
 		        </div>
 
@@ -122,8 +122,8 @@
 
 		            <message-button :id="userStore.id" v-if="$route.params.username != auth.username && !isGuest"></message-button>
 
-					<router-link class="v-button" :to="{ name: 'user-settings-profile' }" v-show="$route.params.username == auth.username">
-						Edit Profile
+					<router-link class="v-button" :to="{ name: 'user-settings-profile' }" v-if="false" v-show="$route.params.username == auth.username">
+						编辑个人信息
 					</router-link>
 		        </div>
 		    </div>
