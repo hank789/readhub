@@ -81,6 +81,8 @@
 
 
       &:after{
+        box-shadow:none !important;
+        -webkit-box-shadow: none !important;
         background:#585858 !important;
         left:90% !important;
         width:.8em !important;

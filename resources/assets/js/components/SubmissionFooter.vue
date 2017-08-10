@@ -20,7 +20,31 @@
 					</svg>
 				</a>
 
-				<div class="ui icon top left pointing dropdown" v-if="!isGuest">
+
+			</div>
+
+			<div class="voting-wrapper display-none mobile-only">
+				<a class="fa-stack align-right" @click="$emit('upvote')"
+					data-toggle="tooltip" data-placement="top" title="Upvote">
+
+					<svg class="icon-inwehub v-icon" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+					</svg>
+				</a>
+
+				<div class="detail">
+					{{ points }}
+				</div>
+
+				<a class="fa-stack align-right" @click="$emit('downvote')"
+					data-toggle="tooltip" data-placement="top" title="Downvote">
+
+					<svg class="icon-inwehub v-icon rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+					</svg>
+				</a>
+
+				<div class="ui icon top right pointing dropdown" v-if="!isGuest">
 					<i class="v-icon v-more" aria-hidden="true"></i>
 
 					<div class="menu menu-inwehub-menu">
@@ -57,28 +81,6 @@
 						</button>
 					</div>
 				</div>
-			</div>
-
-			<div class="voting-wrapper display-none mobile-only">
-				<a class="fa-stack align-right" @click="$emit('upvote')"
-					data-toggle="tooltip" data-placement="top" title="Upvote">
-
-					<svg class="icon-inwehub v-icon" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
-					</svg>
-				</a>
-
-				<div class="detail">
-					{{ points }} 👍
-				</div>
-
-				<a class="fa-stack align-right" @click="$emit('downvote')"
-					data-toggle="tooltip" data-placement="top" title="Downvote">
-
-					<svg class="icon-inwehub v-icon rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
-					</svg>
-				</a>
 			</div>
 		</div>
 
