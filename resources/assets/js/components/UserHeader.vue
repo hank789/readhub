@@ -11,7 +11,7 @@
 
 						            <div class="update circle">
 						                <i class="v-icon v-photo" aria-hidden="true"></i>
-						                Upload photo
+						                上传头像
 						            </div>
 						        </button>
 
@@ -27,13 +27,13 @@
 		            </div>
 
 		            <div class="category-header-middle">
-						<h1>
+						<h1 v-if="false">
 						    {{ userStore.name }}
 						</h1>
 
 	    				<router-link :to="'/@' + userStore.username">
 		                    <h2>
-		                        <i class="v-icon v-atsign" aria-hidden="true"></i>{{ userStore.username }}
+		                        <i v-if="false" class="v-icon v-atsign" aria-hidden="true"></i>{{ userStore.username }}
 		                    </h2>
 		                </router-link>
 
@@ -47,7 +47,7 @@
 	                        <i class="v-icon v-chat" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>{{ userStore.stats.commentsCount }}
 		                </span>
 
-						<span class="inline-block">
+						<span v-if="false" class="inline-block">
 	                        <i class="v-icon v-calendar" aria-hidden="true"></i>加入日期: {{ date }}
 		                </span>
 
@@ -120,7 +120,7 @@
 		        	@click="bookmark" v-if="$route.params.username != auth.username"
 	        		data-toggle="tooltip" data-placement="bottom" title="Bookmark"></i>
 
-		            <message-button :id="userStore.id" v-if="$route.params.username != auth.username && !isGuest"></message-button>
+		            <message-button :id="userStore.id" v-if="$route.params.username != auth.username && !isGuest && false"></message-button>
 
 					<router-link class="v-button" :to="{ name: 'user-settings-profile' }" v-if="false" v-show="$route.params.username == auth.username">
 						编辑个人信息

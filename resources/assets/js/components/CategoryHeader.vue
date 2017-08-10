@@ -35,7 +35,7 @@
 
                     <h2 v-else>
         				<router-link :to="'/c/' + Store.category.name" class="flex-center-inline">
-	                        <i class="v-icon v-channel" aria-hidden="true"></i>{{ Store.category.name }}
+	                        <i v-if="false" class="v-icon v-channel" aria-hidden="true"></i>{{ Store.category.name }}
 	                	</router-link>
                     </h2>
 
@@ -51,13 +51,13 @@
 						<i class="v-icon v-chat" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>{{ Store.category.stats.commentsCount }}
 					</span>
 
-	                <span>
+	                <span v-if="false">
                         <i class="v-icon v-calendar" aria-hidden="true"></i>
 	                	创建于: {{ date }}
 	                </span>
 	            </div>
 
-				<div class="category-header-right">
+				<div v-if="false" class="category-header-right">
 					<div class="karma">
 						<div class="karma-number">
 							{{ Store.category.stats.subscribersCount }}
@@ -115,7 +115,7 @@
             		提交文章
             	</button>
 
-            	<subscribe v-if="!isGuest"></subscribe>
+            	<subscribe v-if="!isGuest && false"></subscribe>
 	        </div>
 	    </div>
 	</nav>
