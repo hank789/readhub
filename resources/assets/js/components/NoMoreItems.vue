@@ -21,8 +21,6 @@
 <style>
     .no-more-to-load {
         text-align: center;
-        color: #777;
-        padding: .8em;
-        opacity: .4;
+        padding: .4em;
     }
 </style>
