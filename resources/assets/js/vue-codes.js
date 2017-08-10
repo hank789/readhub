@@ -51,7 +51,8 @@ const localStorageConfig = {
 };
 Vue.use(VueLocalStorage, localStorageConfig);
 
-
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll);
 
 /**
  * The very serious and important vue instance!!! This is what gives power to voten's
@@ -204,6 +205,10 @@ const app = new Vue({
                 this.$eventHub.$emit('scrolled-a-lot');
             }
             
+        },
+        scrolledToBottom() {
+            this.$eventHub.$emit('scrolled-to-bottom');
+            this.$eventHub.$emit('scrolled-a-lot');
         },
 
         /**
