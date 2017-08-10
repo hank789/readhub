@@ -1,6 +1,6 @@
 <template>
     <button class="v-button v-button--green" @click="sendMessage">
-        Message
+        私信
     </button>
 </template>
 

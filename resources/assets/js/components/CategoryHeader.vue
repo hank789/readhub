@@ -83,7 +83,7 @@
 					最新
 				</router-link>
 
-				<router-link :to="{ path: '/c/' + $route.params.name + '?sort=rising'  }" class="nav-item is-tab" :class="{ 'is-active': sort == 'rising' }">
+				<router-link v-if="false" :to="{ path: '/c/' + $route.params.name + '?sort=rising'  }" class="nav-item is-tab" :class="{ 'is-active': sort == 'rising' }">
 					上升中
 				</router-link>
 	        </div>
@@ -100,7 +100,7 @@
 							管理者
 						</button>
 
-						<button class="item" @click="emitRules">
+						<button v-if="false" class="item" @click="emitRules">
 							频道规则
 						</button>
 					</div>
