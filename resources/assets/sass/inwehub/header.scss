@@ -31,5 +31,20 @@
     padding-top:9px;
     font-weight: 500;
   }
+
+  .flex-display{
+    position: absolute;
+    right:0;
+    top:6px;
+
+    #messages-btn{
+      position: relative;
+      right:6px;
+    }
+
+    .head-notification-icons i{
+      color:#fff !important;
+    }
+  }
 }
 

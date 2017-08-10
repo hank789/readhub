@@ -1,10 +1,10 @@
 <template>
-    <section class="container margin-top-5 col-7 user-select" id="new-submission">
+    <section class="container margin-top-3 col-7 user-select" id="new-submission">
         <moon-loader :loading="loading" :size="'40px'" :color="'#38634f'" class="form-loader"></moon-loader>
 
         <div :class="loading ? 'opacity-fade' : ''">
             <h1 class="align-center">
-                提交文章
+                好文章就该共享
             </h1>
 
             <div class="v-status v-status--error" v-if="customError">

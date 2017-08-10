@@ -32,16 +32,22 @@
 							<div class="voting-wrapper display-none">
 								<a class="fa-stack align-right" @click="voteUp"
 									data-toggle="tooltip" data-placement="top" title="Upvote">
-									<i class="v-icon v-up-fat" :class="upvoted ? 'go-primary' : 'go-gray'"></i>
+
+									<svg class="icon-inwehub v-icon" :class="upvoted ? 'go-primary' : 'go-gray'" aria-hidden="true">
+										<use xlink:href="#icon-dianzan1"></use>
+									</svg>
 								</a>
 
 								<div class="detail">
-									{{ points }} 👍
+									{{ points }}
 								</div>
 
 								<a class="fa-stack align-right" @click="voteDown"
 									data-toggle="tooltip" data-placement="top" title="Downvote">
-									<i class="v-icon v-down-fat" :class="downvoted ? 'go-red' : 'go-gray'"></i>
+
+									<svg class="icon-inwehub v-icon rotate-180" :class="downvoted ? 'go-red' : 'go-gray'" aria-hidden="true">
+										<use xlink:href="#icon-dianzan1"></use>
+									</svg>
 								</a>
 							</div>
 
@@ -49,7 +55,7 @@
 								<div class="ui icon top right green pointing dropdown" v-if="!isGuest">
 									<i class="v-icon v-more" aria-hidden="true"></i>
 
-									<div class="menu">
+									<div class="menu menu-inwehub-menu">
 										<button class="item" @click="report" v-if="!owns">
 											举报
 										</button>
@@ -86,7 +92,12 @@
 
 								<a class="fa-stack" @click="bookmark"
 									data-toggle="tooltip" data-placement="top" title="Bookmark">
-									<i class="v-icon h-yellow" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'"></i>
+
+
+									<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
+										<use xlink:href="#icon-shoucang-xianxing1"></use>
+									</svg>
+
 								</a>
 							</div>
 						</div>

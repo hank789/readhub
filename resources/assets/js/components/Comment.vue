@@ -44,17 +44,27 @@
 
                     <a class="reply" @click="voteUp"
                     data-toggle="tooltip" data-placement="top" title="Upvote">
-                        <i class="v-icon h-primary v-up-fat" :class="upvoted ? 'go-primary' : 'go-gray'"></i>
+
+                        <svg class="v-icon icon-inwehub" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
+                            <use xlink:href="#icon-dianzan1"></use>
+                        </svg>
+
                     </a>
 
                     <a class="reply" @click="voteDown"
                     data-toggle="tooltip" data-placement="top" title="Downvote">
-                        <i class="v-icon h-red v-down-fat" :class="downvoted ? 'go-red' : 'go-gray'"></i>
+
+                        <svg class="v-icon icon-inwehub rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
+                            <use xlink:href="#icon-dianzan1"></use>
+                        </svg>
                     </a>
 
                     <a class="reply" @click="bookmark"
                     data-toggle="tooltip" data-placement="top" title="Bookmark">
-                        <i class="v-icon h-yellow" v-bind:class="{ 'go-yellow v-unbookmark': bookmarked, 'v-bookmark': !bookmarked }"></i>
+
+                        <svg class="v-icon icon-inwehub rotate-180" aria-hidden="true" v-bind:class="{ 'go-yellow v-unbookmark': bookmarked, 'v-bookmark': !bookmarked }">
+                            <use xlink:href="#icon-shoucang-xianxing1"></use>
+                        </svg>
                     </a>
 
                     <a class="reply" @click="edit" v-if="owns"
@@ -65,7 +75,7 @@
                     <div class="ui icon top left pointing dropdown" data-toggle="tooltip" data-placement="top" title="More" v-if="!isGuest">
                         <i class="v-icon v-more" aria-hidden="true"></i>
 
-                        <div class="menu">
+                        <div class="menu menu-inwehub-menu">
                             <button class="item" @click="report" v-if="!owns">
                                 举报
                             </button>
