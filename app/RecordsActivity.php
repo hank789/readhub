@@ -41,7 +41,7 @@ trait RecordsActivity
             'device'               => $user_agent_parser->device->model ?? 'unknown',
             'os'                   => $user_agent_parser->os->toString() ?? 'unknown',
             'browser_name'         => $user_agent_parser->browser->name ?? 'unknown',
-            'browser_version'      => ($user_agent_parser->browser->version ? $user_agent_parser->browser->version->toString() : 'unknown'),
+            'browser_version'      => ($user_agent_parser->browser->version ? $user_agent_parser->browser->version->toString() : 'App'),
             'subject_type'         => get_class($this),
             'name'                 => $this->getActivityName($this, $event),
             'user_id'              => Auth::user()->id,
