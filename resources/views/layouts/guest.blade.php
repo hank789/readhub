@@ -77,7 +77,8 @@
             }
         ?>
         submission_small_thumbnail: {{ $submission_small_thumbnail }},
-        isGuest: {{ 'true' }}
+        isGuest: {{ 'true' }},
+        isAdmin: {{ 'false' }}
     };
 
     var preload = {};
