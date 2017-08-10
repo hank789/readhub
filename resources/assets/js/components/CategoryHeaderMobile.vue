@@ -50,25 +50,27 @@
 
         computed: {
 			coverBackground () {
-	        	if (Store.category.color == 'Red') {
-	        		return '#9a4e4e'
-	        	} else if (Store.category.color == 'Blue') {
-	        		return '#5487d4'
-	        	} else if (Store.category.color == 'Dark Blue') {
-	        		return '#2f3b49'
-	        	} else if (Store.category.color == 'Dark Green') {
-	        		return '#507e75'
-	        	} else if (Store.category.color == 'Bright Green') {
-	        		return 'rgb(117, 148, 127)'
-	        	} else if (Store.category.color == 'Purple') {
-	        		return '#4d4261'
-	        	} else if (Store.category.color == 'Orange') {
-	        		return '#ffaf40'
-	        	} else if (Store.category.color == 'Pink') {
-	        		return '#ec7daa'
-	        	} else { // userStore.color == 'Black'
-	        		return '#333'
-	        	}
+			    return '#3c3e44';
+
+//	        	if (Store.category.color == 'Red') {
+//	        		return '#9a4e4e'
+//	        	} else if (Store.category.color == 'Blue') {
+//	        		return '#5487d4'
+//	        	} else if (Store.category.color == 'Dark Blue') {
+//	        		return '#2f3b49'
+//	        	} else if (Store.category.color == 'Dark Green') {
+//	        		return '#507e75'
+//	        	} else if (Store.category.color == 'Bright Green') {
+//	        		return 'rgb(117, 148, 127)'
+//	        	} else if (Store.category.color == 'Purple') {
+//	        		return '#4d4261'
+//	        	} else if (Store.category.color == 'Orange') {
+//	        		return '#ffaf40'
+//	        	} else if (Store.category.color == 'Pink') {
+//	        		return '#ec7daa'
+//	        	} else { // userStore.color == 'Black'
+//	        		return '#333'
+//	        	}
 	        }
         },
     };
