@@ -108,7 +108,7 @@
 			},
             date () {
                 return moment(this.submission.created_at).fromNow()
-            },
+            }
 		},
 
 		methods: {
