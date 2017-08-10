@@ -44,6 +44,13 @@
 							</small>
 						</a>
 					</h3>
+					<div class="mobile-only mobile-submission-item-action">
+						{{ date }}
+						<router-link v-if="false" :to="'/' + '@' + submission.owner.username" class="h-underline">
+							{{ '@' + submission.owner.username }}
+						</router-link>
+						发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
+					</div>
 
 					<submission-footer :url="url" :comments="comments" :bookmarked="bookmarked" :submission="submission"
 					@bookmark="$emit('bookmark')" @report="$emit('report')" @hide="$emit('hide')" @nsfw="$emit('nsfw')" @sfw="$emit('sfw')" @destroy="$emit('destroy')" @approve="$emit('approve')" @disapprove="$emit('disapprove')" @removethumbnail="$emit('removethumbnail')" :upvoted="upvoted" :downvoted="downvoted" :points="points"
@@ -98,7 +105,10 @@
 
 			showEmbed() {
 				return this.isValidSourceForEmbed && this.submission.data.embed
-			}
+			},
+            date () {
+                return moment(this.submission.created_at).fromNow()
+            }
 		},
 
 		methods: {

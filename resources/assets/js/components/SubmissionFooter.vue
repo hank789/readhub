@@ -56,11 +56,11 @@
 							隐藏
 						</button>
 
-						<button class="item" @click="$emit('nsfw')" v-if="showNSFW">
+						<button class="item" @click="$emit('nsfw')" v-if="showNSFW && false">
 							NSFW
 						</button>
 
-						<button class="item" @click="$emit('sfw')" v-if="showSFW">
+						<button class="item" @click="$emit('sfw')" v-if="showSFW && false">
 							Family Safe
 						</button>
 
@@ -76,7 +76,7 @@
 							删除
 						</button>
 
-						<button class="item" @click="$emit('removethumbnail')" v-if="showRemoveTumbnail">
+						<button class="item" @click="$emit('removethumbnail')" v-if="showRemoveTumbnail && false">
 							移除图片
 						</button>
 					</div>
@@ -85,20 +85,13 @@
 		</div>
 
 		<span class="desktop-only">
-			 {{ date }} 由
-			<router-link :to="'/' + '@' + submission.owner.username" class="h-underline desktop-only">
+			 {{ date }}
+			<router-link v-if="false" :to="'/' + '@' + submission.owner.username" class="h-underline desktop-only">
 				{{ '@' + submission.owner.username }}
 			</router-link>
 			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
 		</span>
 
-		<div class="mobile-only mobile-submission-item-action">
-			{{ date }} 由
-			<router-link :to="'/' + '@' + submission.owner.username" class="h-underline">
-				{{ '@' + submission.owner.username }}
-			</router-link>
-			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
-		</div>
 	</div>
 </template>
 
@@ -153,7 +146,7 @@
 
             date () {
                 return moment(this.submission.created_at).fromNow()
-            },
+            }
         },
 
         mounted () {
