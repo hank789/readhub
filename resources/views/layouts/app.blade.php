@@ -34,7 +34,7 @@
 <body>
 @include('google-analytics')
 
-<div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content' }">
+<div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content', isWechat:isWechat()}">
     @if (session('is_h5'))
         @include('h5-header')
     @else

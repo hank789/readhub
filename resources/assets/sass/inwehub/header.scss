@@ -14,6 +14,8 @@
   backface-visibility: hidden;
   display: block;
 
+
+
   a.back{
     position: absolute;
     top:9px;
@@ -48,3 +50,6 @@
   }
 }
 
+.isWechat .header-inwehub{
+  display: none;
+}
