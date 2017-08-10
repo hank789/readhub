@@ -200,7 +200,7 @@ router.beforeEach((to, from, next) => {
 	    		to.name != "user-submissions" &&
 	    		to.name != "user-comments"
     		) {
-    		document.title = 'Voten'
+    		document.title = 'Readhub'
     	}
     }
 

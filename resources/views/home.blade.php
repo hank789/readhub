@@ -21,8 +21,8 @@
 	{
 	    "@context": "http://schema.org",
 	    "@type": "WebSite",
-	    "url": "https://voten.co",
-	    "name": "Voten",
+	    "url": "https://www.inwehub.com",
+	    "name": "Readhub",
 	    "logo": "https://voten.co/imgs/voten-circle.png",
 	    "sameAs": [
 	        "https://www.facebook.com/voten.co/",

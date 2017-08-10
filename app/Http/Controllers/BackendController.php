@@ -62,7 +62,21 @@ class BackendController extends Controller
         if ($request->has('filter')) {
             $categories = Category::search($request->filter)->take(20)->get();
         } else {
-            $categories = Category::orderBy('id', 'desc')->paginate(30);
+            $categories = (new Category())->newQuery();
+
+            if ($request->has('sort_by')) {
+                if ($request->sort_by == 'subscribers') {
+                    $categories->orderBy('subscribers', 'desc');
+                } elseif ($request->sort_by == 'submissions_count') {
+                    $categories->withCount('submissions')->orderBy('submissions_count', 'desc');
+                } elseif ($request->sort_by == 'comments_count') {
+                    $categories->withCount('comments')->orderBy('comments_count', 'desc');
+                } else {
+                    $categories->orderBy('id', 'desc');
+                }
+            }
+
+            $categories = $categories->paginate(30);
         }
 
         return view('backend.categories', compact('categories'));
@@ -188,8 +202,17 @@ SQL;
         if ($request->has('ip_address')) {
             $activities->where('ip_address', $request->ip_address);
         }
+        if ($request->has('device')) {
+            $activities->where('device', $request->device);
+        }
         if ($request->has('country')) {
             $activities->where('country', $request->country);
+        }
+        if ($request->has('os')) {
+            $activities->where('os', $request->os);
+        }
+        if ($request->has('browser_name')) {
+            $activities->where('browser_name', $request->browser_name);
         }
 
         $activities = $activities->with('owner')->orderBy('id', 'desc')->simplePaginate(30);

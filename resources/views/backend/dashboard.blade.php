@@ -206,13 +206,16 @@
 
             <table class="table is-striped is-fullwidth">
                 <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>By</th>
-                    <th>Country</th>
-                    <th>IP</th>
-                    <th>At</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>By</th>
+                        <th>Country</th>
+                        <th>Device</th>
+                        <th>OS</th>
+                        <th>Browser</th>
+                        <th>IP</th>
+                        <th>At</th>
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -240,6 +243,23 @@
                                     <span class="tag">{{ $activity->country ?? 'unknown' }}</span>
                                 </a>
                             </td>
+
+                            <td>
+                                <a href="{{ url()->current() }}?device={{ $activity->device }}">
+                                    <span class="tag">{{ $activity->device ?? 'unknown' }}</span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ url()->current() }}?os={{ $activity->os }}">
+                                    <span class="tag">{{ $activity->os ?? 'unknown' }}</span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ url()->current() }}?browser_name={{ $activity->browser_name }}">
+                                    <span class="tag">{{ $activity->browser_name . ' ' . $activity->browser_version ?? 'unknown' }}</span>
+                                </a>
+                            </td>
+
                             <td>
                                 <a href="{{ url()->current() }}?ip_address={{ $activity->ip_address }}">
                                     <span class="tag">{{ $activity->ip_address ?? 'unknown' }}</span>

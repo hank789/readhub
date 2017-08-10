@@ -157,6 +157,8 @@ const app = new Vue({
         this.$eventHub.$on('crop-user-photo', this.cropUserModal);
         this.$eventHub.$on('push-notification', this.pushNotification)
         this.$eventHub.$on('crop-category-photo', this.cropCategoryModal);
+        this.$eventHub.$on('refreshBasicStore', this.fillBasicStore);
+
     },
 
     mounted() {

@@ -3,7 +3,7 @@
         <div class="v-modal-small-box" v-on-clickaway="close">
             <div class="flex1">
                 <p>
-                    Just like any other channel on Voten, all submissions must follow Voten's
+                    Just like any other channel on Site, all submissions must follow Site's
                     <a href="/tos">
                     	<b>general rules</b>
                     </a>.
