@@ -72,7 +72,7 @@ class CommentReplied extends Notification implements ShouldBroadcast
             'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
             'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
-            'body'   => '@'.$this->comment->owner->username.' replied to your comment on "'.$this->submission->title.'"',
+            'body'   => '@'.$this->comment->owner->username.' 回复了你的评论 "'.$this->submission->title.'"',
         ];
     }
 }

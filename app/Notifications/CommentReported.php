@@ -66,7 +66,7 @@ class CommentReported extends Notification implements ShouldBroadcast
             'url'    => '/c/'.$this->category->name.'/mod/reports/comments/',
             'name'   => $this->category->name,
             'avatar' => $this->category->avatar,
-            'body'   => 'Comment reported at #'.$this->category->name,
+            'body'   => '回复被举报了 #'.$this->category->name,
         ];
     }
 }

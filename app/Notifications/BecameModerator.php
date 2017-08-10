@@ -69,7 +69,7 @@ class BecameModerator extends Notification implements ShouldBroadcast
             'url'      => '/c/'.$this->category->name.'/mod',
             'name'     => $this->category->name,
             'avatar'   => $this->category->avatar,
-            'body'     => 'You are now moderating '.'#'.$this->category->name,
+            'body'     => '你现在是频道的管理员了 '.'#'.$this->category->name,
             'category' => $this->category,
             'role'     => $this->role,
         ];

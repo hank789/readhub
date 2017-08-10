@@ -66,7 +66,7 @@ class SubmissionReported extends Notification implements ShouldBroadcast
             'url'    => '/c/'.$this->category->name.'/mod/reports/submissions/',
             'name'   => $this->category->name,
             'avatar' => $this->category->avatar,
-            'body'   => 'Submission reported at #'.$this->category->name,
+            'body'   => '文章被举报了 #'.$this->category->name,
         ];
     }
 }

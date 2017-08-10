@@ -75,7 +75,7 @@ class SubmissionReplied extends Notification implements ShouldBroadcast
             'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
             'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
-            'body'   => '@'.$this->comment->owner->username.' left a comment on "'.$this->submission->title.'"',
+            'body'   => '@'.$this->comment->owner->username.' 回复了文章 "'.$this->submission->title.'"',
         ];
     }
 }

@@ -54,6 +54,14 @@ Vue.use(VueLocalStorage, localStorageConfig);
 import infiniteScroll from 'vue-infinite-scroll'
 Vue.use(infiniteScroll);
 
+import 'vue2-toast/lib/toast.css';
+import Toast from 'vue2-toast';
+Vue.use(Toast, {
+    defaultType: 'bottom',
+    duration: 2000,
+    wordWrap: true,
+    width: 'auto'
+});
 /**
  * The very serious and important vue instance!!! This is what gives power to voten's
  * front-end. Try to love it, maintain it, appriciate it and maybe even more! This
