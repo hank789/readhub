@@ -4,7 +4,7 @@
 
         <div :class="loading ? 'opacity-fade' : ''">
             <h1 class="align-center">
-                提交文章
+                好文章就该共享
             </h1>
 
             <div class="v-status v-status--error" v-if="customError">
