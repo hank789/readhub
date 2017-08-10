@@ -377,7 +377,7 @@ class SubmissionController extends Controller
         $this->validate($request, [
             'submission_id' => 'required|integer',
         ]);
-        $submission = Submission::findOrFail($request->id);
+        $submission = Submission::findOrFail($request->submission_id);
         abort_unless($this->mustBeVotenAdministrator(), 403);
         $msg = '推荐成功';
         if ($submission->recommend_status == 0){
@@ -386,7 +386,7 @@ class SubmissionController extends Controller
             $submission->save();
         }
 
-        response($msg, 200);
+        return response($msg, 200);
     }
 
     /**

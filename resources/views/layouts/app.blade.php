@@ -108,7 +108,8 @@
         	twitter: '{{ Auth::user()->info['twitter'] }}'
         },
         stats: {!! Auth::user()->stats() !!},
-        isGuest: {{ 'false' }}
+        isGuest: {{ 'false' }},
+        isAdmin: {!! Auth::user()->isVotenAdministrator() !!}
     };
 
     var preload = {};
