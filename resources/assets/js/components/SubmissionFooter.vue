@@ -23,7 +23,7 @@
 				<div class="ui icon top left pointing dropdown" v-if="!isGuest">
 					<i class="v-icon v-more" aria-hidden="true"></i>
 
-					<div class="menu">
+					<div class="menu menu-inwehub-menu">
 						<button class="item" @click="$emit('report')" v-if="!owns">
 							举报
 						</button>

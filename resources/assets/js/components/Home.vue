@@ -1,5 +1,5 @@
 <template>
-	<div class="home-wrapper">
+	<div class="home-wrapper"  :class="{'home-wrapper-h5':Store.is_h5}">
 		<announcement></announcement>
 
 		<div class="menu-inwehub">
