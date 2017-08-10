@@ -404,10 +404,10 @@
 					if (Store.submissionBookmarks.indexOf(this.list.id) != -1) {
 	                	var index = Store.submissionBookmarks.indexOf(this.list.id);
 	                	Store.submissionBookmarks.splice(index, 1);
-
+                        this.$toast.bottom('取消收藏');
 	                	return;
 	                }
-
+                    this.$toast.bottom('收藏成功');
 					Store.submissionBookmarks.push(this.list.id);
 				})
         	},

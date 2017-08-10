@@ -235,9 +235,10 @@ export default {
 				if (Store.categoryBookmarks.indexOf(Store.category.id) != -1){
                 	var index = Store.categoryBookmarks.indexOf(Store.category.id)
                 	Store.categoryBookmarks.splice(index, 1)
-
+                    this.$toast.bottom('取消收藏');
                 	return
                 }
+                this.$toast.bottom('收藏成功');
 				Store.categoryBookmarks.push(Store.category.id)
 			})
     	},
