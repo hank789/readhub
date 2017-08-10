@@ -97,7 +97,8 @@ const app = new Vue({
         reportCommentId: '',
         sidebar: true,
         sortFilter: 'hot',
-        pageTitle: document.title
+        pageTitle: document.title,
+        scrolledBusy: false
     },
 
     computed: {
@@ -123,7 +124,7 @@ const app = new Vue({
         // if the route changes, call again the method
         '$route' () {
             this.closeModals()
-
+            this.$eventHub.$emit('scrolled-a-bit');
             if (auth.isMobileDevice) {
             	this.sidebar = false
             }
@@ -207,8 +208,10 @@ const app = new Vue({
             
         },
         scrolledToBottom() {
+            this.scrolledBusy = true;
             this.$eventHub.$emit('scrolled-to-bottom');
             this.$eventHub.$emit('scrolled-a-lot');
+            this.scrolledBusy = false;
         },
 
         /**

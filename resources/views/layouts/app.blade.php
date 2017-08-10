@@ -50,7 +50,7 @@
 		<messages v-show="Store.contentRouter == 'messages'" :sidebar="sidebar"></messages>
 		<search-modal v-if="Store.contentRouter == 'search'" :sidebar="sidebar"></search-modal>
 
-        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="false" infinite-scroll-distance="10">
+        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10">
 
 
             <transition name="fade">
