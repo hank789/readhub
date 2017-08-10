@@ -63,7 +63,7 @@
                     data-toggle="tooltip" data-placement="top" title="Bookmark">
 
                         <svg class="v-icon icon-inwehub rotate-180" aria-hidden="true" v-bind:class="{ 'go-yellow v-unbookmark': bookmarked, 'v-bookmark': !bookmarked }">
-                            <use xlink:href="#icon-shoucang-xianxing1"></use>
+                            <use xlink:href="#icon-shoucang-cu"></use>
                         </svg>
                     </a>
 

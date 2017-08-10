@@ -95,7 +95,7 @@
 
 
 									<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
-										<use xlink:href="#icon-shoucang-xianxing1"></use>
+										<use xlink:href="#icon-shoucang-cu"></use>
 									</svg>
 
 								</a>
