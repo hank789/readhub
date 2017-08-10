@@ -60,6 +60,10 @@
 											举报
 										</button>
 
+										<button class="item" @click="recommend" v-if="auth.isAdmin">
+											推荐到APP
+										</button>
+
 										<button class="item" @click="hide" v-if="!owns">
 											隐藏
 										</button>
@@ -471,6 +475,14 @@
                 this.reported = true
         		this.$eventHub.$emit('report-submission', this.list.id, this.list.category_name)
             },
+			/**
+			 * 推荐到app
+			 */
+            recommend () {
+                axios.post('/recommend-app-submission', {
+                    submission_id: this.list.id
+                })
+			},
 
             /**
              *  Upvote submission

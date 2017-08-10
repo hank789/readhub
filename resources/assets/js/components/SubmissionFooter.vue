@@ -52,6 +52,10 @@
 							举报
 						</button>
 
+						<button class="item" @click="$emit('recommend')" v-if="auth.isAdmin">
+							推荐到APP
+						</button>
+
 						<button class="item" @click="$emit('hide')" v-if="!owns">
 							隐藏
 						</button>

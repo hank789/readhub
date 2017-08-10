@@ -116,7 +116,7 @@
 					管理
 				</router-link>
 
-            	<button class="v-button desktop-only" @click="submitButton">
+            	<button class="v-button" @click="submitButton">
             		提交文章
             	</button>
 

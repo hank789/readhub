@@ -14,9 +14,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/admin/reported-comments', 'AdminController@reportedComments');
     Route::post('/admin/reported-submissions', 'AdminController@reportedSubmissions');
 
-    // recommend
-    Route::post('/recommend-submission', 'SubmissionController@recommendSubmission');
-
     // feedback
     Route::post('/feedback', 'FeedbacksController@store');
     Route::post('/feedback/delete', 'FeedbacksController@destroy');
@@ -51,6 +48,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/hide-submission', 'SubmissionController@hide');
     Route::get('/fetch-url-title', 'SubmissionController@getTitleAPI');
     Route::post('/mark-submission-sfw', 'NsfwController@markAsSFW');
+    // recommend
+    Route::post('/recommend-app-submission', 'SubmissionController@recommendSubmission');
 
     Route::post('/mark-submission-nsfw', 'NsfwController@markAsNSFW');
 

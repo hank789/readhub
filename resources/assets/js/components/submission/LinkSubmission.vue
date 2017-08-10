@@ -53,7 +53,7 @@
 					</div>
 
 					<submission-footer :url="url" :comments="comments" :bookmarked="bookmarked" :submission="submission"
-					@bookmark="$emit('bookmark')" @report="$emit('report')" @hide="$emit('hide')" @nsfw="$emit('nsfw')" @sfw="$emit('sfw')" @destroy="$emit('destroy')" @approve="$emit('approve')" @disapprove="$emit('disapprove')" @removethumbnail="$emit('removethumbnail')" :upvoted="upvoted" :downvoted="downvoted" :points="points"
+					@bookmark="$emit('bookmark')" @report="$emit('report')" @recommend="$emit('recommend')" @hide="$emit('hide')" @nsfw="$emit('nsfw')" @sfw="$emit('sfw')" @destroy="$emit('destroy')" @approve="$emit('approve')" @disapprove="$emit('disapprove')" @removethumbnail="$emit('removethumbnail')" :upvoted="upvoted" :downvoted="downvoted" :points="points"
 					@upvote="$emit('upvote')" @downvote="$emit('downvote')"
 					></submission-footer>
 				</span>
