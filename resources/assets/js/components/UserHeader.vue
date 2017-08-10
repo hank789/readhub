@@ -250,25 +250,27 @@ export default {
 
         coverBackground ()
         {
-        	if (this.userStore.color == 'Red') {
-        		return '#9a4e4e'
-        	} else if (this.userStore.color == 'Blue') {
-        		return '#5487d4'
-        	} else if (this.userStore.color == 'Dark Blue') {
-        		return '#2f3b49'
-        	} else if (this.userStore.color == 'Dark Green') {
-        		return '#507e75'
-        	} else if (this.userStore.color == 'Bright Green') {
-        		return 'rgb(117, 148, 127)'
-        	} else if (this.userStore.color == 'Purple') {
-        		return '#4d4261'
-        	} else if (this.userStore.color == 'Orange') {
-        		return '#ffaf40'
-        	} else if (this.userStore.color == 'Pink') {
-        		return '#ec7daa'
-        	} else { // userStore.color == 'Black'
-        		return '#333'
-        	}
+            return '#3c3e44';
+
+//        	if (this.userStore.color == 'Red') {
+//        		return '#9a4e4e'
+//        	} else if (this.userStore.color == 'Blue') {
+//        		return '#5487d4'
+//        	} else if (this.userStore.color == 'Dark Blue') {
+//        		return '#2f3b49'
+//        	} else if (this.userStore.color == 'Dark Green') {
+//        		return '#507e75'
+//        	} else if (this.userStore.color == 'Bright Green') {
+//        		return 'rgb(117, 148, 127)'
+//        	} else if (this.userStore.color == 'Purple') {
+//        		return '#4d4261'
+//        	} else if (this.userStore.color == 'Orange') {
+//        		return '#ffaf40'
+//        	} else if (this.userStore.color == 'Pink') {
+//        		return '#ec7daa'
+//        	} else { // userStore.color == 'Black'
+//        		return '#333'
+//        	}
         }
     }
 }
