@@ -53,8 +53,6 @@
 }
 
 .menu-inwehub-menu{
-  right:-6px;
-  left:auto;
   background:#585858 !important;
   margin-top:0px !important;
   padding:7px 0;
@@ -65,15 +63,11 @@
     font-weight:normal !important;
   }
 
-
-
   &:after{
     box-shadow:none !important;
     -webkit-box-shadow: none !important;
     background:#585858 !important;
-    width:.8em !important;
-    height:.8em !important;
-    top: -0.3em !important;
+
   }
 }
 
@@ -89,7 +83,7 @@
     .submission-img-title h3{
 
         &:before{
-          
+
         }
     }
 }
