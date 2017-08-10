@@ -58,8 +58,8 @@ import 'vue2-toast/lib/toast.css';
 import Toast from 'vue2-toast';
 Vue.use(Toast, {
     defaultType: 'bottom',
-    duration: 2000,
-    wordWrap: true,
+    duration: 1000,
+    wordWrap: false,
     width: 'auto'
 });
 /**
