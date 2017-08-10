@@ -7,7 +7,7 @@
 
     <title>
     	@section('title')
-    		Backend | Voten
+    		Backend | Readhub
     	@show
     </title>
 

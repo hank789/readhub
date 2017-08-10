@@ -42,7 +42,7 @@ export default {
     			return;
     		}
 
-    	    document.title = title + ' - Voten';
+    	    document.title = title + ' - Readhub';
     	},
 
     	/**

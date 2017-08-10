@@ -4,7 +4,7 @@
 	</div>
 
     <router-link :to="{ path: '/' }" class="desktop-only">
-        <img src="/imgs/voten-beta.png" alt="Voten" @click="homeRoute"
+        <img src="/imgs/voten-beta.png" alt="Readhub" @click="homeRoute"
         	class="logo-voten" data-toggle="tooltip" data-placement="bottom" title="Home">
     </router-link>
 
@@ -124,7 +124,7 @@
 	                </router-link>
 
 					<div v-if="false" class="item">
-						<span class="text">Voten</span>
+						<span class="text">Inwehub</span>
 
 						<div class="left menu green">
 							<a href="/about" class="item">

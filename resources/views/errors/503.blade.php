@@ -65,7 +65,7 @@
                 <img src="/imgs/voten-circle.png" alt="voten" class="logo">
 
                 <div class="title">
-                    Voten is under maintenance. We'll probably be back in a few minutes.
+                    Readhub is under maintenance. We'll probably be back in a few minutes.
                 </div>
             </div>
 

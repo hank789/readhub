@@ -40,7 +40,7 @@
 			<div class="logo">
 				<a href="/">
 					<img src="/imgs/voten-logo.png" alt="Voten.co">
-					Voten
+					Readhub
 				</a>
 				<small>BETA</small>
 			</div>
@@ -83,7 +83,7 @@
 
 		<footer class="user-select">
 			<div class="flex1">
-				<h3 class="go-primary">Voten 	&#10084;</h3>
+				<h3 class="go-primary">Readhub 	&#10084;</h3>
 				<ul>
 					<li><a href="/about">About</a></li>
 
@@ -98,7 +98,7 @@
 				</ul>
 			</div>
 			<div class="flex1">
-				<h3 class="go-red">Get to know Voten </h3>
+				<h3 class="go-red">Get to know Readhub </h3>
 				<ul>
 					<li><a href="mailto:info@voten.co">Contact Us</a></li>
 					<li><a href="mailto:press@voten.co">Press</a></li>
@@ -107,7 +107,7 @@
 				</ul>
 			</div>
 			<div class="flex1">
-				<h3 class="go-green">Follow Voten</h3>
+				<h3 class="go-green">Follow Readhub</h3>
 				<ul>
 					<li><a href="https://medium.com/voten" target="_blank">Blog</a></li>
 					<li><a href="https://github.com/voten-co/voten" target="_blank">Github</a></li>

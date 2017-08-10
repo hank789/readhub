@@ -3,55 +3,55 @@
         <div class="v-modal-small-box" v-on-clickaway="close">
             <div class="flex1" v-if="! messageSent">
                 <p>
-                    Please help us understand the problem. What is wrong with this submission?
+                    请帮助我们更快的了解该文章存在的问题
                 </p>
 
                 <div class="form-group grouped fields">
                     <div class="field">
                         <div class="ui radio checkbox">
                             <input type="radio" value="It doesn't follow channel's exclusive rules" tabindex="0" class="hidden" v-model="subject">
-                            <label>It doesn't follow #{{category}}'s exclusive rules</label>
+                            <label>未遵守频道 #{{category}}的 规则</label>
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="ui radio checkbox">
                             <input type="radio" value="It doesn't follow Voten's general rules" tabindex="0" class="hidden" v-model="subject">
-                            <label>It doesn't follow Voten's general rules</label>
+                            <label>未遵守网站的规则</label>
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="ui radio checkbox">
                             <input type="radio" value="It's abusive or harmful" tabindex="0" class="hidden" v-model="subject">
-                            <label>It's abusive or harmful</label>
+                            <label>包含暴力或色情内容</label>
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="ui radio checkbox">
                             <input type="radio" value="Other" tabindex="0" class="hidden" v-model="subject">
-                            <label>Other</label>
+                            <label>其它</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <textarea name="name" class="form-control" rows="2" id="report-textarea"
-                        placeholder="(optional) Additional desciption..."
+                        placeholder="(可选) 额外的描述..."
                         v-model="description"
                     ></textarea>
                 </div>
 
                 <button type="button" class="v-button v-button--green"
                 @click="send" >
-                    Submit Report
+                    提交举报
                 </button>
 
                 <button type="button" class="v-button v-button--red"
                     data-toggle="tooltip" data-placement="bottom" title="Close (esc)"
                     @click="close">
-                    Cancel
+                    取消
                 </button>
 
             </div>
@@ -62,7 +62,7 @@
                 ></i>
 
                 <p>
-                    Thank you for helping us fight spam on Voten.
+                    感谢您的举报，我们会尽快安排核查。
                 </p>
             </div>
         </div>

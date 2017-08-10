@@ -1,14 +1,14 @@
 @extends('layouts.landing-layout')
 
 @section('head')
-	<title>Not Found 404 - Voten</title>
+	<title>Not Found 404 - Readhub</title>
 	<meta property="og:type" content="article" />
-	<meta property="og:title" content="Not Found 404 - Voten" />
-	<meta property="og:site_name" content="Voten" />
+	<meta property="og:title" content="Not Found 404 - Readhub" />
+	<meta property="og:site_name" content="Readhub" />
 
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@voten_co" />
-	<meta name="twitter:title" content="Not Found 404 - Voten" />
+	<meta name="twitter:title" content="Not Found 404 - Readhub" />
 
 	<meta name="description" content="Sorry, that page doesn’t exist!"/>
 	<meta property="og:description" content="Sorry, that page doesn’t exist!" />
