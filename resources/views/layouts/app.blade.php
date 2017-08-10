@@ -109,7 +109,7 @@
         },
         stats: {!! Auth::user()->stats() !!},
         isGuest: {{ 'false' }},
-        isAdmin: {!! Auth::user()->isVotenAdministrator() !!}
+        isAdmin: {!! Auth::user()->isVotenAdministrator() ? 'true':'false' !!}
     };
 
     var preload = {};
