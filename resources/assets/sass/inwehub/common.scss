@@ -159,4 +159,49 @@
     border:none;
   }
 
+  a.nav-item{
+    color:#444;
+    font-size:14px !important;
+
+  }
+  .nav.has-shadow{
+    border:none;
+    position: relative;
+    &:after{
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      content: '';
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      background-color: #dcdcdc;
+    }
+
+  }
+
+  .nav.has-shadow{
+    color:#444 !important;
+  }
+
+  a.nav-item.is-tab.is-active{
+    color:#3c95f9;
+    border:none;
+    position: relative;
+    font-weight: normal;
+    &:after{
+      position: absolute;
+      bottom: 2px;
+      width:26px;
+      left: 50%;
+      margin-left:-13px;
+      height: 2px;
+      content: '';
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      background-color: #03aef9;
+      z-index: 7777;
+    }
+  }
 }

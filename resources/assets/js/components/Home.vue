@@ -17,12 +17,12 @@
 						<use xlink:href="#icon-wode1"></use>
 					</svg>
 					<div class="menu">
-						<router-link tag="div" :to="{ path: '/bookmarks/submissions' }" class="item">
+						<div @click="goLink('/bookmarks/submissions')" class="item">
 							我的收藏
-						</router-link>
-						<router-link tag="div" :to="'/' + '@' + auth.id" class="item">
+						</div>
+						<div @click="goLink('/' + '@' + auth.id)" class="item">
 							我的发布
-						</router-link>
+						</div>
 					</div>
 				</div>
 				<div class="menu-item">
@@ -100,6 +100,11 @@
         },
 
         methods: {
+    	    goLink(url) {
+    	        setTimeout(() => {
+                    this.$router.push(url);
+				}, 100);
+			},
             getUnreadNotifications(){
                 this.$eventHub.$emit('getUnreadNotifications')
 			},
