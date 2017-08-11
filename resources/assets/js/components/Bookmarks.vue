@@ -14,7 +14,7 @@
 					</a>
 				</router-link>
 
-				<router-link tag="li" active-class="is-active" :to="{name: 'bookmarked-categories'}">
+				<router-link v-if="false" tag="li" active-class="is-active" :to="{name: 'bookmarked-categories'}">
 					<a>
 						频道
 					</a>
