@@ -24,11 +24,6 @@
   position: relative;
   top: 3px;
   color:#b4b4b6;
-
-  &.shoucang{
-    top: 0px;
-    margin-left: 8px;
-  }
 }
 
 .go-yellow{
@@ -45,7 +40,7 @@
   margin-left: 3px;
   color: #808080;
   position: relative;
-  top: 2px;
+  top: 5px;
 }
 
 .home-wrapper-h5{
@@ -86,4 +81,39 @@
 
         }
     }
+}
+
+.home-wrapper-h5 {
+    .rotate-180{
+      display: none;
+    }
+}
+
+
+
+.h5-active-item{
+  display: inline-block;
+  text-align: center;
+
+  .icon-gengduo{
+    margin-left:13px;
+  }
+
+  .icon-pinglun1{
+    top:5px;
+  }
+
+
+  .icon-dianzan1{
+    top:6px;
+  }
+
+  .rotate-180{
+    top: 7px;
+    left: -20px;
+  }
+
+  .ui.pointing.dropdown > .menu:after{
+    left:35% !important;
+  }
 }

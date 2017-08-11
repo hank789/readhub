@@ -1,91 +1,105 @@
 <template>
 	<div class="index-submission-footer user-select">
 		<div :class="auth.isMobileDevice ? 'flex-space' : 'display-inline'">
-			<div :class="auth.isMobileDevice ? '' : 'display-inline'">
-				<router-link :to="url" class="comments-icon h-green"
-				data-toggle="tooltip" data-placement="top" title="Comments">
 
-					<svg class="icon-inwehub v-icon" aria-hidden="true">
-						<use xlink:href="#icon-pinglun1"></use>
+
+			<!--<div :class="auth.isMobileDevice ? '' : 'display-inline'">-->
+
+			<div class="h5-active-item">
+				<div class="ui icon pointing dropdown" v-if="!isGuest">
+
+					<svg class="icon-inwehub left v-icon icon-gengduo" aria-hidden="true">
+						<use xlink:href="#icon-gengduo"></use>
 					</svg>
-
-					<span class="commentNum" v-if="comments" v-text="comments"></span>
-				</router-link>
-
-				<a @click="$emit('bookmark')"
-					data-toggle="tooltip" data-placement="top" title="Bookmark">
-
-					<svg class="icon-inwehub v-icon shoucang" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
-						<use xlink:href="#icon-shoucang-cu"></use>
-					</svg>
-				</a>
-
-
-			</div>
-
-			<div class="voting-wrapper display-none mobile-only">
-				<a class="fa-stack align-right" @click="$emit('upvote')"
-					data-toggle="tooltip" data-placement="top" title="Upvote">
-
-					<svg class="icon-inwehub v-icon" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
-					</svg>
-				</a>
-
-				<div class="detail">
-					{{ points }}
-				</div>
-
-				<a class="fa-stack align-right" @click="$emit('downvote')"
-					data-toggle="tooltip" data-placement="top" title="Downvote">
-
-					<svg class="icon-inwehub v-icon rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
-						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
-					</svg>
-				</a>
-
-				<div class="ui icon top right pointing dropdown" v-if="!isGuest">
-					<i class="v-icon v-more" aria-hidden="true"></i>
 
 					<div class="menu menu-inwehub-menu">
 						<button class="item" @click="$emit('report')" v-if="!owns">
 							举报
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('recommend')" v-if="auth.isAdmin">
 							推荐到APP
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('hide')" v-if="!owns">
 							隐藏
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('nsfw')" v-if="showNSFW && false">
 							NSFW
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('sfw')" v-if="showSFW && false">
 							Family Safe
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('destroy')" v-if="owns">
 							删除
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('approve')" v-if="showApprove">
 							审核通过
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('disapprove')" v-if="showDisapprove">
 							删除
-						</button>
+                        </button>
 
 						<button class="item" @click="$emit('removethumbnail')" v-if="showRemoveTumbnail && false">
 							移除图片
-						</button>
+                        </button>
 					</div>
 				</div>
 			</div>
+
+			<div class="h5-active-item">
+				<a @click="$emit('bookmark')"
+				   data-toggle="tooltip" data-placement="top" title="Bookmark">
+
+					<svg class="icon-inwehub v-icon shoucang" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
+						<use xlink:href="#icon-shoucangxingxing"></use>
+					</svg>
+				</a>
+			</div>
+
+				<div class="h5-active-item">
+					<router-link :to="url" class="comments-icon h-green"
+								 data-toggle="tooltip" data-placement="top" title="Comments">
+
+						<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
+							<use xlink:href="#icon-pinglun1"></use>
+						</svg>
+
+						<span class="commentNum" v-if="comments" v-text="comments"></span>
+					</router-link>
+				</div>
+
+
+
+				<div class="h5-active-item">
+					<a class="fa-stack align-right" @click="$emit('upvote')"
+					   data-toggle="tooltip" data-placement="top" title="Upvote">
+
+						<svg class="icon-inwehub v-icon icon-dianzan1" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+						</svg>
+					</a>
+
+						<div class="detail">
+							{{ points }}
+					</div>
+
+					<a class="fa-stack align-right" @click="$emit('downvote')"
+					   data-toggle="tooltip" data-placement="top" title="Downvote">
+
+						<svg class="icon-inwehub v-icon rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+						</svg>
+					</a>
+				</div>
+
+
+			<!--</div>-->
 		</div>
 
 		<span class="desktop-only">

@@ -30,6 +30,14 @@
 						<use xlink:href="#icon-shuaxin"></use>
 					</svg>
 				</div>
+
+				<div class="menu-item">
+					<svg class="icon-inwehub" aria-hidden="true" @click="changeRoute('notifications')">
+						<use xlink:href="#icon-xiaoxi1"></use>
+					</svg>
+					<span class="notification-number" v-show="getUnreadNotifications()" v-text="getUnreadNotifications()"></span>
+				</div>
+
 				<router-link tag="div" :to="{ path: '/submit' }" class="menu-item">
 					<svg class="icon-inwehub modify" aria-hidden="true">
 						<use xlink:href="#icon-xiugai"></use>
@@ -92,6 +100,12 @@
         },
 
         methods: {
+            getUnreadNotifications(){
+                this.$eventHub.$emit('getUnreadNotifications')
+			},
+            changeRoute: function(newRoute) {
+                this.$eventHub.$emit('new-route', newRoute)
+            },
         	/**
         	 * changes the filter for home feed
         	 *
