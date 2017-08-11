@@ -204,4 +204,28 @@
       z-index: 7777;
     }
   }
+
+  .profile-avatar img{
+    width:69px;
+    height:69px;
+  }
+
+  .category-header-left{
+    -ms-flex-preferred-size: 73px;
+    flex-basis: 73px;
+  }
+
+  .category-header-middle{
+    padding-left:0;
+  }
+
+  .profile-cover .container{
+    padding-top:10px !important;
+  }
+  .category-header-right{
+    margin-top:1em !important;
+  }
+  .profile-cover{
+    min-height: 0 !important;
+  }
 }

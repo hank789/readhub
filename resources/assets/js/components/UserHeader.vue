@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-bind:style="{ background: coverBackground }" class="profile-cover">
-		    <div class="container padding-top-3 user-select full-width">
+		    <div class="container user-select full-width">
 		        <div class="cols-flex">
 		            <div class="category-header-left">
 		               	<!-- avatar -->
