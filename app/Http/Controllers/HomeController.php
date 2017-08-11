@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ForceRefreshData;
 use App\Submission;
 use App\Traits\CachableCategory;
 use App\Traits\CachableSubmission;
@@ -57,6 +58,7 @@ class HomeController extends Controller
 
             return view('home', compact('submissions'));
         }
+        event(new ForceRefreshData());
         return view('welcome');
     }
 
