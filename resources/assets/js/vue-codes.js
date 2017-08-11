@@ -577,7 +577,6 @@ const app = new Vue({
         },
 
         isWechat(){
-            console.log(navigator.userAgent);
             var wechat = navigator.userAgent.match(/(MicroMessenger)\/([\d\.]+)/i);
             if (wechat) {
                 return true;
