@@ -20,7 +20,7 @@
 						<router-link tag="div" :to="{ path: '/bookmarks/submissions' }" class="item">
 							我的收藏
 						</router-link>
-						<router-link tag="div" :to="'/' + '@' + auth.username" class="item">
+						<router-link tag="div" :to="'/' + '@' + auth.id" class="item">
 							我的发布
 						</router-link>
 					</div>

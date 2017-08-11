@@ -2,7 +2,7 @@
     <section class="banned-user-wrapper">
         <div class="banned-user">
             <div class="left">
-                <router-link :to="'/@' + list.user.username">
+                <router-link :to="'/@' + list.user.id">
                     <img :src="list.user.avatar" :alt="list.user.username">
                     {{ list.user.username }}
                 </router-link>

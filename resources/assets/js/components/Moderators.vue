@@ -9,11 +9,11 @@
                 <loading v-show="loading"></loading>
 
                 <div class="small-modal-user" v-for="user in list">
-                    <router-link :to="'/@' + user.username">
+                    <router-link :to="'/@' + user.id">
                         <img :src="user.avatar" :alt="user.username">
                     </router-link>
 
-                    <router-link :to="'/@' + user.username">
+                    <router-link :to="'/@' + user.id">
                         {{ '@' + user.username }}
                     </router-link>
                 </div>

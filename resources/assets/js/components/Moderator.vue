@@ -2,7 +2,7 @@
     <section class="banned-user-wrapper">
         <div class="banned-user">
             <div class="left">
-                <router-link :to="'/@' + list.username">
+                <router-link :to="'/@' + list.id">
                     <img :src="list.avatar" :alt="list.username">
                     {{ list.username }}
                 </router-link>
@@ -49,7 +49,7 @@
         methods: {
             destroy(){
                 axios.post('/destroy-moderator', {
-                    username: this.list.username,
+                    username: this.list.id,
                     category_name: this.$route.params.name
                 }).then((response) => {
                     this.$emit('delete-moderator')

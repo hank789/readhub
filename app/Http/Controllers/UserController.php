@@ -29,11 +29,11 @@ class UserController extends Controller
             return view('welcome');
         }
 
-        $user = User::withTrashed()->where('username', $username)->firstOrFail();
+        $user = User::withTrashed()->where('id', $username)->firstOrFail();
 
         $user->stats = $this->userStats($user->id);
 
-        $submissions = User::where('username', $username)
+        $submissions = User::where('id', $username)
                     ->firstOrFail()
                     ->submissions()
                     ->withTrashed()
@@ -54,11 +54,11 @@ class UserController extends Controller
             return view('welcome');
         }
 
-        $user = User::withTrashed()->where('username', $username)->firstOrFail();
+        $user = User::withTrashed()->where('id', $username)->firstOrFail();
 
         $user->stats = $this->userStats($user->id);
 
-        $comments = $this->withoutChildren(User::where('username', $username)
+        $comments = $this->withoutChildren(User::where('id', $username)
                     ->firstOrFail()
                     ->comments()
                     ->withTrashed()
@@ -81,7 +81,7 @@ class UserController extends Controller
             'username' => 'required',
         ]);
 
-        return User::where('username', $request->username)
+        return User::where('id', $request->username)
                     ->firstOrFail()
                     ->submissions()
                     ->withTrashed()
@@ -126,7 +126,7 @@ class UserController extends Controller
             'username' => 'required',
         ]);
 
-        return $this->withoutChildren(User::where('username', $request->username)
+        return $this->withoutChildren(User::where('id', $request->username)
                     ->firstOrFail()
                     ->comments()
                     ->withTrashed()
@@ -147,7 +147,7 @@ class UserController extends Controller
             'username' => 'required|max:25',
         ]);
 
-        $user = User::withTrashed()->where('username', $request->username)->firstOrFail();
+        $user = User::withTrashed()->where('id', $request->username)->firstOrFail();
 
         $user->stats = $this->userStats($user->id);
 

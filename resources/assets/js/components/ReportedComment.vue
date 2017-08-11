@@ -15,7 +15,7 @@
         </div>
 
         <small>
-            <router-link :to="'/@' + list.reporter.username">
+            <router-link :to="'/@' + list.reporter.id">
                 {{ date }}
             </router-link>
         </small>

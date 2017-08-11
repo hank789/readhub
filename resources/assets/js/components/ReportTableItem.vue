@@ -28,7 +28,7 @@
 			      		<a v-bind:href="'/s/' + item.submission.slug"><b>{{ item.submission.title }}</b></a> -
 			      		<span class="go-gray">
 			      			reported by
-			      			<a v-bind:href="'/@' + item.reporter.username" class="go-gray">{{ item.reporter.username }}</a>
+			      			<a v-bind:href="'/@' + item.reporter.id" class="go-gray">{{ item.reporter.username }}</a>
 			      		</span>
 			      	</td>
 

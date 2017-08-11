@@ -19,7 +19,7 @@
 		                    </div>
 
 		                    <div class="profile-avatar" v-else>
-	    						<router-link :to="'/@' + userStore.username">
+	    						<router-link :to="'/@' + userStore.id">
 		                        	<img v-bind:src="userStore.avatar" v-bind:alt="userStore.name" class="circle" />
 		                        </router-link>
 		                    </div>
@@ -31,7 +31,7 @@
 						    {{ userStore.name }}
 						</h1>
 
-	    				<router-link :to="'/@' + userStore.username">
+	    				<router-link :to="'/@' + userStore.id">
 		                    <h2>
 		                        <i v-if="false" class="v-icon v-atsign" aria-hidden="true"></i>{{ userStore.username }}
 		                    </h2>
@@ -117,12 +117,12 @@
 
 		        <div class="channel-admin-btn">
 		        	<i class="v-icon h-yellow pointer" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'"
-		        	@click="bookmark" v-if="$route.params.username != auth.username"
+		        	@click="bookmark" v-if="$route.params.username != auth.id"
 	        		data-toggle="tooltip" data-placement="bottom" title="Bookmark"></i>
 
-		            <message-button :id="userStore.id" v-if="$route.params.username != auth.username && !isGuest && false"></message-button>
+		            <message-button :id="userStore.id" v-if="$route.params.username != auth.id && !isGuest && false"></message-button>
 
-					<router-link class="v-button" :to="{ name: 'user-settings-profile' }" v-if="false" v-show="$route.params.username == auth.username">
+					<router-link v-if="false" class="v-button" :to="{ name: 'user-settings-profile' }"  v-show="$route.params.username == auth.id">
 						编辑个人信息
 					</router-link>
 		        </div>
@@ -232,12 +232,12 @@ export default {
     computed: {
     	isAuth ()
     	{
-    		return auth.username == this.$route.params.username
+    		return auth.id == this.$route.params.username
 		},
 
     	userStore ()
     	{
-    		if ( auth.username == this.$route.params.username ) {
+    		if ( auth.id == this.$route.params.username ) {
     			return auth
     		}
 

@@ -41,7 +41,7 @@
 	    </div>
 
 	    <div class="v-modal-title user-select flex-align-center" v-show="pageRoute == 'chat'">
-	        <router-link :to="'/@' + currentContact.username">
+	        <router-link :to="'/@' + currentContact.id">
 		        <h1 class="title desktop-only">
 		        	<img v-bind:src="currentContact.avatar">
 		            @{{ currentContact.username }}
