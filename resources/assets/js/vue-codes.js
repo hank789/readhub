@@ -98,7 +98,8 @@ const app = new Vue({
         sidebar: true,
         sortFilter: 'hot',
         pageTitle: document.title,
-        scrolledBusy: false
+        scrolledBusy: false,
+        title:'发现',
     },
 
     computed: {
@@ -160,7 +161,8 @@ const app = new Vue({
         this.$eventHub.$on('push-notification', this.pushNotification)
         this.$eventHub.$on('crop-category-photo', this.cropCategoryModal);
         this.$eventHub.$on('refreshBasicStore', this.fillBasicStore);
-
+        this.$eventHub.$on('updateTitle', this.updateTitle);
+        this.$eventHub.$on('getUnreadNotifications', this.getUnreadNotifications);
     },
 
     mounted() {
@@ -172,6 +174,9 @@ const app = new Vue({
     },
 
     methods: {
+        getUnreadNotifications(){
+            return this.getUnreadNotifications;
+        },
         openMarkdownGuide() {
             this.changeModalRoute('markdown-guide')
         },
@@ -498,6 +503,9 @@ const app = new Vue({
             }
 
             document.title = this.pageTitle
+        },
+        updateTitle(title){
+          this.title = title;
         },
 
         /**

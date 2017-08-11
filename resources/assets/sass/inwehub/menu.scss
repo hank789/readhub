@@ -26,8 +26,10 @@
     text-align: left;
 
     .menu-item{
-      position: relative;
+
       margin-right:30px;
+
+
 
       &.active:after{
         position: absolute;
@@ -42,9 +44,18 @@
   }
 
   .menu-item{
+    position: relative;
     display: inline-block;
 
-
+    .notification-number{
+      width: 6px;
+      height: 6px;
+      position: absolute;
+      background: #fa4975;
+      border-radius: 3px;
+      right: -5px;
+      top: 12px;
+    }
   }
 
   .right{
@@ -72,10 +83,13 @@
       padding:7px 0;
 
       .item{
+        position: relative;
         color:#ffffff;
         font-size:14px;
         font-weight:normal;
         padding:0.4rem 1.8rem !important;
+
+
       }
 
 
