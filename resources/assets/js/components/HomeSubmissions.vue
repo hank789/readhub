@@ -116,6 +116,8 @@
                         this.$eventHub.$emit('refreshBasicStore')
                     }).listen('SubmissionWasBookmarked', event => {
                     this.$eventHub.$emit('refreshBasicStore')
+                }).listen('ForceRefreshData', event => {
+                    this.$eventHub.$emit('refreshBasicStore')
                 });
             },
 
