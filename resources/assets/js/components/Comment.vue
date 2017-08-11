@@ -5,13 +5,21 @@
         >
             <div class="content">
                 <div class="v-comment-info">
-                    <router-link :to="'/' + '@' + list.owner.username" class="avatar user-select">
+                    <router-link v-if="false" :to="'/' + '@' + list.owner.username" class="avatar user-select">
                         <img v-bind:src="list.owner.avatar">
                     </router-link>
 
-                    <router-link :to="'/' + '@' + list.owner.username" class="author user-select">
-                        @{{ list.owner.username }}
+                    <router-link v-if="false" :to="'/' + '@' + list.owner.username" class="author user-select">
+                        {{ list.owner.username }}
                     </router-link>
+
+                    <a href="javascript:void(0);" class="avatar user-select">
+                        <img v-bind:src="list.owner.avatar">
+                    </a>
+
+                    <a href="javascript:void(0);" class="author user-select">
+                        {{ list.owner.username }}
+                    </a>
 
                     <div class="metadata user-select">
                         <router-link class="go-gray h-underline" v-if="!full"

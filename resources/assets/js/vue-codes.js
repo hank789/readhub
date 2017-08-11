@@ -210,7 +210,12 @@ const app = new Vue({
         scrolledToBottom() {
             this.scrolledBusy = true;
             this.$eventHub.$emit('scrolled-to-bottom');
-            this.$eventHub.$emit('scrolled-a-lot');
+            var appContent = document.querySelector('#v-content');
+            if (appContent.scrollTop < 700) {
+                this.$eventHub.$emit('scrolled-a-bit');
+            } else {
+                this.$eventHub.$emit('scrolled-a-lot');
+            }
             this.scrolledBusy = false;
         },
 
