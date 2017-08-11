@@ -43,7 +43,7 @@ export default {
 
     computed: {
     	loaded () {
-    		return Store.user.username == this.$route.params.username
+    		return Store.user.id == this.$route.params.username
     	}
     }
 }

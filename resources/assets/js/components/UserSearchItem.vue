@@ -1,6 +1,6 @@
 <template>
 	<li class="go-black">
-	    <router-link :to="'/@' + list.username">
+	    <router-link :to="'/@' + list.id">
 	    	<div class="user-search-item-avatar">
 		        <img v-bind:src="list.avatar" v-bind:alt="list.username" />
 		    </div>

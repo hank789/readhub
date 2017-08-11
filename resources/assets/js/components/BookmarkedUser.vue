@@ -2,14 +2,14 @@
 	<transition name="fade">
 		<section class="bookmarked-item user-select" v-show="visible">
 		<div class="avatar">
-			<router-link :to="'/@' + list.username">
+			<router-link :to="'/@' + list.id">
 				<img :src="list.avatar" :alt="list.username">
 			</router-link>
 		</div>
 
 		<div class="flex1">
 			<h2>
-				<router-link :to="'/@' + list.username">
+				<router-link :to="'/@' + list.id">
 					<i class="v-icon v-atsign" aria-hidden="true"></i>{{ list.username }}
 				</router-link>
 

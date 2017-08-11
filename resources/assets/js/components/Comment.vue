@@ -5,11 +5,11 @@
         >
             <div class="content">
                 <div class="v-comment-info">
-                    <router-link v-if="false" :to="'/' + '@' + list.owner.username" class="avatar user-select">
+                    <router-link v-if="false" :to="'/' + '@' + list.owner.id" class="avatar user-select">
                         <img v-bind:src="list.owner.avatar">
                     </router-link>
 
-                    <router-link v-if="false" :to="'/' + '@' + list.owner.username" class="author user-select">
+                    <router-link v-if="false" :to="'/' + '@' + list.owner.id" class="author user-select">
                         {{ list.owner.username }}
                     </router-link>
 

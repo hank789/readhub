@@ -13,13 +13,13 @@
 				<tbody>
 					<tr v-for="user in users">
 						<td>
-							<router-link :to="'/@' + user.username">
+							<router-link :to="'/@' + user.id">
 								<img :src="user.avatar" :alt="user.name">
 							</router-link>
 						</td>
 
 						<td>
-							<router-link :to="'/@' + user.username">
+							<router-link :to="'/@' + user.id">
 								{{ user.username }}
 							</router-link>
 						</td>

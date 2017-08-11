@@ -104,7 +104,7 @@
 
 		<span class="desktop-only">
 			 {{ date }}
-			<router-link v-if="false" :to="'/' + '@' + submission.owner.username" class="h-underline desktop-only">
+			<router-link v-if="false" :to="'/' + '@' + submission.owner.id" class="h-underline desktop-only">
 				{{ '@' + submission.owner.username }}
 			</router-link>
 			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>

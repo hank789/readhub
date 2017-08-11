@@ -1,14 +1,14 @@
 <template>
     <div class="side-fixed"  id="v-sidebar">
         <div class="sidebar-avatar align-center">
-    		<router-link :to="'/' + '@' + auth.username">
+    		<router-link :to="'/' + '@' + auth.id">
                 <img v-bind:src="auth.avatar" alt="我的阅读"/>
             </router-link>
         </div>
 
         <div class="profile-card">
             <div class="profile-card-name">
-    			<router-link :to="'/' + '@' + auth.username">
+    			<router-link :to="'/' + '@' + auth.id">
             		{{ '@' + auth.username}}
         		</router-link>
     		</div>
@@ -24,7 +24,7 @@
                 ></i>
             </router-link>
 
-            <router-link :to="{ path: '/@' + auth.username + '/settings' }">
+            <router-link :to="{ path: '/@' + auth.id + '/settings' }">
 			    <i class="v-icon v-tools" aria-hidden="true"
 			        data-toggle="tooltip" data-placement="bottom" title="Settings"
 			    ></i>

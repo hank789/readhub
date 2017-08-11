@@ -6,12 +6,12 @@
 				<div class="submission-header user-select">
 					<div class="submission-header-container">
 						<div class="submission-submitter-wrapper">
-							<router-link :to="'/' + '@' + list.owner.username" class="desktop-only">
+							<router-link :to="'/' + '@' + list.owner.id" class="desktop-only">
 								<img v-bind:src="list.owner.avatar"  v-bind:alt="list.owner.username" class="submission-avatar">
 							</router-link>
 
 							<div class="submission-submitter">
-								<router-link v-if="false" :to="'/' + '@' + list.owner.username" class="username">
+								<router-link v-if="false" :to="'/' + '@' + list.owner.id" class="username">
 									{{ list.owner.username }}
 								</router-link>
 								<span class="username">{{ list.owner.username }}</span>

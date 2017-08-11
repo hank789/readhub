@@ -47,7 +47,7 @@ Vue.prototype.$eventHub = new Vue();
  */
 import VueLocalStorage from 'vue-ls';
 const localStorageConfig = {
-    namespace: auth.username + '__voten__'
+    namespace: auth.username + auth.id + '__voten__'
 };
 Vue.use(VueLocalStorage, localStorageConfig);
 
@@ -256,6 +256,7 @@ const app = new Vue({
 
                 if (Store.user.id == auth.id) {
                 	auth.stats = Store.user.stats
+                    auth.avatar = Store.user.avatar
                 }
             }).catch((error) => {
                 if (error.response.status === 404) {
@@ -652,7 +653,7 @@ const app = new Vue({
     	        case 80: // "p"
                     if (this.isGuest) break
 
-			        this.$router.push('/@' + this.auth.username)
+			        this.$router.push('/@' + this.auth.id)
 			        break
     	        case 82: // "r"
                     if (this.$route.name === 'home'){

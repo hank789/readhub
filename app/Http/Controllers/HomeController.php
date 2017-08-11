@@ -58,7 +58,6 @@ class HomeController extends Controller
 
             return view('home', compact('submissions'));
         }
-        event(new ForceRefreshData());
         return view('welcome');
     }
 

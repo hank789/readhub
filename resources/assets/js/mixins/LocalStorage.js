@@ -12,7 +12,7 @@ export default {
          * @return void
          */
         putLS(key, value) {
-            localStorage.setItem(auth.username + ":"+ key, JSON.stringify(value));
+            localStorage.setItem(auth.id + ":"+ key, JSON.stringify(value));
         },
 
 
@@ -23,7 +23,7 @@ export default {
          * @return object
          */
         getLS(key) {
-            let result = JSON.parse(localStorage.getItem(auth.username + ":" + key));
+            let result = JSON.parse(localStorage.getItem(auth.id + ":" + key));
 
             if (result === null) {
             	return []
@@ -40,7 +40,7 @@ export default {
          * @return boolean
          */
         isSetLS (key) {
-            let prefixedKey = auth.username + ":" + key
+            let prefixedKey = auth.id + ":" + key
 
             if (prefixedKey in localStorage) {
                 return true
@@ -51,7 +51,7 @@ export default {
 
 
         forgetLS(key){
-            let prefixedKey = auth.username + ":" + key
+            let prefixedKey = auth.id + ":" + key
 
             localStorage.removeItem(prefixedKey);
         },
@@ -69,7 +69,7 @@ export default {
          * @return void
          */
         putSS(key, value) {
-            sessionStorage.setItem(auth.username + ":" + key, JSON.stringify(value));
+            sessionStorage.setItem(auth.id + ":" + key, JSON.stringify(value));
         },
 
 
@@ -80,7 +80,7 @@ export default {
          * @return object
          */
         getSS(key) {
-            let result = JSON.parse(sessionStorage.getItem(auth.username + ":" + key));
+            let result = JSON.parse(sessionStorage.getItem(auth.id + ":" + key));
 
             if (result === null) {
             	return []
@@ -97,7 +97,7 @@ export default {
          * @return boolean
          */
         isSetSS (key) {
-            let prefixedKey = auth.username + ":" + key
+            let prefixedKey = auth.id + ":" + key
 
             if (prefixedKey in sessionStorage) {
                 return true
@@ -107,7 +107,7 @@ export default {
         },
 
         forgetSS(key){
-            let prefixedKey = auth.username + ":" + key
+            let prefixedKey = auth.id + ":" + key
 
             sessionStorage.removeItem(prefixedKey);
         }
