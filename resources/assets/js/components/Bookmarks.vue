@@ -20,7 +20,7 @@
 					</a>
 				</router-link>
 
-				<router-link tag="li" active-class="is-active" :to="{name: 'bookmarked-users'}">
+				<router-link v-if="false" tag="li" active-class="is-active" :to="{name: 'bookmarked-users'}">
 					<a>
 						用户
 					</a>

@@ -11,9 +11,10 @@
 							</router-link>
 
 							<div class="submission-submitter">
-								<router-link :to="'/' + '@' + list.owner.username" class="username">
-									@{{ list.owner.username }}
+								<router-link v-if="false" :to="'/' + '@' + list.owner.username" class="username">
+									{{ list.owner.username }}
 								</router-link>
+								<span class="username">{{ list.owner.username }}</span>
 
 								<span class="date">
 									{{ date }}
