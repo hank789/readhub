@@ -99,10 +99,27 @@ const app = new Vue({
         sortFilter: 'hot',
         pageTitle: document.title,
         scrolledBusy: false,
-        title:'发现',
+
     },
 
     computed: {
+        title(){
+            if (/@/.test(this.$route.path)) {
+                return '我的发布';
+            }
+
+            switch(this.$route.path) {
+                case '/bookmarks/submissions':
+                    return '我的收藏';
+                    break;
+                case '/submit':
+                    return '发布';
+                    break;
+                default:
+                    return '发现';
+            }
+
+        },
         smallModal() {
             return !(this.modalRouter == '')
         },
