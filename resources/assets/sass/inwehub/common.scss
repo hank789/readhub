@@ -117,3 +117,46 @@
     left:35% !important;
   }
 }
+
+
+.v-content-wrapper-h5{
+  .tabs ul{
+    margin:0 !important;
+    background: #f3f4f6;
+    border:none;
+  }
+
+  .tabs li.is-active a{
+    border:none;
+    position: relative;
+    &:after{
+      position: absolute;
+      bottom: 1px;
+      width:26px;
+      left: 50%;
+      margin-left:-13px;
+      height: 2px;
+      content: '';
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      background-color: #03aef9;
+      z-index: 7777;
+    }
+  }
+
+  .tabs li a{
+    color:#444 !important;
+    font-weight: normal !important;
+    font-size:14px !important;
+
+  }
+
+  .tabs li.is-active a{
+    color:#03aef9 !important;
+  }
+
+  .tabs a{
+    border:none;
+  }
+
+}
