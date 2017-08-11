@@ -1,5 +1,5 @@
 <header class="header-inwehub">
-	<vui-back-button></vui-back-button>
+	<vui-back-button v-if="$route.path !== '/h5'"></vui-back-button>
 	<div class="title">发现</div>
 	<div class="flex-display">
 		<div class="dropdown head-notification-icons">
