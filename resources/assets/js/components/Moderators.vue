@@ -9,13 +9,13 @@
                 <loading v-show="loading"></loading>
 
                 <div class="small-modal-user" v-for="user in list">
-                    <router-link :to="'/@' + user.id">
+                    <span>
                         <img :src="user.avatar" :alt="user.username">
-                    </router-link>
+                    </span>
 
-                    <router-link :to="'/@' + user.id">
-                        {{ '@' + user.username }}
-                    </router-link>
+                    <span>
+                        {{ user.username }}
+                    </span>
                 </div>
 
                 <button type="button" class="v-button v-button--green v-button--block"
