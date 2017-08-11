@@ -187,3 +187,15 @@ if (!function_exists('rssForHumans')) {
         }
     }
 }
+if (!function_exists('getUrlTitle')) {
+    function getUrlTitle($url) {
+        $f = file_get_contents($url);
+        preg_match('/<title>(?<title>.*?)<\/title>/si', $f, $title);
+        $encode = mb_detect_encoding($title['title'], array('GB2312','GBK','UTF-8', 'CP936')); //得到字符串编码
+        $file_charset = iconv_get_encoding()['internal_encoding']; //当前文件编码
+        if ( $encode != 'CP936' && $encode != $file_charset) {
+            return iconv($encode, $file_charset, $title['title']);
+        }
+        return $title['title'];
+    }
+}

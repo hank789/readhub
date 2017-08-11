@@ -182,10 +182,11 @@ trait Submit
      */
     protected function getTitle($url)
     {
-        $apiURL = 'https://midd.voten.co/embed/title?url='.$url;
+        //$apiURL = 'https://midd.voten.co/embed/title?url='.$url;
 
         try {
-            $title = file_get_contents($apiURL);
+            //$title = file_get_contents($apiURL);
+            $title = getUrlTitle($url);
         } catch (\Exception $exception) {
             return response('Invalid URL', 500);
         }
