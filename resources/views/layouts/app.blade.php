@@ -41,7 +41,7 @@
         @include('app-header')
     @endif
 
-    <div class="v-content-wrapper">
+    <div class="v-content-wrapper @if (session('is_h5')) v-content-wrapper-h5  @endif">
 		<div class="v-side {{ settings('sidebar_color') }}" v-show="sidebar">
 		    <sidebar></sidebar>
 		</div>
