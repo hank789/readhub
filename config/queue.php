@@ -60,7 +60,7 @@ return [
         'redis' => [
             'driver'      => 'redis',
             'connection'  => 'default',
-            'queue'       => 'voten:default',
+            'queue'       => 'readhub:default',
             'retry_after' => 90,
         ],
 
