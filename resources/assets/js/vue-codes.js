@@ -274,6 +274,7 @@ const app = new Vue({
                 if (Store.user.id == auth.id) {
                 	auth.stats = Store.user.stats
                     auth.avatar = Store.user.avatar
+                    auth.username = Store.user.username
                 }
             }).catch((error) => {
                 if (error.response.status === 404) {
