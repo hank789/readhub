@@ -25,10 +25,8 @@ Route::group(['middleware' => ['maintenance', 'http2']], function () {
     Route::get('/@{username}/comments', 'UserController@showComments');
 
     // social logins
-    //Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
-    //Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebook');
-    //Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
-    //Route::get('/login/facebook/callback', 'Auth\LoginController@handleFacebookCallback');
+    Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
+    Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
 });
 
 // backend-admin
