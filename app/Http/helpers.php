@@ -201,7 +201,7 @@ if (!function_exists('getUrlTitle')) {
 }
 
 if (!function_exists('slackNotification')) {
-    function slackNotification($author_name, $title, array $fields = null, $url ='', $color = 'good'){
+    function slackNotification($author_name, $subject, $title, array $fields = null, $url ='', $color = 'good'){
         $url = $url?:config('app.url');
         return \Slack::to(config('slack.activity_channel'))
             ->disableMarkdown()
@@ -215,6 +215,6 @@ if (!function_exists('slackNotification')) {
                     'color'     => $color,
                     'fields' => $fields
                 ]
-            )->send($title);
+            )->send($subject);
     }
 }

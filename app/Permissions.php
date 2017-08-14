@@ -90,9 +90,9 @@ trait Permissions
      *
      * @return bool
      */
-    protected function mustBeOwner($model)
+    protected function mustBeOwner($model, $current_user = null)
     {
-        return $model->ownedBy(Auth::user());
+        return $model->ownedBy($current_user?:Auth::user());
     }
 
     /**

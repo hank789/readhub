@@ -6,10 +6,18 @@ use App\Events\SubmissionWasCreated;
 use App\Traits\CachableCategory;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewSubmission
+class NewSubmission implements ShouldQueue
 {
     use CachableUser, CachableSubmission, CachableCategory;
+
+    /**
+     * 任务最大尝试次数
+     *
+     * @var int
+     */
+    public $tries = 1;
 
     /**
      * Create the event listener.
@@ -43,6 +51,6 @@ class NewSubmission
                 ];
             }
         }
-        slackNotification($event->submission->owner->username,'新文章提交:'.$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_name.'/'.$event->submission->slug);
+        slackNotification($event->submission->owner->username,'新文章提交',$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_name.'/'.$event->submission->slug);
     }
 }
