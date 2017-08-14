@@ -136,7 +136,7 @@ class CommentController extends Controller
 
         // make sure the body has changed
         if ($request->body == $comment->body) {
-            return response('Comment has not been really edited.', 422);
+            return response('回复内容未有变更', 422);
         }
 
         $comment->update([
@@ -146,7 +146,7 @@ class CommentController extends Controller
 
         event(new CommentWasPatched($comment, $comment->submission));
 
-        return response('comment edited successfully', 200);
+        return response('回复修改成功', 200);
     }
 
     /**
@@ -170,6 +170,6 @@ class CommentController extends Controller
 
         $comment->forceDelete();
 
-        return response('Successfully deleted', 200);
+        return response('删除成功', 200);
     }
 }
