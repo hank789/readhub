@@ -1,7 +1,7 @@
 <template>
 	<div class="category-header-mobile" v-bind:style="{ background: coverBackground }">
 		<router-link :to="'/c/' + Store.category.name">
-			<img :src="Store.category.avatar" :alt="Store.category.name">
+			<img v-if="false" :src="Store.category.avatar" :alt="Store.category.name">
 
 			<h2>
 				{{ Store.category.name }}
