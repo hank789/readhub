@@ -221,6 +221,7 @@
 
   .profile-cover .container{
     padding-top:10px !important;
+    padding-bottom:10px !important;
   }
   .category-header-right{
     margin-top:1em !important;
@@ -271,9 +272,11 @@
   }
 
   .statistics-inwehub{
-    border:1px solid #dcdcdc;
+    position: relative;
     transform: scale(0.5);
-    margin:0 -30px;
+    margin:-12px -105px;
+    text-align: left;
+
 
     span{
       display: inline-block;
@@ -287,18 +290,40 @@
     .title{
       background:#ececee;
       color:#808080;
-      text-align: left;
+      text-align: center;
+      width:100px;
+      height:60px;
+      line-height: 60px;
+      border-radius:8px 0 0 8px;
     }
 
-    .split{
-      width:3px;
-      height:23px;
-      background: #dcdcdc;
+    .content{
+      position: absolute;
+      height:60px;
+      left:100px;
+      right:0;
+      display: inline-block;
+      border:1px solid #dcdcdc;
+      border-radius: 0 8px 8px 0;
+      border-left:0;
+      line-height: 60px;
+      color:#fff;
+
+      .split{
+        width:1px;
+        height:23px;
+        background: #dcdcdc;
+      }
+
+      .two{
+        width:45%;
+        text-align: center;
+      }
+
+
     }
 
-    .two{
 
-    }
   }
 
   #new-submission{
@@ -307,5 +332,24 @@
 
   .detail{
     top:6px !important;
+  }
+
+  .category-header-middle h2{
+    font-size:16px !important;
+  }
+
+  .category-header-middle{
+    margin-bottom:6px;
+  }
+
+  .profile-cover{
+    padding-bottom:0 !important;
+  }
+
+  .profile-avatar img{
+    border:none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
   }
 }

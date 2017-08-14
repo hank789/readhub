@@ -27,66 +27,63 @@
 		            </div>
 
 		            <div class="category-header-middle">
-						<h1 v-if="false">
-						    {{ userStore.name }}
-						</h1>
+						<!--<h1 v-if="false">-->
+						    <!--{{ userStore.name }}-->
+						<!--</h1>-->
 
 	    				<router-link :to="'/@' + userStore.id">
 		                    <h2>
-		                        <i v-if="false" class="v-icon v-atsign" aria-hidden="true"></i>{{ userStore.username }}
+		                        {{ userStore.username }}
 		                    </h2>
 		                </router-link>
 
-		                <p v-text="userStore.bio"></p>
+		                <!--<p v-text="userStore.bio"></p>-->
 
-						<span class="inline-block">
-	                        <i class="v-icon v-submissions" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Submissions"></i>{{ userStore.stats.submissionsCount }}
-		                </span>
+						<!--<span class="inline-block">-->
+	                        <!--<i class="v-icon v-submissions" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Submissions"></i>{{ userStore.stats.submissionsCount }}-->
+		                <!--</span>-->
 
-						<span class="inline-block">
-	                        <i class="v-icon v-chat" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>{{ userStore.stats.commentsCount }}
-		                </span>
+						<!--<span class="inline-block">-->
+	                        <!--<i class="v-icon v-chat" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Comments"></i>{{ userStore.stats.commentsCount }}-->
+		                <!--</span>-->
 
-						<span v-if="false" class="inline-block">
-	                        <i class="v-icon v-calendar" aria-hidden="true"></i>加入日期: {{ date }}
-		                </span>
+						<!--<span v-if="false" class="inline-block">-->
+	                        <!--<i class="v-icon v-calendar" aria-hidden="true"></i>加入日期: {{ date }}-->
+		                <!--</span>-->
 
-		                <a v-bind:href="userStore.info.website" rel="nofollow" target="_blank" v-if="userStore.info.website" class="inline-block">
-		                	<i class="v-icon v-link" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Website"></i>{{ userStore.info.website }}
-		                </a>
+		                <!--<a v-bind:href="userStore.info.website" rel="nofollow" target="_blank" v-if="userStore.info.website" class="inline-block">-->
+		                	<!--<i class="v-icon v-link" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Website"></i>{{ userStore.info.website }}-->
+		                <!--</a>-->
 
-		                <span v-if="userStore.location" class="inline-block">
-	                        <i class="v-icon v-location" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Location"></i>{{ userStore.location }}
-		                </span>
+		                <!--<span v-if="userStore.location" class="inline-block">-->
+	                        <!--<i class="v-icon v-location" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Location"></i>{{ userStore.location }}-->
+		                <!--</span>-->
 
-						<span v-if="userStore.info.twitter " class="inline-block">
-							<a v-bind:href="'https://twitter.com/' + userStore.info.twitter" rel="nofollow" target="_blank">
-	                        	<i class="v-icon v-twitter" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i>{{ userStore.info.twitter }}
-							</a>
-		                </span>
+						<!--<span v-if="userStore.info.twitter " class="inline-block">-->
+							<!--<a v-bind:href="'https://twitter.com/' + userStore.info.twitter" rel="nofollow" target="_blank">-->
+	                        	<!--<i class="v-icon v-twitter" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Twitter"></i>{{ userStore.info.twitter }}-->
+							<!--</a>-->
+		                <!--</span>-->
 		            </div>
 
-					<div class="category-header-right">
-						<div class="karma">
-							<div class="karma-number">
-								{{ userStore.stats.submission_karma }}
-							</div>
-
-							<div class="karma-text">
-								文章影响力
-							</div>
-						</div>
-
-						<div class="karma">
-							<div class="karma-number">
-								{{ userStore.stats.comment_karma }}
-							</div>
-
-							<div class="karma-text">
-								评论影响力
-							</div>
+					<div class="statistics-inwehub">
+						<span class="title">文章</span>
+						<div class="content">
+							<span class="two">累计<b>{{ userStore.stats.submissionsCount }}</b>篇</span>
+							<span class="split"></span>
+							<span class="two">影响值<b>{{ userStore.stats.submission_karma }}</b></span>
 						</div>
 					</div>
+
+					<div class="statistics-inwehub">
+						<span class="title">评论</span>
+						<div class="content">
+							<span class="two">累计<b>{{ userStore.stats.commentsCount }}</b>条</span>
+							<span class="split"></span>
+							<span class="two">影响值<b>{{ userStore.stats.comment_karma }}</b></span>
+						</div>
+					</div>
+
 		        </div>
 		    </div>
 		</div>
