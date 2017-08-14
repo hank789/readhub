@@ -91,9 +91,11 @@ class SubmissionController extends Controller
             }
 
             //检查url是否重复
-            $exist_url = Redis::connection()->hget('voten:submission:url',$request->url);
-            if ($exist_url){
-                return response("您提交的网址已经存在，请换个网址。", 500);
+            $exist_submission_id = Redis::connection()->hget('voten:submission:url',$request->url);
+            if ($exist_submission_id){
+                $exist_submission = Submission::find($exist_submission_id);
+                $exist_submission_url = '/c/'.$exist_submission->category_name.'/'.$exist_submission->slug;
+                return response("您提交的网址已经存在，<a href='$exist_submission_url'>点击查看</a>", 500);
             }
             try {
                 //$data = $this->linkSubmission($request);
@@ -176,7 +178,9 @@ class SubmissionController extends Controller
                 'user_id'       => $user->id,
                 'data'          => $data,
             ]);
-
+            if ($request->type == 'link') {
+                Redis::connection()->hset('voten:submission:url',$request->url, $submission->id);
+            }
             event(new SubmissionWasCreated($submission));
         } catch (\Exception $exception) {
             app('sentry')->captureException($exception);
