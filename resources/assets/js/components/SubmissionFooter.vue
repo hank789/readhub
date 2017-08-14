@@ -77,7 +77,7 @@
 
 
 				<div class="h5-active-item">
-					<a class="fa-stack align-right" @click="$emit('upvote')"
+					<a class="align-right" @click="$emit('upvote')"
 					   data-toggle="tooltip" data-placement="top" title="Upvote">
 
 						<svg class="icon-inwehub v-icon icon-dianzan1" aria-hidden="true" :class="upvoted ? 'go-primary' : 'go-gray'">
@@ -89,7 +89,7 @@
 							{{ points }}
 					</div>
 
-					<a class="fa-stack align-right" @click="$emit('downvote')"
+					<a class="align-right" @click="$emit('downvote')"
 					   data-toggle="tooltip" data-placement="top" title="Downvote">
 
 						<svg class="icon-inwehub v-icon rotate-180" aria-hidden="true" :class="downvoted ? 'go-red' : 'go-gray'">
