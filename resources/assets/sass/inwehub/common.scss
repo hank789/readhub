@@ -114,7 +114,7 @@
   }
 
   .ui.pointing.dropdown > .menu:after{
-    left:35% !important;
+    left:20px !important;
   }
 }
 
@@ -303,5 +303,9 @@
 
   #new-submission{
     padding:1em !important;
+  }
+
+  .detail{
+    top:6px !important;
   }
 }
