@@ -39,7 +39,9 @@
             </div>
 
             <div class="no-subsciption" v-if="!Store.subscribedCategories.length && !Store.loading">
-            	<i class="v-icon v-sad" aria-hidden="true"></i>
+				<svg class="icon-inwehub v-icon" aria-hidden="true">
+					<use xlink:href="#icon-zanwushuju"></use>
+				</svg>
             	No channels to display
             </div>
 
