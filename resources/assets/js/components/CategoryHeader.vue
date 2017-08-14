@@ -92,7 +92,7 @@
 
 				<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" @click="bookmark"
 					 data-toggle="tooltip" data-placement="bottom" title="Bookmark" aria-hidden="true">
-					<use xlink:href="#icon-shoucang-cu"></use>
+					<use xlink:href="#icon-shoucangxingxing"></use>
 				</svg>
 
 				<div class="ui icon top right green pointing dropdown" data-toggle="tooltip" data-placement="bottom" title="More">
