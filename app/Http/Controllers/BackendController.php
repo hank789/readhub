@@ -12,6 +12,7 @@ use App\Notifications\BecameModerator;
 use App\Report;
 use App\Submission;
 use App\Traits\CachableCategory;
+use App\Traits\CachableUser;
 use App\Traits\EchoServer;
 use App\User;
 use App\UserForbiddenName;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Cache;
 
 class BackendController extends Controller
 {
-    use EchoServer, CachableCategory;
+    use EchoServer, CachableCategory, CachableUser;
 
     public function __construct()
     {
@@ -71,9 +72,9 @@ class BackendController extends Controller
                     $categories->withCount('submissions')->orderBy('submissions_count', 'desc');
                 } elseif ($request->sort_by == 'comments_count') {
                     $categories->withCount('comments')->orderBy('comments_count', 'desc');
-                } else {
-                    $categories->orderBy('id', 'desc');
                 }
+            } else {
+                $categories->orderBy('id', 'desc');
             }
 
             $categories = $categories->paginate(30);
@@ -116,6 +117,22 @@ class BackendController extends Controller
         }
 
         return view('backend.users', compact('users'));
+    }
+
+    /**
+     * Shows the user page.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showUser($user)
+    {
+        abort_unless($this->mustBeVotenAdministrator(), 403);
+
+        $user = User::where('username', $user)->firstOrFail();
+
+        $user->stats = $this->userStats($user->id);
+
+        return view('backend.user', compact('user'));
     }
 
     /**
