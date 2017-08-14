@@ -155,7 +155,6 @@ const app = new Vue({
             if (this.$route.query.sidebar == 1) {
                 this.sidebar = true
             }
-            console.log('hidewebiview');
             this.hideWebviewFooter();
         },
     },

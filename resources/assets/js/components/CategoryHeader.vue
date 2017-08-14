@@ -3,7 +3,7 @@
 	<div v-bind:style="{ background: coverBackground }" class="profile-cover">
 	    <div class="container padding-top-3 user-select full-width">
 	        <div class="cols-flex">
-	            <div class="category-header-left">
+	            <div v-if="false" class="category-header-left">
 	            	<!-- avatar -->
 		                <div class="profile-avatar avatar-preview" v-if="$route.name == 'category-settings'">
 		                    <button type="button">
@@ -90,7 +90,7 @@
 
 	        <div class="channel-admin-btn">
 
-				<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" @click="bookmark"
+				<svg v-if="false" class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" @click="bookmark"
 					 data-toggle="tooltip" data-placement="bottom" title="Bookmark" aria-hidden="true">
 					<use xlink:href="#icon-shoucangxingxing"></use>
 				</svg>

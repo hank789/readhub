@@ -7,7 +7,7 @@
                           v-on:keydown.enter="submit($event)" v-focus="focused" @focus="focused = true"
                 ></textarea>
 
-                <span class="send-button comment-emoji-button">
+                <span v-if="false" class="send-button comment-emoji-button">
                     <i class="v-icon v-smile h-yellow" aria-hidden="true" v-if="!loading" @click="toggleEmojiPicker"></i>
 
                     <emoji-picker v-if="emojiPicker" @emoji="emoji" v-on-clickaway="closeEmojiPicker"></emoji-picker>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="flex-space user-select" v-if="!isReply">
-	            <a class="comment-form-guide" @click="$eventHub.$emit('markdown-guide')">
+	            <a v-if="false" class="comment-form-guide" @click="$eventHub.$emit('markdown-guide')">
 	            	格式规范
 	            </a>
 

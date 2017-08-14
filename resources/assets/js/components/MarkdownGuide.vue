@@ -7,7 +7,7 @@
                 </h2>
 
                 <p class="user-select">
-                    请使用Markdown撰写内容：
+                    支持Markdown撰写内容：
                 </p>
 
                 <table class="table">
