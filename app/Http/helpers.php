@@ -215,6 +215,6 @@ if (!function_exists('slackNotification')) {
                     'color'     => $color,
                     'fields' => $fields
                 ]
-            );
+            )->send($title);
     }
 }
