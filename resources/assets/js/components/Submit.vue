@@ -7,8 +7,8 @@
                 爱分享是一种美德
             </h1>
 
-            <div class="v-status v-status--error" v-if="customError">
-                {{ customError }}
+            <div class="v-status v-status--error" v-if="customError" v-html="customError">
+
             </div>
 
             <form action="/submit" method="post">
