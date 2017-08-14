@@ -157,6 +157,7 @@
 
   .tabs a{
     border:none;
+    padding: 11px 12px;
   }
 
   a.nav-item{
@@ -390,5 +391,9 @@
   }
   .submission-header .date{
     color:#808080;
+  }
+
+  a.nav-item.is-tab:hover{
+     border:none !important;
   }
 }
