@@ -27,6 +27,8 @@ import Rules from './components/Rules.vue';
 import Helpers from './mixins/Helpers';
 import autosize from 'autosize';
 import router from './routes';
+import Webview from './mixins/Webview';
+
 
 
 /**
@@ -62,7 +64,7 @@ Vue.use(infiniteScroll);
 const app = new Vue({
     router,
 
-    mixins: [Helpers, LocalStorage, StoreStorage, WebNotification],
+    mixins: [Helpers, Webview, LocalStorage, StoreStorage, WebNotification],
 
     components: {
     	KeyboardShortcutsGuide,
@@ -108,12 +110,15 @@ const app = new Vue({
                 return '我的发布';
             }
 
-            switch(this.$route.path) {
-                case '/bookmarks/submissions':
+            switch(this.$route.name) {
+                case 'bookmarked-submissions':
                     return '我的收藏';
                     break;
-                case '/submit':
+                case 'user-submissions':
                     return '发布';
+                    break;
+                case 'submission-page':
+                    return '评论';
                     break;
                 default:
                     return '发现';
@@ -150,6 +155,8 @@ const app = new Vue({
             if (this.$route.query.sidebar == 1) {
                 this.sidebar = true
             }
+            console.log('hidewebiview');
+            this.hideWebviewFooter();
         },
     },
 

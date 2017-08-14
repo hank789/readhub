@@ -92,7 +92,37 @@ export default {
             } else {
                 window.open(url);
             }
-    	}
+    	},
+
+        hideWebviewFooter(){
+            var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+            if (isPlusReady){
+                var currentPath = this.$route.path;
+                var ws = plus.webview.currentWebview();
+                if (currentPath === '/h5') {
+                    if (ws) {
+                        ws.setStyle({
+                                popGesture: 'hide',
+                                top: '0px',
+                                dock: 'top',
+                                bottom: '75px',
+                                bounce:'none'
+                        });
+                    }
+                } else {
+                    if (ws) {
+                        ws.setStyle({
+                            popGesture: 'hide',
+                            top: '0px',
+                            dock: 'top',
+                            bottom: '0px',
+                            bounce:'none'
+                        }
+                    );
+                    }
+                }
+            }
+        }
 
     }
 };

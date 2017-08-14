@@ -30,11 +30,11 @@
                             //ws.parent().hide();
                         }
                     } else {
-                        this.$router.go(-1);
+                        this.$router.push('/h5');
                     }
 
                 } else {
-                    this.$router.go(-1);
+                    this.$router.push('/h5');
                 }
 	    	}
 	    }

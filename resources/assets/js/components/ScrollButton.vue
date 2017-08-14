@@ -23,13 +23,13 @@
 </style>
 
 <script>
+
     export default {
         data () {
             return {
                 showScrollButton: false
             }
         },
-
         created () {
             this.$eventHub.$on('scrolled-a-bit', this.hide);
             this.$eventHub.$on('scrolled-a-lot', this.show);
