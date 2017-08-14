@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use DB;
 use Embed\Embed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class SubmissionController extends Controller
 {
@@ -86,9 +87,14 @@ class SubmissionController extends Controller
 
             // check if it's in the blocked domains list
             if ($this->isDomainBlocked($request->url, $request->name)) {
-                return response("您提交的网站域名被该频道禁止了，请换个网址.", 500);
+                return response("您提交的网站域名被该频道禁止了，请换个网址。", 500);
             }
 
+            //检查url是否重复
+            $exist_url = Redis::connection()->hget('voten:submission:url',$request->url);
+            if ($exist_url){
+                return response("您提交的网址已经存在，请换个网址。", 500);
+            }
             try {
                 //$data = $this->linkSubmission($request);
                 $data = [
@@ -103,6 +109,7 @@ class SubmissionController extends Controller
                     'publishedTime' => null,
                     'domain'        => domain($request->url),
                 ];
+                Redis::connection()->hset('voten:submission:url',$request->url,1);
             } catch (\Exception $e) {
                 $data = [
                     'url'           => $request->url,
@@ -174,7 +181,7 @@ class SubmissionController extends Controller
         } catch (\Exception $exception) {
             app('sentry')->captureException($exception);
 
-            return response('Ooops, something went wrong', 500);
+            return response('系统繁忙，请稍后再试', 500);
         }
 
         // Update the submission_id field in photos (We just found access to the submission_id)
@@ -227,7 +234,7 @@ class SubmissionController extends Controller
         // update the cach record for hiddenSubmissions:
         $this->updateHiddenSubmissions($user->id, $request->submission_id);
 
-        return response('submission added to the hidden list', 200);
+        return response('文章已经进入到了您的隐藏列表', 200);
     }
 
     /**
