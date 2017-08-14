@@ -252,4 +252,17 @@
   .no-subsciption h1{
     font-size:14px;
   }
+
+  .ui.comments > div{
+    border-top:0 !important;
+    border-bottom:1px solid #dcdcdc;
+  }
+
+  section.container{
+   padding:0 !important;
+  }
+
+  section.margin-top-1{
+    margin-top:0 !important;
+  }
 }
