@@ -313,6 +313,8 @@
         width:1px;
         height:23px;
         background: #dcdcdc;
+        position: relative;
+        top: 2px;
       }
 
       .two{
@@ -356,5 +358,37 @@
   .voting-wrapper .detail{
     top:0 !important;
     left:0;
+  }
+
+  .box-typical .box-typical-header-sm{
+    font-weight:normal;
+    color:#444;
+  }
+
+  .submission-title{
+    font-weight:normal;
+    color:#444;
+
+  }
+
+  .col-full .link-list-info{
+    padding:0em 1em 1em !important;
+  }
+
+  .markdown{
+    color:#808080;
+  }
+
+  .ui.comments .comment .metadata{
+    color:#808080;
+  }
+  .ui.comments .comment .author{
+    color:#444;
+  }
+  .submission-header .username{
+    color:#444;
+  }
+  .submission-header .date{
+    color:#808080;
   }
 }
