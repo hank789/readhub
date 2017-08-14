@@ -199,3 +199,22 @@ if (!function_exists('getUrlTitle')) {
         return $title['title'];
     }
 }
+
+if (!function_exists('slackNotification')) {
+    function slackNotification($author_name, $title, array $fields = null, $url ='', $color = 'good'){
+        $url = $url?:config('app.url');
+        return \Slack::to(config('slack.activity_channel'))
+            ->disableMarkdown()
+            ->attach(
+                [
+                    'text' => $title,
+                    'pretext' => '[链接]('.$url.')',
+                    'author_name' => $author_name,
+                    'author_link' => $url,
+                    'mrkdwn_in' => ['pretext'],
+                    'color'     => $color,
+                    'fields' => $fields
+                ]
+            );
+    }
+}

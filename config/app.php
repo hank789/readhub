@@ -185,6 +185,7 @@ return [
         ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
         Overtrue\LaravelPinyin\ServiceProvider::class,
+        Maknz\Slack\Laravel\ServiceProvider::class,
 
         // dev only
         VueGenerators\ServiceProvider::class,
@@ -245,6 +246,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Sentry'    => Sentry\SentryLaravel\SentryFacade::class,
         'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
+        'Slack' => Maknz\Slack\Laravel\Facade::class,
 
     ],
 

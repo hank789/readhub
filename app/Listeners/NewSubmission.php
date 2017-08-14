@@ -33,5 +33,16 @@ class NewSubmission
         $this->updateUserSubmissionsCount($event->submission->user_id);
 
         $this->updateCategorySubmissionsCount($event->submission->category_id);
+
+        $slackFields = [];
+        foreach ($event->submission->data as $field=>$value){
+            if ($value){
+                $slackFields[] = [
+                    'title' => $field,
+                    'value' => $value
+                ];
+            }
+        }
+        slackNotification($event->submission->owner->username,'新文章提交:'.$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_name.'/'.$event->submission->slug);
     }
 }

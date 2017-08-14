@@ -41,5 +41,35 @@ class NewReport
                 $user->notify(new CommentReported($category, $event->report->comment));
             }
         }
+
+        $slackFields = [];
+        $slackFields[] = [
+            'title' => '举报者',
+            'value' => $event->report->reporter->username
+        ];
+        $slackFields[] = [
+            'title' => '举报原因',
+            'value' => $event->report->subject
+        ];
+        $slackFields[] = [
+            'title' => '举报描述',
+            'value' => $event->report->description
+        ];
+
+        if ($event->report->reportable_type == 'App\Submission') {
+            $slackFields[] = [
+                'title' => '文章标题',
+                'value' => $event->report->submission->title
+            ];
+            slackNotification($event->report->submission->owner->username,'文章被举报',$slackFields,config('app.url').'/c/'.$event->report->submission->category_name.'/'.$event->report->submission->slug);
+        } elseif ($event->report->reportable_type == 'App\Comment') {
+            $slackFields[] = [
+                'title' => '评论内容',
+                'value' => $event->report->comment->body
+            ];
+            slackNotification($event->report->comment->owner->username,'评论被举报',$slackFields,config('app.url').'/c/'.$event->report->comment->submission->category_name.'/'.$event->report->comment->submission->slug);
+        }
+
+
     }
 }
