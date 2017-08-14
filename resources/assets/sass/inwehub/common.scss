@@ -105,7 +105,7 @@
 
 
   .icon-dianzan1{
-    top:6px;
+    top: 3px;
   }
 
   .rotate-180{
@@ -334,7 +334,9 @@
   }
 
   .detail{
-    top:6px !important;
+    color:inherit !important;
+    top:3px !important;
+    font-size:12px !important;
   }
 
   .category-header-middle h2{
@@ -395,5 +397,13 @@
 
   a.nav-item.is-tab:hover{
      border:none !important;
+  }
+
+  .go-gray{
+    color:#808080 !important;
+  }
+
+  .go-primary {
+    color: #03aef9 !important;
   }
 }
