@@ -228,4 +228,41 @@
   .profile-cover{
     min-height: 0 !important;
   }
+
+  .nav.has-shadow{
+    margin-bottom:0;
+  }
+
+  .left-sidebar-box{
+    margin-top:1%;
+  }
+
+  .no-content-wrapper .icon-inwehub{
+    font-size:48px;
+  }
+
+  .no-content-wrapper h1{
+    font-size:14px;
+  }
+
+  .no-subsciption .icon-inwehub{
+    font-size:48px;
+  }
+
+  .no-subsciption h1{
+    font-size:14px;
+  }
+
+  .ui.comments > div{
+    border-top:0 !important;
+    border-bottom:1px solid #dcdcdc;
+  }
+
+  section.container{
+   padding:0 !important;
+  }
+
+  section.margin-top-1{
+    margin-top:0 !important;
+  }
 }

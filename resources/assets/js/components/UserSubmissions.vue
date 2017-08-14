@@ -1,5 +1,5 @@
 <template>
-    <div class="col-7" style="margin-top:-20px">
+    <div class="col-7">
 	    <div v-for="submission in submissions" v-bind:key="submission.id">
 	        <submission :list="submission"></submission>
 	    </div>

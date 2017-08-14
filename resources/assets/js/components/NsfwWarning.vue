@@ -1,7 +1,9 @@
 <template>
 	<transition name="fade">
 		<div class="col-7 padding-bottom-10 no-content-wrapper user-select" v-show="visible">
-	    	<i class="v-icon v-sad oops-icon" aria-hidden="true"></i>
+			<svg class="icon-inwehub v-icon" aria-hidden="true">
+				<use xlink:href="#icon-zanwushuju"></use>
+			</svg>
 	        <h1>{{ text }}</h1>
 		</div>
 	</transition>
