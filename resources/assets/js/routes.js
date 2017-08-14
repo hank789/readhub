@@ -46,6 +46,7 @@ import ModeratorPanelReportedComments from './components/ModeratorPanelReportedC
 import UserSettingsEditEmailAndPassword from './components/UserSettingsEditEmailAndPassword.vue';
 import ModeratorPanelReportedSubmissions from './components/ModeratorPanelReportedSubmissions.vue';
 import SubscribedCategories from './components/SubscribedCategories.vue';
+import VueMultianalytics from 'vue-multianalytics';
 
 const routes = [
     // app上的路由begin
@@ -234,5 +235,21 @@ router.afterEach((to, from) => {
 	}
 })
 
+if (Laravel.env == 'production') {
+    let mixpanelConfig = {
+        token: '688ee16000ddf4f44891e06b79847d4e'
+    }
+    Vue.use(VueMultianalytics, {
+        modules: {
+            mixpanel: mixpanelConfig
+        },
+        routing: {
+            vueRouter: router, //  Pass the router instance to automatically sync with router (optional)
+            preferredProperty: 'path', // By default 'path' and related with vueRouter (optional)
+            ingoredViews: [], // Views that will not be tracked
+            ignoredModules: ['ga'] // Modules that will not send route change events. The event sent will be this.$ma.trackView({viewName: 'homepage'}, ['ga'])
+        }
+    })
+}
 
 export default router;
