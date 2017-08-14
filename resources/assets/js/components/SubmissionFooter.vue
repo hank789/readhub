@@ -85,7 +85,7 @@
 						</svg>
 					</a>
 
-						<div class="detail">
+						<div class="detail" :class="upvoted ? 'go-primary' : 'go-gray'">
 							{{ points }}
 					</div>
 
