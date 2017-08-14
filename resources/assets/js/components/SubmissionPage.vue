@@ -20,7 +20,7 @@
 		            	<span>{{ submission.comments_number }}</span>
 		            	条回复: <span class="go-gray go-small" v-if="!isGuest && false">({{ onlineUsers }} 在线用户)</span>
 		            </div>
-		            <div class="head-sort-icon" v-show="comments.length > 1">
+		            <div v-if="false" class="head-sort-icon" v-show="comments.length > 1">
 		                <i class="v-icon v-like pointer" aria-hidden="true"
 		                   data-toggle="tooltip" data-placement="bottom" title="Hottest"
 		                   @click="newSort('hot')"
