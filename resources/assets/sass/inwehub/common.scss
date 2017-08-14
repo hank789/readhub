@@ -265,4 +265,43 @@
   section.margin-top-1{
     margin-top:0 !important;
   }
+
+  .nav-left{
+    justify-content: space-between !important;
+  }
+
+  .statistics-inwehub{
+    border:1px solid #dcdcdc;
+    transform: scale(0.5);
+    margin:0 -30px;
+
+    span{
+      display: inline-block;
+      font-size:26px;
+
+      b{
+        color:#fa4975;
+        font-weight: normal;
+      }
+    }
+    .title{
+      background:#ececee;
+      color:#808080;
+      text-align: left;
+    }
+
+    .split{
+      width:3px;
+      height:23px;
+      background: #dcdcdc;
+    }
+
+    .two{
+
+    }
+  }
+
+  #new-submission{
+    padding:1em !important;
+  }
 }
