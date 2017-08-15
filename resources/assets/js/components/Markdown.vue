@@ -3,10 +3,8 @@
 </template>
 
 <script>
-    import Webview from '../mixins/Webview';
     export default {
         props: ['text'],
-        mixins: [Webview],
         computed: {
             compiled(){
                 let text = this.text;
