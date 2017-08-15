@@ -21,32 +21,36 @@
 								</a>
 							</div>
 
+							<!--<div class="h5-active-item">-->
+								<!--<router-link :to="url" class="comments-icon h-green"-->
+											 <!--data-toggle="tooltip" data-placement="top" title="Comments">-->
+
+									<!--<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">-->
+										<!--<use xlink:href="#icon-pinglun1"></use>-->
+									<!--</svg>-->
+
+									<!--<span class="commentNum" v-if="comments" v-text="comments"></span>-->
+								<!--</router-link>-->
+							<!--</div>-->
+
+
+                            <div class="h5-active-item">
+                                <a class="fa-stack align-right" @click="voteUp"
+                                   data-toggle="tooltip" data-placement="top" title="Upvote">
+
+                                    <svg class="icon-inwehub v-icon" :class="upvoted ? 'go-primary' : 'go-gray'" aria-hidden="true">
+                                        <use xlink:href="#icon-dianzan1"></use>
+                                    </svg>
+                                </a>
+
+                                <!--<div class="detail">-->
+                                    <!--{{ points }}-->
+								<!--</div>-->
+
+
+                            </div>
+
 							<div class="h5-active-item">
-								<router-link :to="url" class="comments-icon h-green"
-											 data-toggle="tooltip" data-placement="top" title="Comments">
-
-									<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
-										<use xlink:href="#icon-pinglun1"></use>
-									</svg>
-
-									<span class="commentNum" v-if="comments" v-text="comments"></span>
-								</router-link>
-							</div>
-
-
-
-							<div class="h5-active-item">
-								<a class="fa-stack align-right" @click="voteUp"
-									data-toggle="tooltip" data-placement="top" title="Upvote">
-
-									<svg class="icon-inwehub v-icon" :class="upvoted ? 'go-primary' : 'go-gray'" aria-hidden="true">
-										<use xlink:href="#icon-dianzan1"></use>
-									</svg>
-								</a>
-
-								<div class="detail">
-									{{ points }}
-								</div>
 
 								<a class="fa-stack align-right" @click="voteDown"
 									data-toggle="tooltip" data-placement="top" title="Downvote">
@@ -55,6 +59,9 @@
 										<use xlink:href="#icon-dianzan1"></use>
 									</svg>
 								</a>
+                                <!--<div class="detail">-->
+                                    <!--{{ points }}-->
+								<!--</div>-->
 							</div>
 
 
@@ -103,7 +110,6 @@
 				embedViewer: false,
 				gifPlayer: false,
                 comments:0,
-                url:'',
                 auth,
                 Store
             }
@@ -216,6 +222,9 @@
             date () {
                 return moment(this.list.created_at).fromNow();
             },
+			url () {
+				return  '/c/' + encodeURIComponent(this.list.category_name) + '/' + this.list.slug;
+			}
         },
 
         methods: {

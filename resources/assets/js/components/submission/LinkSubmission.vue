@@ -131,7 +131,14 @@
 				var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
 				if (isPlusReady) {
 				   var webview = this.openWebviewUrl(submission.data.url,submission.title);
-                    var url = "http://readhub.hs.app/c/%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A2%91%E9%81%93/baidubaidubaidubaidu/webview";
+
+
+				   var url = window.location.protocol + '//' + window.location.host + '/c/' + encodeURIComponent(submission.category_name) + '/' + submission.slug + '/webview';
+
+				   //var url = window.location.protocol + '//' + window.location.host + '/webviewTools.html';
+
+                       console.log(url);
+				   //var url = "http://readhub.hs.app/c/%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A2%91%E9%81%93/baidubaidubaidubaidu/webview";
 
                     var embed =plus.webview.create(url, url, {
                         cachemode:'noCache',

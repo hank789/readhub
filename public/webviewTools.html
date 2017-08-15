@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Readhub</title>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Readhub - Social Bookmarking For The 21st Century"/>
+    <meta property="og:url" content="http://voten.dev"/>
+    <meta property="og:site_name" content="Readhub"/>
+
+    <meta name="description" content="A Modern, real-time, open-source, beautiful, deadly simple and warm community."/>
+    <meta property="og:description"
+          content="A Modern, real-time, open-source, beautiful, deadly simple and warm community."/>
+    <meta property="og:image" content="http://voten.dev/imgs/voten-circle.png">
+    <script src="js/iconfont.js"></script>
+    <style>
+        .icon-inwehub{
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        .flex-space{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        .rotate-180 {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+    </style>
+    <script type="text/javascript">
+        var oldLog = console.log;
+        console.oldLog = oldLog;
+        console.log = function () {
+            var pre = '[LLOG]: ****** >>>';
+            var append = '<<< ****** ' + window.location.href;
+
+            for (var i in arguments) {
+                var model = arguments[i];
+
+
+                if (!model) {
+                    console.oldLog(pre + model + append);
+                } else  if (model.constructor == String) {
+                    console.oldLog(pre + model + append);
+                } else {
+                    for (var i in model) {
+                        if (model[i] != undefined) {
+                            if (model[i].constructor == Object) {
+                                console.log(model[i]);
+                            } else {
+                                console.oldLog(pre + i + " => " + model[i] + append);
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+
+
+
+
+        function upvote(){
+            console.log(this.$emit);
+        }
+    </script>
+</head>
+<body>
+<div class="menuWrapper">
+    <div class="flex-space">
+        <div class="h5-active-item">
+            <svg aria-hidden="true" class="icon-inwehub v-icon go-yellow v-unbookmark" onClick="upvote()">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-shoucangxingxing"></use>
+            </svg>
+        </div>
+        <div class="h5-active-item">
+            <svg aria-hidden="true" class="icon-inwehub v-icon icon-pinglun1">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-pinglun1"></use>
+            </svg>
+        </div>
+        <div class="h5-active-item">
+            <svg aria-hidden="true" class="icon-inwehub v-icon go-primary">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-dianzan1"></use>
+            </svg>
+        </div>
+    </div>
+</div>
+</body>
+</html>
