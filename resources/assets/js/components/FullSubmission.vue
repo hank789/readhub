@@ -65,7 +65,7 @@
 											推荐到APP
 										</button>
 
-										<button class="item" @click="hide" v-if="!owns">
+										<button class="item" @click="hide" v-if="false && !owns">
 											隐藏
 										</button>
 

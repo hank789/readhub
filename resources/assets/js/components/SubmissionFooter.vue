@@ -21,7 +21,7 @@
 							推荐到APP
                         </button>
 
-						<button class="item" @click="$emit('hide')" v-if="!owns">
+						<button class="item" @click="$emit('hide')" v-if="false && !owns">
 							隐藏
                         </button>
 

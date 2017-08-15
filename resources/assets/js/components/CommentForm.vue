@@ -96,7 +96,7 @@
                     delay: 750,
                     searchKey: "username",
                     insertTpl: "@${username}",
-                    displayTpl: "<li><img src='${avatar}' height='20' width='20' />@${username}<small data-name='${name}'>${name}</small></li>",
+                    displayTpl: "<li><img src='${avatar}' height='20' width='20' />@${username}</li>",
                     callbacks: {
                         remoteFilter: function (query, callback) {
                             axios.get('/search-mentionables', {
@@ -130,6 +130,8 @@
             },
 
             setFocused(){
+        	    // 防止挡住回复按钮
+                this.$eventHub.$emit('scrolled-a-bit');
                 if(this.parent == 0){
                     this.focused = false
                     return
