@@ -33,6 +33,7 @@
     "vue-focus": "^2.1.0",
     "vue-infinite-scroll": "^2.0.1",
     "vue-ls": "^2.2.18",
+    "vue-multianalytics": "^1.6.1",
     "vue-multiselect": "^2.0.0-beta.13",
     "vue-router": "^2.0.3",
     "vue-template-compiler": "2.1.8",
