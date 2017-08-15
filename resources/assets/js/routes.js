@@ -11,6 +11,7 @@ import AdminPanelUser from './components/AdminPanelUser.vue';
 import AdminPanelHelp from './components/AdminPanelHelp.vue';
 import FindCategories from './components/FindCategories.vue';
 import SubmissionPage from './components/SubmissionPage.vue';
+import SubmissionPageWebview from './components/SubmissionPageWebview.vue';
 import UserComments from './components/UserComments.vue';
 import NewCategory from './components/NewCategory.vue';
 import AdminPanel from './components/AdminPanel.vue';
@@ -156,6 +157,7 @@ const routes = [
     { path: '/find-channels', component: FindCategories, name: 'find-categories' },
     { path: '/404', component: NotFound, name: 'not-found', meta: { title: 'Not Found' } },
     { path: '/c/:name/:slug', component: SubmissionPage, name: 'submission-page' },
+    { path: '/c/:name/:slug/webview', component: SubmissionPageWebview, name: 'submission-page-webview' },
 
     { path: '/bookmarks', redirect: '/bookmarks/submissions' },
     {

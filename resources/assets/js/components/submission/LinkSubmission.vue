@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-if="showBigThumbnail && submission.data.thumbnail" :class="showEmbed ? 'relative pointer' : ''" @click="embedOrOpen">
-			<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow" v-if="submission.data.thumbnail">
+			<a href="javascript:;" @click="openNewUrl(submission)" target="_blank" rel="nofollow" v-if="submission.data.thumbnail">
 	            <img v-bind:src="submission.data.thumbnail" v-bind:alt="submission.title" class="big-thumbnail" />
 	        </a>
 
@@ -12,7 +12,7 @@
 
 		<div class="link-list-info flex-space">
 			<span class="submission-img-title">
-				<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow" class="submisison-small-thumbnail" v-if="submission.data.thumbnail && !full">
+				<a href="javascript:;" @click="openNewUrl(submission)" target="_blank" rel="nofollow" class="submisison-small-thumbnail" v-if="submission.data.thumbnail && !full">
 					<div v-bind:style="thumbnail"
 						v-if="submission.data.thumbnail && showSmallThumbnail" class="small-thumbnail"
 						@click="embedOrOpen" :class="showEmbed ? 'pointer' : ''"
@@ -21,7 +21,7 @@
 				</a>
 
 				<h1 class="submission-title" v-if="full">
-					<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow">
+					<a href="javascript:;" @click="openNewUrl(submission)" target="_blank" rel="nofollow">
 						<i class="v-icon v-shocked go-red" aria-hidden="true" v-if="submission.nsfw"
 							data-toggle="tooltip" data-placement="bottom" title="NSFW"
 						></i>
@@ -36,7 +36,7 @@
 
 				<span v-else class="full-width">
 					<h3 class="v-ultra-bold no-margin">
-						<a href="javascript:;" @click="openWebviewUrl(submission.data.url,submission.title)" target="_blank" rel="nofollow">
+						<a href="javascript:;" @click="openNewUrl(submission)" target="_blank" rel="nofollow">
 							{{ submission.title }}
 
 							<small class="go-gray">
@@ -125,6 +125,30 @@
 
 					// Emit the embed event
 					this.$emit('embed')
+				}
+			},
+			openNewUrl(submission){
+				var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
+				if (isPlusReady) {
+				   var webview = this.openWebviewUrl(submission.data.url,submission.title);
+                    var url = "http://readhub.hs.app/c/%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A2%91%E9%81%93/baidubaidubaidubaidu/webview";
+
+                    var embed =plus.webview.create(url, url, {
+                        cachemode:'noCache',
+                        popGesture: 'hide',
+                        bottom:'0px',
+                        height:'44px',
+                        dock:'bottom',
+                        position:'dock',
+                        backButtonAutoControl: 'hide',
+                        bounce:'none', //不允许滑动
+                        scrollIndicator:'none', //不显示滚动条
+                    });
+
+                    webview.append(embed);
+                    webview.show();
+				} else {
+					this.openWebviewUrl(submission.data.url,submission.title);
 				}
 			}
 		}

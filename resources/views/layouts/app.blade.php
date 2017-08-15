@@ -8,10 +8,10 @@
     @yield('head')
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <script src="/js/socket.io.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css"/>
+    <script src="/js/emojione.min.js"></script>
+    <link rel="stylesheet" href="/css/emojione.min.css"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -34,7 +34,7 @@
 <body>
 @include('google-analytics')
 
-<div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content', isWechat:isWechat()}">
+<div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content', isWechat:isWechat(), isWebview:$route.path.match(/webview/)}">
     @if (session('is_h5'))
         @include('h5-header')
     @else

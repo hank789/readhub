@@ -406,4 +406,32 @@
   .go-primary {
     color: #03aef9 !important;
   }
+
+  .fond{
+    padding-top:10% !important;
+  }
+
+  .webviewTool{
+    height:44px;
+    overflow: hidden;
+    background:#f3f4f6;
+    padding:0 0px 0 20px;
+
+    .flex-space{
+      width:100%;
+
+    }
+  }
+
+
+}
+
+.isWebview{
+   header{
+     display: none;
+   }
+
+  .v-content-inwehub{
+    padding-top:0;
+  }
 }

@@ -34,48 +34,48 @@ export default {
                         type: 'transparent', //透明渐变样式
                         titleSize:'18px',
                         autoBackButton: true, //自动绘制返回箭头
-                        // buttons: [
-                        //     {
-                        //         color: '#5e5e5e',
-                        //         'float': 'left',
-                        //         fontSize: '27px',
-                        //         text: '\u1438',
-                        //         onclick: webviewBackButton
-                        //     },
-                        //     {
-                        //         color: '#5e5e5e',
-                        //         'float': 'left',
-                        //         fontSize: '27px',
-                        //         text: '\u2606',
-                        //         onclick: ()=> {
-                        //             console.log('bookmark');
-                        //             this.$emit('bookmark');
-                        //             plus.nativeUI.toast('收藏成功');
-                        //         }
-                        //     },
-                        //     {
-                        //         color: '#5e5e5e',
-                        //         'float': 'right',
-                        //         fontSize: '27px',
-                        //         text: '\u25B2',
-                        //         onclick: ()=>{
-                        //             console.log('upvote');
-                        //             this.$emit('upvote');
-                        //             plus.nativeUI.toast('已赞');
-                        //         }
-                        //     },
-                        //     {
-                        //         color: '#5e5e5e',
-                        //         'float': 'right',
-                        //         fontSize: '27px',
-                        //         text: '\u25BC',
-                        //         onclick: ()=> {
-                        //             console.log('downvote');
-                        //             this.$emit('downvote');
-                        //             plus.nativeUI.toast('已踩');
-                        //         }
-                        //     },
-                        //     ],
+                        buttons: [
+                            // {
+                            //     color: '#5e5e5e',
+                            //     'float': 'left',
+                            //     fontSize: '27px',
+                            //     text: '\u1438',
+                            //     onclick: webviewBackButton
+                            // },
+                            // {
+                            //     color: '#5e5e5e',
+                            //     'float': 'left',
+                            //     fontSize: '17px',
+                            //     text: '\u2606',
+                            //     onclick: ()=> {
+                            //         console.log('bookmark');
+                            //         this.$emit('bookmark');
+                            //         plus.nativeUI.toast('收藏成功');
+                            //     }
+                            // },
+                            // {
+                            //     color: '#5e5e5e',
+                            //     'float': 'right',
+                            //     fontSize: '17px',
+                            //     text: '\u25B2',
+                            //     onclick: ()=>{
+                            //         console.log('upvote');
+                            //         this.$emit('upvote');
+                            //         plus.nativeUI.toast('已赞');
+                            //     }
+                            // },
+                            // {
+                            //     color: '#5e5e5e',
+                            //     'float': 'right',
+                            //     fontSize: '17px',
+                            //     text: '\u25BC',
+                            //     onclick: ()=> {
+                            //         console.log('downvote');
+                            //         this.$emit('downvote');
+                            //         plus.nativeUI.toast('已踩');
+                            //     }
+                            // },
+                            ],
                         splitLine: { //底部分割线
                             color: '#3c3e44'
                         }
@@ -88,7 +88,10 @@ export default {
                 });
 
 
+
+
                 embed.show();
+                return embed;
             } else {
                 window.open(url);
             }
@@ -122,7 +125,7 @@ export default {
                     }
                 }
             }
-        }
+        },
 
     }
 };
