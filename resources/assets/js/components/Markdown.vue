@@ -3,9 +3,10 @@
 </template>
 
 <script>
+    import Webview from '../mixins/Webview';
     export default {
         props: ['text'],
-
+        mixins: [Webview],
         computed: {
             compiled(){
                 let text = this.text;
@@ -18,8 +19,8 @@
                 text = text.split("&").join("&amp;").split("<").join("&lt;").split("'").join("&apos;").split('"').join("&quot;");
                 text = text.replace(/\*\*([^*]*)\*\*/gm, "<strong>$1</strong>");
 
-                text = text.replace(/\[([^\[\n]*)\]\(((https?):\/\/voten.co\/[^\)]*)\)/igm, "<a href='$2'>$1</a>");
-                text = text.replace(/\[([^\[\n]*)\]\(((https?):\/\/[^\)]*)\)/igm, "<a href='$2' target='_blank' rel='nofollow'>$1</a>");
+                //text = text.replace(/\[([^\[\n]*)\]\(((https?):\/\/voten.co\/[^\)]*)\)/igm, "<a href='$2'>$1</a>");
+                text = text.replace(/\[([^\[\n]*)\]\(((https?):\/\/[^\)]*)\)/igm, "<a href=\"javascript:;\" @click=\"openWebviewUrl('$2','$1')\" target='_blank' rel='nofollow'>$1</a>");
                 text = text.replace(/^>([^\n]*)/gm, "<p>$1</p>");
                 for (var i = 1; i < 4; i++) text = text.replace(new RegExp("\<p\>{" + i + "}([^\n]*(\n\<p\>{" + i + "}[^\n]*)*)", "gm"), "<blockquote><p>$1</blockquote>");
                 text = text.replace(/\<p\>*/gm, "<p>");
