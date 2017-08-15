@@ -21,21 +21,21 @@
 				  	<tbody>
 			  			<tr>
 					      	<td>
-					      		**bold**
+					      		**粗体**
 					      	</td>
 
 					      	<td>
-					      		<b>bold</b>
+					      		<b>粗体</b>
 					      	</td>
 					    </tr>
 
                         <tr>
 					      	<td>
-					      		__italic__
+					      		__斜体__
 					      	</td>
 
 					      	<td>
-					      		<i>italic</i>
+					      		<i>斜体</i>
 					      	</td>
 					    </tr>
 
@@ -51,47 +51,47 @@
 
                         <tr>
 					      	<td>
-                                -unordered lists <br>
-                                -unordered lists <br>
-                                -unordered lists
+                                -无序列表 <br>
+                                -无序列表 <br>
+                                -无序列表
 					      	</td>
 
 					      	<td>
 					      		<ul class="no-margin">
-					      		    <li>unordered lists</li>
-					      		    <li>unordered lists</li>
-					      		    <li>unordered lists</li>
+					      		    <li>无序列表</li>
+					      		    <li>无序列表</li>
+					      		    <li>无序列表</li>
 					      		</ul>
 					      	</td>
 					    </tr>
 
                         <tr>
 					      	<td>
-                                1.ordered list <br>
-                                2.ordered list <br>
-                                3.ordered list
+                                1.有序列表 <br>
+                                2.有序列表 <br>
+                                3.有序列表
 					      	</td>
 
 					      	<td>
 					      		<ol class="no-margin">
-					      		    <li>ordered list</li>
-					      		    <li>ordered list</li>
-					      		    <li>ordered list</li>
+					      		    <li>有序列表</li>
+					      		    <li>有序列表</li>
+					      		    <li>有序列表</li>
 					      		</ol>
 					      	</td>
 					    </tr>
 
                         <tr>
 					      	<td>
-					      		`Inline code`
+					      		`代码`
 					      	</td>
 
 					      	<td>
-					      		<code>Inline code</code>
+					      		<code>代码</code>
 					      	</td>
 					    </tr>
 
-                        <tr>
+                        <tr v-if="false">
 					      	<td>
 					      	<br>
 					      		```if (url == "inwehub") {<br>

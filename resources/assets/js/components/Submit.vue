@@ -29,12 +29,12 @@
                 <input type="hidden" name="type" v-bind:value="submissionType">
 
                 <div v-show="submissionType == 'text'">
-                    <textarea class="form-control v-input-big" rows="3" id="text" name="text" placeholder="内容(可选,支持markdown)..."
+                    <textarea class="form-control v-input-big" rows="3" id="text" name="text" placeholder="内容(可选)..."
                     v-model="fText" :disabled="loading"></textarea>
 
                     <div class="flex-space">
-                        <a v-if="false" class="comment-form-guide text-muted" @click="$eventHub.$emit('markdown-guide')">
-        	            	格式规范
+                        <a class="comment-form-guide text-muted" @click="$eventHub.$emit('markdown-guide')">
+        	            	支持markdown
         	            </a>
 
                         <a class="comment-form-guide text-muted" @click="preview = !preview" v-show="fText">
