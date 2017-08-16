@@ -8,7 +8,7 @@
     @yield('head')
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-    <script src="/js/socket.io.min.js"></script>
+    <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script>
 
     <script src="/js/emojione.min.js"></script>
     <link rel="stylesheet" href="/css/emojione.min.css"/>
