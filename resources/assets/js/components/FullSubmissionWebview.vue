@@ -326,7 +326,8 @@
         		this.bookmarked = !this.bookmarked
 
 				axios.post('/bookmark-submission', {
-					id: this.list.id
+					id: this.list.id,
+                    need_refresh:1
 				}).then((response) => {
 					if (Store.submissionBookmarks.indexOf(this.list.id) != -1) {
 	                	var index = Store.submissionBookmarks.indexOf(this.list.id);
@@ -426,7 +427,8 @@
 
 				axios.post('/upvote-submission', {
 					submission_id: id,
-					previous_vote: this.currentVote
+					previous_vote: this.currentVote,
+                    need_refresh:1
 				})
 
             	// Have up-voted
@@ -471,7 +473,8 @@
 
 				axios.post('/downvote-submission', {
 					submission_id: id,
-					previous_vote: this.currentVote
+					previous_vote: this.currentVote,
+                    need_refresh:1
 				})
 
             	// Have down-voted
