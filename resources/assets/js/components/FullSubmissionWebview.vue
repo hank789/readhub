@@ -35,7 +35,7 @@
 
 
                             <div class="h5-active-item">
-                                <a class="fa-stack align-right" @click="voteUp"
+                                <a class=" align-right" @click="voteUp"
                                    data-toggle="tooltip" data-placement="top" title="Upvote">
 
                                     <svg class="icon-inwehub v-icon" :class="upvoted ? 'go-primary' : 'go-gray'" aria-hidden="true">
@@ -47,7 +47,7 @@
                                     {{ points }}
 								</div>
 
-								<a class="fa-stack align-right" @click="voteDown"
+								<a class=" align-right" @click="voteDown"
 								   data-toggle="tooltip" data-placement="top" title="Downvote">
 
 									<svg class="icon-inwehub v-icon rotate-180" :class="downvoted ? 'go-red' : 'go-gray'" aria-hidden="true">
