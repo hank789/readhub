@@ -1,7 +1,7 @@
 <template>
 	<div class="fond">
 
-		<img src="/imgs/loading2.gif" width="53" height="60"/>
+		<img src="/imgs/loading2.gif" width="35"/>
 		<!--<div class="contener_general">-->
 			<!--<div class="contener_mixte"><div class="ballcolor ball_1">&nbsp;</div></div>-->
 			<!--<div class="contener_mixte"><div class="ballcolor ball_2">&nbsp;</div></div>-->
