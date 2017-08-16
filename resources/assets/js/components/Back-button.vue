@@ -25,8 +25,10 @@
                     var currentPath = this.$route.path;
 
                     if (currentPath.match('webview')) {
+                        console.log('匹配到 webview ');
                         var ws = plus.webview.currentWebview();
                         if (ws) {
+                            console.log('webview hide');
                             ws.hide();
                         }
                     }
