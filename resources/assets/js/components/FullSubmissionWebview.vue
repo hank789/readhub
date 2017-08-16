@@ -21,17 +21,17 @@
 								</a>
 							</div>
 
-							<!--<div class="h5-active-item">-->
-								<!--<router-link :to="url" class="comments-icon h-green"-->
-											 <!--data-toggle="tooltip" data-placement="top" title="Comments">-->
+							<div class="h5-active-item">
+								<router-link :to="url" class="comments-icon h-green"
+											 data-toggle="tooltip" data-placement="top" title="Comments">
 
-									<!--<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">-->
-										<!--<use xlink:href="#icon-pinglun1"></use>-->
-									<!--</svg>-->
+									<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
+										<use xlink:href="#icon-pinglun1"></use>
+									</svg>
 
-									<!--<span class="commentNum" v-if="comments" v-text="comments"></span>-->
-								<!--</router-link>-->
-							<!--</div>-->
+									<span class="commentNum" v-if="comments" v-text="comments"></span>
+								</router-link>
+							</div>
 
 
                             <div class="h5-active-item">
@@ -43,26 +43,27 @@
                                     </svg>
                                 </a>
 
-                                <!--<div class="detail">-->
-                                    <!--{{ points }}-->
-								<!--</div>-->
-
-
-                            </div>
-
-							<div class="h5-active-item">
+                                <div class="detail">
+                                    {{ points }}
+								</div>
 
 								<a class="fa-stack align-right" @click="voteDown"
-									data-toggle="tooltip" data-placement="top" title="Downvote">
+								   data-toggle="tooltip" data-placement="top" title="Downvote">
 
 									<svg class="icon-inwehub v-icon rotate-180" :class="downvoted ? 'go-red' : 'go-gray'" aria-hidden="true">
 										<use xlink:href="#icon-dianzan1"></use>
 									</svg>
 								</a>
+
+                            </div>
+
+							<!--<div class="h5-active-item">-->
+
+
                                 <!--<div class="detail">-->
                                     <!--{{ points }}-->
 								<!--</div>-->
-							</div>
+							<!--</div>-->
 
 
 						</div>
@@ -109,7 +110,6 @@
 				photoViewer: false,
 				embedViewer: false,
 				gifPlayer: false,
-                comments:0,
                 auth,
                 Store
             }
@@ -224,6 +224,9 @@
             },
 			url () {
 				return  '/c/' + encodeURIComponent(this.list.category_name) + '/' + this.list.slug;
+			},
+			comments(){
+			    return this.list.comments_number;
 			}
         },
 

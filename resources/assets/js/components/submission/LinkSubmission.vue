@@ -128,12 +128,20 @@
 				}
 			},
 			openNewUrl(submission){
+
+                var partUrl = '/c/' + encodeURIComponent(submission.category_name) + '/' + submission.slug;
+
+			    var jumpToComment = () => {
+                    this.$router.push(partUrl);
+				};
+
 				var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
 				if (isPlusReady) {
 				   var webview = this.openWebviewUrl(submission.data.url,submission.title);
 
 
-				   var url = window.location.protocol + '//' + window.location.host + '/c/' + encodeURIComponent(submission.category_name) + '/' + submission.slug + '/webview';
+
+                    var url = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
 
 				   //var url = window.location.protocol + '//' + window.location.host + '/webviewTools.html';
 
@@ -153,7 +161,27 @@
                     });
 
                     webview.append(embed);
+
+					//创建评论链接
+                    var view = new plus.nativeObj.View('test', {bottom:'0px',left:'39%',height:'44px',width:'100px'});
+
+                    view.draw([
+                        {tag:'rect',id:'rect',rectStyles:{color:'rgba(0,0,0,0)'},position:{bottom:'0px',left:'0px',width:'100%',height:'44px'}},
+                    ]);
+                    view.addEventListener('click', () => {
+						console.log('准备跳转');
+                        jumpToComment();
+                        webview.close();
+                    }, false);
+
+                    view.show();
+
+                    webview.append(view);
+
                     webview.show();
+
+
+
 				} else {
 					this.openWebviewUrl(submission.data.url,submission.title);
 				}
