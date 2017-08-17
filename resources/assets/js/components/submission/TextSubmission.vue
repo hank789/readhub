@@ -12,12 +12,12 @@
 
 			<markdown :text="body" v-if="body && !editing"></markdown>
 
-			<textarea class="form-control v-input-big" rows="3" id="text" placeholder="Text(optional)..." v-show="editing"
+			<textarea class="form-control v-input-big" rows="3" id="text" placeholder="描述(可选)..." v-show="editing"
                     v-model="editedBody"
             ></textarea>
 
             <button type="submit" class="v-button v-button--green margin-top-1" @click="patch" v-show="editing">
-                编辑
+                提交
             </button>
             <button type="submit" class="v-button v-button--red margin-top-1" @click="cancelEditing" v-show="editing">
                 取消

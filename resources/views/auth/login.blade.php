@@ -7,14 +7,14 @@
 @section('content')
 	<div class="container-mid user-select">
 		<div class="col-7">
-			<div class="social-login-buttons">
+			<div v-if="false" class="social-login-buttons">
 		        <a href="/login/google" class="v-button button-google">
 		            <i class="v-icon v-google"></i>
 		            Connect With Google
 		        </a>
 			</div>
 
-	        <div class="or">
+	        <div v-if="false" class="or">
 	            - or -
 	        </div>
 
@@ -22,7 +22,7 @@
 				<h1 class="title">Sign in with username and password</h1>
 
 				<p>
-					Thank you for being a part of Voten community
+					Thank you for being a part of Inwehub community
 				</p>
 
 				<form action="{{ url('/login') }}" method="POST" class="align-left">

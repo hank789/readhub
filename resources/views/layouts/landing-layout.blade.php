@@ -45,7 +45,7 @@
 				<small>BETA</small>
 			</div>
 
-			<div class="right-menu">
+			<div v-if="false" class="right-menu">
 				<a href="https://medium.com/voten" target="_blank" class="item desktop-only">
 					<i class="v-icon v-blog go-yellow"></i>
 					Blog
@@ -81,7 +81,7 @@
 		@yield('content')
 
 
-		<footer class="user-select">
+		<footer v-if="false" class="user-select">
 			<div class="flex1">
 				<h3 class="go-primary">Readhub 	&#10084;</h3>
 				<ul>
