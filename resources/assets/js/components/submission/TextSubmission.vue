@@ -12,7 +12,7 @@
 
 			<markdown :text="body" v-if="body && !editing"></markdown>
 
-			<textarea class="form-control v-input-big" rows="3" id="text" placeholder="Text(optional)..." v-show="editing"
+			<textarea class="form-control v-input-big" rows="3" id="text" placeholder="描述(可选)..." v-show="editing"
                     v-model="editedBody"
             ></textarea>
 
