@@ -2,7 +2,7 @@
 	<section>
         <submission v-for="submission in submissions" :list="submission" :key="submission.id"></submission>
 
-		<no-content v-if="nothingFound" :text="'您尚未收藏文章'"></no-content>
+		<no-content v-if="nothingFound" :text="'您尚未收藏过文章'"></no-content>
 
 		<loading v-show="loading"></loading>
 

@@ -8,7 +8,7 @@
 	    	</div>
 	    </section>
 
-		<no-content v-if="nothingFound" :text="'您尚未收藏回复'"></no-content>
+		<no-content v-if="nothingFound" :text="'您尚未收藏过回复'"></no-content>
 
 		<loading v-show="loading"></loading>
 
