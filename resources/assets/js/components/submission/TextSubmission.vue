@@ -17,7 +17,7 @@
             ></textarea>
 
             <button type="submit" class="v-button v-button--green margin-top-1" @click="patch" v-show="editing">
-                编辑
+                提交
             </button>
             <button type="submit" class="v-button v-button--red margin-top-1" @click="cancelEditing" v-show="editing">
                 取消
