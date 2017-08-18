@@ -8,7 +8,7 @@
 	    	</div>
 	    </section>
 
-        <no-content v-if="nothingFound" :text="'This user has not commented on anything'"></no-content>
+        <no-content v-if="nothingFound" :text="'您尚未收到过回复'"></no-content>
 
         <loading v-if="loading"></loading>
 
