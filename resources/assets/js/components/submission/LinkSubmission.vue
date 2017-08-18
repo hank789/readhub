@@ -143,11 +143,6 @@
 
                     var url = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
 
-				   //var url = window.location.protocol + '//' + window.location.host + '/webviewTools.html';
-
-                       console.log(url);
-				   //var url = "http://readhub.hs.app/c/%E6%88%91%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A2%91%E9%81%93/baidubaidubaidubaidu/webview";
-
                     var embed =plus.webview.create(url, url, {
                         cachemode:'noCache',
                         popGesture: 'hide',
@@ -160,7 +155,7 @@
                         scrollIndicator:'none', //不显示滚动条
                     });
 
-                    webview.append(embed);
+
 
 					//创建评论链接
                     var view = new plus.nativeObj.View('test', {bottom:'0px',left:'39%',height:'44px',width:'100px'});
@@ -174,13 +169,10 @@
                         webview.close();
                     }, false);
 
-                    view.show();
-
-                    webview.append(view);
+                    embed.append(view);
+                    webview.append(embed);
 
                     webview.show();
-
-
 
 				} else {
 					this.openWebviewUrl(submission.data.url,submission.title);
