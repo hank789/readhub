@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Category;
+use App\Channels\InwehubChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -35,7 +36,7 @@ class SubmissionReported extends Notification implements ShouldBroadcast
      */
     public function via($notifiable)
     {
-        return ['database', 'broadcast'];
+        return ['database', 'broadcast', InwehubChannel::class];
     }
 
     /**
@@ -67,6 +68,16 @@ class SubmissionReported extends Notification implements ShouldBroadcast
             'name'   => $this->category->name,
             'avatar' => $this->category->avatar,
             'body'   => '文章被举报了 #'.$this->category->name,
+        ];
+    }
+
+    public function toInwehub($notifiable){
+        return [
+            'url'    => '/c/'.$this->category->name.'/mod/reports/submissions/',
+            'name'   => $this->category->name,
+            'avatar' => $this->category->avatar,
+            'title'  => '文章被举报了',
+            'body'   => '#'.$this->category->name,
         ];
     }
 }

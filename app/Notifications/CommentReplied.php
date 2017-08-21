@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Channels\InwehubChannel;
 use App\Comment;
 use App\Submission;
 use Illuminate\Bus\Queueable;
@@ -36,7 +37,7 @@ class CommentReplied extends Notification implements ShouldBroadcast
     public function via($notifiable)
     {
         if ($notifiable->settings['notify_comments_replied']) {
-            return ['database', 'broadcast'];
+            return ['database', 'broadcast', InwehubChannel::class];
         }
 
         return [];
@@ -73,6 +74,16 @@ class CommentReplied extends Notification implements ShouldBroadcast
             'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
             'body'   => '@'.$this->comment->owner->username.' 回复了你的评论 "'.$this->submission->title.'"',
+        ];
+    }
+
+    public function toInwehub($notifiable){
+        return [
+            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'name'   => $this->comment->owner->username,
+            'avatar' => $this->comment->owner->avatar,
+            'title'  => $this->comment->owner->username.'回复了你的评论',
+            'body'   => $this->submission->title,
         ];
     }
 }

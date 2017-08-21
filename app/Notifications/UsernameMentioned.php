@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Channels\InwehubChannel;
 use App\Submission;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -37,7 +38,7 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
     public function via($notifiable)
     {
         if ($notifiable->settings['notify_mentions'] && $notifiable->username != $this->user->username) {
-            return ['database', 'broadcast'];
+            return ['database', 'broadcast', InwehubChannel::class];
         }
 
         return [];
@@ -72,6 +73,16 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
             'name'   => $this->user->username,
             'avatar' => $this->user->avatar,
             'body'   => '@'.$this->user->username.' 提到了你 "'.$this->submission->title.'"',
+        ];
+    }
+
+    public function toInwehub($notifiable){
+        return [
+            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'name'   => $this->user->username,
+            'avatar' => $this->user->avatar,
+            'title'  => $this->user->username.'提到了你',
+            'body'   => $this->submission->title,
         ];
     }
 }
