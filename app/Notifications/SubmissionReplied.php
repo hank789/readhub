@@ -83,7 +83,6 @@ class SubmissionReplied extends Notification implements ShouldBroadcast
     public function toInwehub($notifiable){
         return [
             'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
-            'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
             'title'  => $this->comment->owner->username.'回复了文章',
             'body'   => $this->submission->title,

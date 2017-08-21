@@ -79,7 +79,6 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
     public function toInwehub($notifiable){
         return [
             'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
-            'name'   => $this->user->username,
             'avatar' => $this->user->avatar,
             'title'  => $this->user->username.'提到了你',
             'body'   => $this->submission->title,

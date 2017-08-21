@@ -74,7 +74,6 @@ class CommentReported extends Notification implements ShouldBroadcast
     public function toInwehub($notifiable){
         return [
             'url'    => '/c/'.$this->category->name.'/mod/reports/comments/',
-            'name'   => $this->category->name,
             'avatar' => $this->category->avatar,
             'title'  => '回复被举报了',
             'body'   => '#'.$this->category->name,
