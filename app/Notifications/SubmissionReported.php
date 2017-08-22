@@ -77,6 +77,7 @@ class SubmissionReported extends Notification implements ShouldBroadcast
             'avatar' => $this->category->avatar,
             'title'  => '文章被举报了',
             'body'   => '#'.$this->category->name,
+            'extra_body' => ''
         ];
     }
 }

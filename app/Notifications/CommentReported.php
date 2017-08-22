@@ -77,6 +77,7 @@ class CommentReported extends Notification implements ShouldBroadcast
             'avatar' => $this->category->avatar,
             'title'  => '回复被举报了',
             'body'   => '#'.$this->category->name,
+            'extra_body' => ''
         ];
     }
 }

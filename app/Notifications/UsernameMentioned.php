@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Channels\InwehubChannel;
+use App\Comment;
 use App\Submission;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -16,16 +17,18 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
 
     public $user;
     public $submission;
+    protected $comment;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user, Submission $submission)
+    public function __construct(User $user, Submission $submission, Comment $comment)
     {
         $this->user = $user;
         $this->submission = $submission;
+        $this->comment = $comment;
     }
 
     /**
@@ -81,7 +84,8 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
             'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
             'avatar' => $this->user->avatar,
             'title'  => $this->user->username.'提到了你',
-            'body'   => $this->submission->title,
+            'body'   => $this->comment->body,
+            'extra_body' => '原文：'.$this->submission->title
         ];
     }
 }
