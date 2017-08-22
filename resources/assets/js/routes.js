@@ -46,6 +46,7 @@ import AdminPanelReportedSubmissions from './components/AdminPanelReportedSubmis
 import ModeratorPanelReportedComments from './components/ModeratorPanelReportedComments.vue';
 import UserSettingsEditEmailAndPassword from './components/UserSettingsEditEmailAndPassword.vue';
 import ModeratorPanelReportedSubmissions from './components/ModeratorPanelReportedSubmissions.vue';
+import DetailH5 from './components/DetailH5.vue';
 import SubscribedCategories from './components/SubscribedCategories.vue';
 import VueMultianalytics from 'vue-multianalytics';
 
@@ -58,6 +59,11 @@ const routes = [
     },
     // app上的路由end
 
+    { // readhub
+        name:'detailH5',
+        path: '/readhub/detail',
+        component: DetailH5
+    },
 
     {
         name: 'home',
