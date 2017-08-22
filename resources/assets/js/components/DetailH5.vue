@@ -39,7 +39,6 @@
     mounted(){
       this.url = this.$route.query.url;
       this.pathUrl = this.$route.query.pathUrl;
-      this.url = this.url.replace(/^http:/, 'https:');
 
       var oIframe = document.getElementById('show-iframe');
       oIframe.src = this.url;
@@ -59,7 +58,7 @@
 <style>
   .footer{
     position: fixed;
-    bottom:0;
+    bottom:50px;
     z-index:99;
     border: 0;
     background: #fff;
@@ -69,7 +68,7 @@
      height:44px;
      position: fixed;
      z-index:100;
-     bottom:0;
+     bottom:50px;
     left:50%;
     margin-left:-15%;
   }
