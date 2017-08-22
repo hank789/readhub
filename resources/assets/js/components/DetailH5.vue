@@ -58,7 +58,7 @@
 <style>
   .footer{
     position: fixed;
-    bottom:50px;
+    bottom:14px;
     z-index:99;
     border: 0;
     background: #fff;
@@ -68,7 +68,7 @@
      height:44px;
      position: fixed;
      z-index:100;
-     bottom:50px;
+     bottom:14px;
     left:50%;
     margin-left:-15%;
   }
