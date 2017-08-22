@@ -175,8 +175,9 @@
                     webview.show();
 
 				} else {
-                    var pathUrl = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
-                    this.$router.push('/readhub/detail?url='+submission.data.url+'&pathUrl='+pathUrl);
+                      this.openWebviewUrl(submission.data.url,submission.title);
+//                    var pathUrl = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
+//                    this.$router.push('/readhub/detail?url='+submission.data.url+'&pathUrl='+pathUrl);
 				}
 			}
 		}
