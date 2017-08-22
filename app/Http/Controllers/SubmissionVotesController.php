@@ -262,7 +262,7 @@ class SubmissionVotesController extends Controller
         }
 
         return DB::table($table)->where([
-            ['user_id', '!=', $user_id],
+            ['user_id', $user_id],
             ['submission_id', $submission_id],
         ])->exists();
     }
