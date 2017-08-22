@@ -113,13 +113,6 @@ class CommentVotesController extends Controller
         $user = Auth::user();
         $comment = $this->getCommentById($request->comment_id);
 
-        // If the user is cheating, we just send the "voted successfully" responsd. So
-        // the voted model is added to the user's voted lists, but won't be counted
-        // in calculating the rate of the model in database. Have fun cheating!
-        if ($this->isCheating($user->id, $request->comment_id, 'upvote')) {
-            return response('voted successfully ', 200);
-        }
-
         try {
             if ($request->previous_vote == 'upvote') {
                 $new_upvotes = ($comment->upvotes - 1);
@@ -143,6 +136,13 @@ class CommentVotesController extends Controller
         );
         } catch (\Exception $e) {
             return response('invalid request', 500);
+        }
+
+        // If the user is cheating, we just send the "voted successfully" responsd. So
+        // the voted model is added to the user's voted lists, but won't be counted
+        // in calculating the rate of the model in database. Have fun cheating!
+        if ($this->isCheating($user->id, $request->comment_id, 'upvote')) {
+            return response('voted successfully ', 200);
         }
 
         $comment->upvotes = $new_upvotes ?? $comment->upvotes;
@@ -175,13 +175,6 @@ class CommentVotesController extends Controller
         $user = Auth::user();
         $comment = $this->getCommentById($request->comment_id);
 
-        // If the user is cheating, we just send the "voted successfully" responsd. So
-        // the voted model is added to the user's voted lists, but won't be counted
-        // in calculating the rate of the model in database. Have fun cheating!
-        if ($this->isCheating($user->id, $request->comment_id, 'downvote')) {
-            return response('voted successfully ', 200);
-        }
-
         try {
             if ($request->previous_vote == 'downvote') {
                 $new_downvotes = ($comment->downvotes - 1);
@@ -203,6 +196,13 @@ class CommentVotesController extends Controller
             $this->updateUserDownVotesRecords($user->id, $comment->owner->id, $request->previous_vote, $request->comment_id);
         } catch (\Exception $e) {
             return response('invalid request', 500);
+        }
+
+        // If the user is cheating, we just send the "voted successfully" responsd. So
+        // the voted model is added to the user's voted lists, but won't be counted
+        // in calculating the rate of the model in database. Have fun cheating!
+        if ($this->isCheating($user->id, $request->comment_id, 'downvote')) {
+            return response('voted successfully ', 200);
         }
 
         $comment->upvotes = $new_upvotes ?? $comment->upvotes;
@@ -252,9 +252,6 @@ class CommentVotesController extends Controller
             $table = 'comment_downvotes';
         }
 
-        return DB::table($table)->where([
-            ['user_id', $user_id],
-            ['comment_id', $comment_id],
-        ])->exists();
+        return false;
     }
 }

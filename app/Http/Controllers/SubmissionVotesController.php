@@ -114,13 +114,6 @@ class SubmissionVotesController extends Controller
         $user = Auth::user();
         $submission = $this->getSubmissionById($request->submission_id);
 
-        // If the user is cheating, we just send the "voted successfully" responsd. So
-        // the voted model is added to the user's voted lists, but won't be counted
-        // in calculating the rate of the model in database. Have fun cheating!
-        if ($this->isCheating($user->id, $request->submission_id, 'upvote')) {
-            return response('voted successfully ', 200);
-        }
-
         try {
             if ($request->previous_vote == 'upvote') {
                 $new_upvotes = ($submission->upvotes - 1);
@@ -144,6 +137,13 @@ class SubmissionVotesController extends Controller
         );
         } catch (\Exception $e) {
             return response('invalid request', 500);
+        }
+
+        // If the user is cheating, we just send the "voted successfully" responsd. So
+        // the voted model is added to the user's voted lists, but won't be counted
+        // in calculating the rate of the model in database. Have fun cheating!
+        if ($this->isCheating($user->id, $request->submission_id, 'upvote')) {
+            return response('voted successfully ', 200);
         }
 
         $submission->upvotes = $new_upvotes ?? $submission->upvotes;
@@ -179,12 +179,7 @@ class SubmissionVotesController extends Controller
 
         $user = Auth::user();
         $submission = $this->getSubmissionById($request->submission_id);
-        // If the user is cheating, we just send the "voted successfully" responsd. So
-        // the voted model is added to the user's voted lists, but won't be counted
-        // in calculating the rate of the model in database. Have fun cheating!
-        if ($this->isCheating($user->id, $request->submission_id, 'downvote')) {
-            return response('voted successfully ', 200);
-        }
+
         try {
             if ($request->previous_vote == 'downvote') {
                 $new_downvotes = ($submission->downvotes - 1);
@@ -206,6 +201,13 @@ class SubmissionVotesController extends Controller
             $this->updateUserDownVotesRecords($user->id, $submission->owner->id, $request->previous_vote, $request->submission_id);
         } catch (\Exception $e) {
             return response('invalid request', 500);
+        }
+
+        // If the user is cheating, we just send the "voted successfully" responsd. So
+        // the voted model is added to the user's voted lists, but won't be counted
+        // in calculating the rate of the model in database. Have fun cheating!
+        if ($this->isCheating($user->id, $request->submission_id, 'downvote')) {
+            return response('voted successfully ', 200);
         }
 
         $submission->upvotes = $new_upvotes ?? $submission->upvotes;
@@ -259,9 +261,6 @@ class SubmissionVotesController extends Controller
             $table = 'submission_downvotes';
         }
 
-        return DB::table($table)->where([
-            ['user_id', $user_id],
-            ['submission_id', $submission_id],
-        ])->exists();
+        return false;
     }
 }
