@@ -10,9 +10,6 @@
 
     <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script>
 
-    <script src="/vendor/js/emojione.min.js"></script>
-    <link rel="stylesheet" href="/vendor/css/emojione.min.css"/>
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
