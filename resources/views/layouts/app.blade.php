@@ -8,8 +8,8 @@
     @yield('head')
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-    <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script>
-
+    <!-- <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script> -->
+    <script src="/vendor/js/socket.io.min.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
