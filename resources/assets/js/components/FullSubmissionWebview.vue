@@ -8,17 +8,16 @@
 
 						<div class="flex-space">
 
-							<div class="h5-active-item">
+							<div class="h5-active-item commentBtn">
+								<router-link :to="url" class="comments-icon h-green"
+											 data-toggle="tooltip" data-placement="top" title="Comments">
 
-								<a class="fa-stack" @click="bookmark"
-								   data-toggle="tooltip" data-placement="top" title="Bookmark">
-
-
-									<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
-										<use xlink:href="#icon-shoucangxingxing"></use>
+									<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
+										<use xlink:href="#icon-xiugai"></use>
 									</svg>
 
-								</a>
+									评论
+								</router-link>
 							</div>
 
 							<div class="h5-active-item">
@@ -33,27 +32,36 @@
 								</router-link>
 							</div>
 
+							<div class="h5-active-item bookmarkButton">
 
-                            <div class="h5-active-item">
+								<a class="fa-stack" @click="bookmark"
+								   data-toggle="tooltip" data-placement="top" title="Bookmark">
+
+
+									<svg class="icon-inwehub v-icon" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'" aria-hidden="true">
+										<use xlink:href="#icon-shoucangxingxing"></use>
+									</svg>
+
+								</a>
+							</div>
+
+                            <div class="h5-active-item dianzanBtn">
                                 <a class=" align-right" @click="voteUp"
                                    data-toggle="tooltip" data-placement="top" title="Upvote">
-
                                     <svg class="icon-inwehub v-icon" :class="upvoted ? 'go-primary' : 'go-gray'" aria-hidden="true">
                                         <use xlink:href="#icon-dianzan1"></use>
                                     </svg>
                                 </a>
 
-                                <div class="detail">
-                                    {{ points }}
-								</div>
+                                <div class="detail" :class="upvoted ? 'go-primary' : 'go-gray'">{{ points }}</div>
 
-								<a class=" align-right" @click="voteDown"
-								   data-toggle="tooltip" data-placement="top" title="Downvote">
+								<!--<a class=" align-right" @click="voteDown"-->
+								   <!--data-toggle="tooltip" data-placement="top" title="Downvote">-->
 
-									<svg class="icon-inwehub v-icon rotate-180" :class="downvoted ? 'go-red' : 'go-gray'" aria-hidden="true">
-										<use xlink:href="#icon-dianzan1"></use>
-									</svg>
-								</a>
+									<!--<svg class="icon-inwehub v-icon rotate-180" :class="downvoted ? 'go-red' : 'go-gray'" aria-hidden="true">-->
+										<!--<use xlink:href="#icon-dianzan1"></use>-->
+									<!--</svg>-->
+								<!--</a>-->
 
                             </div>
 
