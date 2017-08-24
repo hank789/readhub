@@ -47,6 +47,7 @@ class HomeController extends Controller
     {
         session(['is_h5'=>true]);
         $uuid = $request->input('uuid');
+        $redirect_url = $request->input('redirect_url');
         if ($uuid) {
             $user = User::where('uuid',$uuid)->first();
             if ($user) {
@@ -58,7 +59,11 @@ class HomeController extends Controller
 
             return view('home', compact('submissions'));
         }
-        return view('welcome');
+        if ($redirect_url) {
+            return redirect($redirect_url);
+        } else {
+            return view('welcome');
+        }
     }
 
     /**
