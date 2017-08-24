@@ -415,15 +415,21 @@
     height:44px;
     overflow: hidden;
     background:#f3f4f6;
-    padding:0 0px 0 20px;
+    padding:0 20px 0 0;
+
+
 
     .flex-space{
       width:100%;
+
+      .icon-inwehub{
+        top:3px !important;
+      }
     }
 
 
     .comments-icon{
-      margin-left:26px;
+      margin-left:0;
     }
 
 
@@ -435,9 +441,18 @@
       top:2px;
     }
 
+    .bookmarkButton a{
+      position: relative;
+      top: -1px;
+    }
+
+    .dianzanBtn a{
+      position: relative;
+      top: -1px;
+    }
+
     .detail{
-      top:0px !important;
-      color:#808080 !important;
+      top:2px !important;
     }
   }
 
@@ -451,5 +466,22 @@
 
   .v-content-inwehub{
     padding-top:0;
+  }
+}
+
+.commentBtn{
+  background:#03aef9;
+  color:#fff;
+  width: 146px;
+  height: 44px;
+}
+
+.commentBtn a{
+  color:#fff !important;
+  margin-top:12px;
+
+  .icon-inwehub{
+    margin-right:5px;
+    color:#fff;
   }
 }
