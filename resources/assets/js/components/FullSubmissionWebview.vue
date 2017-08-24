@@ -9,15 +9,14 @@
 						<div class="flex-space">
 
 							<div class="h5-active-item commentBtn">
-								<router-link :to="url" class="comments-icon h-green"
-											 data-toggle="tooltip" data-placement="top" title="Comments">
+								<a  href="javascript:void(0)" class="comments-icon">
 
 									<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
 										<use xlink:href="#icon-xiugai"></use>
 									</svg>
 
 									评论
-								</router-link>
+								</a>
 							</div>
 
 							<div class="h5-active-item">
