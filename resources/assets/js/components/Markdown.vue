@@ -38,7 +38,7 @@
                 });
 
                 // Emoji
-                text = emojione.shortnameToImage(text);
+                //text = emojione.shortnameToImage(text);
 
                 text = text.replace(/__([^]*)__/gm, "<i>$1</i>");
 

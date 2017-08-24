@@ -47,6 +47,10 @@
                     }
 
                 } else {
+                    if (this.$route.query.from !== undefined && this.$route.query.from === 'h5') {
+                        window.history.go(-1);
+                    }
+
                     this.$router.push('/h5');
                 }
 	    	}

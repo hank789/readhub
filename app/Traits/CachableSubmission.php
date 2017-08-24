@@ -17,6 +17,7 @@ trait CachableSubmission
      */
     protected function getSubmissionById($id)
     {
+        return Submission::withTrashed()->findOrFail($id);
         return Cache::remember('submission.id.'.$id, 60 * 60 * 24, function () use ($id) {
             return Submission::withTrashed()->findOrFail($id);
         });
@@ -32,6 +33,7 @@ trait CachableSubmission
      */
     protected function getSubmissionBySlug($slug)
     {
+        return Submission::withTrashed()->where('slug', $slug)->firstOrFail();
         return Cache::remember('submission.slug.'.$slug, 60 * 60 * 24, function () use ($slug) {
             return Submission::withTrashed()->where('slug', $slug)->firstOrFail();
         });

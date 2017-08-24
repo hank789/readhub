@@ -4,7 +4,7 @@
 	</div>
 
     <router-link :to="{ path: '/' }" class="desktop-only">
-        <img src="/imgs/voten-beta.svg" alt="Readhub" @click="homeRoute"
+        <img src="/imgs/readhub-beta.png" alt="Readhub" @click="homeRoute"
         	class="logo-voten" data-toggle="tooltip" data-placement="bottom" title="Home">
     </router-link>
 

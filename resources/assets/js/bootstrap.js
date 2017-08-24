@@ -57,7 +57,7 @@ require('./libs/Jcrop');
 require('./libs/iconfont');
 
 
-window.emojione = require('./libs/emojione.min');
+//window.emojione = require('./libs/emojione.min');
 
 //检查错误信息插件
 import Raven from 'raven-js';

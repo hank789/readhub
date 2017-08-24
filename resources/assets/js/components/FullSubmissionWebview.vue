@@ -21,15 +21,14 @@
 							</div>
 
 							<div class="h5-active-item">
-								<router-link :to="url" class="comments-icon h-green"
-											 data-toggle="tooltip" data-placement="top" title="Comments">
+								<a  href="javascript:void(0)" class="comments-icon h-green">
 
 									<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
 										<use xlink:href="#icon-pinglun1"></use>
 									</svg>
 
 									<span class="commentNum" v-if="comments" v-text="comments"></span>
-								</router-link>
+								</a>
 							</div>
 
 							<div class="h5-active-item bookmarkButton">

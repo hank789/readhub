@@ -261,10 +261,6 @@ class SubmissionVotesController extends Controller
             $table = 'submission_downvotes';
         }
 
-        return DB::table($table)->where([
-            ['user_id', '!=', $user_id],
-            ['submission_id', $submission_id],
-            ['ip_address', getRequestIpAddress()],
-        ])->exists();
+        return false;
     }
 }
