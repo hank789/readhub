@@ -183,9 +183,16 @@ const app = new Vue({
         this.$eventHub.$on('crop-user-photo', this.cropUserModal);
         this.$eventHub.$on('push-notification', this.pushNotification)
         this.$eventHub.$on('crop-category-photo', this.cropCategoryModal);
+
         this.$eventHub.$on('refreshBasicStore', this.fillBasicStore);
         this.$eventHub.$on('updateTitle', this.updateTitle);
         this.$eventHub.$on('getUnreadNotifications', this.getUnreadNotifications);
+
+
+        if (this.$route.query.search) {
+            this.changeRoute('search');
+        }
+
     },
 
     mounted() {
