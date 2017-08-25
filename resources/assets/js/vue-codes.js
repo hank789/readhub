@@ -162,7 +162,7 @@ const app = new Vue({
 
     created: function() {
         window.addEventListener('keydown', this.keydown);
-
+        this.hideWebviewFooter();
         this.fillBasicStore();
 
         this.setSidebar();
