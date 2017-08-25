@@ -1,7 +1,7 @@
 @extends('layouts.landing-layout')
 
 @section('title')
-	<title>Voten | Where your vote matters</title>
+	<title>阅读发现 | Where your vote matters</title>
 	<meta property="og:title" content="Readhub | Where your vote matters" />
 	<meta property="og:image" content="/imgs/voten-circle.png">
 	<meta name="description" content="Social Bookmarking For The 21st Century. Best Reddit alternative on the Internet."/>
