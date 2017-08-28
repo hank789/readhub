@@ -16,9 +16,10 @@ trait UsernameMentions
      */
     protected function handleMentions($comment, $submission)
     {
-        if (!preg_match_all('/@([A-Za-z0-9\._]+)/', $comment->body, $mentionedUsernames)) {
+        if (!preg_match_all('/@([\S]+)/', $comment->body, $mentionedUsernames)) {
             return;
         }
+        \Log::info('test',[$mentionedUsernames]);
 
         foreach ($mentionedUsernames[1] as $key => $username) {
             // set a limit so they can't just mention the whole website! lol
@@ -27,7 +28,7 @@ trait UsernameMentions
             }
 
             if ($user = User::whereUsername($username)->first()) {
-                $user->notify(new UsernameMentioned($comment->owner, $submission));
+                $user->notify(new UsernameMentioned($submission,$comment));
             }
         }
     }
