@@ -72,6 +72,10 @@ export default {
                     }
                 } else {
                     if (ws) {
+                        if (currentPath.match(/webview$/)) {
+                            return false;
+                        }
+
                         ws.setStyle({
                             popGesture: 'hide',
                             top: '0px',
