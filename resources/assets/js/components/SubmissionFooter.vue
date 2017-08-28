@@ -6,7 +6,7 @@
 			<!--<div :class="auth.isMobileDevice ? '' : 'display-inline'">-->
 
 			<div class="h5-active-item">
-				<div class="ui icon pointing dropdown" v-if="!isGuest">
+				<div class="ui icon pointing dropdown" v-if="!isGuest" id="more-button">
 
 					<svg class="icon-inwehub left v-icon icon-gengduo" aria-hidden="true">
 						<use xlink:href="#icon-gengduo"></use>

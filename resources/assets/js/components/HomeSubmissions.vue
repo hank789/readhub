@@ -145,7 +145,10 @@
 	        	}
 
 	        	// make sure feedFitler is set
-	        	if (this.isSetLS('feed-filter')) {
+                if (this.$route.query.filter == 'all') {
+                    Store.feedFilter = 'all-channels';
+                    this.putLS('feed-filter', 'all-channels');
+                } else if (this.isSetLS('feed-filter')) {
 	   				Store.feedFilter = this.getLS('feed-filter');
 	   			} else {
 	   				Store.feedFilter = 'all-channels';

@@ -24,10 +24,12 @@
                     <div class="metadata user-select">
                         <router-link class="go-gray h-underline" v-if="!full"
                         :to="'/submission/' + list.submission_id">
+
                             <small><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} 赞同</small>
                         </router-link>
 
                         <small v-else><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} 赞同</small>
+
 
                         <span class="edited" v-if="isEdited">
                             已编辑
@@ -80,7 +82,8 @@
                         <i class="v-icon v-edit h-purple"></i>
                     </a>
 
-                    <div class="ui icon top left pointing dropdown" data-toggle="tooltip" data-placement="top" title="More" v-if="!isGuest">
+                    <div class="ui icon top left pointing dropdown" data-toggle="tooltip" data-placement="top" title="More" v-if="!isGuest"
+                         id="more-button">
                         <i class="v-icon v-more" aria-hidden="true"></i>
 
                         <div class="menu menu-inwehub-menu">

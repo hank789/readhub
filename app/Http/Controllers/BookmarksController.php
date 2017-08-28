@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Comment;
-use App\Events\SubmissionWasBookmarked;
 use App\Filters;
 use App\Traits\CachableCategory;
 use App\Traits\CachableComment;
