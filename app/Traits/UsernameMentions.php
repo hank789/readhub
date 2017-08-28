@@ -27,7 +27,7 @@ trait UsernameMentions
             }
 
             if ($user = User::whereUsername($username)->first()) {
-                $user->notify(new UsernameMentioned(Auth::user(), $submission));
+                $user->notify(new UsernameMentioned($comment->owner, $submission));
             }
         }
     }
