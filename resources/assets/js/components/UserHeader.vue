@@ -293,6 +293,7 @@ export default {
 		font-size:13px;
 		border-radius: 50px 0 0 50px;
 		border:1px solid #808080;
+		border-right: 0;
 	}
 	.toMy .icon{
 		font-size:21px;
