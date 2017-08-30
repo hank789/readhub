@@ -286,6 +286,7 @@ export default {
 
 <style scoped="scoped">
 	.toMy{
+		display: none;
 		position: absolute;
 		right:0;
 		top:30px;
