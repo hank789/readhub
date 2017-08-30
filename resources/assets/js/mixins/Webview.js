@@ -58,9 +58,12 @@ export default {
             }
     	},
         parentOpenUrl(url){
-            var webview = plus.webview.getWebviewById(plus.runtime.appid);
-            console.log('rootWebviewid:' + webview.id);
-            webview.loadURL('/public/index.html#' + url);
+            var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+            if (isPlusReady){
+                var webview = plus.webview.getWebviewById(plus.runtime.appid);
+                console.log('rootWebviewid:' + webview.id);
+                webview.loadURL('/public/index.html#' + url);
+            }
         },
         hideWebviewFooter(){
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
