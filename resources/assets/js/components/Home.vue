@@ -31,7 +31,7 @@
 					</svg>
 				</div>
 
-				<div class="menu-item">
+				<div class="menu-item desktop-only">
 					<svg class="icon-inwehub" aria-hidden="true" @click="changeRoute('notifications')">
 						<use xlink:href="#icon-xiaoxi1"></use>
 					</svg>

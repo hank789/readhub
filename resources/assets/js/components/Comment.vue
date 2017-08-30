@@ -1,33 +1,29 @@
 <template>
     <transition name="fade">
         <div class="comment v-comment-wrapper" v-show="visible" @mouseover="seen" :id="'comment' + list.id"
-	        :class="{ 'child-broadcasted-comment' : list.broadcastedChild, 'broadcasted-comment' : list.broadcastedParent }"
+	        :class="highlightClass"
         >
             <div class="content">
                 <div class="v-comment-info">
-                    <router-link v-if="false" :to="'/' + '@' + list.owner.id" class="avatar user-select">
+                    <router-link  :to="'/' + '@' + list.owner.id + '?from=h5'" class="avatar user-select">
                         <img v-bind:src="list.owner.avatar">
                     </router-link>
 
-                    <router-link v-if="false" :to="'/' + '@' + list.owner.id" class="author user-select">
+                    <router-link  :to="'/' + '@' + list.owner.id + '?from=h5'" class="author user-select">
                         {{ list.owner.username }}
                     </router-link>
 
-                    <a href="javascript:void(0);" class="avatar user-select">
-                        <img v-bind:src="list.owner.avatar">
-                    </a>
 
-                    <a href="javascript:void(0);" class="author user-select">
-                        {{ list.owner.username }}
-                    </a>
 
                     <div class="metadata user-select">
                         <router-link class="go-gray h-underline" v-if="!full"
                         :to="'/submission/' + list.submission_id">
+
                             <small><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} 赞同</small>
                         </router-link>
 
                         <small v-else><span data-toggle="tooltip" data-placement="bottom" :title="'Created: ' + longDate">{{ date }}</span> - {{ points }} 赞同</small>
+
 
                         <span class="edited" v-if="isEdited">
                             已编辑
@@ -40,7 +36,7 @@
                         :editing="editing" v-if="editing" :before="list.body" :id="list.id"
                             @patched-comment="patchComment"
                         ></comment-form>
-
+                    
                     <markdown :text="list.body" v-else></markdown>
                 </div>
 
@@ -80,7 +76,8 @@
                         <i class="v-icon v-edit h-purple"></i>
                     </a>
 
-                    <div class="ui icon top left pointing dropdown" data-toggle="tooltip" data-placement="top" title="More" v-if="!isGuest">
+                    <div class="ui icon top left pointing dropdown" data-toggle="tooltip" data-placement="top" title="More" v-if="!isGuest"
+                         id="more-button">
                         <i class="v-icon v-more" aria-hidden="true"></i>
 
                         <div class="menu menu-inwehub-menu">
@@ -177,7 +174,8 @@
                 upvoted: false,
                 downvoted: false,
                 reply: false,
-                childrenLimit: 4
+                childrenLimit: 4,
+                highlighted: false,
             }
         },
 
@@ -193,7 +191,9 @@
 			this.$nextTick(function () {
 				this.$root.loadSemanticTooltip();
 	        	this.$root.loadSemanticDropdown('comment' + this.list.id);
-			});
+                this.setHighlighted();
+                this.scrollToComment();
+            });
 		},
 
 		watch: {
@@ -216,6 +216,22 @@
 		},
 
         computed: {
+            isParent() {
+                return this.list.parent_id == 0 ? true : false;
+            },
+
+            highlightClass() {
+                if (this.highlighted && !this.isParent) {
+                    return 'child-broadcasted-comment';
+                }
+
+                if (this.highlighted && this.isParent) {
+                    return 'broadcasted-comment';
+                }
+
+                return '';
+            },
+
             isEdited() {
                 return this.list.edited_at;
             },
@@ -327,6 +343,28 @@
 
 
         methods: {
+            /**
+             * Sets the initial values for whether or not highlight the comment.
+             *
+             * @return void
+             */
+            setHighlighted() {
+                if (this.list.broadcasted == true || this.$route.query.comment == (this.list.id)) {
+                    this.highlighted = true;
+                }
+            },
+
+            /**
+             * Scrolls the page to the comment
+             *
+             * @return void
+             */
+            scrollToComment() {
+                if (this.$route.query.comment == (this.list.id)) {
+                    document.getElementById('comment' + this.list.id).scrollIntoView();
+                }
+            },
+
         	/**
         	 * renders more comments
         	 *
@@ -342,8 +380,7 @@
         	 * @return void
         	 */
         	seen() {
-        	    this.list.broadcastedChild = false;
-        	    this.list.broadcastedParent = false;
+        	    this.highlighted = false;
         	},
 
             edit() {
@@ -402,8 +439,8 @@
                     return;
                 }
 
-                // add broadcastedParent (used for styling)
-				comment.broadcastedChild = true;
+                // add broadcasted (used for styling)
+				comment.broadcasted = true;
 
                 this.list.children.unshift(comment);
         	},

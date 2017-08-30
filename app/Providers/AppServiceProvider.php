@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\User;
 use Auth;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\DuskServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->singleton('App\Settings', function () {
                 return Auth::user()->settings();
             });
+        }
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
         }
     }
 }

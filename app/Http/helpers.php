@@ -176,17 +176,22 @@ if (!function_exists('rssForHumans')) {
      */
     function rssForHumans($bytes)
     {
-        if ($bytes < 1024) {
-            return $bytes + ' bytes';
-        } elseif ($bytes < 1048576) {
-            return round($bytes / 1048576, 3).' KB';
-        } elseif ($bytes < 1073741824) {
-            return round($bytes / 1073741824 * 1024).' MB';
+        $Ki = 2 ** 10;
+        $Mi = 2 ** 20;
+        $Gi = 2 ** 30;
+
+        if ($bytes < $Ki) {
+            return $bytes.' B';
+        } elseif ($bytes < $Mi) {
+            return round($bytes / $Ki, 3).' KiB';
+        } elseif ($bytes < $Gi) {
+            return round($bytes / $Mi, 3).' MiB';
         } else {
-            return round($bytes / 1073741824, 3).' GB';
+            return round($bytes / $Gi, 3).' GiB';
         }
     }
 }
+
 if (!function_exists('getUrlTitle')) {
     function getUrlTitle($url) {
         $f = file_get_contents($url);
@@ -218,3 +223,19 @@ if (!function_exists('slackNotification')) {
             )->send($subject);
     }
 }
+
+
+if (!function_exists('iso8601')) {
+    /**
+     * Converts timestamp to ISO8601 format.
+     *
+     * @param string $time
+     *
+     * @return string
+     */
+    function iso8601($time)
+    {
+        return gmdate('c', strtotime($time));
+    }
+}
+

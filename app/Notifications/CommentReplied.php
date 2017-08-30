@@ -46,7 +46,7 @@ class CommentReplied extends Notification implements ShouldBroadcast
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
@@ -70,7 +70,7 @@ class CommentReplied extends Notification implements ShouldBroadcast
     public function toArray($notifiable)
     {
         return [
-            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug.'?comment='.$this->comment->id,
             'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
             'body'   => '@'.$this->comment->owner->username.' 回复了你的评论 "'.$this->submission->title.'"',
@@ -79,9 +79,12 @@ class CommentReplied extends Notification implements ShouldBroadcast
 
     public function toInwehub($notifiable){
         return [
-            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug.'?comment='.$this->comment->id,
+            'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
-            'title'  => $this->comment->owner->username.'回复了你',
+            'title'  => $this->comment->owner->username.'回复了你的评论',
+            'submission_title' => $this->submission->title,
+            'comment_id' => $this->comment->id,
             'body'   => $this->comment->body,
             'extra_body' => '原回复：'.$this->comment->parent->body
         ];

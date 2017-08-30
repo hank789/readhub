@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Events\SubmissionWasVoted;
-use App\Submission;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
 use Auth;

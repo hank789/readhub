@@ -16,12 +16,21 @@
 </template>
 
 <script>
+    import Helpers from '../mixins/Helpers';
+
     export default {
         props: ['notification'],
 
+        mixins: [Helpers],
+
         computed: {
         	date () {
-                return moment(this.notification.created_at).fromNow()
+
+                if (this.isItToday(this.notification.created_at)) {
+                    return this.parseDateForToday(this.notification.created_at)
+                }
+
+                return this.parseDate(this.notification.created_at);
             },
         },
 

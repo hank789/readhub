@@ -186,9 +186,9 @@
             newComment(comment) {
             	if (comment.parent_id != 0 || comment.submission_id != this.submission.id) return;
 
-				// add broadcastedParent (used for styling)
+				// add broadcasted (used for styling)
 				if (comment.user_id != auth.id) {
-					comment.broadcastedParent = true;
+					comment.broadcasted = true;
 				}
 
 				this.comments.unshift(comment);
@@ -245,14 +245,14 @@
             			slug: this.$route.params.slug
             		}
             	}).then((response) => {
-					this.submission = response.data
+					this.submission = response.data;
 					this.setPageTitle(this.submission.title);
 
-                    if( !this.loaded ) {
-                    	Store.category = response.data.category
+                    if(!this.loaded) {
+                    	Store.category = response.data.category;
                     }
 
-                    this.loadingSubmission = false
+                    this.loadingSubmission = false;
 				}).catch((error) => {
 					if (error.response.status === 404) {
 						this.$router.push('/404')

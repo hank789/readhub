@@ -17,7 +17,6 @@ use App\Traits\Submit;
 use Auth;
 use Carbon\Carbon;
 use DB;
-use Embed\Embed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 

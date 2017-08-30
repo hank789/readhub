@@ -3,7 +3,7 @@
         <div class="content">
         	<div class="ui reply form flex-display">
                 <textarea type="text" v-model="message" :id="'comment-form-' + parent" class="v-comment-form"
-                          placeholder="添加回复..." autocomplete="off" rows="1"
+                          placeholder="添加回复..." autocomplete="off" rows="1" name="comment"
                           v-on:keydown.enter="submit($event)" v-focus="focused" @focus="focused = true"
                 ></textarea>
 
@@ -179,11 +179,13 @@
                         comment_id: this.id,
                         body: this.temp
                     }).then((response) => {
-                        this.loading = false
+                        this.loading = false;
 
-                        this.$emit('patched-comment', this.temp)
+                        this.$emit('patched-comment', this.temp);
                     }).catch((error) => {
-                        this.loading = false
+        		        this.message = this.temp;
+
+        		        this.loading = false;
                     });
 
                     return;
@@ -195,17 +197,19 @@
                     submission_id: this.submission,
                     body: this.temp,
                 } ).then((response) => {
-                	Store.commentUpVotes.push(response.data.id)
+                	Store.commentUpVotes.push(response.data.id);
 
                     /**
 		             * Fire an event to catch by the commenter himself
 		             * (use ajax response instead of pusher for commenter himself)
 		             */
-                    this.$eventHub.$emit('newComment', response.data)
-
-        			this.loading = false
+                    this.$eventHub.$emit('newComment', response.data);
+;
+        			this.loading = false;
                 }).catch((error) => {
-                    this.loading = false
+                    this.message = this.temp;
+
+                    this.loading = false;
                 });
         	},
         },

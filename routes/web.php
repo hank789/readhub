@@ -27,6 +27,13 @@ Route::group(['middleware' => ['maintenance', 'http2']], function () {
     // social logins
     Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
     Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+    // sitemap
+    Route::get('/sitemap.xml', 'SitemapsController@index');
+    Route::get('/pages.xml', 'SitemapsController@pages');
+    Route::get('/submissions.xml', 'SitemapsController@submissions');
+    Route::get('/users.xml', 'SitemapsController@users');
+    Route::get('/channels.xml', 'SitemapsController@categories');
 });
 
 // backend-admin
@@ -50,6 +57,7 @@ Route::delete('/backend/users/destroy', 'UserController@destroy');
 Route::post('/ban-user', 'BanController@store');
 Route::delete('/ban-user/destroy', 'BanController@destroy');
 Route::get('/backend/spam', 'BackendController@spam');
+Route::get('/backend/update-comments-count', 'BackendController@updateCommentsCount');
 Route::post('/forbidden-username/store', 'BackendController@storeForbiddenUsername');
 Route::delete('/appointed/destroy/{appointed}', 'BackendController@destroyAppointed');
 Route::post('/forbidden-category-name/store', 'BackendController@storeForbiddenCategoryName');

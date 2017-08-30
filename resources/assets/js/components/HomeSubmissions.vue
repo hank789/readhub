@@ -1,5 +1,5 @@
 <template>
-	<section :class="'list-'+sort">
+	<section id="home-submissions" :class="'list-'+sort">
 		<div v-for="(value, index) in uniqueList" v-bind:key="value.id">
     		<suggested-category v-if="index == 5"></suggested-category>
 
@@ -145,7 +145,10 @@
 	        	}
 
 	        	// make sure feedFitler is set
-	        	if (this.isSetLS('feed-filter')) {
+                if (this.$route.query.filter == 'all') {
+                    Store.feedFilter = 'all-channels';
+                    this.putLS('feed-filter', 'all-channels');
+                } else if (this.isSetLS('feed-filter')) {
 	   				Store.feedFilter = this.getLS('feed-filter');
 	   			} else {
 	   				Store.feedFilter = 'all-channels';

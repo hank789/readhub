@@ -7,7 +7,7 @@
 
 
 @section('head')
-	<title>Readhub</title>
+	<title>阅读发现</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="Readhub - Social Bookmarking For The 21st Century" />
 	<meta property="og:url" content="{{ config('app.url') }}" />

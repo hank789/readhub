@@ -8,8 +8,8 @@
     @yield('head')
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
-    <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script>
-
+    <!-- <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script> -->
+    <script src="/vendor/js/socket.io.min.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,6 +19,7 @@
             'env' => config('app.env'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),
             'is_h5' => session('is_h5'),
+            'inwehub_url' => config('app.inwehub_url'),
             'echo_address' => config('broadcasting.connections.echo.app_address'),
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
         ]); ?>
@@ -74,7 +75,7 @@
 <script>
     var auth = {
         id: '{{ Auth::user()->id }}',
-        bio: `{!! Auth::user()->bio !!}`,
+        bio: {!! json_encode(Auth::user()->bio) !!},
         name: '{{ Auth::user()->name }}',
         email: '{{ Auth::user()->email }}',
         color: '{{ Auth::user()->color }}',
@@ -92,17 +93,10 @@
         exclude_upvoted_submissions: {{ settings('exclude_upvoted_submissions') ? 'true' : 'false' }},
         exclude_downvoted_submissions: {{ settings('exclude_downvoted_submissions') ? 'true' : 'false' }},
         isMobileDevice: {{ isMobileDevice() ? 'true' : 'false' }},
-        <?php
-            if (isMobileDevice()) {
-                $submission_small_thumbnail = 'false';
-            } else {
-                $submission_small_thumbnail = 'true';
-            }
-        ?>
-        submission_small_thumbnail: {{ $submission_small_thumbnail }},
+        submission_small_thumbnail: {{ isMobileDevice() ? 'false' : 'true' }},
         info: {
-        	website: '{{ Auth::user()->info['website'] }}',
-        	twitter: '{{ Auth::user()->info['twitter'] }}'
+            website: '{{ Auth::user()->info['website'] }}',
+            twitter: '{{ Auth::user()->info['twitter'] }}'
         },
         stats: {!! Auth::user()->stats() !!},
         isGuest: {{ 'false' }},

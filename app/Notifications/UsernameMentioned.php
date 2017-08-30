@@ -24,9 +24,9 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(User $user, Submission $submission, Comment $comment)
+    public function __construct(Submission $submission, Comment $comment)
     {
-        $this->user = $user;
+        $this->user = $comment->owner;
         $this->submission = $submission;
         $this->comment = $comment;
     }
@@ -82,9 +82,11 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
     public function toInwehub($notifiable){
         return [
             'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'name'   => $this->user->username,
             'avatar' => $this->user->avatar,
             'title'  => $this->user->username.'提到了你',
             'body'   => $this->comment->body,
+            'comment_id' => $this->comment->id,
             'extra_body' => '原文：'.$this->submission->title
         ];
     }
