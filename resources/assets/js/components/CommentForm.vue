@@ -179,11 +179,13 @@
                         comment_id: this.id,
                         body: this.temp
                     }).then((response) => {
-                        this.loading = false
+                        this.loading = false;
 
-                        this.$emit('patched-comment', this.temp)
+                        this.$emit('patched-comment', this.temp);
                     }).catch((error) => {
-                        this.loading = false
+        		        this.message = this.temp;
+
+        		        this.loading = false;
                     });
 
                     return;
@@ -195,17 +197,19 @@
                     submission_id: this.submission,
                     body: this.temp,
                 } ).then((response) => {
-                	Store.commentUpVotes.push(response.data.id)
+                	Store.commentUpVotes.push(response.data.id);
 
                     /**
 		             * Fire an event to catch by the commenter himself
 		             * (use ajax response instead of pusher for commenter himself)
 		             */
-                    this.$eventHub.$emit('newComment', response.data)
-
-        			this.loading = false
+                    this.$eventHub.$emit('newComment', response.data);
+;
+        			this.loading = false;
                 }).catch((error) => {
-                    this.loading = false
+                    this.message = this.temp;
+
+                    this.loading = false;
                 });
         	},
         },

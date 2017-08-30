@@ -24,9 +24,9 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(User $user, Submission $submission, Comment $comment)
+    public function __construct(Submission $submission, Comment $comment)
     {
-        $this->user = $user;
+        $this->user = $comment->owner;
         $this->submission = $submission;
         $this->comment = $comment;
     }
