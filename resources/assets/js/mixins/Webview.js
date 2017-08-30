@@ -1,3 +1,5 @@
+import {plusReady} from '../libs/plus';
+
 export default {
     data: function () {
         return {
@@ -20,6 +22,7 @@ export default {
                 }
 
                 console.log(plus.webview.currentWebview().id);
+
 
                 var embed=plus.webview.create(url, url,{popGesture: 'hide',
                     top:'0px',
@@ -59,33 +62,38 @@ export default {
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
             if (isPlusReady){
                 var currentPath = this.$route.path;
-                var ws = plus.webview.currentWebview();
-                if (currentPath === '/h5') {
-                    if (ws) {
-                        ws.setStyle({
+
+                plusReady(() => {
+                    var ws = plus.webview.currentWebview();
+                    if (currentPath === '/h5') {
+                        if (ws) {
+                            ws.setStyle({
                                 popGesture: 'hide',
                                 top: '0px',
                                 dock: 'top',
                                 bottom: '75px',
                                 bounce:'none'
-                        });
-                    }
-                } else {
-                    if (ws) {
-                        if (currentPath.match(/webview$/)) {
-                            return false;
+                            });
                         }
+                    } else {
+                        if (ws) {
+                            console.log('currentPath:'+currentPath);
+                            if (currentPath.match(/webview$/)) {
+                                return false;
+                            }
 
-                        ws.setStyle({
-                            popGesture: 'hide',
-                            top: '0px',
-                            dock: 'top',
-                            bottom: '0px',
-                            bounce:'none'
+                            ws.setStyle({
+                                    popGesture: 'hide',
+                                    top: '0px',
+                                    dock: 'top',
+                                    bottom: '0px',
+                                    bounce:'none'
+                                }
+                            );
                         }
-                    );
                     }
-                }
+                });
+
             }
         },
 
