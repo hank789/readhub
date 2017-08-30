@@ -79,7 +79,7 @@ class CommentReplied extends Notification implements ShouldBroadcast
 
     public function toInwehub($notifiable){
         return [
-            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug.'?comment='.$this->comment->id,
             'name'   => $this->comment->owner->username,
             'avatar' => $this->comment->owner->avatar,
             'title'  => $this->comment->owner->username.'回复了你的评论',
