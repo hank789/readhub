@@ -84,6 +84,13 @@
 						</div>
 					</div>
 
+					<div class="toMy" @click="toMy()">
+						<svg class="icon-inwehub icon" aria-hidden="true">
+							<use xlink:href="#icon-gongkai"></use>
+						</svg>
+						查看名片
+					</div>
+
 		        </div>
 		    </div>
 		</div>
@@ -131,9 +138,10 @@
 <script>
 import MessageButton from '../components/MessageButton.vue';
 import Helpers from '../mixins/Helpers';
+import Webview from '../mixins/Webview';
 
 export default {
-	mixins: [Helpers],
+	mixins: [Helpers, Webview],
 
     components: {
     	MessageButton
@@ -224,6 +232,9 @@ export default {
 				Store.userBookmarks.push(Store.user.id)
 			})
     	},
+		toMy(){
+			this.parentOpenUrl('/my');
+		}
     },
 
     computed: {
@@ -272,3 +283,20 @@ export default {
     }
 }
 </script>
+
+<style scoped="scoped">
+	.toMy{
+		position: absolute;
+		right:0;
+		top:30px;
+		padding: 0px 5px 4px 6px;
+		font-size:13px;
+		border-radius: 50px 0 0 50px;
+		border:1px solid #808080;
+	}
+	.toMy .icon{
+		font-size:21px;
+		position: relative;
+		top: 2px;
+	}
+</style>
