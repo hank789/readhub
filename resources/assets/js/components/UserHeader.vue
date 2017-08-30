@@ -233,7 +233,7 @@ export default {
 			})
     	},
 		toMy(){
-    	    this.openWebviewUrl('index.html#/my');
+			this.parentOpenUrl('/my');
 		}
     },
 
@@ -286,7 +286,6 @@ export default {
 
 <style scoped="scoped">
 	.toMy{
-		display: none;
 		position: absolute;
 		right:0;
 		top:30px;
