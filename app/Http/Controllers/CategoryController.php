@@ -43,7 +43,7 @@ class CategoryController extends Controller
     {
         $submissions = (new Submission())->newQuery();
 
-        $submissions->where('category_name', $category);
+        $submissions->where('category_id', $category);
 
         // exclude user's hidden submissions
         if (Auth::check()) {
@@ -121,7 +121,7 @@ class CategoryController extends Controller
             'name' => 'required',
         ]);
 
-        $category = $this->getCategoryByName($request->name);
+        $category = $this->getCategoryById($request->name);
 
         $category->stats = $this->categoryStats($category->id);
 

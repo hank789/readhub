@@ -72,7 +72,7 @@ export default {
         getModerators() {
             axios.get( '/category-moderators', {
                 params: {
-                	name: this.$route.params.name
+                	name: Store.category.name
                 }
             }).then((response) => {
                 this.list = response.data;

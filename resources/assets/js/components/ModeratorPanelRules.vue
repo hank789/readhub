@@ -64,7 +64,7 @@
             createRule(){
                 axios.post('/create-rule', {
                     title: this.title,
-                    category_name: this.$route.params.name
+                    category_name: Store.category.name
                 }).then((response) => {
                     this.items.unshift(response.data)
                     this.clear()
@@ -76,7 +76,7 @@
             getItems(){
                 axios.get('/rules', {
                     params: {
-                    	name: this.$route.params.name
+                    	name: Store.category.name
                     }
                 }).then((response) => {
                     this.items = response.data
@@ -137,7 +137,7 @@
 
         // only administrators can access this route
         beforeRouteEnter(to, from, next){
-            if (Store.category.name == to.params.name) {
+            if (Store.category.id == to.params.name) {
                 // loaded
                 if (Store.administratorAt.indexOf(Store.category.id) != -1) {
                     next()

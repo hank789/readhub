@@ -73,7 +73,7 @@
         methods: {
             getMods(){
                 axios.post('/moderators', {
-                    category_name: this.$route.params.name
+                    category_name: Store.category.name
                 }).then((response) => {
                     this.mods = response.data
                 })
@@ -88,7 +88,7 @@
                 axios.get('/users', {
                 	params: {
 	                    username: query,
-            			category: this.$route.params.name
+            			category: Store.category.name
                 	}
                 }).then((response) => {
                     this.users = response.data
@@ -107,7 +107,7 @@
 
             addModerator(){
                 axios.post('/add-moderator', {
-                    category_name: this.$route.params.name,
+                    category_name: Store.category.name,
                     username: this.username,
                     role: this.role
                 }).then((response) => {
@@ -120,7 +120,7 @@
         },
 
         beforeRouteEnter(to, from, next){
-            if (Store.category.name == to.params.name) {
+            if (Store.category.id == to.params.name) {
                 // loaded
                 if (Store.administratorAt.indexOf(Store.category.id) != -1) {
                     next()

@@ -66,7 +66,7 @@ class BecameModerator extends Notification implements ShouldBroadcast
     public function toArray($notifiable)
     {
         return [
-            'url'      => '/c/'.$this->category->name.'/mod',
+            'url'      => '/c/'.$this->category->id.'/mod',
             'name'     => $this->category->name,
             'avatar'   => $this->category->avatar,
             'body'     => '你现在是频道的管理员了 '.'#'.$this->category->name,

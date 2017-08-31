@@ -317,7 +317,7 @@ const app = new Vue({
          */
         getCategoryStore(name) {
         	// if landed on a submission page
-        	if (preload.category && preload.category.name == this.$route.params.name) {
+        	if (preload.category && preload.category.id == this.$route.params.name) {
         		Store.category = preload.category;
         		delete preload.category;
         		return;

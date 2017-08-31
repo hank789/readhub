@@ -55,7 +55,7 @@ export default {
    		 * @return Boolean
    		 */
         loaded () {
-            return Store.category.name == this.$route.params.name;
+            return Store.category.id == this.$route.params.name;
         }
     },
 
@@ -66,7 +66,7 @@ export default {
     	 * @return void
     	 */
     	updateCategoryStore () {
-    		if (Store.category.name == undefined || Store.category.name != this.$route.params.name) {
+    		if (Store.category.name == undefined || Store.category.id != this.$route.params.name) {
 	    		this.$root.getCategoryStore(this.$route.params.name);
     		}
     	},

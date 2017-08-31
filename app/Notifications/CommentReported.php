@@ -64,7 +64,7 @@ class CommentReported extends Notification implements ShouldBroadcast
     public function toArray($notifiable)
     {
         return [
-            'url'    => '/c/'.$this->category->name.'/mod/reports/comments/',
+            'url'    => '/c/'.$this->category->id.'/mod/reports/comments/',
             'name'   => $this->category->name,
             'avatar' => $this->category->avatar,
             'body'   => '回复被举报了 #'.$this->category->name,
@@ -73,7 +73,7 @@ class CommentReported extends Notification implements ShouldBroadcast
 
     public function toInwehub($notifiable){
         return [
-            'url'    => '/c/'.$this->category->name.'/mod/reports/comments/',
+            'url'    => '/c/'.$this->category->id.'/mod/reports/comments/',
             'avatar' => $this->category->avatar,
             'title'  => '回复被举报了',
             'body'   => '#'.$this->category->name,

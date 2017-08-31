@@ -64,7 +64,7 @@ class SubmissionReported extends Notification implements ShouldBroadcast
     public function toArray($notifiable)
     {
         return [
-            'url'    => '/c/'.$this->category->name.'/mod/reports/submissions/',
+            'url'    => '/c/'.$this->category->id.'/mod/reports/submissions/',
             'name'   => $this->category->name,
             'avatar' => $this->category->avatar,
             'body'   => '文章被举报了 #'.$this->category->name,
@@ -73,7 +73,7 @@ class SubmissionReported extends Notification implements ShouldBroadcast
 
     public function toInwehub($notifiable){
         return [
-            'url'    => '/c/'.$this->category->name.'/mod/reports/submissions/',
+            'url'    => '/c/'.$this->category->id.'/mod/reports/submissions/',
             'avatar' => $this->category->avatar,
             'title'  => '文章被举报了',
             'body'   => '#'.$this->category->name,

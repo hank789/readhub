@@ -139,9 +139,10 @@ export default {
             this.page++;
             this.loading = true
 
+
             axios.post('/reported-submissions', {
                 type: this.type,
-                category: this.$route.params.name,
+                category: Store.category.name,
                 page: this.page
             }).then((response) => {
                 this.items = [...this.items, ...response.data.data]
@@ -161,7 +162,7 @@ export default {
     },
 
     beforeRouteEnter(to, from, next){
-        if (Store.category.name == to.params.name) {
+        if (Store.category.id == to.params.name) {
             // loaded
             if (Store.moderatingAt.indexOf(Store.category.id) != -1) {
                 next()
