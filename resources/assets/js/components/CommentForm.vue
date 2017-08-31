@@ -72,8 +72,8 @@
         	},
 
         	showSubmit () {
-        		return this.loading == false && this.message.trim()
-        	}
+        		return this.loading == false && this.message.trim() && (this.message.trim().lastIndexOf('@') + 1) !== this.message.trim().length;
+            }
         },
 
 		mounted: function () {
@@ -151,6 +151,8 @@
         		event.preventDefault();
 
         		if(!this.message.trim()) return;
+
+        		if ((this.message.trim().lastIndexOf('@') + 1) === this.message.trim().length) return;
 
                 this.closeEmojiPicker();
 
