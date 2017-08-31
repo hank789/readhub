@@ -55,7 +55,7 @@ export default {
    		 * @return Boolean
    		 */
         loaded () {
-            return Store.category.id == this.$route.params.name;
+            return Store.category.id == this.$route.params.name || Store.category.name == this.$route.params.name;
         }
     },
 
