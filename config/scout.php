@@ -42,7 +42,7 @@ return [
     */
 
     // 'queue' => true,
-    'queue' => env('SCOUT_QUEUE', '0') == '1' ? true : false,
+    'queue' => env('SCOUT_QUEUE', '1') == '1' ? true : false,
 
     /*
     |--------------------------------------------------------------------------
@@ -72,10 +72,10 @@ return [
     */
 
     'mysql' => [
-        'mode'                         => 'NATURAL_LANGUAGE',
+        'mode'                         => 'LIKE',
         'model_directories'            => [app_path()],
         'min_search_length'            => 0,
-        'min_fulltext_search_length'   => 6,
+        'min_fulltext_search_length'   => 3,
         'min_fulltext_search_fallback' => 'LIKE',
         'query_expansion'              => false,
     ],
