@@ -184,14 +184,13 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
-        ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Maknz\Slack\Laravel\ServiceProvider::class,
+        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
         // dev only
         VueGenerators\ServiceProvider::class,
-        DamianTW\MySQLScout\Providers\MySQLScoutServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
