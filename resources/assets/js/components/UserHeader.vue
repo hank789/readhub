@@ -233,7 +233,7 @@ export default {
 			})
     	},
 		toMy(){
-			this.parentOpenUrl('/share/resume?id=' + this.userStore.uuid);
+			this.parentOpenUrl('/share/resume?id=' + Store.user.uuid);
 		}
     },
 
