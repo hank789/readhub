@@ -64,7 +64,7 @@ export default {
                 console.log('rootWebviewid:' + webview.id);
                 webview.loadURL('/public/index.html#' + url);
             } else {
-                window.top.location.href = window.Laravel.inwehub_url + '/#/my';
+                window.top.location.href = window.Laravel.inwehub_url + '/#' + url;
             }
         },
         hideWebviewFooter(){
