@@ -15,20 +15,24 @@
 
 	<meta name="description" content="A Modern, real-time, open-source, beautiful, deadly simple and warm community."/>
 	<meta property="og:description" content="A Modern, real-time, open-source, beautiful, deadly simple and warm community." />
-	<meta property="og:image" content="{{ config('app.url') }}/imgs/voten-circle.png">
+	<meta property="og:image" content="{{ config('app.url') }}/imgs/readhub-beta.png">
 
 	<script type="application/ld+json">
-	{
-	    "@context": "http://schema.org",
-	    "@type": "WebSite",
-	    "url": "https://www.inwehub.com",
-	    "name": "Readhub",
-	    "logo": "https://voten.co/imgs/voten-circle.png",
-	    "sameAs": [
-	        "https://www.facebook.com/voten.co/",
-	        "https://twitter.com/voten_co"
-	    ]
-	}
+		{
+		    "@context": "http://schema.org",
+		    "@type": "Organization",
+		    "url": "https://www.inwehub.com",
+		    "name": "Inwehub",
+		    "logo": {
+	            "@type": "ImageObject",
+	            "url": "https://read.inwehub.com/imgs/readhub-beta.png",
+	            "width": "512",
+	            "height": "512"
+	        },
+		    "sameAs": [
+		        "https://zhuanlan.zhihu.com/inwehub"
+		    ]
+		}
 	</script>
 @endsection
 

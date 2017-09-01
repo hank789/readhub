@@ -15,7 +15,7 @@
 
 	<meta name="description" content="A Modern, real-time, open-source, beautiful, deadly simple and warm community."/>
 	<meta property="og:description" content="A Modern, real-time, open-source, beautiful, deadly simple and warm community." />
-	<meta property="og:image" content="{{ config('app.url') }}/imgs/voten-circle.png">
+	<meta property="og:image" content="{{ config('app.url') }}/imgs/readhub-beta.png">
 
 	<script type="application/ld+json">
 		{
@@ -25,7 +25,7 @@
 		    "name": "Inwehub",
 		    "logo": {
 	            "@type": "ImageObject",
-	            "url": "https://read.inwehub.com/imgs/voten-circle.png",
+	            "url": "https://read.inwehub.com/imgs/readhub-beta.png",
 	            "width": "512",
 	            "height": "512"
 	        },
