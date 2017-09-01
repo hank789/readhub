@@ -233,7 +233,7 @@ export default {
 			})
     	},
 		toMy(){
-			this.parentOpenUrl('/my');
+			this.parentOpenUrl('/share/resume?id=' + Store.user.uuid + '&goback=1');
 		}
     },
 
@@ -286,7 +286,6 @@ export default {
 
 <style scoped="scoped">
 	.toMy{
-		display: none;
 		position: absolute;
 		right:0;
 		top:30px;
