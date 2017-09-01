@@ -10,19 +10,16 @@
         	</h3>
 
         	<p>
-        		Sign up now to get your own personalized timeline, modified sidebar, customizable design, and real-time experience!
+				前往<a href="https://adsolj.mlinks.cc/A0k8">下载APP</a>
         	</p>
 
-        	<button class="v-button v-button--block" @click="signUp">
-        		注册
-        	</button>
         </div>
 
 
         <aside class="menu">
         	<div class="flex-space">
 	            <p class="menu-label">
-	                #Recommendeds<span v-if="Store.subscribedCategories.length">({{ Store.subscribedCategories.length }})</span>
+	                #推荐<span v-if="Store.subscribedCategories.length">({{ Store.subscribedCategories.length }})</span>
 	            </p>
 
 				<div class="ui icon top right active-blue pointing dropdown sidebar-panel-button">
@@ -32,7 +29,7 @@
 
             <div class="ui category search side-box-search">
                 <div class="ui mini icon input">
-                  <input class="prompt" type="text" placeholder="Channels..." spellcheck="false"
+                  <input class="prompt" type="text" placeholder="频道..." spellcheck="false"
 						 v-model="subscribedFilter">
                   <i class="v-icon v-search search icon"></i>
                 </div>
@@ -42,7 +39,7 @@
 				<svg class="icon-inwehub v-icon" aria-hidden="true">
 					<use xlink:href="#icon-zanwushuju"></use>
 				</svg>
-            	No channels to display
+            	没有频道
             </div>
 
             <ul class="menu-list" v-else>

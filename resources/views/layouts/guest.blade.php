@@ -21,30 +21,36 @@
             'csrfToken' => csrf_token(),
             'env' => config('app.env'),
             'is_h5' => session('is_h5'),
+            'inwehub_url' => config('app.inwehub_url'),
+            'deep_mlink'  => config('app.deep_link'),
             'echo_address' => config('broadcasting.connections.echo.app_address'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
         ]); ?>
     </script>
 
-    <link rel="shortcut icon" href="/imgs/favicon.png">
+    <link rel="shortcut icon" href="/imgs/favicon.ico">
     @include('user.user-style')
 </head>
 
 <body>
 @include('google-analytics')
 
-<div id="voten-app" :class="{ 'background-white': Store.contentRouter != 'content' }">
-    @include('app-header')
+<div id="voten-app" class="guest-app" :class="{ 'background-white': Store.contentRouter != 'content', isWechat:isWechat(), isWebview:$route.path.match(/webview/)}">
+    @if (session('is_h5'))
+        @include('h5-header')
+    @else
+        @include('app-header')
+    @endif
 
-    <div class="v-content-wrapper">
+    <div class="v-content-wrapper @if (session('is_h5')) v-content-wrapper-h5  @endif  v-content-wrapper-guest">
 		<div class="v-side" v-show="sidebar">
 		    <guest-sidebar></guest-sidebar>
 		</div>
 
 		<search-modal v-if="Store.contentRouter == 'search'" :sidebar="sidebar"></search-modal>
 
-        <div class="v-content" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10">
+        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10">
             <transition name="fade">
                 <rules v-if="modalRouter == 'rules'" :sidebar="sidebar"></rules>
                 <moderators v-if="modalRouter == 'moderators'" :sidebar="sidebar"></moderators>
