@@ -19,7 +19,7 @@
 	                    </div>
 
 	                    <div class="profile-avatar" v-else>
-	        				<router-link :to="'/c/' + Store.category.name">
+	        				<router-link :to="'/c/' + Store.category.id">
 			                    <img v-bind:src="Store.category.avatar" v-bind:alt="Store.category.name" />
 		                	</router-link>
 		                </div>
@@ -28,13 +28,13 @@
 
 	            <div class="category-header-middle">
                     <h1 v-if="$route.name == 'category'">
-        				<router-link :to="'/c/' + Store.category.name" class="flex-center-inline">
+        				<router-link :to="'/c/' + Store.category.id" class="flex-center-inline">
 	                        <i class="v-icon v-channel" aria-hidden="true"></i>{{ Store.category.name }}
 	                	</router-link>
                     </h1>
 
                     <h2 v-else>
-        				<router-link :to="'/c/' + Store.category.name" class="flex-center-inline">
+        				<router-link :to="'/c/' + Store.category.id" class="flex-center-inline">
 	                        <i v-if="false" class="v-icon v-channel" aria-hidden="true"></i>{{ Store.category.name }}
 	                	</router-link>
                     </h2>
@@ -173,7 +173,7 @@ export default {
     	    	return;
     	    }
 
-    	    this.$router.push('/submit?channel=' + this.$route.params.name);
+    	    this.$router.push('/submit?channel=' + Store.category.name);
     	},
 
 		emitRules(){

@@ -107,7 +107,7 @@
 			<router-link v-if="false" :to="'/' + '@' + submission.owner.id" class="h-underline desktop-only">
 				{{ '@' + submission.owner.username }}
 			</router-link>
-			发布于 <router-link :to="'/c/' + submission.category_name" class="category-label h-underline">#{{ submission.category_name }}</router-link>
+			发布于 <router-link :to="'/c/' + submission.category_id" class="category-label h-underline">#{{ submission.category_name }}</router-link>
 		</span>
 
 	</div>

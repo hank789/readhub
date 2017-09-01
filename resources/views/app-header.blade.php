@@ -26,7 +26,7 @@
 
         	@if (!Auth::check())
         		<button class="v-button v-button--green relative" @click="mustBeLogin">
-	        		注册/登陆
+	        		登陆
 	        	</button>
         	@endif
 

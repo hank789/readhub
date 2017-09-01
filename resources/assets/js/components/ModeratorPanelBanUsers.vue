@@ -71,7 +71,7 @@
         mounted: function() {
             this.$nextTick(function() {
                 this.$root.autoResize()
-            })
+            });
         },
 
         methods: {
@@ -87,7 +87,7 @@
                 axios.get('/users', {
                 	params: {
 	                    username: query,
-                    	category: this.$route.params.name
+                    	category: Store.category.name
                 	}
                 } ).then((response) => {
                     this.users = response.data
@@ -120,7 +120,7 @@
                  axios.delete('/ban-user/destroy', {
                     params: {
                         user_id,
-                        category: this.$route.params.name
+                        category: Store.category.name
                     }
                  }).then((response) => {
                     this.bannedUsers = this.bannedUsers.filter(function (item) {
@@ -136,7 +136,7 @@
              */
              getBannedUsers () {
                  axios.post('/banned-users', {
-                     category: this.$route.params.name
+                     category: Store.category.name
                  }).then((response) => {
                      this.bannedUsers = response.data
                  })
@@ -145,7 +145,7 @@
 
 
         beforeRouteEnter(to, from, next){
-            if (Store.category.name == to.params.name) {
+            if (Store.category.id == to.params.name) {
                 // loaded
                 if (Store.moderatingAt.indexOf(Store.category.id) != -1) {
                     next()

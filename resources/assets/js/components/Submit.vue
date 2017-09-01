@@ -260,7 +260,7 @@
 
             			Store.submissionUpVotes.push(response.data.id)
 
-                        this.$router.push('/c/' + this.selectedCat + '/' + response.data.slug)
+                        this.$router.push('/c/' + response.data.category_id + '/' + response.data.slug)
 
     					this.loading = false
                     }).catch((error) => {
@@ -294,7 +294,7 @@
 
         			Store.submissionUpVotes.push(response.data.id)
 
-                    this.$router.push('/c/' + this.selectedCat + '/' + response.data.slug)
+                    this.$router.push('/c/' + response.data.category_id + '/' + response.data.slug)
 
 					this.loading = false
                 }, (error) => {

@@ -72,7 +72,7 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
     public function toArray($notifiable)
     {
         return [
-            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'url'    => '/c/'.$this->submission->category_id.'/'.$this->submission->slug,
             'name'   => $this->user->username,
             'avatar' => $this->user->avatar,
             'body'   => '@'.$this->user->username.' 提到了你 "'.$this->submission->title.'"',
@@ -81,7 +81,7 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
 
     public function toInwehub($notifiable){
         return [
-            'url'    => '/c/'.$this->submission->category_name.'/'.$this->submission->slug,
+            'url'    => '/c/'.$this->submission->category_id.'/'.$this->submission->slug,
             'name'   => $this->user->username,
             'avatar' => $this->user->avatar,
             'title'  => $this->user->username.'提到了你',

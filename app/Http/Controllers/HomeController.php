@@ -54,14 +54,15 @@ class HomeController extends Controller
                 $this->guard()->loginUsingId($user->id,true);
             }
         }
-        if (!Auth::check()) {
-            $submissions = $this->guestHome($request);
 
-            return view('home', compact('submissions'));
-        }
         if ($redirect_url) {
             return redirect($redirect_url);
         } else {
+            if (!Auth::check()) {
+                $submissions = $this->guestHome($request);
+
+                return view('home', compact('submissions'));
+            }
             return view('welcome');
         }
     }
