@@ -597,15 +597,20 @@ const app = new Vue({
 
         // Displays the login modal
         loginModal() {
-            var isWeixin = this.isWechat();
-            if (isWeixin) {
-                // var pathInfo = window.location.pathname;
-                // window.Laravel.inwehub_api_url = 'https://api.ywhub.com';
-                // var url = window.Laravel.inwehub_api_url + '/wechat/oauth?redirect=/discover?redirect_url=' + pathInfo;
-                console.log('准备跳转' + window.Laravel.deep_mlink);
+            // var isWeixin = this.isWechat();
+            // if (isWeixin) {
+            //     // var pathInfo = window.location.pathname;
+            //     // window.Laravel.inwehub_api_url = 'https://api.ywhub.com';
+            //     // var url = window.Laravel.inwehub_api_url + '/wechat/oauth?redirect=/discover?redirect_url=' + pathInfo;
+            //     console.log('准备跳转' + window.Laravel.deep_mlink);
+            //     window.location.href=window.Laravel.deep_mlink;
+            // } else {
+            //     this.modalRouter = 'login';
+            // }
+
+            console.log('准备跳转' + window.Laravel.deep_mlink);
+            if (window.Laravel.deep_mlink) {
                 window.location.href=window.Laravel.deep_mlink;
-            } else {
-                this.modalRouter = 'login';
             }
         },
 
