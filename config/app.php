@@ -55,6 +55,8 @@ return [
 
     'inwehub_url' => env('INWEHUB_URL', 'http://localhost'),
 
+    'deep_link'   => env('DEEP_MLINK', 'http://localhost'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
