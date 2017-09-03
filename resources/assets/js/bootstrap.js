@@ -66,6 +66,13 @@ import RavenVue from 'raven-js/plugins/vue';
 var sentry_url = 'https://5dc54108e50a44fe83f9607b8b75f74c@sentry.io/199705';
 if (Laravel.env === 'production') {
     sentry_url = 'https://9da628f4c63343fda9ac25a8f0a127df@sentry.io/199706';
+    // mixpanel
+    mixpanel.init("688ee16000ddf4f44891e06b79847d4e");
+
+    if (auth.isGuest === false){
+        mixpanel.identify(auth.id);
+        mixpanel.people.set({ "email": auth.email, "name": auth.username, "avatar": auth.avatar });
+    }
 }
 Raven
     .config(sentry_url)
