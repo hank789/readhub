@@ -93,6 +93,9 @@ class SubmissionController extends Controller
             $exist_submission_id = Redis::connection()->hget('voten:submission:url',$request->url);
             if ($exist_submission_id){
                 $exist_submission = Submission::find($exist_submission_id);
+                if (!$exist_submission) {
+                    return response("您提交的网址已经存在", 500);
+                }
                 $exist_submission_url = '/c/'.$exist_submission->category_name.'/'.$exist_submission->slug;
                 return response("您提交的网址已经存在，<a href='$exist_submission_url'>点击查看</a>", 500);
             }

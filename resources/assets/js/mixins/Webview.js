@@ -13,6 +13,13 @@ export default {
     	{
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
+            mixpanel.track(
+                'read_page_detail',
+                {
+                    'page_url': url, 'title': title
+                }
+            );
+
     		if (isPlusReady){
                 function webviewBackButton(){
                     var ws = plus.webview.getWebviewById(url);
@@ -59,6 +66,13 @@ export default {
     	},
         parentOpenUrl(url){
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+
+            mixpanel.track(
+                'readhub_to_inwehub',
+                {
+                    'page_url': url
+                }
+            );
             if (isPlusReady){
                 var webview = plus.webview.getWebviewById(plus.runtime.appid);
                 console.log('rootWebviewid:' + webview.id);
