@@ -240,10 +240,12 @@ router.afterEach((to, from) => {
 	   ga('set', 'page', to.path);
 	   ga('send', 'pageview');
 
-        mixpanel.track(
-	       to.fullPath,
-           {"url_name": to.name, "referrer_url": from.fullPath}
-       );
+        if (mixpanel && mixpanel.track) {
+            mixpanel.track(
+               to.fullPath,
+               {"url_name": to.name, "referrer_url": from.fullPath}
+           );
+        }
 	}
 })
 

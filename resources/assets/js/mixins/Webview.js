@@ -13,12 +13,14 @@ export default {
     	{
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
-            mixpanel.track(
-                'read_page_detail',
-                {
-                    'page_url': url, 'title': title
-                }
-            );
+            if (mixpanel && mixpanel.track) {
+                mixpanel.track(
+                    'read_page_detail',
+                    {
+                        'page_url': url, 'title': title
+                    }
+                );
+            };
 
     		if (isPlusReady){
                 function webviewBackButton(){
@@ -67,12 +69,14 @@ export default {
         parentOpenUrl(url){
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
-            mixpanel.track(
-                'readhub_to_inwehub',
-                {
-                    'page_url': url
-                }
-            );
+            if (mixpanel && mixpanel.track) {
+                mixpanel.track(
+                    'readhub_to_inwehub',
+                    {
+                        'page_url': url
+                    }
+                );
+            }
             if (isPlusReady){
                 plusReady(() => {
                     var webview = plus.webview.getWebviewById(plus.runtime.appid);
