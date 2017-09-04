@@ -36,7 +36,7 @@
                             var ws = plus.webview.currentWebview();
                             if (ws) {
                                 console.log('webview hide');
-                                ws.hide();
+                                ws.close();
                                 return;
                             }
                         });
