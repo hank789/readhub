@@ -66,6 +66,8 @@
 	import EmbedValidator from '../../mixins/EmbedValidator';
 	import SubmissionFooter from '../../components/SubmissionFooter.vue';
 	import Webview from '../../mixins/Webview';
+    import {plusReady} from '../../libs/plus';
+
 
     export default {
 		mixins: [EmbedValidator,Webview],
@@ -137,42 +139,52 @@
 
 				var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
 				if (isPlusReady) {
-				   var webview = this.openWebviewUrl(submission.data.url,submission.title);
+                    plusReady(() => {
+                        var webview = this.openWebviewUrl(submission.data.url, submission.title);
 
 
+                        var url = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
 
-                    var url = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
+                        var embed = plus.webview.create(url, url, {
+                            cachemode: 'noCache',
+                            popGesture: 'hide',
+                            bottom: '0px',
+                            height: '44px',
+                            dock: 'bottom',
+                            position: 'dock',
+                            backButtonAutoControl: 'hide',
+                            bounce: 'none', //不允许滑动
+                            scrollIndicator: 'none', //不显示滚动条
+                        });
 
-                    var embed =plus.webview.create(url, url, {
-                        cachemode:'noCache',
-                        popGesture: 'hide',
-                        bottom:'0px',
-                        height:'44px',
-                        dock:'bottom',
-                        position:'dock',
-                        backButtonAutoControl: 'hide',
-                        bounce:'none', //不允许滑动
-                        scrollIndicator:'none', //不显示滚动条
+
+                        //创建评论链接
+                        var view = new plus.nativeObj.View('test', {
+                            bottom: '0px',
+                            left: '0',
+                            height: '44px',
+                            width: '60%'
+                        });
+
+                        view.draw([
+                            {
+                                tag: 'rect',
+                                id: 'rect',
+                                rectStyles: {color: 'rgba(0,0,0,0)'},
+                                position: {bottom: '0px', left: '0px', width: '100%', height: '44px'}
+                            },
+                        ]);
+                        view.addEventListener('click', () => {
+                            console.log('准备跳转');
+                            jumpToComment();
+                            webview.close();
+                        }, false);
+
+                        embed.append(view);
+                        webview.append(embed);
+
+                        webview.show();
                     });
-
-
-
-					//创建评论链接
-                    var view = new plus.nativeObj.View('test', {bottom:'0px',left:'0',height:'44px',width:'60%'});
-
-                    view.draw([
-                        {tag:'rect',id:'rect',rectStyles:{color:'rgba(0,0,0,0)'},position:{bottom:'0px',left:'0px',width:'100%',height:'44px'}},
-                    ]);
-                    view.addEventListener('click', () => {
-						console.log('准备跳转');
-                        jumpToComment();
-                        webview.close();
-                    }, false);
-
-                    embed.append(view);
-                    webview.append(embed);
-
-                    webview.show();
 
 				} else {
                     this.openWebviewUrl(submission.data.url,submission.title);

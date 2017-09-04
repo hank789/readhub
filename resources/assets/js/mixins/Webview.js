@@ -74,9 +74,11 @@ export default {
                 }
             );
             if (isPlusReady){
-                var webview = plus.webview.getWebviewById(plus.runtime.appid);
-                console.log('rootWebviewid:' + webview.id);
-                webview.loadURL('/public/index.html#' + url);
+                plusReady(() => {
+                    var webview = plus.webview.getWebviewById(plus.runtime.appid);
+                    console.log('rootWebviewid:' + webview.id);
+                    webview.loadURL('/public/index.html#' + url);
+                });
             } else {
                 window.top.location.href = window.Laravel.inwehub_url + '/#' + url;
             }
