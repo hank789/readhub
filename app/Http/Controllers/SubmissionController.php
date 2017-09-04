@@ -214,8 +214,11 @@ class SubmissionController extends Controller
     public function getTitleAPI(Request $request)
     {
         $this->validate($request, [
-            'url' => 'required|url',
+            'url' => 'required',
         ]);
+        if (!filter_var ($request->url, FILTER_VALIDATE_URL )) {
+            return response('Invalid URL', 500);
+        }
 
         return $this->getTitle($request->url);
     }
