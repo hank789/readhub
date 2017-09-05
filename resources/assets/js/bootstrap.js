@@ -80,6 +80,9 @@ require('./libs/iconfont');
 require('./libs/mui');
 import './../css/mui.css';
 
+import Share from './libs/share';
+window.Share = Share;
+
 //window.emojione = require('./libs/emojione.min');
 
 //检查错误信息插件
