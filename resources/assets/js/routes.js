@@ -256,7 +256,7 @@ router.afterEach((to, from) => {
             }
             mixpanel.track(
                 mixpanel_event,
-               {"app": "readhub", "url": to.fullPath, "url_name": to.name, "title": to.meta.title, "referrer_url": from.fullPath}
+               {"app": "readhub", "page": to.fullPath, "page_name": to.name, "page_title": to.meta.title, "referrer_page": from.fullPath}
            );
         }
 	}
