@@ -54,19 +54,22 @@ const routes = [
     {
         name: 'h5',
         path: '/h5',
-        component: Home
+        component: Home,
+        meta: { title: '首页' }
     },
     // app上的路由end
 
     { // readhub
         name:'detailH5',
         path: '/readhub/detail',
+        meta: { title: '文章详情页' },
         component: DetailH5
     },
 
     {
         name: 'home',
         path: '/',
+        meta: { title: '首页' },
         component: HomeBak
     },
 
@@ -104,7 +107,7 @@ const routes = [
         path: '/@:username',
         component: UserPage,
         children: [
-            { path: '', component: UserSubmissions, name: 'user-submissions' },
+            { path: '', component: UserSubmissions, name: 'user-submissions', meta: { title: '我的发布' }},
             {
                  path: 'settings',
                  component: Settings,
@@ -116,9 +119,9 @@ const routes = [
                      { path: 'email-and-password', component: UserSettingsEditEmailAndPassword, name: 'user-settings-email-and-password' },
                  ]
              },
-            { path: 'comments', component: UserComments, name: 'user-comments' },
-            { path: 'upvoted-submissions', component: UserUpvotedSubmissions, name: 'user-upvoted-submissions' },
-            { path: 'downvoted-submissions', component: UserDownvotedSubmissions, name: 'user-downvoted-submissions' },
+            { path: 'comments', component: UserComments, name: 'user-comments',meta: { title: '我的回复' } },
+            { path: 'upvoted-submissions', component: UserUpvotedSubmissions, name: 'user-upvoted-submissions',meta: { title: '我的点赞' } },
+            { path: 'downvoted-submissions', component: UserDownvotedSubmissions, name: 'user-downvoted-submissions',meta: { title: '我的踩' } },
         ]
     },
 
@@ -161,8 +164,8 @@ const routes = [
     { path: '/submission/:id', component: SubmissionRedirector },
     { path: '/find-channels', component: FindCategories, name: 'find-categories', meta: { title: 'Find Channels' } },
     { path: '/404', component: NotFound, name: 'not-found', meta: { title: 'Not Found' } },
-    { path: '/c/:name/:slug', component: SubmissionPage, name: 'submission-page' },
-    { path: '/c/:name/:slug/webview', component: SubmissionPageWebview, name: 'submission-page-webview' },
+    { path: '/c/:name/:slug', component: SubmissionPage, name: 'submission-page', meta: { title: '文章详情-评论页' } },
+    { path: '/c/:name/:slug/webview', component: SubmissionPageWebview, name: 'submission-page-webview', meta: { title: '文章详情' } },
 
     { path: '/bookmarks', redirect: '/bookmarks/submissions' },
     {
@@ -222,6 +225,7 @@ router.beforeEach((to, from, next) => {
  * is simple running after after navigating to the new routes.
  */
 router.afterEach((to, from) => {
+    console.log(to.meta.title);
 	if (Laravel.env == 'production') {
 		(function(i, s, o, g, r, a, m) {
 	       i['GoogleAnalyticsObject'] = r;
