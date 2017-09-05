@@ -17,7 +17,7 @@ export default {
                 mixpanel.track(
                     'readhub:read-page-detail',
                     {
-                        "app": "readhub", 'url': url, 'title': title
+                        "app": "readhub", 'page': url, 'page_title': title
                     }
                 );
             };
@@ -74,7 +74,7 @@ export default {
                     'readhub:readhub_to_inwehub',
                     {
                         'app': 'readhub',
-                        'url': url
+                        'page': url
                     }
                 );
             }
