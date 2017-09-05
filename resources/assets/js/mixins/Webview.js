@@ -97,7 +97,7 @@ export default {
                     if (currentPath === '/h5') {
                         if (ws) {
                             ws.setStyle({
-                                popGesture: 'hide',
+                                popGesture: 'none',
                                 top: '0px',
                                 dock: 'top',
                                 bottom: '75px',
@@ -112,7 +112,7 @@ export default {
                             }
 
                             ws.setStyle({
-                                    popGesture: 'hide',
+                                    popGesture: 'none',
                                     top: '0px',
                                     dock: 'top',
                                     bottom: '0px',
