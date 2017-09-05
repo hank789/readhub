@@ -173,6 +173,7 @@ var Share = () => {
         this.failCallback = failCallback;
       }
 
+      console.log('mui.os.plus' + mui.os.plus);
       if (mui.os.plus) {
          bindShareByPlus();
       } else if (mui.os.wechat) {

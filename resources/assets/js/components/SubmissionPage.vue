@@ -333,6 +333,7 @@
                         thumbUrl: avatarUrl + '?x-oss-process=image/resize,h_100,w_100',
                     };
 
+                    console.log('注册分享');
                     window.Share.bindShare(
                         this,
                         data,
