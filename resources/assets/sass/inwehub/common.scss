@@ -120,6 +120,33 @@
 
 
 .v-content-wrapper-h5{
+
+  #new-submission .multiselect__tags{
+    border:1px solid rgba(0, 0, 0, .2);
+    margin-bottom:0;
+    padding-top:0;
+
+    input{
+      border:none;
+      margin-bottom:0;
+    }
+  }
+
+  #new-submission .multiselect__select{
+      top:2px;
+  }
+
+  h2{
+    font-size:1.5em !important;
+  }
+
+  h1{
+    font-size:1.5em !important;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: .67em 0;
+  }
+
   .tabs ul{
     margin:0 !important;
     background: #f3f4f6;
@@ -375,7 +402,7 @@
   }
 
   .col-full .link-list-info{
-    padding:0em 1em 1em !important;
+    padding:1em !important;
   }
 
   .markdown{
@@ -492,4 +519,50 @@
 
 .guest-app  header .back{
   display: none;
+}
+
+.header-inwehub .shareBtn{
+  position:absolute;
+  top:5px;
+  right:10px;
+  color:#fff;
+  font-size: 24px;
+}
+
+.shareWrapper {
+  .title {
+    background: #ececee;
+    text-align: center;
+    font-size: 14px;
+    padding: 12px 0;
+  }
+  .more {
+    background: #fff;
+    padding: 10px;
+    .single {
+      width: 55px;
+      height: 55px;
+      margin: 0 10px;
+      display: inline-block;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+
+
+#shareShowWrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  .icon {
+    color: #fff;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 70px;
+  }
 }
