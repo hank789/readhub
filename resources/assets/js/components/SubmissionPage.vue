@@ -318,13 +318,19 @@
                     	Store.category = response.data.category;
                     }
 
-
+                    var avatarUrl = null;
+					if (/^http/.test(this.submission.owner.avatar)) {
+                        avatarUrl = this.submission.owner.avatar;
+					} else {
+                        avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
+					}
+					console.log('头像url:' + avatarUrl);
                     var data = {
                         title: 'InweHub发现 | ' + this.submission.title,
                         link: window.location.href,
                         content:  '来自「 ' + this.submission.category_name + '」，这里有特别的评论，点击去看看或者参与互动？',
-                        imageUrl: this.submission.data.img,
-                        thumbUrl: this.submission.data.img,
+                        imageUrl: avatarUrl,
+                        thumbUrl: avatarUrl + '?x-oss-process=image/resize,h_100,w_100',
                     };
 
                     window.Share.bindShare(
