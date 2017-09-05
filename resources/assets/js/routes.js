@@ -21,6 +21,8 @@ import Settings from './components/Settings.vue';
 import Help from './components/Help.vue';
 import Home from './components/Home.vue';
 import HomeBak from './components/Home.bak.vue';
+import Share from './components/Share.vue';
+
 
 import Submit from './components/Submit.vue';
 import Category from './components/Category.vue';
@@ -162,6 +164,7 @@ const routes = [
 
     { path: '/deleted-submission', component: DeletedSubmissionPage },
     { path: '/submission/:id', component: SubmissionRedirector },
+    { path: '/share', component: Share },
     { path: '/find-channels', component: FindCategories, name: 'find-categories', meta: { title: 'Find Channels' } },
     { path: '/404', component: NotFound, name: 'not-found', meta: { title: 'Not Found' } },
     { path: '/c/:name/:slug', component: SubmissionPage, name: 'submission-page', meta: { title: '文章详情-评论页' } },
@@ -253,7 +256,7 @@ router.afterEach((to, from) => {
             }
             mixpanel.track(
                 mixpanel_event,
-               {"app": "readhub", "page": to.fullPath, "page_name": to.name, "page_title": to.meta.title, "referrer_page": from.fullPath}
+               {"app": "readhub","user_device": getUserAppDevice(), "page": to.fullPath, "page_name": to.name, "page_title": to.meta.title, "referrer_page": from.fullPath}
            );
         }
 	}
