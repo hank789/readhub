@@ -161,6 +161,9 @@ const app = new Vue({
 
 
     created: function() {
+
+
+
         window.addEventListener('keydown', this.keydown);
         this.hideWebviewFooter();
         this.fillBasicStore();
@@ -204,6 +207,11 @@ const app = new Vue({
     },
 
     methods: {
+        share(){
+            setTimeout(() => {
+                mui('#shareWrapper').popover('toggle');
+            }, 150);
+        },
         getUnreadNotifications(){
             return this.getUnreadNotifications;
         },

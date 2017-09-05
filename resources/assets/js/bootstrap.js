@@ -21,7 +21,7 @@ axios.interceptors.request.use(function (config) {
 
             mixpanel.track(
                 mixpanel_event,
-                {"app": "readhub", "url": config.url, "title": "事件操作"}
+                {"app": "readhub", "page": config.url, "page_title": "事件操作"}
             );
         }
     }
@@ -79,6 +79,9 @@ require('./libs/iconfont');
 
 require('./libs/mui');
 import './../css/mui.css';
+
+import Share from './libs/share';
+window.Share = Share;
 
 //window.emojione = require('./libs/emojione.min');
 
