@@ -7,6 +7,9 @@
 </template>
 
 <script>
+
+    import {plusReady} from '../libs/plus';
+
 	export default {
 		mounted () {
 
@@ -28,20 +31,25 @@
                     var from = this.$route.query.from;
                     if (from === 'webview') {
                         console.log('匹配到 webview ');
-                        var ws = plus.webview.currentWebview();
-                        if (ws) {
-                            console.log('webview hide');
-                            ws.hide();
-                            return;
-                        }
+
+                        plusReady(() => {
+                            var ws = plus.webview.currentWebview();
+                            if (ws) {
+                                console.log('webview hide');
+                                ws.close();
+                                return;
+                            }
+                        });
                     }
 
                     if (currentPath === '/h5') {
-                        var ws = plus.webview.currentWebview();
-                        if (ws) {
-                            //var parentWs = ws.parent();
-                            //ws.parent().hide();
-                        }
+                        plusReady(() => {
+                            var ws = plus.webview.currentWebview();
+                            if (ws) {
+                                //var parentWs = ws.parent();
+                                //ws.parent().hide();
+                            }
+                        });
                     } else {
                         this.$router.push('/h5');
                     }

@@ -13,12 +13,14 @@ export default {
     	{
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
-            mixpanel.track(
-                'read_page_detail',
-                {
-                    'page_url': url, 'title': title
-                }
-            );
+            if (mixpanel && mixpanel.track) {
+                mixpanel.track(
+                    'readhub:read-page-detail',
+                    {
+                        "app": "readhub", 'url': url, 'title': title
+                    }
+                );
+            };
 
     		if (isPlusReady){
                 function webviewBackButton(){
@@ -67,16 +69,21 @@ export default {
         parentOpenUrl(url){
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
-            mixpanel.track(
-                'readhub_to_inwehub',
-                {
-                    'page_url': url
-                }
-            );
+            if (mixpanel && mixpanel.track) {
+                mixpanel.track(
+                    'readhub:readhub_to_inwehub',
+                    {
+                        'app': 'readhub',
+                        'url': url
+                    }
+                );
+            }
             if (isPlusReady){
-                var webview = plus.webview.getWebviewById(plus.runtime.appid);
-                console.log('rootWebviewid:' + webview.id);
-                webview.loadURL('/public/index.html#' + url);
+                plusReady(() => {
+                    var webview = plus.webview.getWebviewById(plus.runtime.appid);
+                    console.log('rootWebviewid:' + webview.id);
+                    webview.loadURL('/public/index.html#' + url);
+                });
             } else {
                 window.top.location.href = window.Laravel.inwehub_url + '/#' + url;
             }
@@ -91,7 +98,7 @@ export default {
                     if (currentPath === '/h5') {
                         if (ws) {
                             ws.setStyle({
-                                popGesture: 'hide',
+                                popGesture: 'none',
                                 top: '0px',
                                 dock: 'top',
                                 bottom: '75px',
@@ -106,7 +113,7 @@ export default {
                             }
 
                             ws.setStyle({
-                                    popGesture: 'hide',
+                                    popGesture: 'none',
                                     top: '0px',
                                     dock: 'top',
                                     bottom: '0px',

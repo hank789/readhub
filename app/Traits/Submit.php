@@ -187,7 +187,7 @@ trait Submit
             //$title = file_get_contents($apiURL);
             $title = getUrlTitle($url);
         } catch (\Exception $exception) {
-            return response('Invalid URL', 500);
+            return response('获取文章标题失败，请手动输入', 500);
         }
 
         return $title;

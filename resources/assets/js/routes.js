@@ -117,8 +117,8 @@ const routes = [
                  ]
              },
             { path: 'comments', component: UserComments, name: 'user-comments' },
-            { path: 'upvoted-submissions', component: UserUpvotedSubmissions },
-            { path: 'downvoted-submissions', component: UserDownvotedSubmissions },
+            { path: 'upvoted-submissions', component: UserUpvotedSubmissions, name: 'user-upvoted-submissions' },
+            { path: 'downvoted-submissions', component: UserDownvotedSubmissions, name: 'user-downvoted-submissions' },
         ]
     },
 
@@ -237,13 +237,21 @@ router.afterEach((to, from) => {
 
 	   ga('create', 'UA-97476315-1', 'auto');
 
-	   ga('set', 'page', to.path);
+	   ga('set', 'page', to.fullPath);
 	   ga('send', 'pageview');
 
-        mixpanel.track(
-	       to.fullPath,
-           {"url_name": to.name, "referrer_url": from.fullPath}
-       );
+        if (mixpanel && mixpanel.track) {
+            var mixpanel_event = 'readhub:';
+            if (to.name) {
+                mixpanel_event += to.name;
+            } else {
+                mixpanel_event += to.fullPath;
+            }
+            mixpanel.track(
+                mixpanel_event,
+               {"app": "readhub", "url": to.fullPath, "url_name": to.name, "title": to.meta.title, "referrer_url": from.fullPath}
+           );
+        }
 	}
 })
 

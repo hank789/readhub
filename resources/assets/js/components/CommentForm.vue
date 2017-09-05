@@ -93,7 +93,7 @@
             atWho() {
                 $('#comment-form-' + this.parent).atwho({
                     at: "@",
-                    delay: 750,
+                    delay: 300,
                     searchKey: "username",
                     insertTpl: "@${username}",
                     displayTpl: "<li><img src='${avatar}' height='20' width='20' />@${username}</li>",
@@ -150,7 +150,9 @@
 
         		event.preventDefault();
 
+        		var msg = $('#comment-form-' + this.parent).val();
         		if(!this.message.trim()) return;
+                this.message = msg;
 
         		if ((this.message.trim().lastIndexOf('@') + 1) === this.message.trim().length) return;
 
