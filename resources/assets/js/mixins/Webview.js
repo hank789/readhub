@@ -15,9 +15,9 @@ export default {
 
             if (mixpanel && mixpanel.track) {
                 mixpanel.track(
-                    'read_page_detail',
+                    'readhub:read-page-detail',
                     {
-                        'page_url': url, 'title': title
+                        "app": "readhub", 'url': url, 'title': title
                     }
                 );
             };
@@ -71,9 +71,10 @@ export default {
 
             if (mixpanel && mixpanel.track) {
                 mixpanel.track(
-                    'readhub_to_inwehub',
+                    'readhub:readhub_to_inwehub',
                     {
-                        'page_url': url
+                        'app': 'readhub',
+                        'url': url
                     }
                 );
             }
