@@ -45,7 +45,31 @@
 	        	加载更多回复
 	    	</button>
 		</div>
+
+
 	</div>
+
+
+	<div id="shareWrapper" class="shareWrapper mui-popover mui-popover-action mui-popover-bottom" style="display: none">
+		<div class="title">分享到</div>
+		<div class="more">
+			<div class="single" id="wechatShareBtn"
+				 @click="shareToHaoyou()"
+			>
+				<img src="/imgs/wechat_2x.png" />
+			</div>
+			<div class="single" id="wechatShareBtn2" @click="shareToPengyouQuan()">
+				<img src="/imgs/pengyouquan.png" />
+			</div>
+		</div>
+	</div>
+
+	<div id="shareShowWrapper" class="mui-popover mui-popover-action mui-popover-top" @click="toggleShareNav()" style="display: none">
+		<svg class="icon icon-inwehub" aria-hidden="true">
+			<use xlink:href="#icon-dianzheli"></use>
+		</svg>
+	</div>
+
 </div>
 </template>
 
@@ -147,8 +171,50 @@
             	return this.sort == 'hot' ? 'rate' : 'created_at';
             },
         },
+        mounted() {
+			var shareWrapper = document.getElementById('shareWrapper');
+            document.body.appendChild(shareWrapper);
 
+            var shareShowWrapper = document.getElementById('shareShowWrapper');
+            document.body.appendChild(shareShowWrapper);
+		},
         methods: {
+            share(){
+                setTimeout(() => {
+                    mui('#shareWrapper').popover('toggle');
+                }, 150);
+            },
+            toggleShareNav() {
+                mui('#shareShowWrapper').popover('toggle');
+            },
+            shareToHaoyou() {
+                this.sendHaoyou();
+                if (mui.os.plus) {
+                    mui('#shareWrapper').popover('toggle');
+                } else {
+                    mui('#shareWrapper').popover('toggle');
+                    mui('#shareShowWrapper').popover('toggle');
+                }
+            },
+            shareToPengyouQuan(){
+                this.sendPengYouQuan();
+                if (mui.os.plus) {
+                    mui('#shareWrapper').popover('toggle');
+                } else {
+                    mui('#shareWrapper').popover('toggle');
+                    mui('#shareShowWrapper').popover('toggle');
+                }
+
+            },
+            successCallback(){
+                mui.toast('分享成功');
+
+            },
+            failCallback(error){
+                console.log(JSON.stringify(error));
+                mui.toast('分享失败');
+            },
+
         	/**
         	 * resets all the basic data to prevent possible conflicts
         	 *
@@ -251,6 +317,22 @@
                     if(!this.loaded) {
                     	Store.category = response.data.category;
                     }
+
+
+                    var data = {
+                        title: 'InweHub发现 | ' + this.submission.title,
+                        link: window.location.href,
+                        content:  '来自「 ' + this.submission.category_name + '」，这里有特别的评论，点击去看看或者参与互动？',
+                        imageUrl: this.submission.data.img,
+                        thumbUrl: this.submission.data.img,
+                    };
+
+                    window.Share.bindShare(
+                        this,
+                        data,
+                        this.successCallback,
+                        this.failCallback
+                    );
 
                     this.loadingSubmission = false;
 				}).catch((error) => {

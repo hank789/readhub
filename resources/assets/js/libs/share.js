@@ -59,9 +59,7 @@ var Share = () => {
 
           var wechat = shares['weixin'];
           if (wechat.nativeClient) {
-
-
-
+              
              self.context.sendHaoyou = () => {
                var data = {
                  content:self.data.content,
@@ -108,13 +106,15 @@ var Share = () => {
     var self = this;
 
     //微信分享
-      $.post('https://api.inwehub.com/api/share/wechat/jssdk', {current_url:this.currentUrl}).then(response => {
-      var code = response.data.code;
+      $.post('https://api.inwehub.com/api/share/wechat/jssdk', {current_url:this.currentUrl}, (response => {
+
+
+      var code = response.code;
       if (code !== 1000) {
-        mui.toast(response.data.message);
+        mui.toast(response.message);
       }
 
-      var wechatConfig = response.data.data.config;
+      var wechatConfig = response.data.config;
       wx.config(wechatConfig);
 
       wx.error(function(res){
@@ -157,7 +157,7 @@ var Share = () => {
         self.context.sendPengYouQuan = () => {};
 
       });
-    });
+    }));
   };
   var bindShare = (context, data, successCallback, failCallback)=>{
 
