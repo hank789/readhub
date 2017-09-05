@@ -10,6 +10,26 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+// 添加一个请求拦截器
+axios.interceptors.request.use(function (config) {
+    // Do something before request is sent
+	if (config.method !== 'get'){
+        if (mixpanel && mixpanel.track) {
+            var mixpanel_event = 'readhub:';
+
+            mixpanel_event += config.url;
+
+            mixpanel.track(
+                mixpanel_event,
+                {"app": "readhub", "url": config.url, "title": "事件操作"}
+            );
+        }
+    }
+    return config;
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
 
 axios.interceptors.response.use(function (response) {
 	return response;
