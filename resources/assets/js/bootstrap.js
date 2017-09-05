@@ -57,6 +57,9 @@ require('./libs/Jcrop');
 require('./libs/iconfont');
 
 
+require('./libs/mui');
+import './../css/mui.css';
+
 //window.emojione = require('./libs/emojione.min');
 
 //检查错误信息插件
