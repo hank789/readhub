@@ -121,6 +121,18 @@
 
 .v-content-wrapper-h5{
 
+  h2{
+    font-size:1.5em;
+  }
+
+  h1{
+    font-size:1.5em;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: .67em 0;
+  }
+
+
   #new-submission .multiselect__tags{
     border:1px solid rgba(0, 0, 0, .2);
     margin-bottom:0;
@@ -136,15 +148,8 @@
       top:2px;
   }
 
-  h2{
-    font-size:1.5em !important;
-  }
-
-  h1{
-    font-size:1.5em !important;
-    font-weight: 400;
-    line-height: 1.4;
-    margin: .67em 0;
+  .submission-title{
+    font-size:18px;
   }
 
   .tabs ul{
@@ -530,6 +535,8 @@
 }
 
 .shareWrapper {
+  z-index:1000;
+
   .title {
     background: #ececee;
     text-align: center;
