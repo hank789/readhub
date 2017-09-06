@@ -297,9 +297,37 @@
              * @return void
              */
             getSubmission() {
+
+                var bindShare = () => {
+                    var avatarUrl = null;
+                    if (/^http/.test(this.submission.owner.avatar)) {
+                        avatarUrl = this.submission.owner.avatar;
+                    } else {
+                        avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
+                    }
+                    console.log('头像url:' + avatarUrl);
+                    var data = {
+                        title: 'InweHub发现 | ' + this.submission.title,
+                        link: window.location.href,
+                        content:  '来自「 ' + this.submission.category_name + '」，这里有特别的评论，点击去看看或者参与互动？',
+                        imageUrl: avatarUrl,
+                        thumbUrl: avatarUrl + '?x-oss-process=image/resize,h_100,w_100',
+                    };
+
+                    console.log('注册分享');
+                    console.log(data);
+                    window.Share.bindShare(
+                        this,
+                        data,
+                        this.successCallback,
+                        this.failCallback
+                    );
+				}
+
             	// if landed on a submission page
             	if (preload.submission) {
             		this.submission = preload.submission;
+                    bindShare();
             		Store.category = preload.submission.category;
             		this.loadingSubmission = false;
             		delete preload.submission;
@@ -318,28 +346,7 @@
                     	Store.category = response.data.category;
                     }
 
-                    var avatarUrl = null;
-					if (/^http/.test(this.submission.owner.avatar)) {
-                        avatarUrl = this.submission.owner.avatar;
-					} else {
-                        avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
-					}
-					console.log('头像url:' + avatarUrl);
-                    var data = {
-                        title: 'InweHub发现 | ' + this.submission.title,
-                        link: window.location.href,
-                        content:  '来自「 ' + this.submission.category_name + '」，这里有特别的评论，点击去看看或者参与互动？',
-                        imageUrl: avatarUrl,
-                        thumbUrl: avatarUrl + '?x-oss-process=image/resize,h_100,w_100',
-                    };
-
-                    console.log('注册分享');
-                    window.Share.bindShare(
-                        this,
-                        data,
-                        this.successCallback,
-                        this.failCallback
-                    );
+                    bindShare();
 
                     this.loadingSubmission = false;
 				}).catch((error) => {
