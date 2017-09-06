@@ -1,7 +1,6 @@
 <template>
-	<div class="home-wrapper"  :class="{'home-wrapper-h5':Store.is_h5}">
-		<announcement></announcement>
 
+	<div>
 		<div class="menu-inwehub" id="menu-inwehub">
 			<div class="left">
 				<router-link tag="div" :to="{ path: '/h5' }" class="menu-item" :class="{ 'active': sort == 'hot' }">
@@ -46,10 +45,16 @@
 			</div>
 		</div>
 
+		<div class="home-wrapper"  :class="{'home-wrapper-h5':Store.is_h5}">
+			<announcement></announcement>
+			
 
-		<home-submissions></home-submissions>
+			<home-submissions></home-submissions>
 
+		</div>
 	</div>
+
+
 </template>
 
 <script>
@@ -72,9 +77,6 @@
         },
 
 		mounted () {
-			
-			var menuWrapper = document.getElementById('menu-inwehub');
-			document.body.appendChild(menuWrapper);
 
 			this.$nextTick(function () {
 	        	this.$root.loadSemanticTooltip();
