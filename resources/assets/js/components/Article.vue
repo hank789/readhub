@@ -49,7 +49,7 @@
                     });
                 };
 
-                var shareContent = '来自「 频道」，这里有特别的评论，点击去看看或者参与互动？';
+                var shareContent = '来自「' + ws.article_category_name + '」，这里有特别的评论，点击去看看或者参与互动？';
                 this.openWebviewSubmission(
                     ws.article_url,
                     ws.article_title,
