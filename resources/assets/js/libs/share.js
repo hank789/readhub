@@ -118,8 +118,7 @@ var Share = () => {
       wx.config(wechatConfig);
 
       wx.error(function(res){
-         mui.alert('wx:error:'+ JSON.stringify(res));
-         console.error('wx:error:'+ JSON.stringify(res));
+         console.error('wx:error:'+ JSON.stringify(res) + ' currenturl:' + this.currentUrl);
       });
 
       wx.ready(() => {
