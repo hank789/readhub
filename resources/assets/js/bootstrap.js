@@ -10,6 +10,27 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+window.getUserAppDevice = function () {
+    var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
+	if (isPlusReady) {
+        var android = navigator.userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
+        if (android) {
+        	return 'app_android';
+        }
+        var iphone = navigator.userAgent.match(/(iPhone\sOS)\s([\d_]+)/);
+        if (iphone) {
+            return 'app_ios';
+        }
+        return 'other_app';
+	} else {
+        var wechat = navigator.userAgent.match(/(MicroMessenger)\/([\d\.]+)/i);
+        if (wechat) { //wechat
+            return 'wechat';
+        }
+        return 'web';
+	}
+}
+
 // 添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
@@ -21,7 +42,7 @@ axios.interceptors.request.use(function (config) {
 
             mixpanel.track(
                 mixpanel_event,
-                {"app": "readhub", "page": config.url, "page_title": "事件操作"}
+                {"app": "readhub","user_device": getUserAppDevice(), "page": config.url, "page_title": "事件操作"}
             );
         }
     }

@@ -39,7 +39,7 @@ export default {
                 mixpanel.track(
                     'readhub:read-page-detail',
                     {
-                        "app": "readhub", 'page': url, 'page_title': title
+                        "app": "readhub","user_device": getUserAppDevice(), 'page': url, 'page_title': title
                     }
                 );
             };
@@ -140,6 +140,7 @@ export default {
                     'readhub:readhub_to_inwehub',
                     {
                         'app': 'readhub',
+                        "user_device": getUserAppDevice(),
                         'page': url
                     }
                 );
