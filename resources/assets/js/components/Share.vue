@@ -62,12 +62,12 @@
 
           console.log(data);
 
-//          Share.bindShare(
-//            this,
-//            data,
-//            this.successCallback,
-//            this.failCallback
-//          );
+          Share.bindShare(
+            this,
+            data,
+            this.successCallback,
+            this.failCallback
+          );
         });
       } else {
         var data = {
