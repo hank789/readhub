@@ -179,9 +179,12 @@ var Share = () => {
       } else if (mui.os.wechat) {
          bindShareByWechat();
       } else {
-         mui.toast('暂不支持当前环境');
-         context.sendHaoyou = () => {};
-         context.sendPengYouQuan = () => {};
+         context.sendHaoyou = () => {
+             mui.toast('暂不支持当前环境');
+         };
+         context.sendPengYouQuan = () => {
+             mui.toast('暂不支持当前环境');
+         };
       }
   }
   return {
