@@ -1,5 +1,5 @@
 <template>
-    <a class="back" @click="toggleBack">
+    <a class="back" @click="toggleBack" v-show="!noback">
         <svg class="icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-fanhui"></use>
         </svg>
@@ -11,10 +11,19 @@
     import {plusReady} from '../libs/plus';
 
 	export default {
+        data () {
+            return {
+                noback:false
+            }
+        },
 		mounted () {
 
 		},
-
+        created () {
+		    if (this.$route.query.noback) {
+                this.noback = true;
+            }
+        },
 	    methods: {
 	    	/**
 	    	 * Toggles the sidebar
