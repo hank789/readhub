@@ -363,6 +363,12 @@
 
   #new-submission{
     padding:1em !important;
+
+    .btn-input{
+      top: -4px;
+      right: -3px;
+      padding:6px 12px !important;
+    }
   }
 
   .detail{
