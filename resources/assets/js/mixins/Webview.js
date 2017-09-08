@@ -27,7 +27,9 @@ export default {
                     }
                 });
                 mui.fire(webview,'go_to_readhub_page',{url: url});
-                webview.show();
+                setTimeout( () => {
+                    webview.show();
+                },100);
             } else {
                 this.$router.push(url);
             }
