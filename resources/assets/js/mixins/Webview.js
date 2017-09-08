@@ -87,24 +87,56 @@ export default {
                         var shareTitle = 'InweHub发现 | ' + title;
                         var shareId = 'webview_readhub_share_' + id;
                         var sharePathUrl = readhubUrl + '/h5?redirect_url=' + pathUrl;
-                        var shareView = plus.webview.create(titleUrl, 'readhub_submission_webview', {
-                            cachemode:'noCache',
-                            popGesture: 'hide',
-                            top:'0px',
-                            right:'0px',
-                            width:'100%',
-                            height:'44px',
-                            dock:'top',
-                            position:'dock',
-                            backButtonAutoControl: 'hide',
-                            bounce:'none', //不允许滑动
-                            scrollIndicator:'none', //不显示滚动条
-                        }, {
-                            title: shareTitle,
-                            link: sharePathUrl,
-                            content: shareContent,
-                            imageUrl:shareImg,
-                            thumbUrl:shareThumbUrl
+                        // var shareView = plus.webview.create(titleUrl, 'readhub_submission_webview', {
+                        //     cachemode:'noCache',
+                        //     popGesture: 'hide',
+                        //     top:'0px',
+                        //     right:'0px',
+                        //     width:'100%',
+                        //     height:'44px',
+                        //     dock:'top',
+                        //     position:'dock',
+                        //     backButtonAutoControl: 'hide',
+                        //     bounce:'none', //不允许滑动
+                        //     scrollIndicator:'none', //不显示滚动条
+                        // }, {
+                        //     title: shareTitle,
+                        //     link: sharePathUrl,
+                        //     content: shareContent,
+                        //     imageUrl:shareImg,
+                        //     thumbUrl:shareThumbUrl
+                        // });
+                        var shareView = mui.openWindow({
+                            url: titleUrl,
+                            id: 'readhub_submission_webview',
+                            preload: false,//一定要为false
+                            show: {
+                                autoShow: false,
+                                aniShow: 'pop-in'
+                            },
+                            styles: {
+                                cachemode:'noCache',
+                                popGesture: 'hide',
+                                top:'0px',
+                                right:'0px',
+                                width:'100%',
+                                height:'44px',
+                                dock:'top',
+                                position:'dock',
+                                backButtonAutoControl: 'hide',
+                                bounce:'none', //不允许滑动
+                                scrollIndicator:'none', //不显示滚动条
+                            },
+                            extras:{
+                                title: shareTitle,
+                                link: sharePathUrl,
+                                content: shareContent,
+                                imageUrl:shareImg,
+                                thumbUrl:shareThumbUrl
+                            },
+                            waiting: {
+                                autoShow: false
+                            }
                         });
 
                         mui.fire(shareView,'go_to_readhub_page', {url: titleUrl});
