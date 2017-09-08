@@ -27,6 +27,7 @@
             'env' => config('app.env'),
             'is_h5' => session('is_h5'),
             'inwehub_url' => config('app.inwehub_url'),
+            'app_url' => config('app.url'),
             'deep_mlink'  => config('app.deep_link'),
             'echo_address' => config('broadcasting.connections.echo.app_address'),
             'pusherKey' => config('broadcasting.connections.pusher.key'),

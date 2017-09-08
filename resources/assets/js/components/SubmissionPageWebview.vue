@@ -99,7 +99,7 @@
 			 * @return bool
 			 */
         	loaded () {
-	            return Store.category.name == this.$route.params.name;
+	            return Store.category.id == this.$route.params.name;
 	        },
 
             /**

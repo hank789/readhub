@@ -8,7 +8,32 @@ export default {
     },
 
     methods: {
-
+        openReadhubPage(url){
+            if(mui.os.plus && mui.os.ios) {
+                var webview = mui.openWindow({
+                    url: window.Laravel.app_url+url,
+                    id: 'readhub_submission_webview',
+                    preload: false,//一定要为false
+                    show: {
+                        autoShow: false,
+                        aniShow: 'pop-in'
+                    },
+                    styles: {
+                        popGesture: 'hide'
+                    },
+                    extras:{preload: false},
+                    waiting: {
+                        autoShow: false
+                    }
+                });
+                mui.fire(webview,'go_to_readhub_page',{url: url});
+                setTimeout( () => {
+                    webview.show();
+                },100);
+            } else {
+                this.$router.push(url);
+            }
+        },
         openWebviewByUrl(id, url, autoShow=true, aniShow='pop-in', popGesture='hide', reload = false) {
             mui.plusReady(function(){
                 var webview = mui.openWindow({
@@ -28,6 +53,9 @@ export default {
                     }
                 });
                 console.log("openWindow:"+webview.getURL());
+                if (reload) {
+                    webview.loadURL(url);
+                }
             });
 
         },
@@ -180,7 +208,7 @@ export default {
                             }
 
                             ws.setStyle({
-                                    popGesture: 'none',
+                                    popGesture: 'hide',
                                     top: '0px',
                                     dock: 'top',
                                     bottom: '0px',

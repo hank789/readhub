@@ -131,7 +131,7 @@
 			},
 			openNewUrl(submission){
 
-                var pathUrl = '/c/' + encodeURIComponent(submission.category_name) + '/' + submission.slug;
+                var pathUrl = '/c/' + submission.category_id + '/' + submission.slug;
 				var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
 				if (isPlusReady) {
 

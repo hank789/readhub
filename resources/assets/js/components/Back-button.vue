@@ -35,25 +35,19 @@
 
 
                 if (isPlusReady){
-                    var currentPath = this.$route.path;
-
                     var from = this.$route.query.from;
                     if (from === 'webview') {
                         console.log('匹配到 webview ');
                         mui.back();
+                        return;
                     }
 
-                    if (currentPath === '/h5') {
-                        plusReady(() => {
-                            var ws = plus.webview.currentWebview();
-                            if (ws) {
-                                //var parentWs = ws.parent();
-                                //ws.parent().hide();
-                            }
-                        });
-                    } else {
-                        this.$router.push('/h5');
+                    var ws = plus.webview.currentWebview();
+                    if (ws.id === 'readhub_submission_webview') {
+                        ws.hide();
+                        return;
                     }
+                    this.$router.push('/h5');
 
                 } else {
                     if (this.$route.query.from !== undefined && this.$route.query.from === 'h5') {

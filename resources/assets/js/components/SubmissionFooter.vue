@@ -63,7 +63,7 @@
 			</div>
 
 				<div class="h5-active-item">
-					<router-link :to="url" class="comments-icon h-green"
+					<a @tap.stop.prevent="openReadhubPage(url)" class="comments-icon h-green"
 								 data-toggle="tooltip" data-placement="top" title="Comments">
 
 						<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
@@ -71,7 +71,7 @@
 						</svg>
 
 						<span class="commentNum" v-if="comments" v-text="comments"></span>
-					</router-link>
+					</a>
 				</div>
 
 
@@ -115,9 +115,10 @@
 
 <script>
 	import Helpers from '../mixins/Helpers';
+	import Webview from '../mixins/Webview';
 
     export default {
-    	mixins: [Helpers],
+    	mixins: [Helpers,Webview],
 
         props: [
         	'url', 'comments', 'bookmarked', 'submission', 'upvoted', 'downvoted', 'points'
@@ -166,7 +167,6 @@
                 return moment(this.submission.created_at).fromNow()
             }
         },
-
         mounted () {
 			this.$nextTick(function () {
 	        	this.$root.loadSemanticTooltip()
