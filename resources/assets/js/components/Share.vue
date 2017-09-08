@@ -39,14 +39,10 @@
       title: '',
     }),
     mounted() {
-        var shareWrapper = document.getElementById('shareWrapper');
-        document.body.appendChild(shareWrapper);
-
-        var shareShowWrapper = document.getElementById('shareShowWrapper');
-        document.body.appendChild(shareShowWrapper);
+        this.initWebview();
     },
     created () {
-        this.initWebview();
+
     },
     methods: {
       initWebview() {
@@ -89,6 +85,11 @@
                   this.failCallback
               );
           }
+          var shareWrapper = document.getElementById('shareWrapper');
+          document.body.appendChild(shareWrapper);
+
+          var shareShowWrapper = document.getElementById('shareShowWrapper');
+          document.body.appendChild(shareShowWrapper);
       },
       toggleShareNav() {
           mui('#shareShowWrapper').popover('toggle');
