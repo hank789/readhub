@@ -8,7 +8,13 @@ export default {
     },
 
     methods: {
-
+        openSubmissionPage(url){
+            if(mui.os.plus && mui.os.ios) {
+                this.openWebviewByUrl('readhub_submission_webview',window.Laravel.app_url+url,true,'pop-in','hide',true);
+            } else {
+                this.$router.push(url);
+            }
+        },
         openWebviewByUrl(id, url, autoShow=true, aniShow='pop-in', popGesture='hide', reload = false) {
             mui.plusReady(function(){
                 var webview = mui.openWindow({
@@ -28,6 +34,9 @@ export default {
                     }
                 });
                 console.log("openWindow:"+webview.getURL());
+                if (reload) {
+                    webview.loadURL(url);
+                }
             });
 
         },

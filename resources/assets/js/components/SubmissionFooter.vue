@@ -63,7 +63,7 @@
 			</div>
 
 				<div class="h5-active-item">
-					<a @tap.stop.prevent="goSubmissionPage(url)" class="comments-icon h-green"
+					<a @tap.stop.prevent="openSubmissionPage(url)" class="comments-icon h-green"
 								 data-toggle="tooltip" data-placement="top" title="Comments">
 
 						<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
@@ -167,16 +167,6 @@
                 return moment(this.submission.created_at).fromNow()
             }
         },
-		methods: {
-            goSubmissionPage(url) {
-                if(mui.os.plus) {
-                    this.openWebviewByUrl(url,window.Laravel.app_url+url);
-                } else {
-                    this.$router.push(url);
-				}
-			}
-		},
-
         mounted () {
 			this.$nextTick(function () {
 	        	this.$root.loadSemanticTooltip()

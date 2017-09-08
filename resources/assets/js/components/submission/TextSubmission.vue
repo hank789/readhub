@@ -26,7 +26,7 @@
 
 		<!-- submission indexing pages -->
 		<div v-else>
-			<a @tap.stop.prevent="goSubmissionPage('/c/' + submission.category_id + '/' + submission.slug)"
+			<a @tap.stop.prevent="openSubmissionPage('/c/' + submission.category_id + '/' + submission.slug)"
 			class="flex-space v-ultra-bold">
 				{{ submission.title }}
 			</a>
@@ -109,13 +109,6 @@
 		},
 
 		methods: {
-            goSubmissionPage(url) {
-                if(mui.os.plus) {
-                    this.openWebviewByUrl(url,window.Laravel.app_url+url);
-                } else {
-                    this.$router.push(url);
-                }
-			},
 			/**
 			 * opens the edit form
 			 *
