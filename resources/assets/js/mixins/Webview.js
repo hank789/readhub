@@ -153,14 +153,22 @@ export default {
                             bodyBottom = '44px';
                         }
                         console.log('webview-body:' + url);
-                        var webview = plus.webview.create(url, ws.id, {
-                            popGesture: 'hide',
-                            top:bodyTop,
-                            bottom:bodyBottom,
-                            position:'absolute',
-                            backButtonAutoControl: 'hide',
-                            statusbar:{background:'#3c3e44'},
-                            bounce:'vertical'});
+                        var webview = mui.openWindow({
+                            url: url,
+                            id: ws.id,
+                            styles: {
+                                popGesture: 'hide',
+                                top:bodyTop,
+                                bottom:bodyBottom,
+                                position:'absolute',
+                                backButtonAutoControl: 'hide',
+                                statusbar:{background:'#3c3e44'},
+                                bounce:'vertical'
+                            }
+                        });
+                        if (webview.getURL() !== url){
+                            webview.loadURL(url);
+                        }
                         ws.append(webview);
 
                         //绘制底部菜单

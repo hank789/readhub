@@ -180,12 +180,6 @@
                                 article_img_url:avatarUrl
                             }
                         });
-                        webview.article_id = submission.id;
-                        webview.article_url = submission.data.url;
-                        webview.article_title = submission.title;
-                        webview.article_category_name = submission.category_name;
-                        webview.article_comment_url = pathUrl;
-                        webview.article_img_url = avatarUrl;
 
                         mui.fire(webview,'go_to_readhub_page',{
                             url: '/article'
