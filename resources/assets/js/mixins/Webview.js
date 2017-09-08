@@ -10,7 +10,23 @@ export default {
     methods: {
         openSubmissionPage(url){
             if(mui.os.plus && mui.os.ios) {
-                this.openWebviewByUrl('readhub_submission_webview',window.Laravel.app_url+url,true,'pop-in','hide',true);
+                var webview = mui.openWindow({
+                    url: window.Laravel.app_url+url,
+                    id: 'readhub_submission_webview',
+                    preload: false,//一定要为false
+                    show: {
+                        autoShow: false,
+                        aniShow: 'pop-in'
+                    },
+                    styles: {
+                        popGesture: 'hide'
+                    },
+                    extras:{preload: false},
+                    waiting: {
+                        autoShow: false
+                    }
+                });
+                mui.fire(webview,'go_to_submission_detail',{url: url});
             } else {
                 this.$router.push(url);
             }

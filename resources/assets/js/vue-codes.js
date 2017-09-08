@@ -213,7 +213,12 @@ const app = new Vue({
             this.loadCheckBox()
             this.loadSemanticTooltip()
             this.loadSemanticDropdown()
-        })
+        });
+        //监听自定义事件，前往文章评论页
+        document.addEventListener('go_to_submission_detail', function(event) {
+            var url = event.detail.url;
+            this.$router.push(url);
+        });
     },
 
     methods: {
