@@ -83,6 +83,7 @@ export default {
 
                         //绘制标题栏
                         var titleUrl = readhubUrl + '/share?title=' + encodeURIComponent(title);
+                        var titleUrlTwo = '/share?title=' + encodeURIComponent(title);
                         console.log('webview-title:' + titleUrl);
                         var shareTitle = 'InweHub发现 | ' + title;
                         var shareId = 'webview_readhub_share_' + id;
@@ -139,7 +140,7 @@ export default {
                             }
                         });
 
-                        mui.fire(shareView, 'go_to_readhub_page', {url: titleUrl});
+                        mui.fire(shareView, 'go_to_readhub_page', {url: titleUrlTwo});
 
                         ws.append(shareView);
 
