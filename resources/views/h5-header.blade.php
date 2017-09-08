@@ -1,4 +1,4 @@
-<header class="header-inwehub" :path="$route.path">
+<header class="header-inwehub" :path="$route.path" v-if="$route.path !== '/share'">
     <vui-back-button v-if="$route.path !== '/h5'"></vui-back-button>
     <div class="title" v-text="title"></div>
     <a class="shareBtn" @click="share()" v-if="/^\/c\//.test($route.path)">
@@ -8,5 +8,49 @@
     </a>
 </header>
 
+
+<div class="menu-inwehub" id="menu-inwehub" v-if="$route.path === '/h5'">
+    <div class="left">
+        <router-link tag="div" :to="{ path: '/h5' }" class="menu-item" :class="{ 'active': sort == 'hot' }">
+            热门
+        </router-link>
+        <router-link tag="div" :to="{ path: '/h5?sort=new' }" class="menu-item" :class="{ 'active': sort == 'new' }">
+            最新
+        </router-link>
+    </div>
+    <div class="right">
+        <div class="menu-item ui dropdown top pointing">
+            <svg class="icon-inwehub" aria-hidden="true">
+                <use xlink:href="#icon-wode1"></use>
+            </svg>
+            <div class="menu">
+                <div @click="goLink('/bookmarks/submissions')" class="item">
+                我的收藏
+            </div>
+            <div @click="goLink('/' + '@' + auth.id)" class="item">
+            我的发布
+        </div>
+    </div>
+</div>
+<div class="menu-item">
+    <svg class="icon-inwehub" aria-hidden="true" @click="refresh">
+    <use xlink:href="#icon-shuaxin"></use>
+    </svg>
+</div>
+
+{{--<div class="menu-item desktop-only">--}}
+    {{--<svg class="icon-inwehub" aria-hidden="true" @click="changeRoute('notifications')">--}}
+    {{--<use xlink:href="#icon-xiaoxi1"></use>--}}
+    {{--</svg>--}}
+    {{--<span class="notification-number" v-show="getUnreadNotifications()" v-text="getUnreadNotifications()"></span>--}}
+{{--</div>--}}
+
+<router-link tag="div" :to="{ path: '/submit' }" class="menu-item">
+    <svg class="icon-inwehub modify" aria-hidden="true">
+        <use xlink:href="#icon-xiugai"></use>
+    </svg>
+</router-link>
+</div>
+</div>
 
 

@@ -135,6 +135,16 @@ const app = new Vue({
             }).length
         },
 
+        sort() {
+            if (this.$route.query.sort == 'new')
+                return 'new';
+
+            if (this.$route.query.sort == 'rising')
+                return 'rising';
+
+            return 'hot';
+        },
+
         unreadMessages() {
             return Store.contacts.filter(function(item) {
                 return item.last_message.owner.id != auth.id && item.last_message.read_at == null
@@ -207,6 +217,14 @@ const app = new Vue({
     },
 
     methods: {
+        refresh() {
+            this.$eventHub.$emit('refresh-home');
+        },
+        goLink(url) {
+            setTimeout(() => {
+                this.$router.push(url);
+            }, 100);
+        },
         share(){
             setTimeout(() => {
                 mui('#shareWrapper').popover('toggle');

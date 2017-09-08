@@ -118,7 +118,7 @@ var Share = () => {
       wx.config(wechatConfig);
 
       wx.error(function(res){
-         console.error('wx:error:'+ JSON.stringify(res));
+         console.error('wx:error:'+ JSON.stringify(res) + ' currenturl:' + this.currentUrl);
       });
 
       wx.ready(() => {
@@ -179,9 +179,12 @@ var Share = () => {
       } else if (mui.os.wechat) {
          bindShareByWechat();
       } else {
-         mui.toast('暂不支持当前环境');
-         context.sendHaoyou = () => {};
-         context.sendPengYouQuan = () => {};
+         context.sendHaoyou = () => {
+             mui.toast('暂不支持当前环境');
+         };
+         context.sendPengYouQuan = () => {
+             mui.toast('暂不支持当前环境');
+         };
       }
   }
   return {

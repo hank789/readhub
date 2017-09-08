@@ -9,12 +9,7 @@
           <use xlink:href="#icon-fenxiang"></use>
         </svg>
       </a>
-
     </header>
-
-    <div class="mui-content">
-
-    </div>
 
     <div id="shareWrapper" class="shareWrapper mui-popover mui-popover-action mui-popover-bottom">
       <div class="title">分享到</div>
@@ -43,9 +38,16 @@
     data: () => ({
       title: '',
     }),
+    mounted() {
+        var shareWrapper = document.getElementById('shareWrapper');
+        document.body.appendChild(shareWrapper);
+
+        var shareShowWrapper = document.getElementById('shareShowWrapper');
+        document.body.appendChild(shareShowWrapper);
+    },
     created () {
       this.title =  this.$route.query.title;
-
+      console.log('shareTitle' + this.title);
       if (mui.os.plus) {
         mui.plusReady(() => {
           var currentWebview = plus.webview.currentWebview();
@@ -57,6 +59,8 @@
             imageUrl: currentWebview.imageUrl,
             thumbUrl: currentWebview.thumbUrl,
           };
+
+          console.log(data);
 
           Share.bindShare(
             this,
@@ -112,7 +116,7 @@
 
       },
       failCallback(error){
-        console.log(JSON.stringify(error));
+        console.error(JSON.stringify(error));
         mui.toast('分享失败');
       },
       share(){
@@ -146,14 +150,8 @@
         }
       },
     },
-    computed: {}
-    ,
-    watch: {}
-    ,
-    mounted()
-    {
-
-    }
+    computed: {},
+    watch: {},
   }
 
 </script>

@@ -363,6 +363,12 @@
 
   #new-submission{
     padding:1em !important;
+
+    .btn-input{
+      top: -4px;
+      right: -3px;
+      padding:6px 12px !important;
+    }
   }
 
   .detail{
@@ -582,8 +588,10 @@
 .mui-title{
   color:#fff !important;
   line-height:44px !important;
+  font-size:18px !important;
 }
 
 .mui-bar a{
   color:#fff !important;
 }
+

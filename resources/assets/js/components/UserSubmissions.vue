@@ -44,7 +44,7 @@
        created: function() {
            	this.$eventHub.$on('scrolled-to-bottom', this.loadMore);
         	this.getSubmissions();
-        	this.setPageTitle('@' + this.$route.params.username);
+        	//this.setPageTitle('@' + this.$route.params.username);
        },
 
        	watch: {
