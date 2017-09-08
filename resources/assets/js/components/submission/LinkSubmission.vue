@@ -182,7 +182,7 @@
                         });
 
                         mui.fire(webview,'go_to_readhub_page',{
-                            url: '/article'
+                            url: '/article/'+submission.id
                         });
                         setTimeout( () => {
                             webview.show();
