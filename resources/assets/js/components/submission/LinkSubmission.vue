@@ -144,13 +144,13 @@
                             avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
                         }
 
-                        mui.openWindow({
+                        var webview = mui.openWindow({
                             url: window.location.protocol + '//' + window.location.host + '/article',
                             id: 'readhub_article_son',
                             preload: false, //一定要为false
                             createNew: false,
                             show: {
-                                autoShow: true,
+                                autoShow: false,
                                 aniShow: 'pop-in'
                             },
                             styles: {
@@ -165,9 +165,22 @@
                                 article_title: submission.title,
                                 article_category_name: submission.category_name,
                                 article_comment_url: pathUrl,
-                                article_img_url:avatarUrl,
+                                article_img_url:avatarUrl
                             }
                         });
+                        webview.article_id = submission.id;
+                        webview.article_url = submission.data.url;
+                        webview.article_title = submission.title;
+                        webview.article_category_name = submission.category_name;
+                        webview.article_comment_url = pathUrl;
+                        webview.article_img_url = avatarUrl;
+
+                        mui.fire(webview,'go_to_readhub_page',{
+                            url: '/article'
+                        });
+                        setTimeout( () => {
+                            webview.show();
+                        },100);
                     } else {
                         this.openWebviewSubmission(submission.data.url,submission.title);
 					}
