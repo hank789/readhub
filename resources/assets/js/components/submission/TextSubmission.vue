@@ -26,7 +26,7 @@
 
 		<!-- submission indexing pages -->
 		<div v-else>
-			<a @tap.stop.prevent="openSubmissionPage('/c/' + submission.category_id + '/' + submission.slug)"
+			<a @tap.stop.prevent="openReadhubPage('/c/' + submission.category_id + '/' + submission.slug)"
 			class="flex-space v-ultra-bold">
 				{{ submission.title }}
 			</a>

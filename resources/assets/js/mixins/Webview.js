@@ -8,7 +8,7 @@ export default {
     },
 
     methods: {
-        openSubmissionPage(url){
+        openReadhubPage(url){
             if(mui.os.plus && mui.os.ios) {
                 var webview = mui.openWindow({
                     url: window.Laravel.app_url+url,
@@ -26,7 +26,7 @@ export default {
                         autoShow: false
                     }
                 });
-                mui.fire(webview,'go_to_submission_detail',{url: url});
+                mui.fire(webview,'go_to_readhub_page',{url: url});
                 webview.show();
             } else {
                 this.$router.push(url);

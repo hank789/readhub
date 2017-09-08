@@ -214,8 +214,8 @@ const app = new Vue({
             this.loadSemanticTooltip()
             this.loadSemanticDropdown()
         });
-        //监听自定义事件，前往文章评论页
-        document.addEventListener('go_to_submission_detail', (event) => {
+        //监听自定义事件，前往页面
+        document.addEventListener('go_to_readhub_page', (event) => {
             var url = event.detail.url;
             this.$router.push(url);
         });

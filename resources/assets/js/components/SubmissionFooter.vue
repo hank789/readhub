@@ -63,7 +63,7 @@
 			</div>
 
 				<div class="h5-active-item">
-					<a @tap.stop.prevent="openSubmissionPage(url)" class="comments-icon h-green"
+					<a @tap.stop.prevent="openReadhubPage(url)" class="comments-icon h-green"
 								 data-toggle="tooltip" data-placement="top" title="Comments">
 
 						<svg class="icon-inwehub v-icon icon-pinglun1" aria-hidden="true">
