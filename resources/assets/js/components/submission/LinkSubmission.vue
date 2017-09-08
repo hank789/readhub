@@ -67,10 +67,11 @@
 	import SubmissionFooter from '../../components/SubmissionFooter.vue';
 	import Webview from '../../mixins/Webview';
     import {plusReady} from '../../libs/plus';
+    import LocalStorage from '../../mixins/LocalStorage';
 
 
     export default {
-		mixins: [EmbedValidator,Webview],
+		mixins: [EmbedValidator,Webview, LocalStorage],
 
 		components: {
 			SubmissionFooter
@@ -143,6 +144,17 @@
                         } else {
                             avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
                         }
+
+                        var data = {
+                            article_id: submission.id,
+                            article_url: submission.data.url,
+                            article_title: submission.title,
+                            article_category_name: submission.category_name,
+                            article_comment_url: pathUrl,
+                            article_img_url:avatarUrl,
+                        };
+
+                        this.putLS('readhub_article_son_data', data);
 
                         mui.openWindow({
                             url: window.location.protocol + '//' + window.location.host + '/article',
