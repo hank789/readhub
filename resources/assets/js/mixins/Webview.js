@@ -27,6 +27,7 @@ export default {
                     }
                 });
                 mui.fire(webview,'go_to_submission_detail',{url: url});
+                webview.show();
             } else {
                 this.$router.push(url);
             }
