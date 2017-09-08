@@ -139,13 +139,7 @@ export default {
                                 autoShow: false
                             }
                         });
-                        shareView.title = shareTitle;
-                        shareView.link = sharePathUrl;
-                        shareView.content = shareContent;
-                        shareView.imageUrl = shareImg;
-                        shareView.thumbUrl = shareThumbUrl;
-
-
+                        
                         mui.fire(shareView, 'go_to_readhub_page', {url: titleUrlTwo});
 
                         ws.append(shareView);
