@@ -155,7 +155,7 @@ export default {
                         console.log('webview-body:' + url);
                         var webview = mui.openWindow({
                             url: url,
-                            id: ws.id,
+                            id: 'readhub_webview_body',
                             styles: {
                                 popGesture: 'hide',
                                 top:bodyTop,
@@ -167,7 +167,7 @@ export default {
                             }
                         });
                         if (webview.getURL() !== url){
-                            //webview.loadURL(url);
+                            webview.loadURL(url);
                         }
                         ws.append(webview);
 
