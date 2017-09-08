@@ -167,17 +167,41 @@ export default {
                         var footerPathUrl = readhubUrl + pathUrl;
                         var toolUrl = footerPathUrl + '/webview';
                         console.log('webview-footer:' + toolUrl);
-                        var toolUrlId = 'toolUrl_readhub_detail_son_' + id;
-                        var embed =plus.webview.create(toolUrl, toolUrlId, {
-                            popGesture: 'hide',
-                            bottom:'0px',
-                            height:'44px',
-                            dock:'bottom',
-                            position:'dock',
-                            backButtonAutoControl: 'hide',
-                            bounce:'none', //不允许滑动
-                            scrollIndicator:'none', //不显示滚动条
+                        //var toolUrlId = 'toolUrl_readhub_detail_son_' + id;
+                        // var embed =plus.webview.create(toolUrl, toolUrlId, {
+                        //     popGesture: 'hide',
+                        //     bottom:'0px',
+                        //     height:'44px',
+                        //     dock:'bottom',
+                        //     position:'dock',
+                        //     backButtonAutoControl: 'hide',
+                        //     bounce:'none', //不允许滑动
+                        //     scrollIndicator:'none', //不显示滚动条
+                        // });
+                        var embed = mui.openWindow({
+                            url: toolUrl,
+                            id: 'readhub_webview_footer',
+                            preload: false,//一定要为false
+                            show: {
+                                autoShow: false,
+                                aniShow: 'pop-in'
+                            },
+                            styles: {
+                                popGesture: 'hide',
+                                bottom:'0px',
+                                height:'44px',
+                                dock:'bottom',
+                                position:'dock',
+                                backButtonAutoControl: 'hide',
+                                bounce:'none', //不允许滑动
+                                scrollIndicator:'none', //不显示滚动条
+                            },
+                            extras:{},
+                            waiting: {
+                                autoShow: false
+                            }
                         });
+                        mui.fire(embed, 'go_to_readhub_page', {url: toolUrl});
 
                         //绘制底部链接
                         var view = new plus.nativeObj.View('test', {bottom:'0px',left:'0',height:'44px',width:'60%'});

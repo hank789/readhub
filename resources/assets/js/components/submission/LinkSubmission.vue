@@ -146,7 +146,7 @@
 
                         mui.openWindow({
                             url: window.location.protocol + '//' + window.location.host + '/article',
-                            id: 'readhub_article_son_'+ submission.id,
+                            id: 'readhub_article_son',
                             preload: false, //一定要为false
                             createNew: false,
                             show: {
