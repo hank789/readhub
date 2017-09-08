@@ -46,48 +46,50 @@
         document.body.appendChild(shareShowWrapper);
     },
     created () {
-      this.title =  this.$route.query.title;
-      console.log('shareTitle' + this.title);
-      if (mui.os.plus) {
-        mui.plusReady(() => {
-          var currentWebview = plus.webview.currentWebview();
-
-          var data = {
-            title: currentWebview.title,
-            link: currentWebview.link,
-            content: currentWebview.content,
-            imageUrl: currentWebview.imageUrl,
-            thumbUrl: currentWebview.thumbUrl,
-          };
-
-          console.log(data);
-
-          Share.bindShare(
-            this,
-            data,
-            this.successCallback,
-            this.failCallback
-          );
-        });
-      } else {
-        var data = {
-          title: 'test',
-          link: 'test',
-          content: 'test',
-          imageUrl: 'test',
-          thumbUrl: 'test',
-        };
-
-        window.Share.bindShare(
-          this,
-          data,
-          this.successCallback,
-          this.failCallback
-        );
-      }
-
+        this.initWebview();
     },
     methods: {
+      initWebview() {
+          this.title =  this.$route.params.title;
+          console.log('shareTitle' + this.title);
+          if (mui.os.plus) {
+              mui.plusReady(() => {
+                  var currentWebview = plus.webview.currentWebview();
+
+                  var data = {
+                      title: currentWebview.title,
+                      link: currentWebview.link,
+                      content: currentWebview.content,
+                      imageUrl: currentWebview.imageUrl,
+                      thumbUrl: currentWebview.thumbUrl,
+                  };
+
+                  console.log(data);
+
+                  Share.bindShare(
+                      this,
+                      data,
+                      this.successCallback,
+                      this.failCallback
+                  );
+              });
+          } else {
+              var data = {
+                  title: 'test',
+                  link: 'test',
+                  content: 'test',
+                  imageUrl: 'test',
+                  thumbUrl: 'test',
+              };
+
+              window.Share.bindShare(
+                  this,
+                  data,
+                  this.successCallback,
+                  this.failCallback
+              );
+          }
+      },
       toggleShareNav() {
           mui('#shareShowWrapper').popover('toggle');
       },
@@ -151,7 +153,11 @@
       },
     },
     computed: {},
-    watch: {},
+    watch: {
+        '$route' () {
+            this.initWebview();
+        }
+    },
   }
 
 </script>

@@ -83,7 +83,7 @@ export default {
 
                         //绘制标题栏
                         var titleUrl = readhubUrl + '/share?title=' + encodeURIComponent(title);
-                        var titleUrlTwo = '/share?title=' + encodeURIComponent(title);
+                        var titleUrlTwo = '/share/' + encodeURIComponent(title);
                         console.log('webview-title:' + titleUrl);
                         var shareTitle = 'InweHub发现 | ' + title;
                         var shareId = 'webview_readhub_share_' + id;
@@ -209,7 +209,7 @@ export default {
                                 autoShow: false
                             }
                         });
-                        mui.fire(embed, 'go_to_readhub_page', {url: toolUrl});
+                        mui.fire(embed, 'go_to_readhub_page', {url: pathUrl+'/webview'});
 
                         //绘制底部链接
                         var view = new plus.nativeObj.View('test', {bottom:'0px',left:'0',height:'44px',width:'60%'});
