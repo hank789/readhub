@@ -167,7 +167,7 @@ export default {
                             }
                         });
                         if (webview.getURL() !== url){
-                            webview.loadURL(url);
+                            //webview.loadURL(url);
                         }
                         ws.append(webview);
 
