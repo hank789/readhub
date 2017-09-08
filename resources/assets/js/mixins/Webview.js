@@ -108,7 +108,7 @@ export default {
                         // });
                         var shareView = mui.openWindow({
                             url: titleUrl,
-                            id: 'readhub_submission_webview',
+                            id: 'readhub_webview_title',
                             preload: false,//一定要为false
                             show: {
                                 autoShow: false,
@@ -139,7 +139,7 @@ export default {
                             }
                         });
 
-                        mui.fire(shareView,'go_to_readhub_page', {url: titleUrl});
+                        mui.fire(shareView, 'go_to_readhub_page', {url: titleUrl});
 
                         ws.append(shareView);
 
