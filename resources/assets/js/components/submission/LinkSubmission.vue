@@ -131,7 +131,7 @@
 			},
 			openNewUrl(submission){
 
-                var partUrl = '/c/' + encodeURIComponent(submission.category_name) + '/' + submission.slug;
+                var partUrl = '/c/' + submission.category_id + '/' + submission.slug;
 
 			    var jumpToComment = () => {
                     this.$router.push(partUrl);
