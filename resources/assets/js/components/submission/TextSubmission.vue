@@ -26,10 +26,10 @@
 
 		<!-- submission indexing pages -->
 		<div v-else>
-			<router-link :to="'/c/' + submission.category_name + '/' + submission.slug"
+			<a @tap.stop.prevent="goSubmissionPage('/c/' + submission.category_id + '/' + submission.slug)"
 			class="flex-space v-ultra-bold">
 				{{ submission.title }}
-			</router-link>
+			</a>
 
 			<div class="mobile-only mobile-submission-item-action">
 				{{ date }}
@@ -105,6 +105,13 @@
 		},
 
 		methods: {
+            goSubmissionPage(url) {
+                if(mui.os.plus) {
+                    this.openWebviewByUrl(url,window.Laravel.app_url+url);
+                } else {
+                    this.$router.push(url);
+                }
+			},
 			/**
 			 * opens the edit form
 			 *
