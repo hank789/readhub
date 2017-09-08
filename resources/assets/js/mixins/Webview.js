@@ -87,7 +87,7 @@ export default {
                         var shareTitle = 'InweHub发现 | ' + title;
                         var shareId = 'webview_readhub_share_' + id;
                         var sharePathUrl = readhubUrl + '/h5?redirect_url=' + pathUrl;
-                        var shareView = plus.webview.create(titleUrl, shareId, {
+                        var shareView = plus.webview.create(titleUrl, 'readhub_submission_webview', {
                             cachemode:'noCache',
                             popGesture: 'hide',
                             top:'0px',
@@ -106,6 +106,8 @@ export default {
                             imageUrl:shareImg,
                             thumbUrl:shareThumbUrl
                         });
+
+                        mui.fire(shareView,'go_to_readhub_page', {url: titleUrl});
 
                         ws.append(shareView);
 
