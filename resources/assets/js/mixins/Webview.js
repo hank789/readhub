@@ -9,7 +9,7 @@ export default {
 
     methods: {
         openReadhubPage(url){
-            if(mui.os.plus && mui.os.ios) {
+            if(mui.os.plus) {
                 var webview = mui.openWindow({
                     url: window.Laravel.app_url+url,
                     id: 'readhub_submission_webview',
