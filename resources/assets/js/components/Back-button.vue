@@ -1,5 +1,5 @@
 <template>
-    <a class="back" @click="toggleBack">
+    <a class="back" @click="toggleBack" v-show="!noback">
         <svg class="icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-fanhui"></use>
         </svg>
@@ -11,10 +11,19 @@
     import {plusReady} from '../libs/plus';
 
 	export default {
+        data () {
+            return {
+                noback:false
+            }
+        },
 		mounted () {
 
 		},
-
+        created () {
+		    if (this.$route.query.noback) {
+                this.noback = true;
+            }
+        },
 	    methods: {
 	    	/**
 	    	 * Toggles the sidebar
@@ -26,33 +35,19 @@
 
 
                 if (isPlusReady){
-                    var currentPath = this.$route.path;
-
                     var from = this.$route.query.from;
                     if (from === 'webview') {
                         console.log('匹配到 webview ');
-
-                        plusReady(() => {
-                            var ws = plus.webview.currentWebview();
-                            if (ws) {
-                                console.log('webview hide');
-                                ws.close();
-                                return;
-                            }
-                        });
+                        mui.back();
+                        return;
                     }
 
-                    if (currentPath === '/h5') {
-                        plusReady(() => {
-                            var ws = plus.webview.currentWebview();
-                            if (ws) {
-                                //var parentWs = ws.parent();
-                                //ws.parent().hide();
-                            }
-                        });
-                    } else {
-                        this.$router.push('/h5');
+                    var ws = plus.webview.currentWebview();
+                    if (ws.id === 'readhub_submission_webview') {
+                        ws.hide();
+                        return;
                     }
+                    this.$router.push('/h5');
 
                 } else {
                     if (this.$route.query.from !== undefined && this.$route.query.from === 'h5') {

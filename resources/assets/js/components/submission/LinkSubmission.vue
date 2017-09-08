@@ -131,66 +131,48 @@
 			},
 			openNewUrl(submission){
 
-                var partUrl = '/c/' + encodeURIComponent(submission.category_name) + '/' + submission.slug;
-
-			    var jumpToComment = () => {
-                    this.$router.push(partUrl);
-				};
-
+                var pathUrl = '/c/' + submission.category_id + '/' + submission.slug;
 				var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
 				if (isPlusReady) {
-                    plusReady(() => {
-                        var webview = this.openWebviewUrl(submission.data.url, submission.title);
 
+                    if(/http/.test(submission.data.url)) {
 
-                        var url = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
+                        var avatarUrl = null;
+                        if (/^http/.test(submission.owner.avatar)) {
+                            avatarUrl = submission.owner.avatar;
+                        } else {
+                            avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
+                        }
 
-                        var embed = plus.webview.create(url, url, {
-                            cachemode: 'noCache',
-                            popGesture: 'hide',
-                            bottom: '0px',
-                            height: '44px',
-                            dock: 'bottom',
-                            position: 'dock',
-                            backButtonAutoControl: 'hide',
-                            bounce: 'none', //不允许滑动
-                            scrollIndicator: 'none', //不显示滚动条
-                        });
-
-
-                        //创建评论链接
-                        var view = new plus.nativeObj.View('test', {
-                            bottom: '0px',
-                            left: '0',
-                            height: '44px',
-                            width: '60%'
-                        });
-
-                        view.draw([
-                            {
-                                tag: 'rect',
-                                id: 'rect',
-                                rectStyles: {color: 'rgba(0,0,0,0)'},
-                                position: {bottom: '0px', left: '0px', width: '100%', height: '44px'}
+                        mui.openWindow({
+                            url: window.location.protocol + '//' + window.location.host + '/article',
+                            id: 'readhub_article_son_'+ submission.id,
+                            preload: false, //一定要为false
+                            createNew: false,
+                            show: {
+                                autoShow: true,
+                                aniShow: 'pop-in'
                             },
-                        ]);
-                        view.addEventListener('click', () => {
-                            console.log('准备跳转');
-                            jumpToComment();
-                            webview.close();
-                        }, false);
-
-                        embed.append(view);
-                        webview.append(embed);
-
-                        webview.show();
-                    });
-
+                            styles: {
+                                popGesture: 'hide'
+                            },
+                            waiting: {
+                                autoShow: false
+                            },
+                            extras: {
+                                article_id: submission.id,
+                                article_url: submission.data.url,
+                                article_title: submission.title,
+                                article_category_name: submission.category_name,
+                                article_comment_url: pathUrl,
+                                article_img_url:avatarUrl,
+                            }
+                        });
+                    } else {
+                        this.openWebviewSubmission(submission.data.url,submission.title);
+					}
 				} else {
-                    this.openWebviewUrl(submission.data.url,submission.title);
-//                    var pathUrl = window.location.protocol + '//' + window.location.host + partUrl + '/webview';
-//                    this.$router.push('/readhub/detail?url='+submission.data.url+'&pathUrl='+pathUrl);
-
+                    this.openWebviewSubmission(submission.data.url,submission.title);
                 }
 			}
 		}

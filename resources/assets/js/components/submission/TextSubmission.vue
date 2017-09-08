@@ -26,10 +26,10 @@
 
 		<!-- submission indexing pages -->
 		<div v-else>
-			<router-link :to="'/c/' + submission.category_name + '/' + submission.slug"
+			<a @tap.stop.prevent="openReadhubPage('/c/' + submission.category_id + '/' + submission.slug)"
 			class="flex-space v-ultra-bold">
 				{{ submission.title }}
-			</router-link>
+			</a>
 
 			<div class="mobile-only mobile-submission-item-action">
 				{{ date }}
@@ -51,6 +51,8 @@
 <script>
     import Markdown from '../../components/Markdown.vue';
 	import SubmissionFooter from '../../components/SubmissionFooter.vue';
+    import Webview from '../../mixins/Webview';
+
 
     export default {
         data() {
@@ -60,6 +62,8 @@
                 editedBody: this.submission.data.text
             }
         },
+
+        mixins: [Webview],
 
         props: {
         	nsfw: {},

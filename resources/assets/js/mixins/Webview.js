@@ -8,8 +8,58 @@ export default {
     },
 
     methods: {
+        openReadhubPage(url){
+            if(mui.os.plus && mui.os.ios) {
+                var webview = mui.openWindow({
+                    url: window.Laravel.app_url+url,
+                    id: 'readhub_submission_webview',
+                    preload: false,//一定要为false
+                    show: {
+                        autoShow: false,
+                        aniShow: 'pop-in'
+                    },
+                    styles: {
+                        popGesture: 'hide'
+                    },
+                    extras:{preload: false},
+                    waiting: {
+                        autoShow: false
+                    }
+                });
+                mui.fire(webview,'go_to_readhub_page',{url: url});
+                setTimeout( () => {
+                    webview.show();
+                },100);
+            } else {
+                this.$router.push(url);
+            }
+        },
+        openWebviewByUrl(id, url, autoShow=true, aniShow='pop-in', popGesture='hide', reload = false) {
+            mui.plusReady(function(){
+                var webview = mui.openWindow({
+                    url: url,
+                    id: id,
+                    preload: false,//一定要为false
+                    show: {
+                        autoShow: autoShow,
+                        aniShow: aniShow
+                    },
+                    styles: {
+                        popGesture: popGesture
+                    },
+                    extras:{preload: false},
+                    waiting: {
+                        autoShow: false
+                    }
+                });
+                console.log("openWindow:"+webview.getURL());
+                if (reload) {
+                    webview.loadURL(url);
+                }
+            });
 
-    	openWebviewUrl(url, title='')
+        },
+    	openWebviewSubmission(url, title='', id, pathUrl, shareContent, shareImg, shareThumbUrl, commentJumpCallback)
     	{
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
@@ -23,45 +73,89 @@ export default {
             };
 
     		if (isPlusReady){
-                function webviewBackButton(){
-                    var ws = plus.webview.getWebviewById(url);
-                    if (ws) {
-                        ws.close();
-                    }
-                }
 
-                console.log(plus.webview.currentWebview().id);
+                mui.plusReady(() => {
+                    var ws = plus.webview.currentWebview();
+                    ws.addEventListener('show',createEmbed(ws),false);
+                    function createEmbed(ws) {
+
+                        var readhubUrl = window.location.protocol + '//' + window.location.host;
+
+                        //绘制标题栏
+                        var titleUrl = readhubUrl + '/share?title=' + encodeURIComponent(title);
+                        console.log('webview-title:' + titleUrl);
+                        var shareTitle = 'InweHub发现 | ' + title;
+                        var shareId = 'webview_readhub_share_' + id;
+                        var sharePathUrl = readhubUrl + '/h5?redirect_url=' + pathUrl;
+                        var shareView = plus.webview.create(titleUrl, shareId, {
+                            cachemode:'noCache',
+                            popGesture: 'hide',
+                            top:'0px',
+                            right:'0px',
+                            width:'100%',
+                            height:'44px',
+                            dock:'top',
+                            position:'dock',
+                            backButtonAutoControl: 'hide',
+                            bounce:'none', //不允许滑动
+                            scrollIndicator:'none', //不显示滚动条
+                        }, {
+                            title: shareTitle,
+                            link: sharePathUrl,
+                            content: shareContent,
+                            imageUrl:shareImg,
+                            thumbUrl:shareThumbUrl
+                        });
+
+                        ws.append(shareView);
 
 
-                var embed=plus.webview.create(url, url,{popGesture: 'hide',
-                    top:'0px',
-                    bottom:'0px',
-                    position:'dock',
-                    dock:'bottom',
-                    backButtonAutoControl: 'hide',
-                    titleNView: {
-                        backgroundColor: '#3c3e44', //导航栏背景色
-                        titleText: title, //导航栏标题
-                        titleColor: '#fff', //文字颜色
-                        type: 'transparent', //透明渐变样式
-                        titleSize:'18px',
-                        autoBackButton: true, //自动绘制返回箭头
-                        splitLine: { //底部分割线
-                            color: '#3c3e44'
+                        //绘制body
+                        var bodyTop = '0px';
+                        var bodyBottom = '0px';
+                        if (mui.os.android) {
+                            bodyTop = '44px';
+                            bodyBottom = '44px';
                         }
-                    },
-                    bounce:'vertical'});
+                        console.log('webview-body:' + url);
+                        var webview = plus.webview.create(url, ws.id, {
+                            popGesture: 'hide',
+                            top:bodyTop,
+                            bottom:bodyBottom,
+                            position:'absolute',
+                            backButtonAutoControl: 'hide',
+                            statusbar:{background:'#3c3e44'},
+                            bounce:'vertical'});
+                        ws.append(webview);
 
+                        //绘制底部菜单
+                        var footerPathUrl = readhubUrl + pathUrl;
+                        var toolUrl = footerPathUrl + '/webview';
+                        console.log('webview-footer:' + toolUrl);
+                        var toolUrlId = 'toolUrl_readhub_detail_son_' + id;
+                        var embed =plus.webview.create(toolUrl, toolUrlId, {
+                            popGesture: 'hide',
+                            bottom:'0px',
+                            height:'44px',
+                            dock:'bottom',
+                            position:'dock',
+                            backButtonAutoControl: 'hide',
+                            bounce:'none', //不允许滑动
+                            scrollIndicator:'none', //不显示滚动条
+                        });
 
-                plus.key.addEventListener("backbutton",() =>{
-                    webviewBackButton();
+                        //绘制底部链接
+                        var view = new plus.nativeObj.View('test', {bottom:'0px',left:'0',height:'44px',width:'60%'});
+
+                        view.draw([
+                            {tag:'rect',id:'rect',rectStyles:{color:'rgba(0,0,0,0)'},position:{bottom:'0px',left:'0px',width:'100%',height:'44px'}},
+                        ]);
+                        view.addEventListener('click', commentJumpCallback, false);
+                        embed.append(view);
+                        ws.append(embed);
+                    }
+
                 });
-
-
-
-
-                embed.show();
-                return embed;
             } else {
                 window.open(url);
             }
@@ -114,7 +208,7 @@ export default {
                             }
 
                             ws.setStyle({
-                                    popGesture: 'none',
+                                    popGesture: 'hide',
                                     top: '0px',
                                     dock: 'top',
                                     bottom: '0px',
