@@ -180,7 +180,7 @@ export default {
                             }
 
                             ws.setStyle({
-                                    popGesture: 'none',
+                                    popGesture: 'hide',
                                     top: '0px',
                                     dock: 'top',
                                     bottom: '0px',
