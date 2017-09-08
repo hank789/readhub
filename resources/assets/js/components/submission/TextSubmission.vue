@@ -51,6 +51,8 @@
 <script>
     import Markdown from '../../components/Markdown.vue';
 	import SubmissionFooter from '../../components/SubmissionFooter.vue';
+    import Webview from '../../mixins/Webview';
+
 
     export default {
         data() {
@@ -60,6 +62,8 @@
                 editedBody: this.submission.data.text
             }
         },
+
+        mixins: [Webview],
 
         props: {
         	nsfw: {},
