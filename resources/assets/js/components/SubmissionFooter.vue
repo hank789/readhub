@@ -170,7 +170,7 @@
 		methods: {
             goSubmissionPage(url) {
                 if(mui.os.plus) {
-                    this.openWebviewByUrl(url,url);
+                    this.openWebviewByUrl(url,window.Laravel.app_url+url);
                 } else {
                     this.$router.push(url);
 				}
