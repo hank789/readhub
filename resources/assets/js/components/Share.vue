@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="mui-bar mui-bar-nav">
-      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <a class="mui-icon mui-icon-left-nav mui-pull-left" @tap.stop.prevent="hideCurrent()"></a>
       <h1 class="mui-title">{{ title }}</h1>
 
       <a class="mui-icon mui-pull-right" @tap.stop.prevent="share()">
@@ -152,6 +152,19 @@
           });
         }
       },
+      hideCurrent(){
+          if (mui.os.plus) {
+              mui.plusReady(function () {
+                  var currentWebview = plus.webview.currentWebview();
+                  var parent = currentWebview.parent();
+                  if (parent) {
+                      parent.hide();
+                  } else {
+                      currentWebview.hide();
+                  }
+              });
+          }
+      }
     },
     computed: {},
     watch: {
