@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events\CommentCreated;
 use App\Events\CommentWasCreated;
-use App\Jobs\NotifyInwehub;
 use App\Notifications\CommentReplied;
 use App\Notifications\SubmissionReplied;
 use App\Permissions;
@@ -62,8 +61,6 @@ class NewComment implements ShouldQueue
 
             return;
         }
-
-        dispatch((new NotifyInwehub($event->comment->user_id,'NewComment',['commnet_id'=>$event->comment->id]))->onQueue('inwehub:default'));
 
         // broadcast the comment to the people online in the conversation
         event(new CommentCreated($event->comment));
