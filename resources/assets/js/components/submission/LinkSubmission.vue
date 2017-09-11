@@ -156,8 +156,10 @@
 
                         this.putLS('readhub_article_son_data', data);
 
+                        console.log('传给article的参数:' + JSON.stringify(data));
+
                         var webview = mui.openWindow({
-                            url: window.location.protocol + '//' + window.location.host + '/article',
+                            url: window.location.protocol + '//' + window.location.host + '/article/0',
                             id: 'readhub_article_son',
                             preload: false, //一定要为false
                             createNew: false,
