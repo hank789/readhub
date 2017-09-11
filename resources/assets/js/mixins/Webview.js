@@ -1,6 +1,8 @@
 import {plusReady} from '../libs/plus';
+import LocalStorage from '../mixins/LocalStorage';
 
 export default {
+    mixins: [LocalStorage],
     data: function () {
         return {
 
@@ -61,6 +63,7 @@ export default {
         },
     	openWebviewSubmission(url, title='', id, pathUrl, shareContent, shareImg, shareThumbUrl, commentJumpCallback)
     	{
+    	    var self = this;
             var isPlusReady = navigator.userAgent.match(/Html5Plus/i); //TODO 5\+Browser?
 
             if (mixpanel && mixpanel.track) {
@@ -107,6 +110,16 @@ export default {
                         //     imageUrl:shareImg,
                         //     thumbUrl:shareThumbUrl
                         // });
+                        var data = {
+                            title: shareTitle,
+                            link: sharePathUrl,
+                            content: shareContent,
+                            imageUrl:shareImg,
+                            thumbUrl:shareThumbUrl
+                        };
+
+                        self.putLS('readhub_article_share_data', data);
+
                         var shareView = mui.openWindow({
                             url: titleUrl,
                             id: 'readhub_webview_title',

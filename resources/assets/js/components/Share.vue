@@ -33,8 +33,12 @@
 </template>
 
 
+
 <script>
+  import LocalStorage from '../mixins/LocalStorage';
+
   export default {
+    mixins: [LocalStorage],
     data: () => ({
       title: '',
     }),
@@ -52,12 +56,14 @@
               mui.plusReady(() => {
                   var currentWebview = plus.webview.currentWebview();
 
+                  var shareData = this.getLS('readhub_article_share_data');
+                  console.log('shareData' + JSON.stringify(shareData));
                   var data = {
-                      title: currentWebview.title,
-                      link: currentWebview.link,
-                      content: currentWebview.content,
-                      imageUrl: currentWebview.imageUrl,
-                      thumbUrl: currentWebview.thumbUrl,
+                      title: shareData.title,
+                      link: shareData.link,
+                      content: shareData.content,
+                      imageUrl: shareData.imageUrl,
+                      thumbUrl: shareData.thumbUrl,
                   };
 
                   console.log(data);

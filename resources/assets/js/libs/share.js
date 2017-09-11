@@ -127,7 +127,7 @@ var Share = () => {
           title: self.data.title, // 分享标题
           desc: self.data.content, // 分享描述
           link: self.data.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: self.data.imageUrl, // 分享图标
+          imgUrl: self.data.imageUrl, //  分享图标
           type: self.data.type?self.data.type:'link', // 分享类型,music、video或link，不填默认为link
           dataUrl: self.data.dataUrl?self.data.dataUrl:'', // 如果type是music或video，则要提供数据链接，默认为空
           success: () => {
