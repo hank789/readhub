@@ -82,8 +82,8 @@ export default {
                         var readhubUrl = window.location.protocol + '//' + window.location.host;
 
                         //绘制标题栏
-                        var titleUrl = readhubUrl + '/share/' + encodeURIComponent(title);
-                        var titleUrlTwo = '/share/' + encodeURIComponent(title);
+                        var titleUrl = readhubUrl + '/share?title=' + encodeURIComponent(title);
+                        var titleUrlTwo = '/share?title=' + encodeURIComponent(title);
                         console.log('webview-title:' + titleUrl);
                         var shareTitle = 'InweHub发现 | ' + title;
                         var shareId = 'webview_readhub_share_' + id;

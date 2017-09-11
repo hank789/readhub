@@ -46,7 +46,7 @@
     },
     methods: {
       initWebview() {
-          this.title =  this.$route.params.title;
+          this.title =  this.$route.query.title;
           console.log('shareTitle' + this.title);
           if (mui.os.plus) {
               mui.plusReady(() => {
