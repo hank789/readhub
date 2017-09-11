@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SubmissionWasCreated;
+use App\Jobs\NotifyInwehub;
 use App\Traits\CachableCategory;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
@@ -42,6 +43,8 @@ class NewSubmission implements ShouldQueue
 
         $this->updateCategorySubmissionsCount($event->submission->category_id);
 
+        dispatch((new NotifyInwehub($event->submission->user_id,'NewSubmission',['submission_id'=>$event->submission->id]))->onQueue('inwehub:default'));
+
         $slackFields = [];
         foreach ($event->submission->data as $field=>$value){
             if ($value){
@@ -51,6 +54,6 @@ class NewSubmission implements ShouldQueue
                 ];
             }
         }
-        slackNotification($event->submission->owner->username,'新文章提交',$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_name.'/'.$event->submission->slug);
+        slackNotification($event->submission->owner->username,'新文章提交',$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_id.'/'.$event->submission->slug);
     }
 }
