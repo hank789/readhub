@@ -51,6 +51,6 @@ class NewSubmission implements ShouldQueue
                 ];
             }
         }
-        slackNotification($event->submission->owner->username,'新文章提交',$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_name.'/'.$event->submission->slug);
+        slackNotification($event->submission->owner->username,'新文章提交',$event->submission->title,$slackFields,config('app.url').'/c/'.$event->submission->category_id.'/'.$event->submission->slug);
     }
 }

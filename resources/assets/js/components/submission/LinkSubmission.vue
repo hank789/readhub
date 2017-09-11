@@ -67,10 +67,11 @@
 	import SubmissionFooter from '../../components/SubmissionFooter.vue';
 	import Webview from '../../mixins/Webview';
     import {plusReady} from '../../libs/plus';
+    import LocalStorage from '../../mixins/LocalStorage';
 
 
     export default {
-		mixins: [EmbedValidator,Webview],
+		mixins: [EmbedValidator,Webview, LocalStorage],
 
 		components: {
 			SubmissionFooter
@@ -144,13 +145,26 @@
                             avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
                         }
 
-                        mui.openWindow({
-                            url: window.location.protocol + '//' + window.location.host + '/article',
-                            id: 'readhub_article_son_'+ submission.id,
+                        var data = {
+                            article_id: submission.id,
+                            article_url: submission.data.url,
+                            article_title: submission.title,
+                            article_category_name: submission.category_name,
+                            article_comment_url: pathUrl,
+                            article_img_url:avatarUrl,
+                        };
+
+                        this.putLS('readhub_article_son_data', data);
+
+                        console.log('传给article的参数:' + JSON.stringify(data));
+
+                        var webview = mui.openWindow({
+                            url: window.location.protocol + '//' + window.location.host + '/article/0',
+                            id: 'readhub_article_son',
                             preload: false, //一定要为false
                             createNew: false,
                             show: {
-                                autoShow: true,
+                                autoShow: false,
                                 aniShow: 'pop-in'
                             },
                             styles: {
@@ -165,9 +179,16 @@
                                 article_title: submission.title,
                                 article_category_name: submission.category_name,
                                 article_comment_url: pathUrl,
-                                article_img_url:avatarUrl,
+                                article_img_url:avatarUrl
                             }
                         });
+
+                        mui.fire(webview,'go_to_readhub_page',{
+                            url: '/article/'+submission.id
+                        });
+                        setTimeout( () => {
+                            webview.show();
+                        },100);
                     } else {
                         this.openWebviewSubmission(submission.data.url,submission.title);
 					}

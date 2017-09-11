@@ -166,7 +166,7 @@ const routes = [
     { path: '/deleted-submission', component: DeletedSubmissionPage },
     { path: '/submission/:id', component: SubmissionRedirector },
     { path: '/share', component: Share },
-    { path: '/article', component: Article },
+    { path: '/article/:id', component: Article },
     { path: '/find-channels', component: FindCategories, name: 'find-categories', meta: { title: 'Find Channels' } },
     { path: '/404', component: NotFound, name: 'not-found', meta: { title: 'Not Found' } },
     { path: '/c/:name/:slug', component: SubmissionPage, name: 'submission-page', meta: { title: '文章详情-评论页' } },

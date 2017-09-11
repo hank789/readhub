@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="mui-bar mui-bar-nav">
-      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <a class="mui-icon mui-icon-left-nav mui-pull-left" @tap.stop.prevent="hideCurrent()"></a>
       <h1 class="mui-title">{{ title }}</h1>
 
       <a class="mui-icon mui-pull-right" @tap.stop.prevent="share()">
@@ -33,61 +33,70 @@
 </template>
 
 
+
 <script>
+  import LocalStorage from '../mixins/LocalStorage';
+
   export default {
+    mixins: [LocalStorage],
     data: () => ({
       title: '',
     }),
     mounted() {
-        var shareWrapper = document.getElementById('shareWrapper');
-        document.body.appendChild(shareWrapper);
-
-        var shareShowWrapper = document.getElementById('shareShowWrapper');
-        document.body.appendChild(shareShowWrapper);
+        this.initWebview();
     },
     created () {
-      this.title =  this.$route.query.title;
-      console.log('shareTitle' + this.title);
-      if (mui.os.plus) {
-        mui.plusReady(() => {
-          var currentWebview = plus.webview.currentWebview();
-
-          var data = {
-            title: currentWebview.title,
-            link: currentWebview.link,
-            content: currentWebview.content,
-            imageUrl: currentWebview.imageUrl,
-            thumbUrl: currentWebview.thumbUrl,
-          };
-
-          console.log(data);
-
-          Share.bindShare(
-            this,
-            data,
-            this.successCallback,
-            this.failCallback
-          );
-        });
-      } else {
-        var data = {
-          title: 'test',
-          link: 'test',
-          content: 'test',
-          imageUrl: 'test',
-          thumbUrl: 'test',
-        };
-
-        window.Share.bindShare(
-          this,
-          data,
-          this.successCallback,
-          this.failCallback
-        );
-      }
 
     },
     methods: {
+      initWebview() {
+          this.title =  this.$route.query.title;
+          console.log('shareTitle' + this.title);
+          if (mui.os.plus) {
+              mui.plusReady(() => {
+                  var currentWebview = plus.webview.currentWebview();
+
+                  var shareData = this.getLS('readhub_article_share_data');
+                  console.log('shareData' + JSON.stringify(shareData));
+                  var data = {
+                      title: shareData.title,
+                      link: shareData.link,
+                      content: shareData.content,
+                      imageUrl: shareData.imageUrl,
+                      thumbUrl: shareData.thumbUrl,
+                  };
+
+                  console.log(data);
+
+                  Share.bindShare(
+                      this,
+                      data,
+                      this.successCallback,
+                      this.failCallback
+                  );
+              });
+          } else {
+              var data = {
+                  title: 'test',
+                  link: 'test',
+                  content: 'test',
+                  imageUrl: 'test',
+                  thumbUrl: 'test',
+              };
+
+              window.Share.bindShare(
+                  this,
+                  data,
+                  this.successCallback,
+                  this.failCallback
+              );
+          }
+          var shareWrapper = document.getElementById('shareWrapper');
+          document.body.appendChild(shareWrapper);
+
+          var shareShowWrapper = document.getElementById('shareShowWrapper');
+          document.body.appendChild(shareShowWrapper);
+      },
       toggleShareNav() {
           mui('#shareShowWrapper').popover('toggle');
       },
@@ -149,9 +158,26 @@
           });
         }
       },
+      hideCurrent(){
+          if (mui.os.plus) {
+              mui.plusReady(function () {
+                  var currentWebview = plus.webview.currentWebview();
+                  var parent = currentWebview.parent();
+                  if (parent) {
+                      parent.hide();
+                  } else {
+                      currentWebview.hide();
+                  }
+              });
+          }
+      }
     },
     computed: {},
-    watch: {},
+    watch: {
+        '$route' () {
+            this.initWebview();
+        }
+    },
   }
 
 </script>

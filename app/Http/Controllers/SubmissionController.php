@@ -7,6 +7,7 @@ use App\Category;
 use App\Events\SubmissionWasCreated;
 use App\Events\SubmissionWasDeleted;
 use App\Filters;
+use App\Jobs\NotifyInwehub;
 use App\Photo;
 use App\PhotoTools;
 use App\Submission;
@@ -197,6 +198,7 @@ class SubmissionController extends Controller
 
         try {
             $this->firstVote($user, $submission->id);
+            dispatch((new NotifyInwehub($user->id,'NewSubmission',['submission_id'=>$submission->id]))->onQueue('inwehub:default'));
         } catch (\Exception $exception) {
             app('sentry')->captureException($exception);
         }
@@ -317,7 +319,9 @@ class SubmissionController extends Controller
         abort_unless($this->mustBeOwner($submission), 403);
 
         event(new SubmissionWasDeleted($submission));
-
+        if ($submission->type == 'link') {
+            Redis::connection()->hdel('voten:submission:url',$submission->data['url']);
+        }
         $submission->forceDelete();
 
         return response('Submission was successfully deleted', 200);
