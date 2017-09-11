@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\SubmissionWasCreated;
-use App\Jobs\NotifyInwehub;
 use App\Traits\CachableCategory;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
@@ -42,8 +41,6 @@ class NewSubmission implements ShouldQueue
         $this->updateUserSubmissionsCount($event->submission->user_id);
 
         $this->updateCategorySubmissionsCount($event->submission->category_id);
-
-        dispatch((new NotifyInwehub($event->submission->user_id,'NewSubmission',['submission_id'=>$event->submission->id]))->onQueue('inwehub:default'));
 
         $slackFields = [];
         foreach ($event->submission->data as $field=>$value){

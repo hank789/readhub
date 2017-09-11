@@ -7,6 +7,7 @@ use App\Comment;
 use App\Events\CommentWasCreated;
 use App\Events\CommentWasDeleted;
 use App\Events\CommentWasPatched;
+use App\Jobs\NotifyInwehub;
 use App\Traits\CachableCategory;
 use App\Traits\CachableComment;
 use App\Traits\CachableSubmission;
@@ -60,7 +61,10 @@ class CommentController extends Controller
             'edited_at'     => null,
         ]);
 
+        dispatch((new NotifyInwehub($author->id,'NewComment',['commnet_id'=>$comment->id]))->onQueue('inwehub:default'));
+
         event(new CommentWasCreated($comment, $submission, $author, $parentComment));
+
 
         $this->firstVote($author, $comment->id);
 
