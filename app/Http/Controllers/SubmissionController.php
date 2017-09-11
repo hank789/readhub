@@ -317,7 +317,9 @@ class SubmissionController extends Controller
         abort_unless($this->mustBeOwner($submission), 403);
 
         event(new SubmissionWasDeleted($submission));
-
+        if ($submission->type == 'link') {
+            Redis::connection()->hdel('voten:submission:url',$submission->data['url']);
+        }
         $submission->forceDelete();
 
         return response('Submission was successfully deleted', 200);
