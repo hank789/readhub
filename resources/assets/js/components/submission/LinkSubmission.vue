@@ -179,7 +179,8 @@
                                 article_title: submission.title,
                                 article_category_name: submission.category_name,
                                 article_comment_url: pathUrl,
-                                article_img_url:avatarUrl
+                                article_img_url:avatarUrl,
+                                preload: true
                             }
                         });
 
