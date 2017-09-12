@@ -44,7 +44,7 @@
 
                     var ws = plus.webview.currentWebview();
                     if (ws.id === 'readhub_submission_webview') {
-                        mui.back();
+                        ws.hide();
                         return;
                     }
                     this.$router.push('/h5');
