@@ -93,6 +93,7 @@
         location: '{{ Auth::user()->location }}',
         username: '{{ Auth::user()->username }}',
         created_at: '{{ Auth::user()->created_at }}',
+        user_level: '{{ Auth::user()->user_level }}',
         font: '{{ settings('font') }}',
         nsfw: {{ settings('nsfw') ? 'true' : 'false' }},
         nsfwMedia: {{ settings('nsfw_media') ? 'true' : 'false' }},
