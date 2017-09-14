@@ -236,8 +236,10 @@ const app = new Vue({
 
     methods: {
         categoryMenuClick(index){
-            axios.post(this.authUrl('check-user-level'), {
-                permission_type: index
+            axios.get(this.authUrl('check-user-level'), {
+                params: {
+                    permission_type: index
+                }
             }).then((response) => {
                 console.log(response);
             })
