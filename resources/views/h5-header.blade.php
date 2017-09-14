@@ -54,13 +54,6 @@
             <img src="/imgs/jiyuhuodong.png"/>
         </swiper-slide>
         <swiper-slide>
-            <img src="/imgs/newguwen@2x.png"/>
-        </swiper-slide>
-        <swiper-slide>
-            <img src="/imgs/neirongjingxuan@2x.png"/>
-        </swiper-slide>
-        <swiper-slide>
-            <img src="/imgs/jiyuhuodong.png"/>
         </swiper-slide>
     </swiper>
 </div>

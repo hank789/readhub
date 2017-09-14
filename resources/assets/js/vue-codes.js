@@ -107,8 +107,19 @@ const app = new Vue({
         swiperOption: {
             slidesPerView: 3,
             spaceBetween: 10,
-            onTap:this.swipperClick,
-            loop:true
+            onTap(swiper){
+                switch(swiper.clickedIndex) {
+                    case 0:
+
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                }
+            },
         }
     },
 
