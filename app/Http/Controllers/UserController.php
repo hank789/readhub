@@ -235,7 +235,7 @@ class UserController extends Controller
     public function checkUserLevel(Request $request){
         $user = Auth::user();
         $user_level = $user->user_level;
-        $permission_type = $request->input('permission_type');
+        $permission_type = $request->permission_type;
         $is_valiad = false;
         switch ($permission_type) {
             case '1':
