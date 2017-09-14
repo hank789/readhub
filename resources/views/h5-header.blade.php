@@ -9,7 +9,7 @@
 </header>
 
 
-<div class="categoryMenu flex-space">
+<div class="categoryMenu flex-space" v-if="$route.path === '/h5'">
     <div class="item">
         <svg class="icon icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-wendashequ"></use>
@@ -42,8 +42,8 @@
     </div>
 </div>
 
-<div class="listBanner">
-    <swiper :options="swiperOption">
+<div class="listBanner" v-if="$route.path === '/h5'">
+    <swiper :options="swiperOption" v-show="showSwipper">
         <swiper-slide>
             <img src="/imgs/newguwen@2x.png"/>
         </swiper-slide>
@@ -81,6 +81,7 @@
         </div>
     </div>
 </div>
+
 <div class="menu-item">
     <svg class="icon-inwehub" aria-hidden="true" @click="refresh">
     <use xlink:href="#icon-shuaxin"></use>

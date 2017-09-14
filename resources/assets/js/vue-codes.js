@@ -96,6 +96,7 @@ const app = new Vue({
     },
 
     data: {
+        showSwipper:false,
         modalRouter: '',
         reportCategory: '',
         reportSubmissionId: '',
@@ -228,6 +229,7 @@ const app = new Vue({
     },
 
     mounted() {
+        this.showSwipper = true;
         this.$nextTick(function() {
             this.loadCheckBox()
             this.loadSemanticTooltip()
