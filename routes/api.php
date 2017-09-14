@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/upvoted-submissions', 'UserController@upVotedSubmissions');
     Route::post('/update-home-feed', 'UserSettingsController@updateHomeFeed');
     Route::post('/downvoted-submissions', 'UserController@downVotedSubmissions');
-    Route::get('/check-user-level', 'UserController@checkUserLevel');
+    Route::get('/auth/check-user-level', 'UserController@checkUserLevel');
 
 
     // submission
