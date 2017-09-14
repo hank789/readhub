@@ -37,6 +37,7 @@
 
     <link rel="shortcut icon" href="/imgs/favicon.ico">
     @include('user.user-style')
+
 </head>
 
 <body>
@@ -60,7 +61,7 @@
 		<search-modal v-if="Store.contentRouter == 'search'" :sidebar="sidebar"></search-modal>
         @endif
 
-        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10">
+        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10" :class="{'v-content-inwehub-list':$route.path == '/h5'}">
 
 
             <transition name="fade">

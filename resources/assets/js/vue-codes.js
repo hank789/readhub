@@ -96,6 +96,7 @@ const app = new Vue({
     },
 
     data: {
+        showSwipper:false,
         modalRouter: '',
         reportCategory: '',
         reportSubmissionId: '',
@@ -106,9 +107,7 @@ const app = new Vue({
         scrolledBusy: false,
         swiperOption: {
             slidesPerView: 3,
-            spaceBetween: 10,
-            onTap:this.swipperClick,
-            loop:true
+            spaceBetween: 10
         }
     },
 
@@ -179,8 +178,13 @@ const app = new Vue({
 
 
     created: function() {
-
-
+        this.swiperOption = {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            onTap:(swiper) => {
+                this.categoryMenuClick(swiper.clickedIndex + 6);
+            }
+        };
 
         window.addEventListener('keydown', this.keydown);
         this.hideWebviewFooter();
@@ -217,6 +221,7 @@ const app = new Vue({
     },
 
     mounted() {
+        this.showSwipper = true;
         this.$nextTick(function() {
             this.loadCheckBox()
             this.loadSemanticTooltip()
@@ -230,9 +235,14 @@ const app = new Vue({
     },
 
     methods: {
-        swipperClick(swiper){
-            alert('ok');
-            console.log(swiper);
+        categoryMenuClick(index){
+            axios.get(this.authUrl('check-user-level'), {
+                params: {
+                    permission_type: index
+                }
+            }).then((response) => {
+                console.log(response);
+            })
         },
         refresh() {
             this.$eventHub.$emit('refresh-home');

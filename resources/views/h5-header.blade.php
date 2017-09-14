@@ -9,32 +9,32 @@
 </header>
 
 
-<div class="categoryMenu flex-space">
-    <div class="item">
+<div class="categoryMenu flex-space" v-if="$route.path === '/h5'">
+    <div class="item" @tap.stop.prevent="categoryMenuClick(1)">
         <svg class="icon icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-wendashequ"></use>
         </svg>
         问答社区
     </div>
-    <div class="item">
+    <div class="item" @tap.stop.prevent="categoryMenuClick(2)">
         <svg class="icon icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-chengchangye-baominghuodong"></use>
         </svg>
         活动报名
     </div>
-    <div class="item">
+    <div class="item" @tap.stop.prevent="categoryMenuClick(3)">
         <svg class="icon icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-xiangmujiyu"></use>
         </svg>
         项目机遇
     </div>
-    <div class="item">
+    <div class="item" @tap.stop.prevent="categoryMenuClick(4)">
         <svg class="icon icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-fujinqiye"></use>
         </svg>
         附近企业
     </div>
-    <div class="item">
+    <div class="item" @tap.stop.prevent="categoryMenuClick(5)">
         <svg class="icon icon-inwehub" aria-hidden="true">
             <use xlink:href="#icon-gengduozhuanjia"></use>
         </svg>
@@ -42,8 +42,8 @@
     </div>
 </div>
 
-<div class="listBanner">
-    <swiper :options="swiperOption">
+<div class="listBanner" v-if="$route.path === '/h5'">
+    <swiper :options="swiperOption" v-show="showSwipper">
         <swiper-slide>
             <img src="/imgs/newguwen@2x.png"/>
         </swiper-slide>
@@ -54,13 +54,6 @@
             <img src="/imgs/jiyuhuodong.png"/>
         </swiper-slide>
         <swiper-slide>
-            <img src="/imgs/newguwen@2x.png"/>
-        </swiper-slide>
-        <swiper-slide>
-            <img src="/imgs/neirongjingxuan@2x.png"/>
-        </swiper-slide>
-        <swiper-slide>
-            <img src="/imgs/jiyuhuodong.png"/>
         </swiper-slide>
     </swiper>
 </div>
@@ -88,6 +81,7 @@
         </div>
     </div>
 </div>
+
 <div class="menu-item">
     <svg class="icon-inwehub" aria-hidden="true" @click="refresh">
     <use xlink:href="#icon-shuaxin"></use>
