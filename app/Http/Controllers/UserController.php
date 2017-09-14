@@ -236,41 +236,41 @@ class UserController extends Controller
         $user = Auth::user();
         $user_level = $user->user_level;
         $permission_type = $request->permission_type;
-        $is_valiad = false;
+        $is_valid = false;
         switch ($permission_type) {
             case '1':
                 // 问答社区L3
                 if ($user_level >= 3) {
-                    $is_valiad = true;
+                    $is_valid = true;
                 }
                 break;
             case '2':
                 // 活动报名，需要L2
                 if ($user_level >= 2) {
-                    $is_valiad = true;
+                    $is_valid = true;
                 }
                 break;
             case '3':
                 // 项目机遇，需要L3
                 if ($user_level >= 3) {
-                    $is_valiad = true;
+                    $is_valid = true;
                 }
                 break;
             case '4':
                 // 附近企业，需要L4
                 if ($user_level >= 4) {
-                    $is_valiad = true;
+                    $is_valid = true;
                 }
                 break;
             case '5':
                 // 更多专家，需要L4
                 if ($user_level >= 4) {
-                    $is_valiad = true;
+                    $is_valid = true;
                 }
                 break;
             default:
                 break;
         }
-        return ['is_valiad'=>$is_valiad];
+        return ['is_valid'=>$is_valid];
     }
 }
