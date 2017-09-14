@@ -17,7 +17,7 @@
 		    <section class="box-typical comments" id="comments-section" v-if="!loadingSubmission">
 		        <header class="box-typical-header-sm bordered user-select flex-space">
 		            <div>
-		            	<span>{{ submission.comments_number }}</span>
+		            	<span v-text="uniqueList.length"></span>
 		            	条回复: <span class="go-gray go-small" v-if="!isGuest && false">({{ onlineUsers }} 在线用户)</span>
 		            </div>
 		            <div v-if="false" class="head-sort-icon" v-show="comments.length > 1">
