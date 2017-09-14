@@ -1,6 +1,5 @@
 <template>
 	<div class="home-wrapper"  :class="{'home-wrapper-h5':Store.is_h5}">
-		<announcement></announcement>
 		<home-submissions></home-submissions>
 	</div>
 </template>
