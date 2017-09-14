@@ -236,11 +236,32 @@ const app = new Vue({
 
     methods: {
         categoryMenuClick(index){
+            var callback = (response) => {
+                switch(index) {
+                    case 2:
+                    case 8:
+                        this.parentOpenUrl('/home/ActiveList');
+                        break;
+                    case 3:
+                        this.parentOpenUrl('/home/OpportunityList');
+                        break;
+                    case 1:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                        mui.alert('debug');
+                        break;
+
+                }
+
+            };
             axios.get(this.authUrl('check-user-level'), {
                 params: {
                     permission_type: index
                 }
             }).then((response) => {
+                callback(response);
                 console.log(response);
             })
         },
