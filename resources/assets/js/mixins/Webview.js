@@ -23,7 +23,7 @@ export default {
                     styles: {
                         popGesture: 'hide'
                     },
-                    extras:{preload: false},
+                    extras:{preload: true},
                     waiting: {
                         autoShow: false
                     }
@@ -49,7 +49,7 @@ export default {
                     styles: {
                         popGesture: popGesture
                     },
-                    extras:{preload: false},
+                    extras:{preload: true},
                     waiting: {
                         autoShow: false
                     }
