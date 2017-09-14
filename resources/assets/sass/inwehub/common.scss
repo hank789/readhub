@@ -596,3 +596,48 @@
   color:#fff !important;
 }
 
+
+.categoryMenu{
+  position: absolute;
+  top:44px;
+  padding:10px;
+
+  .item{
+     display: inline-block;
+     width:20%;
+     font-size:13px;
+     color:#808080;
+     text-align: center;
+
+     .icon-inwehub{
+        font-size:41px;
+        color:#fcc916;
+       width:100%;
+       margin-bottom: 8px;
+     }
+  }
+}
+
+.v-content-inwehub-list{
+   padding-top:227px;
+}
+
+.listBanner{
+  position: absolute;
+  width: 100%;
+  padding: 9px 0;
+  background: #f3f4f6;
+  height: 93px;
+  top: 133px;
+  overflow: hidden;
+
+  img{
+    width:160px;
+    height:74px;
+  }
+
+}
+
+.swiper-slide {
+  width: 160px !important;
+}

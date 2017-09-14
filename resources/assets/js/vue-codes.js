@@ -28,6 +28,7 @@ import Helpers from './mixins/Helpers';
 import autosize from 'autosize';
 import router from './routes';
 import Webview from './mixins/Webview';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
 
 
@@ -90,6 +91,8 @@ const app = new Vue({
         Messages,
         Sidebar,
         Rules,
+        swiper,
+        swiperSlide
     },
 
     data: {
@@ -101,7 +104,12 @@ const app = new Vue({
         sortFilter: 'hot',
         pageTitle: document.title,
         scrolledBusy: false,
-
+        swiperOption: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            onTap:this.swipperClick,
+            loop:true
+        }
     },
 
     computed: {
@@ -222,6 +230,10 @@ const app = new Vue({
     },
 
     methods: {
+        swipperClick(swiper){
+            alert('ok');
+            console.log(swiper);
+        },
         refresh() {
             this.$eventHub.$emit('refresh-home');
         },
