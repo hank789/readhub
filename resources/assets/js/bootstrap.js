@@ -97,8 +97,11 @@ require('./libs/checkbox');
 require('./libs/Jcrop');
 require('./libs/iconfont');
 
+require('swiper/dist/css/swiper.css');
 
 require('./libs/mui');
+
+
 import './../css/mui.css';
 
 import Share from './libs/share';

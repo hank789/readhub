@@ -2,11 +2,12 @@
   height:45px;
   line-height: 45px;
   width:100%;
-  background: #f3f4f6;
+  background: #fff;
   position: fixed;
   padding:0 16px;
   z-index: 777;
-  top: 44px;
+  //top: 44px;
+  top:226px;
 
   &:after{
     position: absolute;

@@ -16,6 +16,7 @@
     "video.js": "^5.16.0"
   },
   "dependencies": {
+    "vue-awesome-swiper": "^2.3.8",
     "at.js": "^1.5.3",
     "autosize": "^3.0.17",
     "axios": "^0.16.1",
