@@ -62,9 +62,6 @@ class NewComment implements ShouldQueue
             return;
         }
 
-        // broadcast the comment to the people online in the conversation
-        event(new CommentCreated($event->comment));
-
         if (isset($event->parentComment) && !$this->mustBeOwner($event->parentComment,$event->author)) {
             $event->parentComment->notifiable->notify(new CommentReplied($event->submission, $event->comment));
         } elseif (!$this->mustBeOwner($event->submission,$event->author)) {
