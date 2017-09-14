@@ -107,20 +107,7 @@ const app = new Vue({
         scrolledBusy: false,
         swiperOption: {
             slidesPerView: 3,
-            spaceBetween: 10,
-            onTap(swiper){
-                switch(swiper.clickedIndex) {
-                    case 0:
-
-                        break;
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                }
-            },
+            spaceBetween: 10
         }
     },
 
@@ -191,8 +178,13 @@ const app = new Vue({
 
 
     created: function() {
-
-
+        this.swiperOption = {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            onTap:(swiper) => {
+                this.categoryMenuClick(swiper.clickedIndex + 6);
+            }
+        };
 
         window.addEventListener('keydown', this.keydown);
         this.hideWebviewFooter();
@@ -243,9 +235,12 @@ const app = new Vue({
     },
 
     methods: {
-        swipperClick(swiper){
-            alert('ok');
-            console.log(swiper);
+        categoryMenuClick(index){
+            axios.post(this.authUrl('check-user-level'), {
+                permission_type: index
+            }).then((response) => {
+                console.log(response);
+            })
         },
         refresh() {
             this.$eventHub.$emit('refresh-home');
