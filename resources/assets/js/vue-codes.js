@@ -181,6 +181,7 @@ const app = new Vue({
         this.swiperOption = {
             slidesPerView: 3,
             spaceBetween: 10,
+            loop:true,
             onTap:(swiper) => {
                 this.categoryMenuClick(swiper.clickedIndex + 6);
             }
@@ -222,6 +223,7 @@ const app = new Vue({
 
     mounted() {
         this.showSwipper = true;
+        document.getElementById('listBanner').style.top='133px';
         this.$nextTick(function() {
             this.loadCheckBox()
             this.loadSemanticTooltip()

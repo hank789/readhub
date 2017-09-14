@@ -643,4 +643,10 @@
 
 .swiper-slide {
   width: 160px !important;
+  float: left;
+}
+.swiper-container{
+  width:100%;
+  height:74px;
+  overflow: hidden;
 }

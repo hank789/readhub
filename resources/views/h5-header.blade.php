@@ -42,8 +42,8 @@
     </div>
 </div>
 
-<div class="listBanner" v-if="$route.path === '/h5'">
-    <swiper :options="swiperOption" v-show="showSwipper">
+<div class="listBanner" id="listBanner" v-if="$route.path === '/h5'" style="top:-500px;">
+    <swiper :options="swiperOption">
         <swiper-slide>
             <img src="/imgs/newguwen@2x.png"/>
         </swiper-slide>
@@ -52,8 +52,6 @@
         </swiper-slide>
         <swiper-slide>
             <img src="/imgs/jiyuhuodong.png"/>
-        </swiper-slide>
-        <swiper-slide>
         </swiper-slide>
     </swiper>
 </div>
