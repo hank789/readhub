@@ -230,4 +230,47 @@ class UserController extends Controller
 
         return redirect('/backend/users');
     }
+
+
+    public function checkUserLevel(Request $request){
+        $user = Auth::user();
+        $user_level = $user->user_level;
+        $permission_type = $request->input('permission_type');
+        switch ($permission_type) {
+            case '1':
+                // 问答社区L3
+                if ($user_level < 3) {
+                    return false;
+                }
+                break;
+            case '2':
+                // 活动报名，需要L2
+                if ($user_level < 2) {
+                    return false;
+                }
+                break;
+            case '3':
+                // 项目机遇，需要L3
+                if ($user_level < 3) {
+                    return false;
+                }
+                break;
+            case '4':
+                // 附近企业，需要L4
+                if ($user_level < 4) {
+                    return false;
+                }
+                break;
+            case '5':
+                // 更多专家，需要L4
+                if ($user_level < 4) {
+                    return false;
+                }
+                break;
+            default:
+                return false;
+                break;
+        }
+        return true;
+    }
 }
