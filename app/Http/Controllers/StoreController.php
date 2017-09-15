@@ -8,6 +8,7 @@ use App\Traits\CachableUser;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class StoreController extends Controller
 {
@@ -28,7 +29,12 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $recommend_read = Submission::where('recommend_status',2)->orderBy('recommend_sort','desc')->first()->toArray();
+        $recommend_readhub_id = Redis::connection()->get('recommend_readhub_article');
+        if ($recommend_readhub_id) {
+            $recommend_read = Submission::find($recommend_readhub_id);
+        } else {
+            $recommend_read = Submission::where('recommend_status',2)->orderBy('recommend_sort','desc')->first()->toArray();
+        }
 
         $recommend_read['img_url'] = $recommend_read['data']['img']??'';
         $recommend_read['publish_at'] = date('Y/m/d H:i',strtotime($recommend_read['created_at']));
