@@ -175,6 +175,8 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\CdnServiceProvider::class,
+
 
         // Added packages
         Intervention\Image\ImageServiceProvider::class,
@@ -250,6 +252,7 @@ return [
         'Sentry'    => Sentry\SentryLaravel\SentryFacade::class,
         'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
         'Slack' => Maknz\Slack\Laravel\Facade::class,
+        'Cdn' => Publiux\laravelcdn\Facades\CdnFacadeAccessor::class,
 
     ],
 
