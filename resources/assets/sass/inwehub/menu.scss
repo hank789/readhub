@@ -3,11 +3,11 @@
   line-height: 45px;
   width:100%;
   background: #fff;
-  position: fixed;
+  position: relative;
   padding:0 16px;
   z-index: 777;
   //top: 44px;
-  top:226px;
+  top:0;
 
   &:after{
     position: absolute;

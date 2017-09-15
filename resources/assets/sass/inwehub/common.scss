@@ -44,7 +44,11 @@
 }
 
 .home-wrapper-h5{
-  margin-top:44px;
+
+}
+
+#home-submissions{
+
 }
 
 .menu-inwehub-menu{
@@ -598,7 +602,7 @@
 
 
 .categoryMenu{
-  position: fixed;
+  position: static;
   z-index:8;
   top:44px;
   padding:10px 0 15px;
@@ -621,11 +625,11 @@
 }
 
 .v-content-inwehub-list{
-  padding-top:227px;
+
 }
 
 .listBanner{
-  position: fixed;
+  position: static;
   width: 100%;
   padding: 9px 0;
   background: #f3f4f6;
