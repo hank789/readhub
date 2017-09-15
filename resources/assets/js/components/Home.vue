@@ -88,6 +88,7 @@
 		</div>
 
 		<home-submissions></home-submissions>
+		<inwehubDialog ref="inwehubDialog"></inwehubDialog>
 	</div>
 </template>
 
@@ -98,6 +99,7 @@
 	import LocalStorage from '../mixins/LocalStorage';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
     import Webview from '../mixins/Webview';
+    import inwehubDialog from '../components/Dialog.vue';
 
     export default {
     	mixins: [Helpers, LocalStorage, Webview],
@@ -106,7 +108,8 @@
 	        HomeSubmissions,
 	        Announcement,
             swiper,
-            swiperSlide
+            swiperSlide,
+            inwehubDialog
 	    },
         data(){
             return {
@@ -160,22 +163,126 @@
         },
 
         methods: {
+            openNewUrl(submission){
+
+                var pathUrl = '/c/' + submission.category_id + '/' + submission.slug;
+                var isPlusReady = navigator.userAgent.match(/Html5Plus/i);
+                if (isPlusReady) {
+
+                    if(/http/.test(submission.data.url)) {
+
+                        var avatarUrl = null;
+                        if (/^http/.test(submission.owner.avatar)) {
+                            avatarUrl = submission.owner.avatar;
+                        } else {
+                            avatarUrl = window.location.protocol + '//' + window.location.host +  this.submission.owner.avatar;
+                        }
+
+                        var data = {
+                            article_id: submission.id,
+                            article_url: submission.data.url,
+                            article_title: submission.title,
+                            article_category_name: submission.category_name,
+                            article_comment_url: pathUrl,
+                            article_img_url:avatarUrl,
+                        };
+
+                        this.putLS('readhub_article_son_data', data);
+
+                        console.log('传给article的参数:' + JSON.stringify(data));
+
+                        var webview = mui.openWindow({
+                            url: window.location.protocol + '//' + window.location.host + '/article/0',
+                            id: 'readhub_article_son',
+                            preload: false, //一定要为false
+                            createNew: false,
+                            show: {
+                                autoShow: false,
+                                aniShow: 'pop-in'
+                            },
+                            styles: {
+                                popGesture: 'hide'
+                            },
+                            waiting: {
+                                autoShow: false
+                            },
+                            extras: {
+                                article_id: submission.id,
+                                article_url: submission.data.url,
+                                article_title: submission.title,
+                                article_category_name: submission.category_name,
+                                article_comment_url: pathUrl,
+                                article_img_url:avatarUrl,
+                                preload: true
+                            }
+                        });
+
+                        mui.fire(webview,'go_to_readhub_page',{
+                            url: '/article/'+submission.id
+                        });
+                        setTimeout( () => {
+                            webview.show();
+                        },100);
+                    } else {
+                        this.openWebviewSubmission(submission.data.url,submission.title);
+                    }
+                } else {
+                    this.openWebviewSubmission(submission.data.url,submission.title);
+                }
+            },
             categoryMenuClick(index){
                 var callback = (response) => {
+
+                    var warningAlert = () => {
+                        var level = response.current_level;
+                        this.$refs.inwehubDialog.getHtml('test', {level:level}, (html) => {
+                            window.alertSimple(html, '查看等级详情', (num) =>{
+                                if (num.index == 0) {
+                                    this.parentOpenUrl('/my/Growth');
+                                }
+
+                            }, true);
+                        });
+					};
+
                     switch(index) {
                         case 2:
                         case 8:
-                            this.parentOpenUrl('/home/ActiveList');
+                            if (response.is_valid) {
+                                this.parentOpenUrl('/home/ActiveList');
+							} else {
+                                warningAlert();
+							}
+
                             break;
                         case 3:
-                            this.parentOpenUrl('/home/OpportunityList');
+                            if (response.is_valid) {
+                                this.parentOpenUrl('/home/OpportunityList');
+                            } else {
+                                warningAlert();
+                            }
                             break;
                         case 1:
                         case 4:
                         case 5:
-                        case 6:
                         case 7:
-                            mui.alert('debug');
+                            warningAlert();
+                            break;
+                        case 6:
+                            var submition = {
+                                id:'139',
+                                title:'test',
+                                category_id:'3',
+                                category_name:'河南test',
+                                slug:'5',
+                                data:{
+                                    url:'http://mp.weixin.qq.com/s/g7AwX8SZbGfdWWDg05e2aA',
+                                },
+                                owner:{
+                                    avatar:'https://intervapp-test.oss-cn-zhangjiakou.aliyuncs.com/media/257/medialibrarySfyBBi',
+                                }
+                            };
+							this.openNewUrl(submition);
                             break;
 
                     }
