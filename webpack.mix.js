@@ -5,6 +5,9 @@ mix.js('resources/assets/js/app.js', 'public/js')
 	.js('resources/assets/js/landing.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/admin.scss', 'public/css')
+    .options({
+        processCssUrls: false
+    })
     .sourceMaps()
     .extract([
         'vue',
@@ -13,8 +16,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'jquery',
         'vue-ua',
         'autosize',
-        'video.js',
-        'pusher-js',
         'vue-focus',
         'vue-router',
         'laravel-echo',
@@ -26,7 +27,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .autoload({
         vue : 'Vue',
         lodash : '_',
-        'pusher-js' : 'Pusher',
         jquery: ['$', 'jQuery'],
     })
     .version()
