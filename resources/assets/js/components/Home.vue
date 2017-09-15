@@ -232,9 +232,8 @@
             },
             categoryMenuClick(index){
                 var callback = (response) => {
-
                     var warningAlert = () => {
-                        var level = response.current_level;
+                        var level = response.data.current_level;
                         this.$refs.inwehubDialog.getHtml('test', {level:level}, (html) => {
                             window.alertSimple(html, '查看等级详情', (num) =>{
                                 if (num.index == 0) {
@@ -248,7 +247,7 @@
                     switch(index) {
                         case 2:
                         case 8:
-                            if (response.is_valid) {
+                            if (response.data.is_valid) {
                                 this.parentOpenUrl('/home/ActiveList');
 							} else {
                                 warningAlert();
@@ -256,7 +255,7 @@
 
                             break;
                         case 3:
-                            if (response.is_valid) {
+                            if (response.data.is_valid) {
                                 this.parentOpenUrl('/home/OpportunityList');
                             } else {
                                 warningAlert();
