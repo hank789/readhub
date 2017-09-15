@@ -232,17 +232,9 @@
             },
             categoryMenuClick(index){
 
-                if (index === 6) {
-                    var submition = Store.recommendRead;
-                    this.openNewUrl(submition);
-                    return;
-				}
-
                 var callback = (response) => {
                     var warningAlert = () => {
                         var level = response.data.current_level;
-
-
 
                         this.$refs.inwehubDialog.getHtml('test', {level:level}, (html) => {
                             window.alertSimple(html, '查看等级详情', (num) =>{
@@ -252,61 +244,38 @@
 
                             }, true);
                         });
-					};
+                    };
 
-                    switch(index) {
-                        case 2:
-                        case 8:
-                            if (response.data.is_valid) {
-                                this.parentOpenUrl('/home/ActiveList');
-							} else {
-                                warningAlert();
-							}
-
-                            break;
-                        case 3:
-                            if (response.data.is_valid) {
-                                this.parentOpenUrl('/home/OpportunityList');
-                            } else {
-                                warningAlert();
-                            }
-                            break;
-                        case 1:
-                        case 4:
-                        case 5:
-                        case 7:
-                            warningAlert();
-                            break;
-                        case 6:
-//                            console.log(Store.recommendRead);
-//                            var submition = {
-//                                id:'139',
-//                                title:'test',
-//                                category_id:'3',
-//                                category_name:'河南test',
-//                                slug:'5',
-//                                data:{
-//                                    url:'http://mp.weixin.qq.com/s/g7AwX8SZbGfdWWDg05e2aA',
-//                                },
-//                                owner:{
-//                                    avatar:'https://intervapp-test.oss-cn-zhangjiakou.aliyuncs.com/media/257/medialibrarySfyBBi',
-//                                }
-//                            };
-                            var submition = Store.recommendRead;
-							this.openNewUrl(submition);
-                            break;
-
-                    }
-
+			        warningAlert();
                 };
-                axios.get(this.authUrl('check-user-level'), {
-                    params: {
-                        permission_type: index
-                    }
-                }).then((response) => {
-                    callback(response);
-                    console.log(response);
-                })
+
+                switch(index) {
+                    case 2:
+                    case 8:
+						this.parentOpenUrl('/home/ActiveList');
+                        break;
+                    case 3:
+						this.parentOpenUrl('/home/OpportunityList');
+                        break;
+                    case 1:
+                    case 4:
+                    case 5:
+                    case 7:
+                        axios.get(this.authUrl('check-user-level'), {
+                            params: {
+                                permission_type: index
+                            }
+                        }).then((response) => {
+                            callback(response);
+                        });
+
+                        break;
+                    case 6:
+                        var submition = Store.recommendRead;
+                        this.openNewUrl(submition);
+                        break;
+                }
+
             },
     	    goLink(url) {
     	        setTimeout(() => {
