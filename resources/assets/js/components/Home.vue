@@ -97,9 +97,10 @@
 	import Helpers from '../mixins/Helpers';
 	import LocalStorage from '../mixins/LocalStorage';
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import Webview from '../mixins/Webview';
 
     export default {
-    	mixins: [Helpers, LocalStorage],
+    	mixins: [Helpers, LocalStorage, Webview],
 
 	    components: {
 	        HomeSubmissions,
