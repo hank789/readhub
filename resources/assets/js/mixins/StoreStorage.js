@@ -46,6 +46,7 @@ export default {
                 Store.subscribedCategories = response.data.subscribedCategories;
                 Store.moderatingCategories = response.data.moderatingCategories;
                 Store.blockedUsers = response.data.blockedUsers;
+                Store.recommendRead = response.data.recommendRead;
 
                 response.data.moderatingCategories.forEach(function(element, index) {
                     Store.moderatingAt.push(element.id);
