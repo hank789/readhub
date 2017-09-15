@@ -1,5 +1,92 @@
 <template>
+
 	<div class="home-wrapper"  :class="{'home-wrapper-h5':Store.is_h5}">
+
+		<div class="categoryMenu flex-space" v-if="$route.path === '/h5'">
+			<div class="item" @tap.stop.prevent="categoryMenuClick(1)">
+				<svg class="icon icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-wendashequ"></use>
+				</svg>
+				问答社区
+            </div>
+			<div class="item" @tap.stop.prevent="categoryMenuClick(2)">
+				<svg class="icon icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-chengchangye-baominghuodong"></use>
+				</svg>
+				活动报名
+            </div>
+			<div class="item" @tap.stop.prevent="categoryMenuClick(3)">
+				<svg class="icon icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-xiangmujiyu"></use>
+				</svg>
+				项目机遇
+            </div>
+			<div class="item" @tap.stop.prevent="categoryMenuClick(4)">
+				<svg class="icon icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-fujinqiye"></use>
+				</svg>
+				附近企业
+            </div>
+			<div class="item" @tap.stop.prevent="categoryMenuClick(5)">
+				<svg class="icon icon-inwehub" aria-hidden="true">
+					<use xlink:href="#icon-gengduozhuanjia"></use>
+				</svg>
+				更多专家
+            </div>
+		</div>
+
+		<div class="listBanner" id="listBanner" v-if="$route.path === '/h5'">
+			<swiper :options="swiperOption">
+				<swiper-slide>
+					<img src="/imgs/newguwen@2x.png"/>
+				</swiper-slide>
+				<swiper-slide>
+					<img src="/imgs/neirongjingxuan@2x.png"/>
+				</swiper-slide>
+				<swiper-slide>
+					<img src="/imgs/jiyuhuodong.png"/>
+				</swiper-slide>
+			</swiper>
+		</div>
+
+		<div class="menu-inwehub" id="menu-inwehub" v-if="$route.path === '/h5'">
+			<div class="left">
+				<router-link tag="div" :to="{ path: '/h5' }" class="menu-item" :class="{ 'active': sort == 'hot' }">
+					热门
+                </router-link>
+				<router-link tag="div" :to="{ path: '/h5?sort=new' }" class="menu-item" :class="{ 'active': sort == 'new' }">
+					最新
+                </router-link>
+			</div>
+			<div class="right">
+				<div class="menu-item ui dropdown top pointing">
+					<svg class="icon-inwehub" aria-hidden="true">
+						<use xlink:href="#icon-wode1"></use>
+					</svg>
+					<div class="menu">
+						<div @click="goLink('/bookmarks/submissions')" class="item">
+							我的收藏
+                        </div>
+						<div @click="goLink('/' + '@' + auth.id)" class="item">
+							我的发布
+                        </div>
+					</div>
+				</div>
+
+				<div class="menu-item">
+					<svg class="icon-inwehub" aria-hidden="true" @click="refresh">
+						<use xlink:href="#icon-shuaxin"></use>
+					</svg>
+				</div>
+
+<router-link tag="div" :to="{ path: '/submit' }" class="menu-item">
+				<svg class="icon-inwehub modify" aria-hidden="true">
+					<use xlink:href="#icon-xiugai"></use>
+				</svg>
+			</router-link>
+			</div>
+		</div>
+
 		<home-submissions></home-submissions>
 	</div>
 </template>
@@ -9,16 +96,36 @@
 	import Announcement from '../components/Announcement.vue';
 	import Helpers from '../mixins/Helpers';
 	import LocalStorage from '../mixins/LocalStorage';
+    import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import Webview from '../mixins/Webview';
 
     export default {
-    	mixins: [Helpers, LocalStorage],
+    	mixins: [Helpers, LocalStorage, Webview],
 
 	    components: {
 	        HomeSubmissions,
-	        Announcement
+	        Announcement,
+            swiper,
+            swiperSlide
 	    },
+        data(){
+            return {
+                swiperOption: {
+                    slidesPerView: 3,
+                    spaceBetween: 10
+                }
+            }
+        },
 
         created() {
+            this.swiperOption = {
+                slidesPerView: 'auto',
+                spaceBetween: 10,
+                onTap:(swiper) => {
+                    this.categoryMenuClick(swiper.clickedIndex + 6);
+                }
+            };
+
             this.setPageTitle('Inwehub - 阅读', true);
             this.askNotificationPermission();
         },
@@ -53,6 +160,36 @@
         },
 
         methods: {
+            categoryMenuClick(index){
+                var callback = (response) => {
+                    switch(index) {
+                        case 2:
+                        case 8:
+                            this.parentOpenUrl('/home/ActiveList');
+                            break;
+                        case 3:
+                            this.parentOpenUrl('/home/OpportunityList');
+                            break;
+                        case 1:
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 7:
+                            mui.alert('debug');
+                            break;
+
+                    }
+
+                };
+                axios.get(this.authUrl('check-user-level'), {
+                    params: {
+                        permission_type: index
+                    }
+                }).then((response) => {
+                    callback(response);
+                    console.log(response);
+                })
+            },
     	    goLink(url) {
     	        setTimeout(() => {
                     this.$router.push(url);
