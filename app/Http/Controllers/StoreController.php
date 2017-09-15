@@ -31,7 +31,7 @@ class StoreController extends Controller
         $user = Auth::user();
         $recommend_readhub_id = Redis::connection()->get('recommend_readhub_article');
         if ($recommend_readhub_id) {
-            $recommend_read = Submission::find($recommend_readhub_id);
+            $recommend_read = Submission::find($recommend_readhub_id)->toArray();
         } else {
             $recommend_read = Submission::where('recommend_status',2)->orderBy('recommend_sort','desc')->first()->toArray();
         }
