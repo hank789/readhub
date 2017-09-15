@@ -271,6 +271,6 @@ class UserController extends Controller
             default:
                 break;
         }
-        return ['is_valid'=>$is_valid];
+        return ['is_valid'=>$is_valid,'current_level'=>$user_level];
     }
 }
