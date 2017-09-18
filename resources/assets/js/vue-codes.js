@@ -223,7 +223,6 @@ const app = new Vue({
 
     mounted() {
         this.showSwipper = true;
-        document.getElementById('listBanner').style.top='133px';
         this.$nextTick(function() {
             this.loadCheckBox()
             this.loadSemanticTooltip()
