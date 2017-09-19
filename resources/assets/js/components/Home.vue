@@ -64,10 +64,10 @@
 						<use xlink:href="#icon-wode1"></use>
 					</svg>
 					<div class="menu">
-						<div @click="goLink('/bookmarks/submissions')" class="item">
+						<div @click="openReadhubPage('/bookmarks/submissions')" class="item">
 							我的收藏
                         </div>
-						<div @click="goLink('/' + '@' + auth.id)" class="item">
+						<div @click="openReadhubPage('/' + '@' + auth.id)" class="item">
 							我的发布
                         </div>
 					</div>
@@ -79,11 +79,11 @@
 					</svg>
 				</div>
 
-<router-link tag="div" :to="{ path: '/submit' }" class="menu-item">
-				<svg class="icon-inwehub modify" aria-hidden="true">
-					<use xlink:href="#icon-xiugai"></use>
-				</svg>
-			</router-link>
+				<div @click="openReadhubPage('/submit')" class="menu-item">
+					<svg class="icon-inwehub modify" aria-hidden="true">
+						<use xlink:href="#icon-xiugai"></use>
+					</svg>
+				</div>
 			</div>
 		</div>
 
