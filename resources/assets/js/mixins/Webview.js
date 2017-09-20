@@ -33,7 +33,9 @@ export default {
                     webview.show();
                 },100);
             } else {
-                this.$router.push(url);
+                setTimeout( () => {
+                    this.$router.push(url);
+                },100);
             }
         },
         openWebviewByUrl(id, url, autoShow=true, aniShow='pop-in', popGesture='hide', reload = false) {
