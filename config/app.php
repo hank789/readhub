@@ -190,7 +190,7 @@ return [
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Maknz\Slack\Laravel\ServiceProvider::class,
-        //Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
+        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
         // dev only
         VueGenerators\ServiceProvider::class,
@@ -245,7 +245,6 @@ return [
 
         // added packages
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Responder' => Flugg\Responder\Facades\Responder::class,
         'FFMpeg'    => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Sentry'    => Sentry\SentryLaravel\SentryFacade::class,

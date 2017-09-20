@@ -47,7 +47,8 @@
         "symfony/filesystem": "^3.3",
         "overtrue/laravel-pinyin": "~3.0",
         "tlapi/slack-laravel": "dev-master",
-        "publiux/laravelcdn": "^2.0"
+        "publiux/laravelcdn": "^2.0",
+        "yab/laravel-scout-mysql-driver": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
