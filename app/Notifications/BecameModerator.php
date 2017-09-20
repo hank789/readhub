@@ -6,6 +6,7 @@ use App\Category;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
@@ -73,5 +74,21 @@ class BecameModerator extends Notification implements ShouldBroadcast
             'category' => $this->category,
             'role'     => $this->role,
         ];
+    }
+
+    /**
+     * Get the broadcastable representation of the notification.
+     *
+     * @param mixed $notifiable
+     *
+     * @return BroadcastMessage
+     */
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage([
+            'data'       => $this->toArray($notifiable),
+            'created_at' => now(),
+            'read_at'    => null,
+        ]);
     }
 }

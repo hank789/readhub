@@ -178,11 +178,12 @@ class CommentController extends Controller
         $submission = $this->getSubmissionById($comment->submission_id);
         abort_unless($this->mustBeOwner($comment), 403);
 
-        event(new CommentWasDeleted($comment, $submission));
+        event(new CommentWasDeleted($comment, $submission, true));
 
         $comment->forceDelete();
 
         return response('删除成功', 200);
+
     }
 
     /**

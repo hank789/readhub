@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Mail\NewRegistration;
 use App\Mail\WelcomeToVoten;
 use App\PhotoTools;
 use App\User;
@@ -122,10 +121,8 @@ class LoginController extends Controller
             ],
         ]);
 
-        \Mail::to($user->email)->queue(new WelcomeToVoten($user->username));
-
         // let us know :D
-        \Mail::to('hank.wang@inwehub.com')->queue(new NewRegistration($user->username));
+
 
         // set user's default data into cache to save few queries
         $userData = [

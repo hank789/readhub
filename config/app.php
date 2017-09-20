@@ -180,7 +180,6 @@ return [
 
         // Added packages
         Intervention\Image\ImageServiceProvider::class,
-        Flugg\Responder\ResponderServiceProvider::class,
 
         Laravel\Tinker\TinkerServiceProvider::class,
         Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
@@ -191,7 +190,7 @@ return [
         Jacobcyl\AliOSS\AliOssServiceProvider::class,
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Maknz\Slack\Laravel\ServiceProvider::class,
-        Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
+        //Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
 
         // dev only
         VueGenerators\ServiceProvider::class,

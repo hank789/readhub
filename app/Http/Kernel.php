@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Firewall;
+use App\Http\Middleware\LoadDefaultViewForAuthinticatedUsers;
+use App\Http\Middleware\MustBeAdministrator;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -16,6 +19,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        Firewall::class,
     ];
 
     /**
@@ -48,13 +52,15 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'        => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic'  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings'    => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can'         => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'       => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle'    => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'maintenance' => \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        'http2'       => \JacobBennett\Http2ServerPush\Middleware\AddHttp2ServerPush::class,
+        'auth'          => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'           => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'maintenance'   => \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        'http2'         => \JacobBennett\Http2ServerPush\Middleware\AddHttp2ServerPush::class,
+        'correct-view'  => LoadDefaultViewForAuthinticatedUsers::class,
+        'administrator' => MustBeAdministrator::class,
     ];
 }
