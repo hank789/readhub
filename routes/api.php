@@ -16,12 +16,12 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // feedback
     Route::post('/feedback', 'FeedbacksController@store');
-    Route::post('/feedback/delete', 'FeedbacksController@destroy');
+    Route::post('/feedback/delete', 'FeedbacksController@destroy')->middleware('administrator');
 
     // help
     Route::post('/new-help', 'HelpController@store');
     Route::post('/edit-help', 'HelpController@patch');
-    Route::post('/help-index', 'HelpController@index');
+    Route::get('/help-index-all', 'HelpController@indexAll');
     Route::post('/delete-help', 'HelpController@destroy');
 
     // Find Channels
@@ -44,10 +44,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/auth/check-user-level', 'UserController@checkUserLevel');
 
 
+    Route::post('/email/verify/resend', 'Auth\VerificationController@resendVerifyEmailAddress');
+
+
     // submission
     Route::post('/submit', 'SubmissionController@store');
     Route::post('/patch-text-submission', 'SubmissionController@patchTextSubmission');
-    Route::post('/hide-submission', 'SubmissionController@hide');
+    Route::post('/hide-submission', 'BlockSubmissionsController@store');
     Route::get('/fetch-url-title', 'SubmissionController@getTitleAPI');
     Route::post('/mark-submission-sfw', 'NsfwController@markAsSFW');
     // recommend
@@ -84,6 +87,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Category
     Route::post('/channel', 'CategoryController@store');
     Route::post('/category-patch', 'CategoryController@patch');
+    Route::post('/category-block', 'BlockCategoriesController@store');
+    Route::delete('/category-unblock', 'BlockCategoriesController@destroy');
     Route::get('/get-categories', 'CategoryController@getCategories');
     Route::get('/subscribed-categories', 'SubscribeController@index');
 
@@ -174,3 +179,9 @@ Route::get('/user-submissions', 'UserController@submissions');
 Route::get('/user-comments', 'UserController@comments');
 Route::get('/sidebar-categories', 'StoreController@sidebarCategories');
 Route::get('/announcement', 'AnnouncementController@get');
+Route::get('/help-index', 'HelpController@index');
+Route::get('/help/recent-questions', 'HelpController@recentQuestions');
+Route::get('/help/common-questions', 'HelpController@commonQuestions');
+Route::get('/get-help', 'HelpController@getHelp');
+Route::post('/upvote-help', 'HelpVotesController@upVote');
+Route::post('/downvote-help', 'HelpVotesController@downVote');

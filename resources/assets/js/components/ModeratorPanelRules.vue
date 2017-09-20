@@ -69,7 +69,7 @@
                     this.items.unshift(response.data)
                     this.clear()
                 }).catch((error) => {
-                    this.errors = error.response.data
+                    this.errors = error.response.data.errors;
                 })
             },
 
@@ -122,7 +122,7 @@
 
                     this.clear()
                 }).catch((error) => {
-                    this.errors = error.response.data
+                    this.errors = error.response.data.errors;
                 });
             },
 

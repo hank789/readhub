@@ -15,6 +15,7 @@
 					    <tr>
 							<th>内容</th>
 							<th class="half-width">显示</th>
+
 					    </tr>
 				  	</thead>
 

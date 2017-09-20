@@ -18,7 +18,8 @@
 		        <header class="box-typical-header-sm bordered user-select flex-space">
 		            <div>
 		            	<span v-text="uniqueList.length"></span>
-		            	条回复: <span class="go-gray go-small" v-if="!isGuest && false">({{ onlineUsers }} 在线用户)</span>
+		            	条回复: <span class="go-gray go-small" v-if="!isGuest && false">({{ onlineUsersCount }} 在线用户)</span>
+
 		            </div>
 		            <div v-if="false" class="head-sort-icon" v-show="comments.length > 1">
 		                <i class="v-icon v-like pointer" aria-hidden="true"
@@ -106,7 +107,7 @@
                 comments: [],
                 auth,
                 sort: 'hot',
-                onlineUsers: 0,
+                onlineUsers: [],
                 category: this.$route.params.name,
                 Store,
                 preload
@@ -132,6 +133,10 @@
 		},
 
         computed: {
+    	    onlineUsersCount() {
+    	        return this.onlineUsers.length;
+			},
+
 			/**
 			 * Due to the issue with duplicate notifiactions (cuz the present ones have diffrent
 			 * timestamps) we need a different approch to make sure the list is always unique.
@@ -159,7 +164,12 @@
 			 * @return bool
 			 */
         	loaded () {
-	            return Store.category.id == this.$route.params.name || Store.category.name == this.$route.params.name;
+                if (Store.category.id != undefined) {
+                    return Store.category.id == this.$route.params.name || Store.category.name == this.$route.params.name;
+                }
+
+                return false;
+
 	        },
 
             /**
@@ -227,9 +237,9 @@
         	},
 
         	loadMoreComments () {
-        		this.page ++
-                this.moreComments = false
-        		this.getComments()
+        		this.page ++;
+                this.moreComments = false;
+        		this.getComments();
         	},
 
         	/**
@@ -267,27 +277,34 @@
              * @return void
              */
             listen() {
-                Echo.channel('submission.' + this.$route.params.slug)
+                const channelAddress = 'submission.' + this.$route.params.slug;
+
+                Echo.channel(channelAddress)
                     .listen('CommentCreated', event => {
-                    	this.$eventHub.$emit('newComment', event.comment)
+                    	this.$eventHub.$emit('newComment', event.comment);
                     }).listen('CommentWasPatched', event => {
-                    	this.$eventHub.$emit('patchedComment', event.comment)
+                    	this.$eventHub.$emit('patchedComment', event.comment);
                     }).listen('CommentWasDeleted', event => {
-                    	this.$eventHub.$emit('deletedComment', event.comment)
+                    	this.$eventHub.$emit('deletedComment', event.comment);
                     });
 
-                // we can't do presence channel if the user is a guest
+                // we can't do presence channel or/and listen for private channels, if the user is a guest
                 if (this.isGuest) return;
 
-                Echo.join('submission.' + this.$route.params.slug)
+                Echo.join(channelAddress)
 				    .here((users) => {
-				        this.onlineUsers = users.length
+				        this.onlineUsers = users;
 				    })
 				    .joining((user) => {
-				        this.onlineUsers ++
+				        this.onlineUsers.push(user);
 				    })
 				    .leaving((user) => {
-				        this.onlineUsers --
+                        let index = this.onlineUsers.indexOf(user.username);
+                        this.onlineUsers.splice(index, 1);
+
+                        // if typer loses his connection for any reason, we $emit "finished-typing" because
+						// after all, we must make sure other users won't see "@user is typing" forever!
+                        this.$eventHub.$emit('finished-typing', user.username);
 				    });
             },
 

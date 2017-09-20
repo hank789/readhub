@@ -39,6 +39,12 @@
 			data-toggle="tooltip" data-placement="bottom" title="Home" aria-expanded="false">
            		<i class="v-icon v-home" aria-hidden="true" @click="homeRoute"></i>
             </router-link>
+
+			@if(optional(Auth::user())->isVotenAdministrator())
+				<a href="/backend" class="btn-nth relative margin-right-half">
+					<i class="v-icon v-dashboard" aria-hidden="true"></i>
+				</a>
+			@endif
         </div>
 
 		@if(Auth::check())
@@ -48,7 +54,7 @@
 	            <div class="menu">
 	                <div class="header">我的阅读</div>
 
-					<router-link :to="'/' + '@' + auth.username" class="item">
+					<router-link :to="'/' + '@' + auth.id" class="item">
 	                    个人信息
 	                </router-link>
 
@@ -113,6 +119,7 @@
 
 							<div class="ui divider"></div>
 						@endif
+
 					@endif
 
 	                <a class="item desktop-only" @click="changeModalRoute('keyboard-shortcuts-guide')">
@@ -135,9 +142,9 @@
 			                    Contact Us
 			                </a>
 
-			                <a class="item" @click="changeModalRoute('feedback')">
+			                <router-link class="item" to="/feedback">
 			                    Feedback
-			                </a>
+			                </router-link>
 
 			                <a class="item" href="https://voten.co/tos">
 			                    Site Rules

@@ -7,6 +7,7 @@ use App\Channels\InwehubChannel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Queue\SerializesModels;
@@ -79,5 +80,21 @@ class CommentReported extends Notification implements ShouldBroadcast
             'body'   => '#'.$this->category->name,
             'extra_body' => ''
         ];
+    }
+
+    /**
+     * Get the broadcastable representation of the notification.
+     *
+     * @param mixed $notifiable
+     *
+     * @return BroadcastMessage
+     */
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage([
+            'data'       => $this->toArray($notifiable),
+            'created_at' => now(),
+            'read_at'    => null,
+        ]);
     }
 }

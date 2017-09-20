@@ -18,7 +18,6 @@ import LoginModal from './components/LoginModal.vue';
 import CropModal from './components/CropModal.vue';
 import Dashboard from './components/Dashboard.vue';
 import NotFound from './components/NotFound.vue';
-import Feedback from './components/Feedback.vue';
 import Messages from './components/Messages.vue';
 import LocalStorage from './mixins/LocalStorage';
 import StoreStorage from './mixins/StoreStorage';
@@ -87,7 +86,6 @@ const app = new Vue({
         Subscribe,
         Dashboard,
         NotFound,
-        Feedback,
         Messages,
         Sidebar,
         Rules,
@@ -133,13 +131,13 @@ const app = new Vue({
 
         },
         smallModal() {
-            return !(this.modalRouter == '')
+            return this.modalRouter != '';
         },
 
         unreadNotifications() {
             return Store.notifications.filter(function(item) {
-                return item.read_at == null
-            }).length
+                return item.read_at == null;
+            }).length;
         },
 
         sort() {
@@ -154,23 +152,23 @@ const app = new Vue({
 
         unreadMessages() {
             return Store.contacts.filter(function(item) {
-                return item.last_message.owner.id != auth.id && item.last_message.read_at == null
-            }).length
+                return item.last_message.owner.id != auth.id && item.last_message.read_at == null;
+            }).length;
         },
     },
 
 
     watch: {
-        // if the route changes, call again the method
         '$route' () {
-            this.closeModals()
+            this.closeModals();
             this.$eventHub.$emit('scrolled-a-bit');
+
             if (auth.isMobileDevice) {
-            	this.sidebar = false
+            	this.sidebar = false;
             }
 
             if (this.$route.query.sidebar == 1) {
-                this.sidebar = true
+                this.sidebar = true;
             }
             this.hideWebviewFooter();
         },
@@ -209,6 +207,7 @@ const app = new Vue({
         this.$eventHub.$on('crop-user-photo', this.cropUserModal);
         this.$eventHub.$on('push-notification', this.pushNotification)
         this.$eventHub.$on('crop-category-photo', this.cropCategoryModal);
+        this.$eventHub.$on('mark-notifications-read', this.markAllNotificationsAsRead);
 
         this.$eventHub.$on('refreshBasicStore', this.fillBasicStore);
         this.$eventHub.$on('updateTitle', this.updateTitle);
@@ -224,15 +223,16 @@ const app = new Vue({
     mounted() {
         this.showSwipper = true;
         this.$nextTick(function() {
-            this.loadCheckBox()
-            this.loadSemanticTooltip()
-            this.loadSemanticDropdown()
+            this.loadCheckBox();
+            this.loadSemanticTooltip();
+            this.loadSemanticDropdown();
         });
         //监听自定义事件，前往页面
         document.addEventListener('go_to_readhub_page', (event) => {
             var url = event.detail.url;
             this.$router.push(url);
         });
+
     },
 
     methods: {
@@ -601,36 +601,36 @@ const app = new Vue({
          * @return void
          */
         updatePageTitle() {
-            var total = Store.unreadMessages + Store.unreadNotifications
+            // disable for now
+            return;
+
+            let total = this.unreadMessages + this.unreadNotifications;
 
             if (total > 0) {
-                document.title = '(' + total + ') ' + this.pageTitle
-                return
+                document.title = '(' + total + ') ' + this.pageTitle;
+                return;
             }
 
-            document.title = this.pageTitle
+            document.title = this.pageTitle;
         },
         updateTitle(title){
           this.title = title;
         },
 
         /**
-         * Switches the route
+         * Switches the contentRouter.
          *
          * @param  string
+         * @return void
          */
         changeRoute(newRoute) {
-            Store.contentRouter = newRoute
+            Store.contentRouter = newRoute;
 
-            if (newRoute == 'notifications') {
-                this.markAsRead()
-                this.updatePageTitle()
+            if (newRoute === 'notifications') {
+                this.seenAllNotifications();
             }
 
-            if (newRoute == 'messages') {
-                // this.MN = 0
-                this.updatePageTitle()
-            }
+            this.updatePageTitle();
         },
 
         /**
@@ -638,7 +638,7 @@ const app = new Vue({
          *
          * @return void
          */
-        markAsRead() {
+        markAllNotificationsAsRead() {
             axios.post('/mark-notifications-read');
 
             Store.notifications.forEach(function(element, index) {
@@ -646,6 +646,11 @@ const app = new Vue({
                     element.read_at = moment().utc().format('YYYY-MM-DD HH:mm:ss');
                 }
             });
+        },
+
+        seenAllNotifications() {
+            this.markAllNotificationsAsRead();
+            Vue.ls.set('event', 'mark-notifications-read', 60 * 60 * 1000);
         },
 
         /**

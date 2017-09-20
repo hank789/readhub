@@ -8,6 +8,7 @@ use App\Submission;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -89,5 +90,21 @@ class UsernameMentioned extends Notification implements ShouldBroadcast
             'comment_id' => $this->comment->id,
             'extra_body' => '原文：'.$this->submission->title
         ];
+    }
+
+    /**
+     * Get the broadcastable representation of the notification.
+     *
+     * @param mixed $notifiable
+     *
+     * @return BroadcastMessage
+     */
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage([
+            'data'       => $this->toArray($notifiable),
+            'created_at' => now(),
+            'read_at'    => null,
+        ]);
     }
 }

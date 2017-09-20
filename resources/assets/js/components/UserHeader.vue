@@ -120,8 +120,9 @@
 		        </div>
 
 		        <div class="channel-admin-btn">
-		        	<i class="v-icon h-yellow pointer" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark'"
+		        	<i class="v-icon h-yellow pointer" :class="bookmarked ? 'go-yellow v-unbookmark' : 'v-bookmark go-gray'"
 		        	@click="bookmark" v-if="$route.params.username != auth.id"
+
 	        		data-toggle="tooltip" data-placement="bottom" title="Bookmark"></i>
 
 		            <message-button :id="userStore.id" v-if="$route.params.username != auth.id && !isGuest && false"></message-button>

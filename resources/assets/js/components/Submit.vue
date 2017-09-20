@@ -46,7 +46,7 @@
                     <small class="text-muted go-red" v-for="e in errors.text">{{ e }}</small>
                 </div>
 
-                <div v-if="preview && fText" class="form-wrapper">
+                <div v-if="preview && fText" class="form-wrapper margin-bottom-1">
                     <markdown :text="fText"></markdown>
               	</div>
 
@@ -272,7 +272,7 @@
                             return
                         }
 
-                        this.errors = error.response.data
+                        this.errors = error.response.data.errors
                         this.loading = false
                     });
 
@@ -306,7 +306,7 @@
                         return
                     }
 
-                    this.errors = error.response.data
+                    this.errors = error.response.data.errors
                     this.loading = false
                 })
             },
@@ -332,7 +332,7 @@
                         return
                     }
 
-                    this.errors = error.response.data
+                    this.errors = error.response.data.errors
                     this.loadingTitle = false
                 });
             },

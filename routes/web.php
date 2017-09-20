@@ -1,8 +1,10 @@
 <?php
 
+
 Route::group(['middleware' => ['maintenance', 'http2']], function () {
     Route::auth();
     Route::get('/logout', 'Auth\LoginController@logout');
+    Route::get('/email/verify', 'Auth\VerificationController@verifyEmailAddress');
 
     // Public Pages
     //Route::get('/tos', 'PagesController@tos');
@@ -16,24 +18,28 @@ Route::group(['middleware' => ['maintenance', 'http2']], function () {
     //Route::get('/about', 'PagesController@about');
     //Route::get('/privacy-policy', 'PagesController@privacyPolicy');
 
-    // guest browsing routes
-    Route::get('/c/{category}', 'CategoryController@show');
-    Route::get('/c/{category}/hot', 'CategoryController@redirect');
-    Route::get('/c/{category}/{slug}', 'SubmissionController@show');
 
-    Route::get('/@{username}', 'UserController@showSubmissions');
-    Route::get('/@{username}/comments', 'UserController@showComments');
+    // guest browsing routes
+    Route::get('/c/{category}', 'CategoryController@show')->middleware('correct-view');
+    Route::get('/c/{category}/hot', 'CategoryController@redirect');
+    Route::get('/c/{category}/{slug}', 'SubmissionController@show')->middleware('correct-view');
+    Route::get('/help', 'HelpController@showHelpCenter')->middleware('correct-view');
+    Route::get('/help/{help}', 'HelpController@show')->middleware('correct-view');
+
+    Route::get('/@{username}', 'UserController@showSubmissions')->middleware('correct-view');
+    Route::get('/@{username}/comments', 'UserController@showComments')->middleware('correct-view');
 
     // social logins
     Route::get('/login/google', 'Auth\LoginController@redirectToGoogle');
     Route::get('/login/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
-    // sitemap
+    // sitemaps
     Route::get('/sitemap.xml', 'SitemapsController@index');
     Route::get('/pages.xml', 'SitemapsController@pages');
     Route::get('/submissions.xml', 'SitemapsController@submissions');
     Route::get('/users.xml', 'SitemapsController@users');
     Route::get('/channels.xml', 'SitemapsController@categories');
+    Route::get('/helps.xml', 'SitemapsController@helps');
 });
 
 // backend-admin
@@ -45,7 +51,7 @@ Route::post('/create-announcement', 'AnnouncementController@store');
 Route::delete('/announcement/destroy/{announcement}', 'AnnouncementController@destroy');
 Route::delete('/block-domain/destroy', 'BlockDomainController@destroy');
 Route::get('/backend/server-control', 'BackendController@serverControls');
-Route::get('/backend/forbidden-names', 'BackendController@forbiddenNames');
+Route::get('/backend/firewall', 'BackendController@firewall');
 Route::get('/backend/appointed-users', 'BackendController@indexAppointedUsers');
 Route::get('/backend/channels', 'BackendController@showCategories');
 Route::get('/backend/channels/{category}', 'BackendController@showCategory');
@@ -56,6 +62,8 @@ Route::get('/backend/users/{user}', 'BackendController@showUser');
 Route::delete('/backend/users/destroy', 'UserController@destroy');
 Route::post('/ban-user', 'BanController@store');
 Route::delete('/ban-user/destroy', 'BanController@destroy');
+Route::post('/backend/firewall/ip/store', 'FirewallController@store');
+Route::delete('/backend/firewall/ip/destroy', 'FirewallController@destroy');
 Route::get('/backend/spam', 'BackendController@spam');
 Route::get('/backend/update-comments-count', 'BackendController@updateCommentsCount');
 Route::post('/forbidden-username/store', 'BackendController@storeForbiddenUsername');
@@ -63,6 +71,10 @@ Route::delete('/appointed/destroy/{appointed}', 'BackendController@destroyAppoin
 Route::post('/forbidden-category-name/store', 'BackendController@storeForbiddenCategoryName');
 Route::delete('/forbidden-username/destroy/{forbidden}', 'BackendController@destroyForbiddenUsername');
 Route::delete('/forbidden-category-name/destroy/{forbidden}', 'BackendController@destroyForbiddenCategoryName');
+Route::get('/backend/emails', 'EmailsController@index');
+Route::post('/emails/announcement/store', 'EmailsController@store');
+Route::post('/emails/announcement/send', 'EmailsController@send');
+Route::get('/emails/announcement/preview', 'EmailsController@preview');
 
 // ssh control
 Route::get('/ssh/flush-all', 'SshController@flushAll');

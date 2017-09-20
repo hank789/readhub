@@ -126,7 +126,6 @@ export default {
 		},
 
 		'categoriesLimit' : function () {
-			// console.log(this.categoriesLimit)
 			this.putLS('sidebar-categories-limit', this.categoriesLimit);
 		}
 	},

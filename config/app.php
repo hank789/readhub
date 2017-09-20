@@ -180,7 +180,6 @@ return [
 
         // Added packages
         Intervention\Image\ImageServiceProvider::class,
-        Flugg\Responder\ResponderServiceProvider::class,
 
         Laravel\Tinker\TinkerServiceProvider::class,
         Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
@@ -246,7 +245,6 @@ return [
 
         // added packages
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Responder' => Flugg\Responder\Facades\Responder::class,
         'FFMpeg'    => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Sentry'    => Sentry\SentryLaravel\SentryFacade::class,

@@ -413,9 +413,9 @@
         	},
 
             /**
-             *  hide(block) submission
+             * hide(block) submission
              *
-             *  @return void
+             * @return void
              */
             hide () {
                 this.hidden = true
@@ -467,13 +467,13 @@
 			},
 
             /**
-            *  Report submission
-            *
-            *  @return void
-            */
+             * Report submission
+             *
+             * @return void
+             */
             report () {
-                this.reported = true
-        		this.$eventHub.$emit('report-submission', this.list.id, this.list.category_name)
+                this.reported = true;
+        		this.$eventHub.$emit('report-submission', this.list.id, this.list.category_name);
             },
 			/**
 			 * 推荐到app
@@ -485,9 +485,9 @@
 			},
 
             /**
-             *  Upvote submission
+             * Upvote submission
              *
-             *  @return void
+             * @return void
              */
             voteUp () {
             	if (this.isGuest) {
@@ -530,9 +530,9 @@
 
 
             /**
-             *  Downvote submission
+             * Downvote submission
              *
-             *  @return void
+             * @return void
              */
             voteDown () {
             	if (this.isGuest) {
@@ -540,68 +540,65 @@
             		return;
             	}
 
-				let id = this.list.id
+				let id = this.list.id;
 
 				axios.post('/downvote-submission', {
 					submission_id: id,
 					previous_vote: this.currentVote
-				})
+				});
 
             	// Have down-voted
             	if (this.downvoted) {
-            		this.downvoted = false
-            		this.list.downvotes --
+            		this.downvoted = false;
+            		this.list.downvotes --;
 
             		var index = Store.submissionDownVotes.indexOf(id);
                 	Store.submissionDownVotes.splice(index, 1);
 
-            		return
+            		return;
             	}
 
 				// Have up-voted
             	if (this.upvoted) {
-            		this.upvoted = false
-            		this.list.upvotes --
+            		this.upvoted = false;
+            		this.list.upvotes --;
 
             		var index = Store.submissionUpVotes.indexOf(id);
                 	Store.submissionUpVotes.splice(index, 1);
             	}
 
             	// Not voted
-            	this.downvoted = true
-            	this.list.downvotes ++
-            	Store.submissionDownVotes.push(id)
+            	this.downvoted = true;
+            	this.list.downvotes ++;
+            	Store.submissionDownVotes.push(id);
             },
 
-			showPhotoViewer(index = null){
+			showPhotoViewer(index = null) {
 				if (index !== null) {
-					this.photoViewerIndex = index
+					this.photoViewerIndex = index;
 				}
-	            this.photoViewer = true
+
+	            this.photoViewer = true;
 	        },
 
+			showEmbed() {
+				this.embedViewer = true;
+			},
+
 			showGifPlayer() {
-				console.log('works')
+				this.gifPlayer = true;
 			},
 
-			showEmbed(){
-				this.embedViewer = true
+			closeViwer() {
+				this.photoViewer = false;
 			},
 
-			showGifPlayer(){
-				this.gifPlayer = true
+			closeEmbed() {
+				this.embedViewer = false;
 			},
 
-			closeViwer(){
-				this.photoViewer = false
-			},
-
-			closeEmbed(){
-				this.embedViewer = false
-			},
-
-			closeGifPlayer(){
-				this.gifPlayer = false
+			closeGifPlayer() {
+				this.gifPlayer = false;
 			}
         }
     }

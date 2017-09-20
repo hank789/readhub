@@ -27,13 +27,9 @@ class HomeController extends Controller
     public function homePage(Request $request)
     {
         session(['is_h5'=>false]);
-        if (!Auth::check()) {
-            $submissions = $this->guestHome($request);
+        $submissions = $this->guestHome($request);
 
-            return view('home', compact('submissions'));
-        }
-
-        return view('welcome');
+        return view('home', compact('submissions'));
     }
 
     /**
@@ -100,6 +96,9 @@ class HomeController extends Controller
             $submissions->whereIn('category_id', $this->subscriptions());
         }
 
+        // exclude user's blocked categories
+        $submissions->whereNotIn('category_id', $this->hiddenCategories());
+
         // exclude user's hidden submissions
         $submissions->whereNotIn('id', $this->hiddenSubmissions());
 
@@ -157,6 +156,8 @@ class HomeController extends Controller
         } else {
             $submissions->orderBy('rate', 'desc');
         }
+
+        $submissions->groupBy('url');
 
         return $submissions->simplePaginate(10);
     }

@@ -22,76 +22,86 @@
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "laravel/framework": "5.4.*",
-        "embed/embed": "3.*",
-        "intervention/image": "^2.3",
-        "flugger/laravel-responder": "^1.1.2",
-        "pusher/pusher-php-server": "^2.6",
-        "laravel/scout": "3.*",
-        "zachleigh/laravel-vue-generators": "^0.1.1",
-        "guzzlehttp/guzzle": "^6.2",
-        "jacobcyl/ali-oss-storage": "dev-master",
-        "symfony/filesystem": "^3.3",
-        "predis/predis": "^1.1",
-        "pbmedia/laravel-ffmpeg": "^1.1",
-        "laravel/socialite": "^3.0",
-        "sentry/sentry": "^1.6",
-        "sentry/sentry-laravel": "^0.6.1",
-        "jacobbennett/laravel-http2serverpush": "^1.3",
-        "laravel/passport": "^3.0",
+        "php": ">=7.1.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "doctrine/dbal": "^2.5",
+        "embed/embed": "3.*",
+        "guzzlehttp/guzzle": "^6.2",
+        "intervention/image": "^2.3",
+        "jacobbennett/laravel-http2serverpush": "^1.3",
+        "laravel/framework": "5.5.*",
+        "laravel/horizon": "^1.0",
+        "laravel/passport": "^3.0",
+        "laravel/scout": "3.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
+        "pbmedia/laravel-ffmpeg": "^1.1",
+        "predis/predis": "^1.1",
+        "pusher/pusher-php-server": "^2.6",
+        "sentry/sentry": "^1.6",
+        "sentry/sentry-laravel": "^0.6.1",
+        "whichbrowser/parser": "^2.0",
+        "zachleigh/laravel-vue-generators": "^0.1.1",
+
+        "jacobcyl/ali-oss-storage": "dev-master",
+        "symfony/filesystem": "^3.3",
         "overtrue/laravel-pinyin": "~3.0",
         "tlapi/slack-laravel": "dev-master",
-        "whichbrowser/parser": "^2.0",
-        "yab/laravel-scout-mysql-driver": "^2.0",
-        "publiux/laravelcdn": "^2.0"
+        "publiux/laravelcdn": "^2.0",
+        "yab/laravel-scout-mysql-driver": "dev-master"
     },
     "require-dev": {
+        "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~6.0",
         "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
-        "laravel/dusk": "^1.1"
+        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
-        "classmap": [
-            "database"
-        ],
-        "files": [
-            "app/Http/helpers.php"
-        ],
-        "psr-4": {
-            "App\\": "app/"
-        }
+      "classmap": [
+        "database/seeds",
+        "database/factories"
+      ],
+      "files": [
+        "app/Http/helpers.php"
+      ],
+      "psr-4": {
+        "App\\": "app/"
+      }
     },
     "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
+      "psr-4": {
+        "Tests\\": "tests/"
+      },
+      "files": ["tests/utilities/functions.php"]
+    },
+    "extra": {
+      "laravel": {
+        "dont-discover": [
+        ]
+      }
     },
     "scripts": {
         "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+          "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate"
-        ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "@php artisan optimize"
+          "@php artisan key:generate"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta",
-            "@php artisan optimize"
+          "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+          "@php artisan ide-helper:generate",
+          "@php artisan ide-helper:meta"
+        ],
+        "post-autoload-dump": [
+          "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+          "@php artisan package:discover"
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
     }
 }
