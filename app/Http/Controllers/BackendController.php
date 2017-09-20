@@ -7,6 +7,7 @@ use App\AppointeddUser;
 use App\Category;
 use App\CategoryForbiddenName;
 use App\Comment;
+use App\FireWallBannedIp;
 use App\Message;
 use App\Notifications\BecameModerator;
 use App\Report;
@@ -28,7 +29,7 @@ class BackendController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['administrator']);
     }
 
     /**
@@ -36,17 +37,17 @@ class BackendController extends Controller
      *
      * @return view
      */
-    public function forbiddenNames()
+    public function firewall()
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
+        $forbiddenUsernames = UserForbiddenName::orderBy('created_at', 'desc')->paginate(30);
 
-        $forbiddenUsernames = UserForbiddenName::paginate(30);
+        $forbiddenCategoryNames = CategoryForbiddenName::orderBy('created_at', 'desc')->paginate(30);
 
-        $forbiddenCategoryNames = CategoryForbiddenName::paginate(30);
+        $blockedDomains = \App\BlockedDomain::where('category', 'all')->orderBy('created_at', 'desc')->paginate(30);
 
-        $blockedDomains = \App\BlockedDomain::where('category', 'all')->paginate(30);
+        $banned_ip_addresses = FireWallBannedIp::orderBy('created_at', 'desc')->paginate(50);
 
-        return view('backend.forbidden-names', compact('forbiddenUsernames', 'forbiddenCategoryNames', 'blockedDomains'));
+        return view('backend.firewall', compact('forbiddenUsernames', 'forbiddenCategoryNames', 'blockedDomains', 'banned_ip_addresses'));
     }
 
     /**
@@ -58,14 +59,12 @@ class BackendController extends Controller
      */
     public function showCategories(Request $request)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
-        if ($request->has('filter')) {
+        if ($request->filled('filter')) {
             $categories = Category::search($request->filter)->take(20)->get();
         } else {
             $categories = (new Category())->newQuery();
 
-            if ($request->has('sort_by')) {
+            if ($request->filled('sort_by')) {
                 if ($request->sort_by == 'subscribers') {
                     $categories->orderBy('subscribers', 'desc');
                 } elseif ($request->sort_by == 'submissions_count') {
@@ -90,8 +89,6 @@ class BackendController extends Controller
      */
     public function showCategory($category)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $category = Category::where('name', $category)->firstOrFail();
 
         $isAdministrator = $this->mustBeAdministrator($category->id, true);
@@ -108,9 +105,7 @@ class BackendController extends Controller
      */
     public function showUsers(Request $request)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
-        if ($request->has('filter')) {
+        if ($request->filled('filter')) {
             $users = User::search($request->filter)->take(20)->get();
         } else {
             $users = User::orderBy('id', 'desc')->paginate(30);
@@ -126,8 +121,6 @@ class BackendController extends Controller
      */
     public function showUser($user)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $user = User::where('username', $user)->firstOrFail();
 
         $user->stats = $this->userStats($user->id);
@@ -144,8 +137,6 @@ class BackendController extends Controller
      */
     public function spam()
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $query = <<<'SQL'
 select a1.user_id  from read_activities as a1
 inner join 
@@ -179,8 +170,6 @@ SQL;
      */
     public function dashboard(Request $request)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $usersTotal = User::all()->count();
         $usersToday = User::where('created_at', '>=', Carbon::now()->subDay())->count();
 
@@ -210,25 +199,25 @@ SQL;
         // Activities start
         $activities = (new Activity())->newQuery();
 
-        if ($request->has('name')) {
+        if ($request->filled('name')) {
             $activities->where('name', $request->name);
         }
-        if ($request->has('user_id')) {
+        if ($request->filled('user_id')) {
             $activities->where('user_id', $request->user_id);
         }
-        if ($request->has('ip_address')) {
+        if ($request->filled('ip_address')) {
             $activities->where('ip_address', $request->ip_address);
         }
-        if ($request->has('device')) {
+        if ($request->filled('device')) {
             $activities->where('device', $request->device);
         }
-        if ($request->has('country')) {
+        if ($request->filled('country')) {
             $activities->where('country', $request->country);
         }
-        if ($request->has('os')) {
+        if ($request->filled('os')) {
             $activities->where('os', $request->os);
         }
-        if ($request->has('browser_name')) {
+        if ($request->filled('browser_name')) {
             $activities->where('browser_name', $request->browser_name);
         }
 
@@ -262,8 +251,6 @@ SQL;
      */
     public function indexAppointedUsers()
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $appointed_users = AppointeddUser::all();
 
         return view('backend.appointed-users', compact('appointed_users'));
@@ -276,8 +263,6 @@ SQL;
      */
     public function serverControls()
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         return view('backend.server-controls');
     }
 
@@ -291,8 +276,6 @@ SQL;
      */
     public function storeForbiddenUsername(Request $request)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $this->validate($request, [
             'username' => 'required|min:3|max:25|unique:users|regex:/^[A-Za-z0-9\._]+$/',
         ]);
@@ -313,8 +296,6 @@ SQL;
      */
     public function destroyForbiddenUsername(UserForbiddenName $forbidden)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $forbidden->delete();
 
         return back();
@@ -330,8 +311,6 @@ SQL;
      */
     public function storeForbiddenCategoryName(Request $request)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $this->validate($request, [
             'name' => 'required|unique:categories',
         ]);
@@ -352,8 +331,6 @@ SQL;
      */
     public function destroyForbiddenCategoryName(CategoryForbiddenName $forbidden)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $forbidden->delete();
 
         return back();
@@ -366,8 +343,6 @@ SQL;
      */
     public function takeOverCategory(Category $category)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $category->moderators()->attach(Auth::id(), [
             'role' => 'administrator',
         ]);
@@ -390,8 +365,6 @@ SQL;
      */
     public function storeAppointed(Request $request)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $this->validate($request, [
             'username'     => 'required',
             'appointed_as' => 'in:administrator,moderator,whitelisted',
@@ -419,8 +392,6 @@ SQL;
      */
     public function destroyAppointed(AppointeddUser $appointed)
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         if (Auth::user()->id == $appointed->user->id) {
             return "I don't think you really mean it.";
         }
@@ -438,8 +409,6 @@ SQL;
      */
     public function updateCommentsCount()
     {
-        abort_unless($this->mustBeVotenAdministrator(), 403);
-
         $submissions = Submission::all();
 
         foreach ($submissions as $submission) {
