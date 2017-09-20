@@ -28,6 +28,7 @@ import Helpers from './mixins/Helpers';
 import autosize from 'autosize';
 import router from './routes';
 import Webview from './mixins/Webview';
+import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
 
 
@@ -90,9 +91,12 @@ const app = new Vue({
         Messages,
         Sidebar,
         Rules,
+        swiper,
+        swiperSlide
     },
 
     data: {
+        showSwipper:false,
         modalRouter: '',
         reportCategory: '',
         reportSubmissionId: '',
@@ -101,7 +105,10 @@ const app = new Vue({
         sortFilter: 'hot',
         pageTitle: document.title,
         scrolledBusy: false,
-
+        swiperOption: {
+            slidesPerView: 3,
+            spaceBetween: 10
+        }
     },
 
     computed: {
@@ -171,8 +178,14 @@ const app = new Vue({
 
 
     created: function() {
-
-
+        this.swiperOption = {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            loop:true,
+            onTap:(swiper) => {
+                this.categoryMenuClick(swiper.clickedIndex + 6);
+            }
+        };
 
         window.addEventListener('keydown', this.keydown);
         this.hideWebviewFooter();
@@ -209,6 +222,7 @@ const app = new Vue({
     },
 
     mounted() {
+        this.showSwipper = true;
         this.$nextTick(function() {
             this.loadCheckBox()
             this.loadSemanticTooltip()
@@ -222,6 +236,36 @@ const app = new Vue({
     },
 
     methods: {
+        categoryMenuClick(index){
+            var callback = (response) => {
+                switch(index) {
+                    case 2:
+                    case 8:
+                        this.parentOpenUrl('/home/ActiveList');
+                        break;
+                    case 3:
+                        this.parentOpenUrl('/home/OpportunityList');
+                        break;
+                    case 1:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                        mui.alert('debug');
+                        break;
+
+                }
+
+            };
+            axios.get(this.authUrl('check-user-level'), {
+                params: {
+                    permission_type: index
+                }
+            }).then((response) => {
+                callback(response);
+                console.log(response);
+            })
+        },
         refresh() {
             this.$eventHub.$emit('refresh-home');
         },

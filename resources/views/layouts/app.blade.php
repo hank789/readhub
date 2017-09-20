@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @yield('head')
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ Cdn::mix('/css/app.css') }}">
 
     <!-- <script src="{{ config('broadcasting.connections.echo.app_address') }}/socket.io/socket.io.js"></script> -->
-    <script src="/vendor/js/socket.io.min.js"></script>
+    <script src="{{ Cdn::asset('/vendor/js/socket.io.min.js') }}"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -35,8 +35,9 @@
         ]); ?>
     </script>
 
-    <link rel="shortcut icon" href="/imgs/favicon.ico">
+    <link rel="shortcut icon" href="{{ Cdn::asset('/imgs/favicon.ico') }}">
     @include('user.user-style')
+
 </head>
 
 <body>
@@ -54,11 +55,13 @@
 		    <sidebar></sidebar>
 		</div>
 
+        @if (!session('is_h5'))
 		<notifications v-show="Store.contentRouter == 'notifications'"></notifications>
 		<messages v-show="Store.contentRouter == 'messages'" :sidebar="sidebar"></messages>
 		<search-modal v-if="Store.contentRouter == 'search'" :sidebar="sidebar"></search-modal>
+        @endif
 
-        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10">
+        <div class="v-content {{ session('is_h5') ? 'v-content-inwehub' : '' }}" id="v-content" v-show="Store.contentRouter == 'content'" v-infinite-scroll="scrolledToBottom" infinite-scroll-disabled="scrolledBusy" infinite-scroll-distance="10" :class="{'v-content-inwehub-list':$route.path == '/h5'}">
 
 
             <transition name="fade">
@@ -117,9 +120,9 @@
 </script>
 
 @yield('script')
-	<script src="{{ mix('/js/manifest.js') }}"></script>
-	<script src="{{ mix('/js/vendor.js') }}"></script>
-	<script src="{{ mix('/js/app.js') }}"></script>
+	<script src="{{ Cdn::mix('/js/manifest.js') }}"></script>
+	<script src="{{ Cdn::mix('/js/vendor.js') }}"></script>
+	<script src="{{ Cdn::mix('/js/app.js') }}"></script>
 @yield('footer')
 
 </body>

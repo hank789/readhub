@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Comment;
+use App\Events\CommentCreated;
 use App\Events\CommentWasCreated;
 use App\Events\CommentWasDeleted;
 use App\Events\CommentWasPatched;
@@ -65,6 +66,8 @@ class CommentController extends Controller
 
         event(new CommentWasCreated($comment, $submission, $author, $parentComment));
 
+        // broadcast the comment to the people online in the conversation
+        event(new CommentCreated($comment));
 
         $this->firstVote($author, $comment->id);
 

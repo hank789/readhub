@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Submission;
 use App\Traits\CachableCategory;
 use App\Traits\CachableUser;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class StoreController extends Controller
 {
@@ -27,6 +29,17 @@ class StoreController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
+        $recommend_readhub_id = Redis::connection()->get('recommend_readhub_article');
+        if ($recommend_readhub_id) {
+            $recommend_read = Submission::find($recommend_readhub_id)->toArray();
+        } else {
+            $recommend_read = Submission::where('recommend_status',2)->orderBy('recommend_sort','desc')->first()->toArray();
+        }
+
+        $recommend_read['img_url'] = $recommend_read['data']['img']??'';
+        $recommend_read['publish_at'] = date('Y/m/d H:i',strtotime($recommend_read['created_at']));
+        $recommend_read['view_url'] = $recommend_read['data']['url'];
+        $recommend_read['comment_url'] = '/c/'.($recommend_read['category_id']).'/'.$recommend_read['slug'];
 
         return collect([
             'submissionUpvotes'           => $this->submissionUpvotes(), // cached
@@ -41,6 +54,7 @@ class StoreController extends Controller
             'moderatingCategories'        => $this->moderatingCategories(),
             'moderatingCategoriesRecords' => $this->moderatingCategoriesRecords(),
             'blockedUsers'                => $this->blockedUsers(), // cached
+            'recommendRead'               => $recommend_read
         ]);
     }
 

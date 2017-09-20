@@ -98,10 +98,16 @@ require('./libs/Jcrop');
 require('./libs/iconfont');
 
 
+require('swiper/dist/css/swiper.css');
+
 require('./libs/mui');
+
+
 import './../css/mui.css';
 
 import Share from './libs/share';
+import {alertZoom, alertSkyOne, alertSkyTwo, alertSimple} from './libs/dialog';
+window.alertSimple = alertSimple;
 window.Share = Share;
 
 //window.emojione = require('./libs/emojione.min');

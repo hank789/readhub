@@ -1,7 +1,7 @@
 <template>
 	<section id="home-submissions" :class="'list-'+sort">
 		<div v-for="(value, index) in uniqueList" v-bind:key="value.id">
-    		<suggested-category v-if="index == 5"></suggested-category>
+    		<suggested-category v-if="false && index == 5"></suggested-category>
 
 			<submission :list="value"></submission>
 		</div>
