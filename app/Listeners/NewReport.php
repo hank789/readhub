@@ -45,9 +45,9 @@ class NewReport implements ShouldQueue
 
         foreach ($category_mods as $user) {
             if ($event->report->reportable_type == 'App\Submission') {
-                $user->notify(new SubmissionReported($category, $event->report->submission));
+                $user->notify(new SubmissionReported($category));
             } elseif ($event->report->reportable_type == 'App\Comment') {
-                $user->notify(new CommentReported($category, $event->report->comment));
+                $user->notify(new CommentReported($category));
             }
         }
 

@@ -64,8 +64,14 @@ Route::post('/ban-user', 'BanController@store');
 Route::delete('/ban-user/destroy', 'BanController@destroy');
 Route::post('/backend/firewall/ip/store', 'FirewallController@store');
 Route::delete('/backend/firewall/ip/destroy', 'FirewallController@destroy');
-Route::get('/backend/spam', 'BackendController@spam');
-Route::get('/backend/update-comments-count', 'BackendController@updateCommentsCount');
+Route::get('/backend/spams/multiple-accounts', 'Backend\SpamsController@multipleAccounts');
+Route::get('/backend/spams/submissions', 'Backend\SpamsController@submissions');
+Route::get('/backend/spams/comments', 'Backend\SpamsController@comments');
+Route::post('/approve-comment', 'ModeratorController@approveComment');
+Route::post('/approve-submission', 'ModeratorController@approveSubmission');
+Route::post('/disapprove-comment', 'ModeratorController@disapproveComment');
+Route::post('/disapprove-submission', 'ModeratorController@disapproveSubmission');
+Route::post('/backend/update-comments-count', 'BackendController@updateCommentsCount');
 Route::post('/forbidden-username/store', 'BackendController@storeForbiddenUsername');
 Route::delete('/appointed/destroy/{appointed}', 'BackendController@destroyAppointed');
 Route::post('/forbidden-category-name/store', 'BackendController@storeForbiddenCategoryName');
@@ -74,13 +80,14 @@ Route::delete('/forbidden-category-name/destroy/{forbidden}', 'BackendController
 Route::get('/backend/emails', 'EmailsController@index');
 Route::post('/emails/announcement/store', 'EmailsController@store');
 Route::post('/emails/announcement/send', 'EmailsController@send');
+Route::post('/backend/channel-removal-warnings/send', 'WarningsController@categoriesRemoval');
 Route::get('/emails/announcement/preview', 'EmailsController@preview');
 
 // ssh control
-Route::get('/ssh/flush-all', 'SshController@flushAll');
-Route::get('/ssh/cache-clear', 'SshController@clearCache');
-Route::get('/ssh/stop-maintenance', 'SshController@stopMaintenanceMode');
-Route::get('/ssh/start-maintenance', 'SshController@startMaintenanceMode');
+Route::post('/ssh/flush-all', 'SshController@flushAll');
+Route::post('/ssh/cache-clear', 'SshController@clearCache');
+Route::post('/ssh/stop-maintenance', 'SshController@stopMaintenanceMode');
+Route::post('/ssh/start-maintenance', 'SshController@startMaintenanceMode');
 
 // used for uploading photos via dropzone
 Route::post('/upload-photo', 'PhotoController@upload');

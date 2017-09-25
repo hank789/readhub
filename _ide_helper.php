@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.7 on 2017-09-20.
+ * Generated for Laravel 5.5.13 on 2017-09-25.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -9079,6 +9079,18 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Return the response returned by the given route.
+         *
+         * @param string $name
+         * @return mixed 
+         * @static 
+         */ 
+        public static function respondWithRoute($name)
+        {
+            return \Illuminate\Routing\Router::respondWithRoute($name);
+        }
+        
+        /**
          * Dispatch the request to the application.
          *
          * @param \Illuminate\Http\Request $request
@@ -15533,9 +15545,9 @@ namespace  {
 
     class Cdn extends \Publiux\laravelcdn\Facades\CdnFacadeAccessor {}
 
-    class CDN extends \Publiux\laravelcdn\Facades\CdnFacadeAccessor {}
-
     class Horizon extends \Laravel\Horizon\Horizon {}
+
+    class CDN extends \Publiux\laravelcdn\Facades\CdnFacadeAccessor {}
  
 }
 
