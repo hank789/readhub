@@ -70,7 +70,7 @@ class NewComment implements ShouldQueue
 
         $this->handleMentions($event->comment, $event->submission);
 
-        slackNotification($event->comment->owner->username,'文章有新的评论', $event->comment->body,[],config('app.url').'/c/'.$event->submission->category_name.'/'.$event->submission->slug);
+        slackNotification($event->comment->owner->username,'文章有新的评论', $event->comment->body,[],config('app.url').'/c/'.$event->submission->category_id.'/'.$event->submission->slug);
 
     }
 }
