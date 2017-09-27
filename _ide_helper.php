@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.13 on 2017-09-25.
+ * Generated for Laravel 5.5.13 on 2017-09-27.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -15545,9 +15545,9 @@ namespace  {
 
     class Cdn extends \Publiux\laravelcdn\Facades\CdnFacadeAccessor {}
 
-    class Horizon extends \Laravel\Horizon\Horizon {}
-
     class CDN extends \Publiux\laravelcdn\Facades\CdnFacadeAccessor {}
+
+    class Horizon extends \Laravel\Horizon\Horizon {}
  
 }
 
