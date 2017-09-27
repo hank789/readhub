@@ -18,7 +18,7 @@ export default {
                         id: 'readhub_submission_webview',
                         preload: false,//一定要为false
                         show: {
-                            autoShow: false,
+                            autoShow: true,
                             aniShow: 'pop-in'
                         },
                         styles: {
@@ -29,8 +29,10 @@ export default {
                             autoShow: false
                         }
                     });
-                    mui.fire(webview,'go_to_readhub_page',{url: url});
-                    webview.show();
+                    if (webview) {
+                        mui.fire(webview,'go_to_readhub_page',{url: url});
+                        webview.show();
+                    }
                 });
             } else {
                 this.$router.push(url);
