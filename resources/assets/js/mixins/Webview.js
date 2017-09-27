@@ -12,24 +12,26 @@ export default {
     methods: {
         openReadhubPage(url){
             if(mui.os.plus) {
-                var webview = mui.openWindow({
-                    url: window.Laravel.app_url+url,
-                    id: 'readhub_submission_webview',
-                    preload: false,//一定要为false
-                    show: {
-                        autoShow: false,
-                        aniShow: 'pop-in'
-                    },
-                    styles: {
-                        popGesture: 'hide'
-                    },
-                    extras:{preload: true},
-                    waiting: {
-                        autoShow: false
-                    }
+                mui.plusReady(() => {
+                    var webview = mui.openWindow({
+                        url: window.Laravel.app_url+url,
+                        id: 'readhub_submission_webview',
+                        preload: false,//一定要为false
+                        show: {
+                            autoShow: false,
+                            aniShow: 'pop-in'
+                        },
+                        styles: {
+                            popGesture: 'hide'
+                        },
+                        extras:{preload: true},
+                        waiting: {
+                            autoShow: false
+                        }
+                    });
+                    mui.fire(webview,'go_to_readhub_page',{url: url});
+                    webview.show();
                 });
-                mui.fire(webview,'go_to_readhub_page',{url: url});
-                webview.show();
             } else {
                 this.$router.push(url);
             }
