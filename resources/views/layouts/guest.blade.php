@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ Cdn::mix('/css/app.css') }}">
 
     <script src="{{ Cdn::asset('/vendor/js/socket.io.min.js') }}"></script>
+    <script src="html5plus://ready"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
