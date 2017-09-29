@@ -344,9 +344,9 @@
             	// if landed on a submission page
             	if (preload.submission) {
             		this.submission = preload.submission;
+                    this.loadingSubmission = false;
                     bindShare();
             		Store.category = preload.submission.category;
-            		this.loadingSubmission = false;
             		delete preload.submission;
             		return;
             	}
@@ -362,10 +362,9 @@
                     if(!this.loaded) {
                     	Store.category = response.data.category;
                     }
-
+                    this.loadingSubmission = false;
                     bindShare();
 
-                    this.loadingSubmission = false;
 				}).catch((error) => {
 					if (error.response.status === 404) {
 						this.$router.push('/404')

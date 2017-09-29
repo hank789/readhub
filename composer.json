@@ -37,7 +37,6 @@
         "laravel/tinker": "^1.0",
         "pbmedia/laravel-ffmpeg": "^1.1",
         "predis/predis": "^1.1",
-        "pusher/pusher-php-server": "^2.6",
         "sentry/sentry": "^1.6",
         "sentry/sentry-laravel": "^0.6.1",
         "whichbrowser/parser": "^2.0",

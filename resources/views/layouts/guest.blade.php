@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ Cdn::mix('/css/app.css') }}">
 
     <script src="{{ Cdn::asset('/vendor/js/socket.io.min.js') }}"></script>
+    <script src="html5plus://ready"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -74,28 +75,7 @@
     <scroll-button></scroll-button>
 </div>
 
-<script>
-    var auth = {
-        font: 'Lato',
-        nsfw: {{ 'false' }},
-        nsfwMedia: {{ 'false' }},
-        sidebar_color: 'Gray',
-        isMobileDevice: {{ isMobileDevice() ? 'true' : 'false' }},
-        <?php
-            if (isMobileDevice()) {
-                $submission_small_thumbnail = 'false';
-            } else {
-                $submission_small_thumbnail = 'true';
-            }
-        ?>
-        submission_small_thumbnail: {{ $submission_small_thumbnail }},
-        isGuest: {{ 'true' }},
-        isAdmin: {{ 'false' }}
-    };
-
-    var preload = {};
-</script>
-
+@include('php-to-js-data')
 @yield('script')
 	<script src="{{ Cdn::mix('/js/manifest.js') }}"></script>
 	<script src="{{ Cdn::mix('/js/vendor.js') }}"></script>

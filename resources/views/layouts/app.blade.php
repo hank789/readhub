@@ -12,7 +12,7 @@
     <script src="{{ Cdn::asset('/vendor/js/socket.io.min.js') }}"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <script src="html5plus://ready"></script>
     <!-- start Mixpanel -->
     <script type="text/javascript">
         (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
@@ -84,41 +84,7 @@
     <scroll-button></scroll-button>
 </div>
 
-<script>
-    var auth = {
-        id: '{{ Auth::user()->id }}',
-        bio: {!! json_encode(Auth::user()->bio) !!},
-        name: '{{ Auth::user()->name }}',
-        email: '{{ Auth::user()->email }}',
-        color: '{{ Auth::user()->color }}',
-        avatar: '{{ Auth::user()->avatar }}',
-        location: '{{ Auth::user()->location }}',
-        username: '{{ Auth::user()->username }}',
-        created_at: '{{ Auth::user()->created_at }}',
-        font: '{{ settings('font') }}',
-        nsfw: {{ settings('nsfw') ? 'true' : 'false' }},
-        nsfwMedia: {{ settings('nsfw_media') ? 'true' : 'false' }},
-        sidebar_color: '{{ settings('sidebar_color') }}',
-        notify_comments_replied: {{ settings('notify_comments_replied') ? 'true' : 'false' }},
-        notify_submissions_replied: {{ settings('notify_submissions_replied') ? 'true' : 'false' }},
-        notify_mentions: {{ settings('notify_mentions') ? 'true' : 'false' }},
-        exclude_upvoted_submissions: {{ settings('exclude_upvoted_submissions') ? 'true' : 'false' }},
-        exclude_downvoted_submissions: {{ settings('exclude_downvoted_submissions') ? 'true' : 'false' }},
-        isMobileDevice: {{ isMobileDevice() ? 'true' : 'false' }},
-        submission_small_thumbnail: {{ isMobileDevice() ? 'false' : 'true' }},
-        info: {
-            website: '{{ Auth::user()->info['website'] }}',
-            twitter: '{{ Auth::user()->info['twitter'] }}'
-        },
-        stats: {!! Auth::user()->stats() !!},
-        isGuest: {{ 'false' }},
-        isAdmin: {!! Auth::user()->isVotenAdministrator() ? 'true':'false' !!},
-        confirmedEmail: {{ Auth::user()->confirmed ? 'true' : 'false' }}
-    };
-
-    var preload = {};
-</script>
-
+@include('php-to-js-data')
 @yield('script')
 	<script src="{{ Cdn::mix('/js/manifest.js') }}"></script>
 	<script src="{{ Cdn::mix('/js/vendor.js') }}"></script>
