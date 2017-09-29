@@ -235,7 +235,7 @@
                 var callback = (response) => {
                     var warningAlert = () => {
                         var level = response.data.current_level;
-                        var isValid = response.data.isValid;
+                        var isValid = response.data.is_valid;
 						if (!isValid) {
                             this.$refs.inwehubDialog.getHtml('test', {level:level}, (html) => {
                                 window.alertSimple(html, '查看等级详情', (num) =>{
