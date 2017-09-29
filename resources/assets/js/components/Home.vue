@@ -235,15 +235,21 @@
                 var callback = (response) => {
                     var warningAlert = () => {
                         var level = response.data.current_level;
+                        var isValid = response.data.isValid;
+						if (!isValid) {
+                            this.$refs.inwehubDialog.getHtml('test', {level:level}, (html) => {
+                                window.alertSimple(html, '查看等级详情', (num) =>{
+                                    if (num.index == 0) {
+                                        this.parentOpenUrl('/my/Growth');
+                                    }
 
-                        this.$refs.inwehubDialog.getHtml('test', {level:level}, (html) => {
-                            window.alertSimple(html, '查看等级详情', (num) =>{
-                                if (num.index == 0) {
-                                    this.parentOpenUrl('/my/Growth');
-                                }
-
-                            }, true);
-                        });
+                                }, true);
+                            });
+						} else {
+							if (index === 1) {
+                                this.parentOpenUrl('/askCommunity/majors');
+							}
+						}
                     };
 
 			        warningAlert();
