@@ -45,9 +45,9 @@ class NewReport implements ShouldQueue
 
         foreach ($category_mods as $user) {
             if ($event->report->reportable_type == 'App\Submission') {
-                $user->notify(new SubmissionReported($category, $event->report->submission));
+                $user->notify(new SubmissionReported($category));
             } elseif ($event->report->reportable_type == 'App\Comment') {
-                $user->notify(new CommentReported($category, $event->report->comment));
+                $user->notify(new CommentReported($category));
             }
         }
 
@@ -70,13 +70,13 @@ class NewReport implements ShouldQueue
                 'title' => '文章标题',
                 'value' => $event->report->submission->title
             ];
-            slackNotification($event->report->submission->owner->username,'文章被举报','',$slackFields,config('app.url').'/c/'.$event->report->submission->category_name.'/'.$event->report->submission->slug,'warning');
+            slackNotification($event->report->submission->owner->username,'文章被举报','',$slackFields,config('app.url').'/c/'.$event->report->submission->category_id.'/'.$event->report->submission->slug,'warning');
         } elseif ($event->report->reportable_type == 'App\Comment') {
             $slackFields[] = [
                 'title' => '评论内容',
                 'value' => $event->report->comment->body
             ];
-            slackNotification($event->report->comment->owner->username,'评论被举报','',$slackFields,config('app.url').'/c/'.$event->report->comment->submission->category_name.'/'.$event->report->comment->submission->slug,'warning');
+            slackNotification($event->report->comment->owner->username,'评论被举报','',$slackFields,config('app.url').'/c/'.$event->report->comment->submission->category_id.'/'.$event->report->comment->submission->slug,'warning');
         }
 
 

@@ -12,30 +12,30 @@ export default {
     methods: {
         openReadhubPage(url){
             if(mui.os.plus) {
-                var webview = mui.openWindow({
-                    url: window.Laravel.app_url+url,
-                    id: 'readhub_submission_webview',
-                    preload: false,//一定要为false
-                    show: {
-                        autoShow: false,
-                        aniShow: 'pop-in'
-                    },
-                    styles: {
-                        popGesture: 'hide'
-                    },
-                    extras:{preload: true},
-                    waiting: {
-                        autoShow: false
+                mui.plusReady(() => {
+                    var webview = mui.openWindow({
+                        url: window.Laravel.app_url+url,
+                        id: 'readhub_submission_webview',
+                        preload: false,//一定要为false
+                        show: {
+                            autoShow: true,
+                            aniShow: 'pop-in'
+                        },
+                        styles: {
+                            popGesture: 'hide'
+                        },
+                        extras:{preload: true},
+                        waiting: {
+                            autoShow: false
+                        }
+                    });
+                    if (webview) {
+                        mui.fire(webview,'go_to_readhub_page',{url: url});
+                        webview.show();
                     }
                 });
-                mui.fire(webview,'go_to_readhub_page',{url: url});
-                setTimeout( () => {
-                    webview.show();
-                },100);
             } else {
-                setTimeout( () => {
-                    this.$router.push(url);
-                },100);
+                this.$router.push(url);
             }
         },
         openWebviewByUrl(id, url, autoShow=true, aniShow='pop-in', popGesture='hide', reload = false) {
@@ -278,7 +278,7 @@ export default {
                                 popGesture: 'none',
                                 top: '0px',
                                 dock: 'top',
-                                bottom: '75px',
+                                bottom: '50px',
                                 bounce:'none'
                             });
                         }

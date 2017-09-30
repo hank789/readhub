@@ -164,7 +164,7 @@
                             preload: false, //一定要为false
                             createNew: false,
                             show: {
-                                autoShow: false,
+                                autoShow: true,
                                 aniShow: 'pop-in'
                             },
                             styles: {
@@ -183,13 +183,12 @@
                                 preload: true
                             }
                         });
-
-                        mui.fire(webview,'go_to_readhub_page',{
-                            url: '/article/'+submission.id
-                        });
-                        setTimeout( () => {
+                        if (webview) {
+                            mui.fire(webview,'go_to_readhub_page',{
+                                url: '/article/'+submission.id
+                            });
                             webview.show();
-                        },100);
+						}
                     } else {
                         this.openWebviewSubmission(submission.data.url,submission.title);
 					}
