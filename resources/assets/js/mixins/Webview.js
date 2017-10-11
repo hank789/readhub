@@ -262,7 +262,7 @@ export default {
                     webview.loadURL('/public/index.html#' + url);
                 });
             } else {
-                window.top.location.href = window.Laravel.inwehub_url + '/#' + url;
+                window.top.location.href = window.Laravel.inwehub_url + '/?#' + url;
             }
         },
         hideWebviewFooter(){
