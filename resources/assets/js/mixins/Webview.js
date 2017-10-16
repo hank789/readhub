@@ -31,7 +31,9 @@ export default {
                     });
                     if (webview) {
                         mui.fire(webview,'go_to_readhub_page',{url: url});
-                        webview.show();
+                        setTimeout(function () {
+                            webview.show("slide-in-right", 300);
+                        },150);
                     }
                 });
             } else {
