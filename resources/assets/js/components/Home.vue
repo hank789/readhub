@@ -246,7 +246,7 @@
                                 }, true);
                             });
 						} else {
-							if (index === 1) {
+							if (index === 1 || index === 7) {
                                 this.parentOpenUrl('/askCommunity/majors');
 							}
 						}
