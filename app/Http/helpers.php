@@ -224,6 +224,7 @@ if (!function_exists('getUrlImg')) {
             }else{
                 $temp='';
             }
+            $temp='';
         }
         return $temp;
     }

@@ -108,7 +108,7 @@ class SubmissionController extends Controller
                     'description'   => null,
                     'type'          => 'link',
                     'embed'         => null,
-                    'img'           => null,
+                    'img'           => getUrlImg($request->url),
                     'thumbnail'     => null,
                     'providerName'  => null,
                     'publishedTime' => null,
