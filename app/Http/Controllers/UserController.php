@@ -238,9 +238,10 @@ class UserController extends Controller
         $permission_type = $request->permission_type;
         $is_valid = false;
         switch ($permission_type) {
+            case '7':
             case '1':
-                // 问答社区L3
-                if ($user_level >= 3) {
+                // 问答社区L1
+                if ($user_level >= 1) {
                     $is_valid = true;
                 }
                 break;

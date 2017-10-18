@@ -31,7 +31,9 @@ export default {
                     });
                     if (webview) {
                         mui.fire(webview,'go_to_readhub_page',{url: url});
-                        webview.show();
+                        setTimeout(function () {
+                            webview.show("slide-in-right", 300);
+                        },150);
                     }
                 });
             } else {
@@ -262,7 +264,7 @@ export default {
                     webview.loadURL('/public/index.html#' + url);
                 });
             } else {
-                window.top.location.href = window.Laravel.inwehub_url + '/#' + url;
+                window.top.location.href = window.Laravel.inwehub_url + '/?#' + url;
             }
         },
         hideWebviewFooter(){
@@ -278,7 +280,7 @@ export default {
                                 popGesture: 'none',
                                 top: '0px',
                                 dock: 'top',
-                                bottom: '75px',
+                                bottom: '50px',
                                 bounce:'none'
                             });
                         }
