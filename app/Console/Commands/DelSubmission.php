@@ -43,7 +43,7 @@ class DelSubmission extends Command
     {
         $id = $this->argument('id');
 
-        $submission = Submission::findOrFail($id);
+        $submission = Submission::withTrashed()->findOrFail($id);
         event(new SubmissionWasDeleted($submission,true));
         $data = $submission->data;
         Redis::connection()->hdel('voten:submission:url',$data['url']);
