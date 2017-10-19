@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\Inspire::class,
         Commands\MakeUserAdmin::class,
         Commands\SetDefaultSubscribedCategories::class,
+        Commands\DelSubmission::class
     ];
 
     /**
