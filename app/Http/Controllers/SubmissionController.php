@@ -108,7 +108,7 @@ class SubmissionController extends Controller
                     'description'   => null,
                     'type'          => 'link',
                     'embed'         => null,
-                    'img'           => null,
+                    'img'           => getUrlImg($request->url),
                     'thumbnail'     => null,
                     'providerName'  => null,
                     'publishedTime' => null,
@@ -318,7 +318,7 @@ class SubmissionController extends Controller
 
         abort_unless($this->mustBeOwner($submission), 403);
 
-        event(new SubmissionWasDeleted($submission));
+        event(new SubmissionWasDeleted($submission,true));
         if ($submission->type == 'link') {
             Redis::connection()->hdel('voten:submission:url',$submission->data['url']);
         }

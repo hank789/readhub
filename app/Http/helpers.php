@@ -204,6 +204,32 @@ if (!function_exists('getUrlTitle')) {
     }
 }
 
+if (!function_exists('getUrlImg')) {
+    function getUrlImg($url) {
+        $f = file_get_contents($url);
+        if (str_contains($url,'mp.weixin.qq.com')) {
+            //微信的文章
+            $pattern = '/var msg_cdn_url = "(.*?)";/s';
+            preg_match_all($pattern,$f,$matches);
+            if(array_key_exists(1, $matches) && !empty($matches[1][0])) {
+                $temp = $matches[1][0];
+            } else {
+                $temp='';
+            }
+        } else {
+            $pattern="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.png]))[\'|\"].*?[\/]?>/";
+            preg_match_all($pattern,$f,$matchContent);
+            if(isset($matchContent[1][0])){
+                $temp=$matchContent[1][0];
+            }else{
+                $temp='';
+            }
+            $temp='';
+        }
+        return $temp;
+    }
+}
+
 if (!function_exists('slackNotification')) {
     function slackNotification($author_name, $subject, $title, array $fields = null, $url ='', $color = 'good'){
         $url = $url?:config('app.url');
