@@ -45,7 +45,7 @@
 						</a>
 					</h3>
 
-					<div class="container-image">
+					<div class="container-image" @click="openNewUrl(submission)">
 						<img v-if="submission.data.img" v-bind:src="submission.data.img" v-bind:alt="submission.title" @click="$emit('zoom')" class="big-thumbnail"/>
 					</div>
 
