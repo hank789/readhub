@@ -46,7 +46,7 @@
 					</h3>
 
 					<div>
-						<img v-if="submission.data.thumbnail_path" v-bind:src="submission.data.thumbnail_path" v-bind:alt="submission.title" @click="$emit('zoom')" class="big-thumbnail"/>
+						<img v-if="submission.data.img" v-bind:src="submission.data.img" v-bind:alt="submission.title" @click="$emit('zoom')" class="big-thumbnail"/>
 					</div>
 
 
