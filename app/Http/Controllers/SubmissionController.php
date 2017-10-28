@@ -106,7 +106,7 @@ class SubmissionController extends Controller
                 $img = getUrlImg($request->url);
                 //保存图片
                 $img_name = 'submissions/img/'.time().str_random(7).'.jpeg';
-                Storage::put($img_name, $img);
+                Storage::put($img_name, file_get_contents($img));
 
                 $data = [
                     'url'           => $request->url,
