@@ -187,7 +187,7 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
-        App\Third\AliOSS\AliOssServiceProvider::class,
+        App\Third\AliOss\AliOssServiceProvider::class,
         Overtrue\LaravelPinyin\ServiceProvider::class,
         Maknz\Slack\Laravel\ServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
