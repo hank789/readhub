@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\SubmissionWasVoted;
+use App\Jobs\NotifyInwehub;
 use App\Traits\CachableSubmission;
 use App\Traits\CachableUser;
 use Auth;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class SubmissionVotesController extends Controller
 {
@@ -160,6 +162,12 @@ class SubmissionVotesController extends Controller
         if ($request->input('need_refresh')){
             event(new SubmissionWasVoted());
         }
+        $voted = Redis::connection()->hget('voten:submission:upvote',$submission->id.'_'.$user->id);
+        if (!$voted) {
+            dispatch((new NotifyInwehub($user->id,'NewSubmissionUpVote',['submission_id'=>$submission->id]))->onQueue('inwehub:default'));
+            Redis::connection()->hset('voten:submission:upvote',$submission->id.'_'.$user->id,1);
+        }
+
 
         return response('voted successfully ', 200);
     }

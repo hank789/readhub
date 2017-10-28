@@ -278,7 +278,7 @@ export default {
                         if (ws) {
                             ws.setStyle({
                                 popGesture: 'none',
-                                top: '0px',
+                                //top: '0px',
                                 dock: 'top',
                                 bottom: '50px',
                                 bounce:'none'
@@ -293,7 +293,7 @@ export default {
 
                             ws.setStyle({
                                     popGesture: 'hide',
-                                    top: '0px',
+                                    //top: '0px',
                                     dock: 'top',
                                     bottom: '0px',
                                     bounce:'none'

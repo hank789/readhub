@@ -44,6 +44,12 @@
 							</small>
 						</a>
 					</h3>
+
+					<div v-if="submission.data.img" class="container-image" @click="openNewUrl(submission)">
+						<img v-bind:src="submission.data.img" v-bind:alt="submission.title" @click="$emit('zoom')" class="big-thumbnail"/>
+					</div>
+
+
 					<div class="mobile-only mobile-submission-item-action">
 						{{ date }}
 						<router-link v-if="false" :to="'/' + '@' + submission.owner.id" class="h-underline">
