@@ -105,7 +105,7 @@ class SubmissionController extends Controller
                 //$data = $this->linkSubmission($request);
                 $img = getUrlImg($request->url);
                 //保存图片
-                $img_name = 'submissions/img/'.time().str_random(7).'.jpeg';
+                $img_name = 'submissions/'.date('Y').'/'.date('m').'/'.time().str_random(7).'.jpeg';
                 Storage::put($img_name, file_get_contents($img));
 
                 $data = [
