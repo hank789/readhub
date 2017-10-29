@@ -44,6 +44,18 @@
 
                     var ws = plus.webview.currentWebview();
                     if (ws.id === 'readhub_submission_webview') {
+
+                        var parent_webview = ws.opener();
+                        if (parent_webview){
+                            //触发父页面的自定义事件(refresh),从而进行刷新
+                            mui.fire(parent_webview, 'refreshPageData');
+
+                            //触发父页面的自定义事件(refresh),从而进行刷新
+                            mui.fire(parent_webview, 'refreshData');
+
+                            mui.fire(parent_webview, 'autoHeight');
+                        }
+
                         ws.hide();
                         return;
                     }
