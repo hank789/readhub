@@ -20,6 +20,7 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
 
 class SubmissionController extends Controller
 {
@@ -102,13 +103,18 @@ class SubmissionController extends Controller
             }
             try {
                 //$data = $this->linkSubmission($request);
+                $img = getUrlImg($request->url);
+                //保存图片
+                $img_name = 'submissions/img/'.time().str_random(7).'.jpeg';
+                Storage::put($img_name, file_get_contents($img));
+
                 $data = [
                     'url'           => $request->url,
                     'title'         => $request->title,
                     'description'   => null,
                     'type'          => 'link',
                     'embed'         => null,
-                    'img'           => getUrlImg($request->url),
+                    'img'           => Storage::url($img_name),
                     'thumbnail'     => null,
                     'providerName'  => null,
                     'publishedTime' => null,
