@@ -135,9 +135,7 @@
 
             var height = '100%';
             if (mui.os.android) {
-                var topwebview = plus.webview.getLaunchWebview();
-                var styles = topwebview.getStyle();
-                height = styles.height;
+                
             }
 
             currentWebview.setStyle({
