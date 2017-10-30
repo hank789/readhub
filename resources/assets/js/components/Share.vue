@@ -135,6 +135,7 @@
             currentWebview.setStyle({
               height: '100%',
               opacity: 0.97,
+              zindex:999
             });
           });
         }
