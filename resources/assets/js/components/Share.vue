@@ -132,9 +132,15 @@
         if (mui.os.plus) {
           mui.plusReady(function () {
             var currentWebview = plus.webview.currentWebview();
+
+            var height = '100%';
+            if (mui.os.android) {
+                
+            }
+
             currentWebview.setStyle({
-              height: '100%',
-              opacity: 0.97,
+              height: height,
+              opacity: 0.97
             });
           });
         }
