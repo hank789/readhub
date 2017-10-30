@@ -132,8 +132,14 @@
         if (mui.os.plus) {
           mui.plusReady(function () {
             var currentWebview = plus.webview.currentWebview();
+
+            var height = '100%';
+            if (mui.os.android) {
+                height = plus.screen.resolutionHeight*plus.screen.scale;
+            }
+
             currentWebview.setStyle({
-              height: '300px',
+              height: height,
               opacity: 0.97,
               zindex:999
             });
