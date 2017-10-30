@@ -133,7 +133,7 @@
           mui.plusReady(function () {
             var currentWebview = plus.webview.currentWebview();
             currentWebview.setStyle({
-              height: '100%',
+              height: '300px',
               opacity: 0.97,
               zindex:999
             });
