@@ -140,6 +140,7 @@ export default {
                                 width:'100%',
                                 height:'44px',
                                 dock:'top',
+                                zindex:9999,
                                 position:'dock',
                                 backButtonAutoControl: 'hide',
                                 bounce:'none', //不允许滑动
